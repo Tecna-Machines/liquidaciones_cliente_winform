@@ -59,5 +59,16 @@ namespace DAL.Service.Liquidacion.UseCase.Liquidacion
             return pagina ?? new PaginaDTO<LiquidacionResumenDTO>();
 
         }
+
+        public async Task<LiquidacionDTO> RecuperarLiquidacion(string codigoLiquidacion)
+        {
+            string endpoint = $"Liquidacion/{codigoLiquidacion}";
+
+            HttpResponseMessage response = await _httpClient.GetAsync(endpoint);
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            var liquidacion = JsonSerializer.Deserialize<LiquidacionDTO>(responseBody, _httpClient.GetJsonOptions());
+            return liquidacion;
+        }
     }
 }

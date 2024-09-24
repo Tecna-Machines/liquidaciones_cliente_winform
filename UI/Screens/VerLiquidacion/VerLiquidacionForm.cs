@@ -1,7 +1,5 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
-using DAL.Service.Liquidacion.Http;
-using DAL.Service.Liquidacion.UseCase.Liquidacion;
 using LAUCHA.application.DTOs.EmpleadoDTO;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
 using UI.Utils;
@@ -162,6 +160,6 @@ namespace UI.Screens.VerLiquidacion
             }
         }
     }
-    
+
 }
 

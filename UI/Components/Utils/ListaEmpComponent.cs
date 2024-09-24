@@ -21,6 +21,12 @@ namespace UI.Components.Utils
                 var item = new ListViewItem(emp.Nombre);
                 item.SubItems.Add(emp.Apellido);
                 item.SubItems.Add(emp.Dni);
+
+                if(emp.ContratoResumen.CodigoContrato == null)
+                {
+                    item.BackColor = Color.Red;
+                }
+
                 listEmp.Items.Add(item);
             });
 

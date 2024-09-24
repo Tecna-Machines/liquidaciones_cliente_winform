@@ -14,7 +14,7 @@ namespace DAL.Service.Liquidacion.Http
         {
             _httpClient = new HttpClient
             {
-                BaseAddress = new Uri("https://localhost:7033/api/v1/")
+                BaseAddress = new Uri("http://192.168.0.252:54321/api/v1/")
             };
 
             // Configurar otros aspectos del HttpClient si es necesario

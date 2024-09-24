@@ -1,4 +1,5 @@
 ﻿using BLL.Controllers;
+using BLL.Enums;
 using BLL.Models;
 using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.EmpleadoDTO;
@@ -15,10 +16,12 @@ namespace UI.Screens.HacerLiquidacion
         private List<EmpleadoDTO> _empleados;
         private LiquidacionContext _context;
         private PeriodoDTO _periodoLiquidar;
+        private bool _esPrimeraQuincena;
+        private PeriodoLiquiComponent _periodoComponent;
 
 
         private List<EmpleadoDTO> empleadoDTOs;
-        public CrearLiquidacionForm()
+        public CrearLiquidacionForm(PeriodoLiquiComponent periodoComponent, bool esPrimeraQuincena)
         {
             _context = LiquidacionContext.GetInstance();
             _periodoLiquidar = _context.GetPeriodo();
@@ -31,6 +34,30 @@ namespace UI.Screens.HacerLiquidacion
 
             this.listaEmpComponent1.EventDniSeleccionado += OnEmpleadoSeleccionado;
 
+            _esPrimeraQuincena = esPrimeraQuincena;
+        }
+
+        private async void PrimeraQuincenaSeteada(bool primeraQuincenaActiva)
+        {
+            if (primeraQuincenaActiva)
+            {
+                var empleadosPrimeraQuincena = this.empleadoDTOs
+                 .Where(emp =>
+                !string.IsNullOrEmpty(emp.ContratoResumen.CodigoModalidad) &&
+                int.TryParse(emp.ContratoResumen.CodigoModalidad, out int codigoModalidad) &&
+                EsModalidadQuincenal(codigoModalidad)) // Llama a un método que verifica si es modalidad quincenal
+                .ToList();
+
+                this.listaEmpComponent1.CargarLista(empleadosPrimeraQuincena);
+            }
+
+        }
+
+        private bool EsModalidadQuincenal(int codigoModalidad)
+        {
+            return codigoModalidad == (int)Modalidad.QuincenalPorHora ||
+                   codigoModalidad == (int)Modalidad.QuincenalFijo ||
+                   codigoModalidad == (int)Modalidad.QuincenajFijoMasExtra;
         }
 
         private async void IniciarConfiguraciones()
@@ -39,6 +66,8 @@ namespace UI.Screens.HacerLiquidacion
             this.listaEmpComponent1.CargarLista(this.empleadoDTOs);
 
             this.SetearLabelPeriodo(_periodoLiquidar);
+
+            this.PrimeraQuincenaSeteada(this._esPrimeraQuincena);
 
         }
 
@@ -104,12 +133,27 @@ namespace UI.Screens.HacerLiquidacion
 
         private async void ClickBtnConfirmarLiquidacion(object sender, EventArgs e)
         {
-            string leyenda = "estas a punt de confirmar la liquidacion , revisa cuidadosamente";
-            MessageBox.Show(leyenda);
+            string leyenda = "Estás a punto de confirmar la liquidación, revisa cuidadosamente.";
+
+            DialogResult result = MessageBox.Show(leyenda, "Confirmar Liquidación",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Warning);
 
 
-            var formVerLiqui = new VerLiquidacionForm();
-            formVerLiqui.Show();
+  
+            if (result == DialogResult.Yes)
+            {
+                 var liquidacion = await _controller.ConfirmarLiquidacion(_context.GetDniEmpleado(),_context.GetPeriodo());
+
+                _context.SetLiquidacion(liquidacion);
+
+                var formVerLiqui = new VerLiquidacionForm();
+                formVerLiqui.Show();
+            }
+            else
+            {
+                MessageBox.Show("La liquidación no ha sido confirmada.", "Acción cancelada");
+            }
         }
 
         private void LimpiarTodasLasTablasLiquidacion()

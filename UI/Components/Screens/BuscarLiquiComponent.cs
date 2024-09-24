@@ -1,13 +1,20 @@
-﻿using LAUCHA.application.DTOs.LiquidacionDTOs;
+﻿using BLL.Controllers;
+using BLL.Models;
+using LAUCHA.application.DTOs.LiquidacionDTOs;
 using LAUCHA.application.DTOs.PaginaDTOs;
+using UI.Screens.VerLiquidacion;
 
 namespace UI.Components.Screens
 {
     public partial class BuscarLiquiComponent : UserControl
     {
+        private ConsultarLiquidacionController _ControllerLiquidacion;
         public BuscarLiquiComponent()
         {
             InitializeComponent();
+
+            _ControllerLiquidacion = new();
+            this.listaLiquidaciones.ItemSelectionChanged += SelectItemListaLiquidacion;
         }
 
 
@@ -39,5 +46,25 @@ namespace UI.Components.Screens
             this.labelTotalResult.Text = $"Cant. resultados: {cantidadResultados}";
             this.labelPagina.Text = $"{pagActual} de {cantPaginas} pagina/s";
         }
+
+        private async void SelectItemListaLiquidacion(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            // Verificar si un elemento está seleccionado
+            if (e.IsSelected)
+            {
+                // Recuperar el valor de la primera columna (index 0)
+                string codigoLiquidacion = e.Item.SubItems[0].Text.Trim();
+
+                var liquidacion = await _ControllerLiquidacion.ConsultarLiquidacionById(codigoLiquidacion);
+
+                var contexto = LiquidacionContext.GetInstance();
+
+                contexto.SetLiquidacion(liquidacion);
+
+                var formlIquidacion = new VerLiquidacionForm();
+                formlIquidacion.Show();
+            }
+        }
+
     }
 }

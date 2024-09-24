@@ -19,5 +19,10 @@ namespace BLL.Controllers
         {
             return await this.recuperarLiquidaciones.RecuperarLiquidacionesFiltradas(filtro);
         }
+
+        public async Task<LiquidacionDTO> ConsultarLiquidacionById(string codigo)
+        {
+            return await this.recuperarLiquidaciones.RecuperarLiquidacion(codigo);
+        }
     }
 }
