@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "EN EL BANCO" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 9F, FontStyle.Bold));
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "EN EL SOBRE" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 9F, FontStyle.Bold));
+            ListViewItem listViewItem1 = new ListViewItem(new string[] { "EN EL BANCO" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point));
+            ListViewItem listViewItem2 = new ListViewItem(new string[] { "EN EL SOBRE" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point));
             listaEmpComponent1 = new Components.Utils.ListaEmpComponent();
             panel1 = new Panel();
+            labelQuincena = new Label();
             labelPeriodo = new Label();
             nombreLabel = new Label();
             dniLabel = new Label();
@@ -53,6 +54,7 @@
             columSueldo = new ColumnHeader();
             columMontoHora = new ColumnHeader();
             columModalidad = new ColumnHeader();
+            columnBlanco = new ColumnHeader();
             btnPreLiquidar = new Button();
             btnLiquidarCompleta = new Button();
             labelSubtotales = new Label();
@@ -63,7 +65,6 @@
             listaPagarEmpleado = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
-            btnPago = new Button();
             btnMarcas = new Button();
             btnItem = new Button();
             panel1.SuspendLayout();
@@ -78,27 +79,37 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(labelQuincena);
             panel1.Controls.Add(labelPeriodo);
             panel1.Controls.Add(nombreLabel);
             panel1.Controls.Add(dniLabel);
             panel1.Location = new Point(314, 27);
             panel1.Name = "panel1";
-            panel1.Size = new Size(875, 100);
+            panel1.Size = new Size(963, 100);
             panel1.TabIndex = 1;
+            // 
+            // labelQuincena
+            // 
+            labelQuincena.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            labelQuincena.Location = new Point(201, 0);
+            labelQuincena.Name = "labelQuincena";
+            labelQuincena.Size = new Size(283, 38);
+            labelQuincena.TabIndex = 3;
+            labelQuincena.Text = "[QUINCENA]";
             // 
             // labelPeriodo
             // 
-            labelPeriodo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            labelPeriodo.Location = new Point(227, 0);
+            labelPeriodo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelPeriodo.Location = new Point(530, 0);
             labelPeriodo.Name = "labelPeriodo";
-            labelPeriodo.Size = new Size(648, 38);
+            labelPeriodo.Size = new Size(433, 38);
             labelPeriodo.TabIndex = 2;
             labelPeriodo.Text = "<error de periodo>";
             // 
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
-            nombreLabel.Font = new Font("Segoe UI", 12F);
+            nombreLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             nombreLabel.Location = new Point(3, 52);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new Size(133, 21);
@@ -108,7 +119,7 @@
             // dniLabel
             // 
             dniLabel.AutoSize = true;
-            dniLabel.Font = new Font("Segoe UI", 15F);
+            dniLabel.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             dniLabel.Location = new Point(3, 10);
             dniLabel.Name = "dniLabel";
             dniLabel.Size = new Size(165, 28);
@@ -118,7 +129,7 @@
             // labelRemuneraciones
             // 
             labelRemuneraciones.BackColor = Color.LightGreen;
-            labelRemuneraciones.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelRemuneraciones.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             labelRemuneraciones.Location = new Point(314, 231);
             labelRemuneraciones.Name = "labelRemuneraciones";
             labelRemuneraciones.Padding = new Padding(3);
@@ -129,7 +140,7 @@
             // labelRetenciones
             // 
             labelRetenciones.BackColor = Color.Tomato;
-            labelRetenciones.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelRetenciones.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             labelRetenciones.Location = new Point(314, 494);
             labelRetenciones.Name = "labelRetenciones";
             labelRetenciones.Padding = new Padding(3);
@@ -203,7 +214,7 @@
             // labelaAcuerdo
             // 
             labelaAcuerdo.BackColor = Color.LightSkyBlue;
-            labelaAcuerdo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelaAcuerdo.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             labelaAcuerdo.Location = new Point(314, 130);
             labelaAcuerdo.Name = "labelaAcuerdo";
             labelaAcuerdo.Padding = new Padding(3);
@@ -213,7 +224,7 @@
             // 
             // listContrato
             // 
-            listContrato.Columns.AddRange(new ColumnHeader[] { columnNumero, columSueldo, columMontoHora, columModalidad });
+            listContrato.Columns.AddRange(new ColumnHeader[] { columnNumero, columSueldo, columMontoHora, columModalidad, columnBlanco });
             listContrato.FullRowSelect = true;
             listContrato.GridLines = true;
             listContrato.Location = new Point(314, 157);
@@ -244,10 +255,15 @@
             columModalidad.Text = "Modalidad";
             columModalidad.Width = 120;
             // 
+            // columnBlanco
+            // 
+            columnBlanco.Text = "Parte blanca";
+            columnBlanco.Width = 90;
+            // 
             // btnPreLiquidar
             // 
             btnPreLiquidar.BackColor = Color.LightSalmon;
-            btnPreLiquidar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnPreLiquidar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnPreLiquidar.Location = new Point(1015, 171);
             btnPreLiquidar.Name = "btnPreLiquidar";
             btnPreLiquidar.Size = new Size(109, 41);
@@ -261,7 +277,7 @@
             btnLiquidarCompleta.BackColor = Color.SpringGreen;
             btnLiquidarCompleta.BackgroundImageLayout = ImageLayout.None;
             btnLiquidarCompleta.Cursor = Cursors.Hand;
-            btnLiquidarCompleta.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnLiquidarCompleta.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnLiquidarCompleta.Location = new Point(1015, 124);
             btnLiquidarCompleta.Name = "btnLiquidarCompleta";
             btnLiquidarCompleta.Size = new Size(109, 41);
@@ -273,7 +289,7 @@
             // labelSubtotales
             // 
             labelSubtotales.BackColor = Color.SlateBlue;
-            labelSubtotales.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelSubtotales.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             labelSubtotales.Location = new Point(1006, 231);
             labelSubtotales.Name = "labelSubtotales";
             labelSubtotales.Padding = new Padding(3);
@@ -306,7 +322,7 @@
             // labelPagarEmpleado
             // 
             labelPagarEmpleado.BackColor = Color.LightGoldenrodYellow;
-            labelPagarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelPagarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             labelPagarEmpleado.Location = new Point(1006, 494);
             labelPagarEmpleado.Name = "labelPagarEmpleado";
             labelPagarEmpleado.Padding = new Padding(3);
@@ -337,16 +353,6 @@
             columnHeader2.Text = "MONTO";
             columnHeader2.Width = 100;
             // 
-            // btnPago
-            // 
-            btnPago.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnPago.Location = new Point(1006, 595);
-            btnPago.Name = "btnPago";
-            btnPago.Size = new Size(118, 73);
-            btnPago.TabIndex = 16;
-            btnPago.Text = "CARGAR PAGOS";
-            btnPago.UseVisualStyleBackColor = true;
-            // 
             // btnMarcas
             // 
             btnMarcas.Location = new Point(1130, 171);
@@ -365,6 +371,7 @@
             btnItem.TabIndex = 18;
             btnItem.Text = "Agregar item";
             btnItem.UseVisualStyleBackColor = true;
+            btnItem.Click += ClickBtnAgregarItem;
             // 
             // CrearLiquidacionForm
             // 
@@ -373,7 +380,6 @@
             ClientSize = new Size(1303, 706);
             Controls.Add(btnItem);
             Controls.Add(btnMarcas);
-            Controls.Add(btnPago);
             Controls.Add(listaPagarEmpleado);
             Controls.Add(labelPagarEmpleado);
             Controls.Add(listaSubtotales);
@@ -435,8 +441,9 @@
         private ListView listaPagarEmpleado;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
-        private Button btnPago;
         private Button btnMarcas;
         private Button btnItem;
+        private ColumnHeader columnBlanco;
+        private Label labelQuincena;
     }
 }

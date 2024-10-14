@@ -80,6 +80,7 @@
             button1 = new Button();
             textBoxFechaCreacion = new TextBox();
             label20 = new Label();
+            progressBar = new ProgressBar();
             SuspendLayout();
             // 
             // labelDetalleLiq
@@ -539,11 +540,21 @@
             label20.TabIndex = 40;
             label20.Text = "Fecha de creacion:";
             // 
+            // progressBar
+            // 
+            progressBar.BackColor = SystemColors.AppWorkspace;
+            progressBar.Location = new Point(340, 278);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(493, 51);
+            progressBar.TabIndex = 41;
+            progressBar.Visible = false;
+            // 
             // VerLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1205, 694);
+            Controls.Add(progressBar);
             Controls.Add(label20);
             Controls.Add(textBoxFechaCreacion);
             Controls.Add(button1);
@@ -645,5 +656,6 @@
         private Button button1;
         private TextBox textBoxFechaCreacion;
         private Label label20;
+        private ProgressBar progressBar;
     }
 }

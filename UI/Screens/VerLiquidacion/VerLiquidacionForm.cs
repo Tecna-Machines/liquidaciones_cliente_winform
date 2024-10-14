@@ -137,28 +137,47 @@ namespace UI.Screens.VerLiquidacion
 
         private async void ClickBtnGenerarRecibo(object sender, EventArgs e)
         {
-            var liquidacion = LiquidacionContext.GetInstance().ObtenerLiquidacion();
-            string codigoLiq = liquidacion.Codigo;
-            string nombreCompletao = liquidacion.Empleado;
-
-
-            var pdfBytes = await empleadoController.DescargarReciboLiquidacionEmp(codigoLiq);
-
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            try
             {
-                saveFileDialog.Filter = "PDF Files|*.pdf";
-                saveFileDialog.Title = "Guardar Recibo";
-                saveFileDialog.FileName = $"{nombreCompletao}_{codigoLiq}.pdf"; // Nombre por defecto
+                // Mostrar barra de progreso al comenzar la operación
+                progressBar.Visible = true;
+                progressBar.Style = ProgressBarStyle.Marquee; // Indicador de progreso indefinido
 
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                var liquidacion = LiquidacionContext.GetInstance().ObtenerLiquidacion();
+                string codigoLiq = liquidacion.Codigo;
+                string nombreCompletao = liquidacion.Empleado;
+
+                // Descargar el recibo en formato PDF desde la API
+                var pdfBytes = await empleadoController.DescargarReciboLiquidacionEmp(codigoLiq);
+
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    File.WriteAllBytes(saveFileDialog.FileName, pdfBytes);
-                    MessageBox.Show("PDF descargado y guardado correctamente.",
-                                        "Éxito", MessageBoxButtons.OK,
-                                        MessageBoxIcon.Information);
+                    saveFileDialog.Filter = "PDF Files|*.pdf";
+                    saveFileDialog.Title = "Guardar Recibo";
+                    saveFileDialog.FileName = $"{nombreCompletao}_{codigoLiq}.pdf"; // Nombre por defecto
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Guardar el archivo PDF
+                        File.WriteAllBytes(saveFileDialog.FileName, pdfBytes);
+                        MessageBox.Show("PDF descargado y guardado correctamente.",
+                                            "Éxito", MessageBoxButtons.OK,
+                                            MessageBoxIcon.Information);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                // Mostrar mensaje de error si ocurre algún problema
+                MessageBox.Show($"Error al descargar el recibo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Ocultar la barra de progreso una vez que termine la operación
+                progressBar.Visible = false;
+            }
         }
+
     }
 
 }

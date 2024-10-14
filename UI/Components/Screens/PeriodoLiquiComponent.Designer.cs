@@ -34,6 +34,9 @@
             btnConfirmarPeriodo = new Button();
             btnCalendario = new Button();
             panelPeriodo = new Panel();
+            comboBoxYear = new ComboBox();
+            labelAnio = new Label();
+            comboBoxMeses = new ComboBox();
             periodoSegunQuincena = new Label();
             periodoPrimerQuincena = new Label();
             labelFecha = new Label();
@@ -57,7 +60,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(137, 24);
             label1.Name = "label1";
             label1.Size = new Size(256, 28);
@@ -66,7 +69,7 @@
             // 
             // btnConfirmarPeriodo
             // 
-            btnConfirmarPeriodo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnConfirmarPeriodo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnConfirmarPeriodo.Location = new Point(286, 234);
             btnConfirmarPeriodo.Name = "btnConfirmarPeriodo";
             btnConfirmarPeriodo.Size = new Size(157, 38);
@@ -77,7 +80,7 @@
             // 
             // btnCalendario
             // 
-            btnCalendario.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnCalendario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnCalendario.Location = new Point(100, 235);
             btnCalendario.Name = "btnCalendario";
             btnCalendario.Size = new Size(157, 37);
@@ -88,6 +91,9 @@
             // 
             // panelPeriodo
             // 
+            panelPeriodo.Controls.Add(comboBoxYear);
+            panelPeriodo.Controls.Add(labelAnio);
+            panelPeriodo.Controls.Add(comboBoxMeses);
             panelPeriodo.Controls.Add(periodoSegunQuincena);
             panelPeriodo.Controls.Add(periodoPrimerQuincena);
             panelPeriodo.Controls.Add(labelFecha);
@@ -98,10 +104,39 @@
             panelPeriodo.Size = new Size(539, 177);
             panelPeriodo.TabIndex = 5;
             // 
+            // comboBoxYear
+            // 
+            comboBoxYear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBoxYear.FormattingEnabled = true;
+            comboBoxYear.Location = new Point(150, 106);
+            comboBoxYear.Name = "comboBoxYear";
+            comboBoxYear.Size = new Size(121, 23);
+            comboBoxYear.TabIndex = 7;
+            // 
+            // labelAnio
+            // 
+            labelAnio.AutoSize = true;
+            labelAnio.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAnio.Location = new Point(119, 109);
+            labelAnio.Name = "labelAnio";
+            labelAnio.Size = new Size(25, 15);
+            labelAnio.TabIndex = 6;
+            labelAnio.Text = "DE:";
+            // 
+            // comboBoxMeses
+            // 
+            comboBoxMeses.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBoxMeses.FormattingEnabled = true;
+            comboBoxMeses.Location = new Point(150, 53);
+            comboBoxMeses.Name = "comboBoxMeses";
+            comboBoxMeses.Size = new Size(121, 23);
+            comboBoxMeses.TabIndex = 5;
+            comboBoxMeses.SelectedIndexChanged += InputMesCambio;
+            // 
             // periodoSegunQuincena
             // 
             periodoSegunQuincena.AutoSize = true;
-            periodoSegunQuincena.Location = new Point(327, 135);
+            periodoSegunQuincena.Location = new Point(449, 109);
             periodoSegunQuincena.Name = "periodoSegunQuincena";
             periodoSegunQuincena.Size = new Size(54, 15);
             periodoSegunQuincena.TabIndex = 4;
@@ -110,7 +145,7 @@
             // periodoPrimerQuincena
             // 
             periodoPrimerQuincena.AutoSize = true;
-            periodoPrimerQuincena.Location = new Point(162, 135);
+            periodoPrimerQuincena.Location = new Point(449, 56);
             periodoPrimerQuincena.Name = "periodoPrimerQuincena";
             periodoPrimerQuincena.Size = new Size(54, 15);
             periodoPrimerQuincena.TabIndex = 3;
@@ -119,19 +154,19 @@
             // labelFecha
             // 
             labelFecha.AutoSize = true;
-            labelFecha.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            labelFecha.Location = new Point(205, 34);
+            labelFecha.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelFecha.Location = new Point(92, 61);
             labelFecha.Name = "labelFecha";
-            labelFecha.Size = new Size(150, 15);
+            labelFecha.Size = new Size(52, 15);
             labelFecha.TabIndex = 2;
-            labelFecha.Text = "MES DE <me> de <0000>";
+            labelFecha.Text = "MES DE:";
             // 
             // btnSegQuincena
             // 
-            btnSegQuincena.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnSegQuincena.Location = new Point(286, 76);
+            btnSegQuincena.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSegQuincena.Location = new Point(286, 94);
             btnSegQuincena.Name = "btnSegQuincena";
-            btnSegQuincena.Size = new Size(137, 45);
+            btnSegQuincena.Size = new Size(152, 45);
             btnSegQuincena.TabIndex = 1;
             btnSegQuincena.Text = "2da quincena";
             btnSegQuincena.UseVisualStyleBackColor = true;
@@ -139,10 +174,10 @@
             // 
             // btnPrimerQuincena
             // 
-            btnPrimerQuincena.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnPrimerQuincena.Location = new Point(120, 75);
+            btnPrimerQuincena.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPrimerQuincena.Location = new Point(286, 40);
             btnPrimerQuincena.Name = "btnPrimerQuincena";
-            btnPrimerQuincena.Size = new Size(137, 47);
+            btnPrimerQuincena.Size = new Size(157, 47);
             btnPrimerQuincena.TabIndex = 0;
             btnPrimerQuincena.Text = "1ra quincena";
             btnPrimerQuincena.UseVisualStyleBackColor = true;
@@ -179,5 +214,8 @@
         private Button btnPrimerQuincena;
         private Label periodoSegunQuincena;
         private Label periodoPrimerQuincena;
+        private Label labelAnio;
+        private ComboBox comboBoxMeses;
+        private ComboBox comboBoxYear;
     }
 }

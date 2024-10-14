@@ -6,6 +6,8 @@ namespace UI.Components.Utils
     {
         private string dniEmp;
         public event EventHandler<string>? EventDniSeleccionado;
+
+        private List<ListViewItem> listaOriginal = new List<ListViewItem>();
         public ListaEmpComponent()
         {
             this.dniEmp = string.Empty;
@@ -15,6 +17,8 @@ namespace UI.Components.Utils
         public void CargarLista(List<EmpleadoDTO> lista)
         {
             listEmp.Items.Clear();
+            listaOriginal.Clear();
+
 
             lista.ForEach(emp =>
             {
@@ -28,30 +32,40 @@ namespace UI.Components.Utils
                 }
 
                 listEmp.Items.Add(item);
+                listaOriginal.Add((ListViewItem)item.Clone());
             });
 
         }
 
         private void BuscarEmpUsandoNombre(object sender, EventArgs e)
         {
-            string nomMatch = this.barraBusqueda.Text;
+            string nomMatch = this.barraBusqueda.Text.ToLower();
 
-            foreach (ListViewItem item in listEmp.Items)
+            // Desactivar el redibujado para evitar parpadeos
+            listEmp.BeginUpdate();
+            listEmp.Items.Clear(); // Limpiar la lista actual
+
+            // Si la búsqueda está vacía, restauramos todos los ítems originales
+            if (string.IsNullOrWhiteSpace(nomMatch))
             {
-                if (string.IsNullOrWhiteSpace(nomMatch))
+                listEmp.Items.AddRange(listaOriginal.ToArray());
+            }
+            else
+            {
+                // Si hay texto en la búsqueda, filtramos los ítems coincidentes usando foreach
+                foreach (var item in listaOriginal)
                 {
-                    item.BackColor = Color.White;
-                }
-                else if (item.Text.ToLower().Contains(nomMatch))
-                {
-                    item.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    item.BackColor = Color.White;
+                    if (item.Text.ToLower().Contains(nomMatch))
+                    {
+                        listEmp.Items.Add((ListViewItem)item.Clone());
+                    }
                 }
             }
+
+            // Reactivar el redibujado
+            listEmp.EndUpdate();
         }
+
 
         private void ClickEnEmpleado(object sender, EventArgs e)
         {

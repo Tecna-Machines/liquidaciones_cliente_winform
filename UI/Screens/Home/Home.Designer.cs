@@ -33,26 +33,29 @@
             button1 = new Button();
             button2 = new Button();
             panelPrincipal = new Panel();
-            dataVersion = new Label();
+            labelServerInfo = new Label();
             pictureBoxLogo = new PictureBox();
+            dataVersion = new Label();
+            btnInicio = new Button();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // btnCrearEmpleado
             // 
-            btnCrearEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCrearEmpleado.Location = new Point(26, 57);
+            btnCrearEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCrearEmpleado.Location = new Point(27, 141);
             btnCrearEmpleado.Name = "btnCrearEmpleado";
             btnCrearEmpleado.Size = new Size(140, 61);
             btnCrearEmpleado.TabIndex = 0;
             btnCrearEmpleado.Text = "AGREGAR EMPLEADO";
             btnCrearEmpleado.UseVisualStyleBackColor = true;
+            btnCrearEmpleado.Click += btnCrearEmpleado_Click;
             // 
             // btnCrearContrato
             // 
-            btnCrearContrato.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnCrearContrato.Location = new Point(26, 147);
+            btnCrearContrato.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCrearContrato.Location = new Point(27, 208);
             btnCrearContrato.Name = "btnCrearContrato";
             btnCrearContrato.Size = new Size(140, 61);
             btnCrearContrato.TabIndex = 1;
@@ -61,8 +64,8 @@
             // 
             // button1
             // 
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            button1.Location = new Point(26, 234);
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(27, 275);
             button1.Name = "button1";
             button1.Size = new Size(140, 61);
             button1.TabIndex = 2;
@@ -72,8 +75,8 @@
             // 
             // button2
             // 
-            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            button2.Location = new Point(26, 317);
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Location = new Point(27, 343);
             button2.Name = "button2";
             button2.Size = new Size(140, 61);
             button2.TabIndex = 3;
@@ -83,37 +86,60 @@
             // 
             // panelPrincipal
             // 
-            panelPrincipal.Controls.Add(dataVersion);
+            panelPrincipal.Controls.Add(labelServerInfo);
             panelPrincipal.Controls.Add(pictureBoxLogo);
+            panelPrincipal.Controls.Add(dataVersion);
             panelPrincipal.Location = new Point(197, 57);
             panelPrincipal.Name = "panelPrincipal";
             panelPrincipal.Size = new Size(591, 381);
             panelPrincipal.TabIndex = 4;
             // 
+            // labelServerInfo
+            // 
+            labelServerInfo.AutoSize = true;
+            labelServerInfo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelServerInfo.Location = new Point(239, 309);
+            labelServerInfo.Name = "labelServerInfo";
+            labelServerInfo.Size = new Size(84, 15);
+            labelServerInfo.TabIndex = 3;
+            labelServerInfo.Text = "<server info>";
+            // 
+            // pictureBoxLogo
+            // 
+            pictureBoxLogo.Image = Resources.Resources.Logos_tecna_01;
+            pictureBoxLogo.Location = new Point(57, 58);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(495, 180);
+            pictureBoxLogo.TabIndex = 2;
+            pictureBoxLogo.TabStop = false;
+            // 
             // dataVersion
             // 
             dataVersion.AutoSize = true;
-            dataVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dataVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dataVersion.Location = new Point(129, 260);
             dataVersion.Name = "dataVersion";
             dataVersion.Size = new Size(368, 15);
             dataVersion.TabIndex = 1;
             dataVersion.Text = "Cliente V0.0.0 - BETA    release date 0/0/0/ compatible con V0.1.2";
             // 
-            // pictureBoxLogo
+            // btnInicio
             // 
-            pictureBoxLogo.Image = Resources.Resources.tecna_antiguo;
-            pictureBoxLogo.Location = new Point(103, 90);
-            pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(394, 141);
-            pictureBoxLogo.TabIndex = 0;
-            pictureBoxLogo.TabStop = false;
+            btnInicio.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInicio.Location = new Point(27, 74);
+            btnInicio.Name = "btnInicio";
+            btnInicio.Size = new Size(140, 61);
+            btnInicio.TabIndex = 5;
+            btnInicio.Text = "INICIO";
+            btnInicio.UseVisualStyleBackColor = true;
+            btnInicio.Click += ClickBtnInicio;
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnInicio);
             Controls.Add(panelPrincipal);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -134,7 +160,9 @@
         private Button button1;
         private Button button2;
         private Panel panelPrincipal;
-        private PictureBox pictureBoxLogo;
         private Label dataVersion;
+        private PictureBox pictureBoxLogo;
+        private Button btnInicio;
+        private Label labelServerInfo;
     }
 }

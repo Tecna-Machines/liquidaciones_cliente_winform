@@ -1,33 +1,26 @@
 ﻿using BLL.Models;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
-using System;
 using UI.Screens.HacerLiquidacion;
 
 namespace UI
 {
     public partial class PeriodoLiquiComponent : UserControl
     {
+        public event EventHandler<bool>? EventPrimeraQuincena;
         private bool segundaQuincenaActiva = false;
         private bool primeraQuincenaActiva = false;
-        public event EventHandler<bool>? EventPrimeraQuincena;
+        private int year;
+        private int mes;
+
         public PeriodoLiquiComponent()
         {
             InitializeComponent();
-            this.SetearLabelPeriodo();
+            this.InicializarForm();
         }
 
         private void SetearLabelPeriodo()
         {
-            string month = DateTime.Now.ToString("MMMM").ToUpper();
-            string year = DateTime.Now.ToString("yyyy");
-
-            this.labelFecha.Text = $"MES DE {month} DE {year}";
-
-            // Calcular las fechas para las quincenas
-            DateTime primerDiaDelMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            DateTime dia15 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 15);
-            DateTime dia16 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 16);
-            int ultimoDiaMes = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            int ultimoDiaMes = DateTime.DaysInMonth(this.year, this.mes);
 
             // Asignar las quincenas a los labels
             this.periodoPrimerQuincena.Text = $"(01 al 15)";
@@ -47,24 +40,38 @@ namespace UI
             };
 
 
-            if(this.primeraQuincenaActiva)
+            if (this.primeraQuincenaActiva)
             {
+                int selectedMesIndex = comboBoxMeses.SelectedIndex + 1;
+                int selectedYear = int.Parse(comboBoxYear.SelectedItem.ToString());
+                // Ahora puedes usar selectedMesIndex y selectedYear
+
+                this.mes = selectedMesIndex;
+                this.year = selectedYear;
+
                 periodoLiquidacion = new PeriodoDTO
                 {
-                    Inicio = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1),
-                    Fin = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 15)
+                    Inicio = new DateTime(this.year, this.mes, 1),
+                    Fin = new DateTime(this.year, this.mes, 15)
                 };
 
             }
 
             if (this.segundaQuincenaActiva)
             {
-                int ultimoDiaMes = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                int selectedMesIndex = comboBoxMeses.SelectedIndex + 1;
+                int selectedYear = int.Parse(comboBoxYear.SelectedItem.ToString());
+                // Ahora puedes usar selectedMesIndex y selectedYear
+
+                this.mes = selectedMesIndex;
+                this.year = selectedYear;
+
+                int ultimoDiaMes = DateTime.DaysInMonth(this.year, this.mes);
 
                 periodoLiquidacion = new PeriodoDTO
                 {
-                    Inicio = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 16),
-                    Fin = new DateTime(DateTime.Now.Year, DateTime.Now.Month, ultimoDiaMes),
+                    Inicio = new DateTime(this.year, this.mes, 16),
+                    Fin = new DateTime(this.year, this.mes, ultimoDiaMes),
                 };
 
             }
@@ -82,7 +89,7 @@ namespace UI
                 return;
             }
 
-            CrearLiquidacionForm form = new(this,this.primeraQuincenaActiva);
+            CrearLiquidacionForm form = new(this, this.primeraQuincenaActiva);
             form.Show();
         }
 
@@ -99,7 +106,7 @@ namespace UI
             this.primeraQuincenaActiva = true;
             this.segundaQuincenaActiva = false;
 
-            EventPrimeraQuincena?.Invoke(this,true);
+            EventPrimeraQuincena?.Invoke(this, true);
         }
 
         private void ClickBtnSegundaQuicena(object sender, EventArgs e)
@@ -112,5 +119,60 @@ namespace UI
 
             EventPrimeraQuincena?.Invoke(this, false);
         }
+
+        private void InicializarForm()
+        {
+
+            this.comboBoxMeses.Items.Clear();
+            DateTime ahora = DateTime.Now;
+
+            for (int i = 1; i <= 12; i++)
+            {
+                this.comboBoxMeses.Items.Add(new DateTime(ahora.Year, i, 1).ToString("MMMM").ToUpper());
+            }
+
+            this.comboBoxMeses.SelectedIndex = ahora.Month - 1;
+
+            this.comboBoxYear.Items.Clear();
+
+            for (int i = 0; i <= 5; i++)
+            {
+                // Restar los años al año actual
+                int year = ahora.Year - i;
+                this.comboBoxYear.Items.Add(year.ToString());
+            }
+
+            this.comboBoxYear.SelectedIndex = 0;
+
+            if (comboBoxMeses.SelectedIndex != -1 && comboBoxYear.SelectedItem != null)
+            {
+                int selectedMesIndex = comboBoxMeses.SelectedIndex + 1;
+                int selectedYear = int.Parse(comboBoxYear.SelectedItem.ToString());
+                // Ahora puedes usar selectedMesIndex y selectedYear
+
+                this.mes = selectedMesIndex;
+                this.year = selectedYear;
+
+                this.SetearLabelPeriodo();
+            }
+
+        }
+
+        private void InputMesCambio(object sender, EventArgs e)
+        {
+            if (comboBoxMeses.SelectedIndex != -1 && comboBoxYear.SelectedItem != null)
+            {
+                int selectedMesIndex = comboBoxMeses.SelectedIndex + 1;
+                int selectedYear = int.Parse(comboBoxYear.SelectedItem.ToString());
+                // Ahora puedes usar selectedMesIndex y selectedYear
+
+                this.mes = selectedMesIndex;
+                this.year = selectedYear;
+
+                this.SetearLabelPeriodo();
+            }
+
+        }
+
     }
 }

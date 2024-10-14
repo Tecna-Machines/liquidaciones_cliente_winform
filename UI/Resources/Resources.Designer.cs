@@ -63,6 +63,16 @@ namespace UI.Resources {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logos_tecna_01 {
+            get {
+                object obj = ResourceManager.GetObject("Logos_tecna_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tecna_antiguo {
             get {
                 object obj = ResourceManager.GetObject("tecna_antiguo", resourceCulture);

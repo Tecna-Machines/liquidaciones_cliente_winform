@@ -8,7 +8,7 @@ namespace LAUCHA.application.DTOs.LiquidacionDTOs
     public class ItemsDTO
     {
         public List<RemuneracionDTO> Remuneraciones { get; set; } = null!;
-        public List<RetencionDTO> Retenciones { get; set; } = null!;
+        public List<RetencionDTOs.RetencionDTO> Retenciones { get; set; } = null!;
         public List<DescuentoDTO> Descuentos { get; set; } = null!;
         public List<NoRemuneracionDTO> NoRemuneraciones { get; set; } = null!;
     }

@@ -50,19 +50,25 @@ namespace UI.Components.Screens
         private async void SelectItemListaLiquidacion(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             // Verificar si un elemento está seleccionado
-            if (e.IsSelected)
+            try
             {
-                // Recuperar el valor de la primera columna (index 0)
-                string codigoLiquidacion = e.Item.SubItems[0].Text.Trim();
+                if (e.IsSelected)
+                {
+                    // Recuperar el valor de la primera columna (index 0)
+                    string codigoLiquidacion = e.Item.SubItems[0].Text.Trim();
 
-                var liquidacion = await _ControllerLiquidacion.ConsultarLiquidacionById(codigoLiquidacion);
+                    var liquidacion = await _ControllerLiquidacion.ConsultarLiquidacionById(codigoLiquidacion);
 
-                var contexto = LiquidacionContext.GetInstance();
+                    var contexto = LiquidacionContext.GetInstance();
 
-                contexto.SetLiquidacion(liquidacion);
+                    contexto.SetLiquidacion(liquidacion);
 
-                var formlIquidacion = new VerLiquidacionForm();
-                formlIquidacion.Show();
+                    var formlIquidacion = new VerLiquidacionForm();
+                    formlIquidacion.Show();
+                }
+            }catch(Exception)
+            {
+                MessageBox.Show("ocurrio una catastrofe");
             }
         }
 

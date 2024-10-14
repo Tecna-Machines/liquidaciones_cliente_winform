@@ -1,4 +1,5 @@
-﻿using LAUCHA.application.DTOs.LiquidacionDTOs;
+﻿using LAUCHA.application.DTOs.EmpleadoDTO;
+using LAUCHA.application.DTOs.LiquidacionDTOs;
 
 namespace BLL.Models
 {
@@ -7,6 +8,7 @@ namespace BLL.Models
         private string dniEmpleado;
         private PeriodoDTO? periodoALiquidar;
         private LiquidacionDTO? liquidacion;
+        private EmpleadoDTO? empleado;
 
 
         private LiquidacionContext() { }
@@ -65,5 +67,12 @@ namespace BLL.Models
         {
             this.dniEmpleado = dni;
         }
+
+        public void SetEmpleado(EmpleadoDTO emp)
+        {
+            this.empleado = emp;
+        }
+
+        public EmpleadoDTO ObtenerDatosEmpleado() => this.empleado!;
     }
 }

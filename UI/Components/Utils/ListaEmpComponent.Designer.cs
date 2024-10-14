@@ -32,11 +32,12 @@
             listEmp = new ListView();
             columnNombre = new ColumnHeader();
             columApellido = new ColumnHeader();
+            labelNombre = new Label();
             SuspendLayout();
             // 
             // barraBusqueda
             // 
-            barraBusqueda.Location = new Point(15, 17);
+            barraBusqueda.Location = new Point(15, 29);
             barraBusqueda.Name = "barraBusqueda";
             barraBusqueda.Size = new Size(270, 23);
             barraBusqueda.TabIndex = 0;
@@ -65,10 +66,21 @@
             columApellido.Text = "Apellido";
             columApellido.Width = 135;
             // 
+            // labelNombre
+            // 
+            labelNombre.AutoSize = true;
+            labelNombre.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelNombre.Location = new Point(15, 11);
+            labelNombre.Name = "labelNombre";
+            labelNombre.Size = new Size(124, 15);
+            labelNombre.TabIndex = 2;
+            labelNombre.Text = "Buscar (por nombre):";
+            // 
             // ListaEmpComponent
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(labelNombre);
             Controls.Add(listEmp);
             Controls.Add(barraBusqueda);
             Name = "ListaEmpComponent";
@@ -83,5 +95,6 @@
         private ListView listEmp;
         private ColumnHeader columnNombre;
         public ColumnHeader columApellido;
+        private Label labelNombre;
     }
 }

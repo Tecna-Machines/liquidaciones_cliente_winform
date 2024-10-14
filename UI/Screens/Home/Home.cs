@@ -1,4 +1,5 @@
 using BLL.Controllers;
+using System.Configuration;
 using UI.Components.Screens;
 
 namespace UI
@@ -8,6 +9,16 @@ namespace UI
         public Home()
         {
             InitializeComponent();
+
+            string apiBaseUrl = ConfigurationManager.AppSettings["server"]!;
+            labelServerInfo.Text = $"SERVER: {apiBaseUrl}";
+        }
+
+        private void ShowPanelContexto(Control content)
+        {
+            panelPrincipal.Controls.Clear();
+            content.Dock = DockStyle.Fill;
+            this.panelPrincipal.Controls.Add(content);
         }
 
         private void ClickBtnHacerLiquidacion(object sender, EventArgs e)
@@ -28,12 +39,19 @@ namespace UI
             buscardor.CargarLista(pag);
         }
 
-        private void ShowPanelContexto(Control content)
+        
+
+        private void ClickBtnInicio(object sender, EventArgs e)
         {
             panelPrincipal.Controls.Clear();
-            content.Dock = DockStyle.Fill;
-            this.panelPrincipal.Controls.Add(content);
+            panelPrincipal.Controls.Add(this.pictureBoxLogo);
+            panelPrincipal.Controls.Add(this.dataVersion);
+            panelPrincipal.Controls.Add(this.labelServerInfo);
         }
 
+        private void btnCrearEmpleado_Click(object sender, EventArgs e)
+        {
+            this.ShowPanelContexto(new AgregarEmpController());
+        }
     }
 }

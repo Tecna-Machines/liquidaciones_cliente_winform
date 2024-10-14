@@ -85,6 +85,7 @@ namespace UI.Screens.HacerLiquidacion
             this.nombreLabel.Text = $"Nombre Completo: {empleado.Nombre} {empleado.Apellido}";
 
             _context.SetDniEmpleado(empleado.Dni);
+            _context.SetEmpleado(empleado);
 
             var contrato = await _controller.ObtenerContratoActual(empleado.Dni);
             this.CargarTablaContrato(contrato);
@@ -102,6 +103,16 @@ namespace UI.Screens.HacerLiquidacion
             string fin = periodo.Fin.ToString("dd/MM/yyyy");
 
             this.labelPeriodo.Text = $"periodo a liquidar: {inicio} hasta {fin}";
+
+            bool primeraQuincea = periodo.Inicio.Day <= 15;
+            string mes = periodo.Inicio.ToString("MMMM");
+
+            this.labelQuincena.Text = $"[1ra quincena {mes}]";
+
+            if (!primeraQuincea)
+            {
+                this.labelQuincena.Text = $"[ 2da quincena {mes}]";
+            }
         }
 
         private void CargarTablaContrato(ContratoDTO contrato)
@@ -109,10 +120,19 @@ namespace UI.Screens.HacerLiquidacion
 
             ListUtils.LimpiarElementos(this.listContrato);
 
+
+            string montoBlanco = contrato.AcuerdoBlanco.Cantidad.ToString("c");
+
+            if (contrato.AcuerdoBlanco.EsPorcentual)
+            {
+                montoBlanco = $"{contrato.AcuerdoBlanco.Cantidad}%";
+            }
+
             var contratoItem = new ListViewItem(contrato.Codigo);
             contratoItem.SubItems.Add(contrato.MontoFijo.ToString("c"));
             contratoItem.SubItems.Add(contrato.MontoHora.ToString("c"));
             contratoItem.SubItems.Add(contrato.Modalidad.Descripcion);
+            contratoItem.SubItems.Add(montoBlanco);
             listContrato.Items.Add(contratoItem);
 
         }
@@ -123,7 +143,18 @@ namespace UI.Screens.HacerLiquidacion
             string dni = _context.GetDniEmpleado();
             PeriodoDTO periodo = _context.GetPeriodo();
 
-            var liquidacionSimulada = await _controller.SimularLiquidacion(dni,periodo);
+            LiquidacionDTO liquidacionSimulada;
+
+            try
+            {
+                liquidacionSimulada = await _controller.SimularLiquidacion(dni, periodo);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ocurrio un problema durante la simulacion");
+                return;
+            }
 
             _context.SetLiquidacion(liquidacionSimulada);
 
@@ -140,10 +171,10 @@ namespace UI.Screens.HacerLiquidacion
                                                   MessageBoxIcon.Warning);
 
 
-  
+
             if (result == DialogResult.Yes)
             {
-                 var liquidacion = await _controller.ConfirmarLiquidacion(_context.GetDniEmpleado(),_context.GetPeriodo());
+                var liquidacion = await _controller.ConfirmarLiquidacion(_context.GetDniEmpleado(), _context.GetPeriodo());
 
                 _context.SetLiquidacion(liquidacion);
 
@@ -246,13 +277,23 @@ namespace UI.Screens.HacerLiquidacion
         private void CargarTablaPagarEmpleado(LiquidacionDTO liquidacion)
         {
 
-            int pagarBanco = 0;
-            int pagarEfectivo = 1;
+            listaPagarEmpleado.Items.Clear();
 
-            listaPagarEmpleado.Items[pagarBanco].SubItems.Add(liquidacion.TotalPagarBanco.ToString("c"));
-            listaPagarEmpleado.Items[pagarEfectivo].SubItems.Add(liquidacion.TotalPagarEfectivo.ToString("c"));
+            var itemEfectivo = new ListViewItem("EN EL SOBRE");
+            itemEfectivo.SubItems.Add(liquidacion.TotalPagarEfectivo.ToString("C"));
+
+            var itemBanco = new ListViewItem("EN EL BANCO");
+            itemBanco.SubItems.Add(liquidacion.TotalPagarBanco.ToString("C"));
+
+            listaPagarEmpleado.Items.Add(itemBanco);
+            listaPagarEmpleado.Items.Add(itemEfectivo);
         }
 
+        private void ClickBtnAgregarItem(object sender, EventArgs e)
+        {
+            var formItems = new CrearItemForm();
 
+            formItems.Show();
+        }
     }
 }

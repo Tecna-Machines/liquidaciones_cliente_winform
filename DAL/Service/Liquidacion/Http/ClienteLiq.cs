@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -12,10 +13,18 @@ namespace DAL.Service.Liquidacion.Http
 
         public ClienteLiq()
         {
+
+            string baseUrl = ConfigurationManager.AppSettings["server"]!;
+
             _httpClient = new HttpClient
             {
-                BaseAddress = new Uri("http://192.168.0.252:54321/api/v1/")
+                BaseAddress = new Uri(baseUrl)
             };
+
+            //_httpClient = new HttpClient
+            //{
+            //    BaseAddress = new Uri("https://localhost:7033/api/v1/")
+            //};
 
             // Configurar otros aspectos del HttpClient si es necesario
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
