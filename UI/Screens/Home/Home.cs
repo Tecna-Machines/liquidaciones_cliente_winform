@@ -1,6 +1,7 @@
 using BLL.Controllers;
 using System.Configuration;
 using UI.Components.Screens;
+using UI.Screens.CrearContrato;
 
 namespace UI
 {
@@ -39,7 +40,7 @@ namespace UI
             buscardor.CargarLista(pag);
         }
 
-        
+
 
         private void ClickBtnInicio(object sender, EventArgs e)
         {
@@ -52,6 +53,12 @@ namespace UI
         private void btnCrearEmpleado_Click(object sender, EventArgs e)
         {
             this.ShowPanelContexto(new AgregarEmpController());
+        }
+
+        private void btnCrearContrato_Click(object sender, EventArgs e)
+        {
+            var formContrato = new CrearContratoForm();
+            formContrato.Show();
         }
     }
 }

@@ -61,6 +61,7 @@
             btnCrearContrato.TabIndex = 1;
             btnCrearContrato.Text = "CREAR CONTRATO DE TRABAJO";
             btnCrearContrato.UseVisualStyleBackColor = true;
+            btnCrearContrato.Click += btnCrearContrato_Click;
             // 
             // button1
             // 

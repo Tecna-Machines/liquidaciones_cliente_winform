@@ -5,17 +5,21 @@ namespace UI.Components.Utils
     public partial class ListaEmpComponent : UserControl
     {
         private string dniEmp;
+        private List<EmpleadoDTO> empleadosDTOs;
         public event EventHandler<string>? EventDniSeleccionado;
+        public event EventHandler<EmpleadoDTO> EventEmpleadoSeleccionado;
 
         private List<ListViewItem> listaOriginal = new List<ListViewItem>();
         public ListaEmpComponent()
         {
             this.dniEmp = string.Empty;
+            this.empleadosDTOs = new List<EmpleadoDTO>();
             InitializeComponent();
         }
 
         public void CargarLista(List<EmpleadoDTO> lista)
         {
+            this.empleadosDTOs = lista;
             listEmp.Items.Clear();
             listaOriginal.Clear();
 
@@ -76,7 +80,11 @@ namespace UI.Components.Utils
                 string nombre = selectedItem.SubItems[0].Text;
                 string dniEmp = selectedItem.SubItems[2].Text;
                 this.dniEmp = dniEmp;
+
+                var emp = this.empleadosDTOs.Where(e => e.Dni.Equals(this.dniEmp)).FirstOrDefault();
+
                 EventDniSeleccionado?.Invoke(this, dniEmp);
+                EventEmpleadoSeleccionado.Invoke(this, emp!);
 
                 this.dniEmp = dniEmp;
             }
