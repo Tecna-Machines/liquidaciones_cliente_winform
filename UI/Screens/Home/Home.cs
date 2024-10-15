@@ -2,6 +2,7 @@ using BLL.Controllers;
 using System.Configuration;
 using UI.Components.Screens;
 using UI.Screens.CrearContrato;
+using UI.Screens.VerContratos;
 
 namespace UI
 {
@@ -58,7 +59,13 @@ namespace UI
         private void btnCrearContrato_Click(object sender, EventArgs e)
         {
             var formContrato = new CrearContratoForm();
-            formContrato.Show();
+            formContrato.ShowDialog();
+        }
+
+        private void btnHistorialTrabajo_Click(object sender, EventArgs e)
+        {
+            var formHistorialContratos = new VerContratosForm();
+            formHistorialContratos.ShowDialog();
         }
     }
 }

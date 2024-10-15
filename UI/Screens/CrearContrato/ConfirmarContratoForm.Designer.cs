@@ -244,6 +244,7 @@
             Controls.Add(labelBrutoEfectivo);
             Controls.Add(TextBoxmontoBrutoTotal);
             Controls.Add(labelBrutoTotal);
+            MinimizeBox = false;
             Name = "ConfirmarContratoForm";
             Text = "ConfirmarContratoForm";
             ResumeLayout(false);

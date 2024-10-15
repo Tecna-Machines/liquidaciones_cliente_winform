@@ -37,6 +37,7 @@
             pictureBoxLogo = new PictureBox();
             dataVersion = new Label();
             btnInicio = new Button();
+            btnHistorialTrabajo = new Button();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
@@ -44,9 +45,9 @@
             // btnCrearEmpleado
             // 
             btnCrearEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCrearEmpleado.Location = new Point(27, 141);
+            btnCrearEmpleado.Location = new Point(23, 91);
             btnCrearEmpleado.Name = "btnCrearEmpleado";
-            btnCrearEmpleado.Size = new Size(140, 61);
+            btnCrearEmpleado.Size = new Size(150, 45);
             btnCrearEmpleado.TabIndex = 0;
             btnCrearEmpleado.Text = "AGREGAR EMPLEADO";
             btnCrearEmpleado.UseVisualStyleBackColor = true;
@@ -55,9 +56,9 @@
             // btnCrearContrato
             // 
             btnCrearContrato.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCrearContrato.Location = new Point(27, 208);
+            btnCrearContrato.Location = new Point(23, 154);
             btnCrearContrato.Name = "btnCrearContrato";
-            btnCrearContrato.Size = new Size(140, 61);
+            btnCrearContrato.Size = new Size(150, 50);
             btnCrearContrato.TabIndex = 1;
             btnCrearContrato.Text = "CREAR CONTRATO DE TRABAJO";
             btnCrearContrato.UseVisualStyleBackColor = true;
@@ -66,9 +67,9 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(27, 275);
+            button1.Location = new Point(23, 221);
             button1.Name = "button1";
-            button1.Size = new Size(140, 61);
+            button1.Size = new Size(150, 50);
             button1.TabIndex = 2;
             button1.Text = "HACER UNA LIQUIDACION";
             button1.UseVisualStyleBackColor = true;
@@ -77,9 +78,9 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(27, 343);
+            button2.Location = new Point(23, 367);
             button2.Name = "button2";
-            button2.Size = new Size(140, 61);
+            button2.Size = new Size(150, 47);
             button2.TabIndex = 3;
             button2.Text = "VER HISTORIAL LIQUIDACIONES";
             button2.UseVisualStyleBackColor = true;
@@ -90,7 +91,7 @@
             panelPrincipal.Controls.Add(labelServerInfo);
             panelPrincipal.Controls.Add(pictureBoxLogo);
             panelPrincipal.Controls.Add(dataVersion);
-            panelPrincipal.Location = new Point(197, 57);
+            panelPrincipal.Location = new Point(197, 33);
             panelPrincipal.Name = "panelPrincipal";
             panelPrincipal.Size = new Size(591, 381);
             panelPrincipal.TabIndex = 4;
@@ -127,19 +128,31 @@
             // btnInicio
             // 
             btnInicio.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnInicio.Location = new Point(27, 74);
+            btnInicio.Location = new Point(23, 33);
             btnInicio.Name = "btnInicio";
-            btnInicio.Size = new Size(140, 61);
+            btnInicio.Size = new Size(150, 45);
             btnInicio.TabIndex = 5;
             btnInicio.Text = "INICIO";
             btnInicio.UseVisualStyleBackColor = true;
             btnInicio.Click += ClickBtnInicio;
+            // 
+            // btnHistorialTrabajo
+            // 
+            btnHistorialTrabajo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnHistorialTrabajo.Location = new Point(23, 293);
+            btnHistorialTrabajo.Name = "btnHistorialTrabajo";
+            btnHistorialTrabajo.Size = new Size(150, 50);
+            btnHistorialTrabajo.TabIndex = 6;
+            btnHistorialTrabajo.Text = "VER CONTRATOS";
+            btnHistorialTrabajo.UseVisualStyleBackColor = true;
+            btnHistorialTrabajo.Click += btnHistorialTrabajo_Click;
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnHistorialTrabajo);
             Controls.Add(btnInicio);
             Controls.Add(panelPrincipal);
             Controls.Add(button2);
@@ -147,7 +160,7 @@
             Controls.Add(btnCrearContrato);
             Controls.Add(btnCrearEmpleado);
             Name = "Home";
-            Text = "Form1";
+            Text = "Inicio";
             panelPrincipal.ResumeLayout(false);
             panelPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
@@ -165,5 +178,6 @@
         private PictureBox pictureBoxLogo;
         private Button btnInicio;
         private Label labelServerInfo;
+        private Button btnHistorialTrabajo;
     }
 }

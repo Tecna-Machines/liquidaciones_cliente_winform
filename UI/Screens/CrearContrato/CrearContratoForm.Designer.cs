@@ -263,7 +263,10 @@
             Controls.Add(groupBox1);
             Controls.Add(groupBox);
             Controls.Add(listaEmpComponent1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "CrearContratoForm";
+            ShowInTaskbar = false;
             Text = "CrearContratoForm";
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();

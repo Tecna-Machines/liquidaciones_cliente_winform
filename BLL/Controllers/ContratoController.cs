@@ -10,7 +10,7 @@ namespace BLL.Controllers
     {
         private readonly ClienteLiq client;
         private readonly RecuperarModalidades _modalidades;
-        private readonly CrearContrato _crearContrato;
+        private readonly ContratoService _crearContrato;
         public ContratoController()
         {
             client = new ClienteLiq();
@@ -38,6 +38,11 @@ namespace BLL.Controllers
 
             ContratoContext.GetInstance().SetContrato(contratoCreado);
             return contratoCreado;
+        }
+
+        public async Task<ContratoDTO> ConsultarUnContrato(string codContrato)
+        {
+            return await _crearContrato.ObtenerContrato(codContrato);
         }
     }
 }

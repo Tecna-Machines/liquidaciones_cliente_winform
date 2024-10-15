@@ -1,4 +1,5 @@
-﻿using LAUCHA.application.DTOs.EmpleadoDTO;
+﻿using BLL.Controllers;
+using LAUCHA.application.DTOs.EmpleadoDTO;
 
 namespace UI.Components.Utils
 {
@@ -8,6 +9,7 @@ namespace UI.Components.Utils
         private List<EmpleadoDTO> empleadosDTOs;
         public event EventHandler<string>? EventDniSeleccionado;
         public event EventHandler<EmpleadoDTO> EventEmpleadoSeleccionado;
+        private CrearLiquidacionController _liquidacionController;
 
         private List<ListViewItem> listaOriginal = new List<ListViewItem>();
         public ListaEmpComponent()
@@ -17,6 +19,14 @@ namespace UI.Components.Utils
             InitializeComponent();
         }
 
+        public async void ForzarCargarLista()
+        {
+            _liquidacionController = new();
+
+            var lista = await _liquidacionController.ObtenerTodosLosEmpleado();
+
+            this.CargarLista(lista);
+        }
         public void CargarLista(List<EmpleadoDTO> lista)
         {
             this.empleadosDTOs = lista;
