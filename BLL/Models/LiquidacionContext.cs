@@ -5,7 +5,7 @@ namespace BLL.Models
 {
     public sealed class LiquidacionContext
     {
-        private string dniEmpleado;
+        private string? dniEmpleado;
         private PeriodoDTO? periodoALiquidar;
         private LiquidacionDTO? liquidacion;
         private EmpleadoDTO? empleado;
@@ -60,7 +60,7 @@ namespace BLL.Models
 
         public string GetDniEmpleado()
         {
-            return this.dniEmpleado;
+            return this.dniEmpleado ?? throw new NullReferenceException();
         }
 
         public void SetDniEmpleado(string dni)

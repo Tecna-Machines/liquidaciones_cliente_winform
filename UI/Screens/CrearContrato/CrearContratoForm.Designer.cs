@@ -135,6 +135,7 @@
             // 
             // comboBoxModalidad
             // 
+            comboBoxModalidad.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxModalidad.FormattingEnabled = true;
             comboBoxModalidad.Location = new Point(85, 83);
             comboBoxModalidad.Name = "comboBoxModalidad";
@@ -247,7 +248,7 @@
             btnConfirmarContrato.Name = "btnConfirmarContrato";
             btnConfirmarContrato.Size = new Size(178, 43);
             btnConfirmarContrato.TabIndex = 8;
-            btnConfirmarContrato.Text = "CONFIRMAR";
+            btnConfirmarContrato.Text = "CONTINUAR";
             btnConfirmarContrato.UseVisualStyleBackColor = false;
             btnConfirmarContrato.Click += btnConfirmarContrato_Click;
             // 

@@ -84,7 +84,7 @@ namespace UI.Components.Utils
                 var emp = this.empleadosDTOs.Where(e => e.Dni.Equals(this.dniEmp)).FirstOrDefault();
 
                 EventDniSeleccionado?.Invoke(this, dniEmp);
-                EventEmpleadoSeleccionado.Invoke(this, emp!);
+                EventEmpleadoSeleccionado?.Invoke(this, emp!);
 
                 this.dniEmp = dniEmp;
             }

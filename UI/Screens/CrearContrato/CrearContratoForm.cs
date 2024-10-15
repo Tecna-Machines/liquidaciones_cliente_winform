@@ -1,5 +1,7 @@
 ﻿using BLL.Controllers;
+using BLL.Models;
 using DAL.Service.Liquidacion.Http;
+using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.EmpleadoDTO;
 using LAUCHA.application.DTOs.ModalidadDTOs;
 using System;
@@ -39,6 +41,8 @@ namespace UI.Screens.CrearContrato
 
             this.textBoxDni.Text = e.Dni;
             this.textBoxNombre.Text = $"{e.Nombre} {e.Apellido}";
+
+            LiquidacionContext.GetInstance().SetEmpleado(e);
         }
 
         private async void Inicializar()
@@ -65,6 +69,10 @@ namespace UI.Screens.CrearContrato
             if (montoBanco > montoFijo)
             {
                 MessageUtils.ErrorMessage("el monto en el banco no puede ser mayor al monto fijo");
+
+                this.textBoxMontoFijo.Clear();
+                this.textBoxMontoBanco.Clear();
+                this.textBoxMontoHora.Clear();
             }
         }
 
@@ -106,19 +114,45 @@ namespace UI.Screens.CrearContrato
                 menuOpciones.Items.Add(modItem);
             }
 
+            menuOpciones.SelectedIndex = 0;
         }
 
         private void btnConfirmarContrato_Click(object sender, EventArgs e)
         {
-            var result = MessageUtils.PopUpDeConfirmacion("estas seguro de crear este contrato?",
-                                                          "confirmar contrato");
+          
+            var contratoContext = ContratoContext.GetInstance();
+            var  emp = LiquidacionContext.GetInstance().ObtenerDatosEmpleado();
+            string dniEmp = emp.Dni;
 
-            if (!result.HasFlag(DialogResult.Yes))
+            string sueldoFijoStr = this.textBoxMontoFijo.Text;
+            string sueldoBancoStr = this.textBoxMontoBanco.Text;
+            string sueldoHoraStr = this.textBoxMontoHora.Text;
+
+            decimal montoFijo, montoBanco,montoHora;
+
+            decimal.TryParse(sueldoHoraStr,out montoHora);
+            decimal.TryParse(sueldoFijoStr, out montoFijo);
+            decimal.TryParse(sueldoBancoStr, out montoBanco);
+
+            ModalidadItem modalidad = (ModalidadItem)this.comboBoxModalidad.SelectedItem;
+            CrearContratoDTO contratoReq;
+
+            try
             {
+                contratoReq = contratoContext.CrearContrato(dni: dniEmp,
+                                          modaliad: modalidad.Codigo,
+                                          montoHora: montoHora,
+                                          montoFijo: montoFijo,
+                                          montoBlanco: montoBanco);
+            }catch(Exception)
+            {
+                MessageUtils.ErrorMessage("ocurrio un problema, revisa bien los datos del contrato");
                 return;
             }
 
 
+            var formConfirmar = new ConfirmarContratoForm(contratoReq,emp,modalidad.Descripcion);
+            formConfirmar.ShowDialog();
 
         }
     }

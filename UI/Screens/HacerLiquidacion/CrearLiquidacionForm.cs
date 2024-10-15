@@ -27,9 +27,9 @@ namespace UI.Screens.HacerLiquidacion
             _periodoLiquidar = _context.GetPeriodo();
 
             _controller = new();
+            IniciarConfiguraciones();
 
             InitializeComponent();
-            IniciarConfiguraciones();
 
 
             this.listaEmpComponent1.EventDniSeleccionado += OnEmpleadoSeleccionado;
