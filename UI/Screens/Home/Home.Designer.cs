@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             btnCrearEmpleado = new Button();
             btnCrearContrato = new Button();
             button1 = new Button();
@@ -159,6 +160,7 @@
             Controls.Add(button1);
             Controls.Add(btnCrearContrato);
             Controls.Add(btnCrearEmpleado);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Home";
             Text = "Inicio";
             panelPrincipal.ResumeLayout(false);

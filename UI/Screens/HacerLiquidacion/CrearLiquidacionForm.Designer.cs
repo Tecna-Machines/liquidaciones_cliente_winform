@@ -30,6 +30,7 @@
         {
             ListViewItem listViewItem1 = new ListViewItem(new string[] { "EN EL BANCO" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point));
             ListViewItem listViewItem2 = new ListViewItem(new string[] { "EN EL SOBRE" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearLiquidacionForm));
             listaEmpComponent1 = new Components.Utils.ListaEmpComponent();
             panel1 = new Panel();
             labelQuincena = new Label();
@@ -395,6 +396,7 @@
             Controls.Add(panel1);
             Controls.Add(listaEmpComponent1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CrearLiquidacionForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CrearLiquidacion";

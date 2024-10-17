@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerLiquidacionForm));
             labelDetalleLiq = new Label();
             textBoxCodigoLiq = new TextBox();
             labelCod = new Label();
@@ -81,12 +82,13 @@
             textBoxFechaCreacion = new TextBox();
             label20 = new Label();
             progressBar = new ProgressBar();
+            btnPagos = new Button();
             SuspendLayout();
             // 
             // labelDetalleLiq
             // 
             labelDetalleLiq.BackColor = SystemColors.ActiveCaption;
-            labelDetalleLiq.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            labelDetalleLiq.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelDetalleLiq.Location = new Point(12, 18);
             labelDetalleLiq.Name = "labelDetalleLiq";
             labelDetalleLiq.Size = new Size(553, 23);
@@ -105,7 +107,7 @@
             // labelCod
             // 
             labelCod.AutoSize = true;
-            labelCod.Font = new Font("Segoe UI", 10F);
+            labelCod.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             labelCod.Location = new Point(12, 54);
             labelCod.Name = "labelCod";
             labelCod.Size = new Size(67, 19);
@@ -115,7 +117,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F);
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(12, 83);
             label1.Name = "label1";
             label1.Size = new Size(71, 19);
@@ -134,7 +136,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F);
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(284, 56);
             label2.Name = "label2";
             label2.Size = new Size(117, 19);
@@ -144,7 +146,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F);
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(285, 83);
             label3.Name = "label3";
             label3.Size = new Size(96, 19);
@@ -172,7 +174,7 @@
             // label4
             // 
             label4.BackColor = SystemColors.ActiveCaption;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label4.Location = new Point(12, 121);
             label4.Name = "label4";
             label4.Size = new Size(553, 23);
@@ -218,7 +220,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10F);
+            label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label5.Location = new Point(43, 166);
             label5.Name = "label5";
             label5.Size = new Size(36, 19);
@@ -228,7 +230,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10F);
+            label6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label6.Location = new Point(12, 199);
             label6.Name = "label6";
             label6.Size = new Size(73, 19);
@@ -238,7 +240,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10F);
+            label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label7.Location = new Point(12, 238);
             label7.Name = "label7";
             label7.Size = new Size(72, 19);
@@ -248,7 +250,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 10F);
+            label8.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label8.Location = new Point(272, 166);
             label8.Name = "label8";
             label8.Size = new Size(115, 19);
@@ -258,7 +260,7 @@
             // label9
             // 
             label9.BackColor = SystemColors.ActiveCaption;
-            label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label9.Location = new Point(21, 278);
             label9.Name = "label9";
             label9.Size = new Size(1150, 23);
@@ -268,7 +270,7 @@
             // label10
             // 
             label10.BackColor = Color.PaleGreen;
-            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label10.Location = new Point(21, 315);
             label10.Name = "label10";
             label10.Size = new Size(572, 23);
@@ -314,7 +316,7 @@
             // label11
             // 
             label11.BackColor = Color.OrangeRed;
-            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label11.Location = new Point(599, 315);
             label11.Name = "label11";
             label11.Size = new Size(572, 23);
@@ -351,7 +353,7 @@
             // label12
             // 
             label12.BackColor = SystemColors.ActiveCaption;
-            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label12.Location = new Point(21, 579);
             label12.Name = "label12";
             label12.Size = new Size(572, 23);
@@ -361,7 +363,7 @@
             // label13
             // 
             label13.BackColor = SystemColors.ActiveCaption;
-            label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label13.Location = new Point(583, 121);
             label13.Name = "label13";
             label13.Size = new Size(588, 23);
@@ -371,7 +373,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 10F);
+            label14.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label14.Location = new Point(705, 199);
             label14.Name = "label14";
             label14.Size = new Size(67, 19);
@@ -390,7 +392,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 10F);
+            label15.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label15.Location = new Point(705, 234);
             label15.Name = "label15";
             label15.Size = new Size(54, 19);
@@ -409,7 +411,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 10F);
+            label16.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label16.Location = new Point(890, 233);
             label16.Name = "label16";
             label16.Size = new Size(105, 19);
@@ -428,7 +430,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 10F);
+            label17.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label17.Location = new Point(890, 200);
             label17.Name = "label17";
             label17.Size = new Size(94, 19);
@@ -447,7 +449,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Font = new Font("Segoe UI", 10F);
+            label18.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label18.Location = new Point(583, 166);
             label18.Name = "label18";
             label18.Size = new Size(95, 19);
@@ -466,7 +468,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Font = new Font("Segoe UI", 10F);
+            label19.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label19.Location = new Point(583, 199);
             label19.Name = "label19";
             label19.Size = new Size(105, 19);
@@ -512,7 +514,7 @@
             // button1
             // 
             button1.BackColor = Color.SpringGreen;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(619, 619);
             button1.Name = "button1";
             button1.Size = new Size(122, 54);
@@ -533,7 +535,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI", 10F);
+            label20.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label20.Location = new Point(272, 202);
             label20.Name = "label20";
             label20.Size = new Size(120, 19);
@@ -549,11 +551,24 @@
             progressBar.TabIndex = 41;
             progressBar.Visible = false;
             // 
+            // btnPagos
+            // 
+            btnPagos.BackColor = SystemColors.ActiveCaption;
+            btnPagos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPagos.Location = new Point(758, 619);
+            btnPagos.Name = "btnPagos";
+            btnPagos.Size = new Size(123, 54);
+            btnPagos.TabIndex = 42;
+            btnPagos.Text = "AGREGAR PAGO";
+            btnPagos.UseVisualStyleBackColor = false;
+            btnPagos.Click += btnPagos_Click;
+            // 
             // VerLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1205, 694);
+            Controls.Add(btnPagos);
             Controls.Add(progressBar);
             Controls.Add(label20);
             Controls.Add(textBoxFechaCreacion);
@@ -596,6 +611,7 @@
             Controls.Add(labelCod);
             Controls.Add(textBoxCodigoLiq);
             Controls.Add(labelDetalleLiq);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "VerLiquidacionForm";
             Text = "VerLiquidacionForm";
             ResumeLayout(false);
@@ -657,5 +673,6 @@
         private TextBox textBoxFechaCreacion;
         private Label label20;
         private ProgressBar progressBar;
+        private Button btnPagos;
     }
 }

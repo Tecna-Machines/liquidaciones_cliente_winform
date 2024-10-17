@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerContratosForm));
             listaEmpComponent1 = new Components.Utils.ListaEmpComponent();
             groupBoxEmpleado = new GroupBox();
             textBoxFechaCarga = new TextBox();
@@ -438,6 +439,7 @@
             Controls.Add(groupBox1);
             Controls.Add(groupBoxEmpleado);
             Controls.Add(listaEmpComponent1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "VerContratosForm";
             Text = "VerContratosForm";
             groupBoxEmpleado.ResumeLayout(false);

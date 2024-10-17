@@ -6,10 +6,16 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Resources\icons\money3.ico</ApplicationIcon>
+    <AssemblyName>Liquidaciones</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\Images\tecna_antiguo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\icons\money3.ico" />
   </ItemGroup>
 
   <ItemGroup>

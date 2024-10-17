@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmarContratoForm));
             labelBrutoTotal = new Label();
             TextBoxmontoBrutoTotal = new RichTextBox();
             TextBoxBrutoEfectivo = new RichTextBox();
@@ -244,6 +245,7 @@
             Controls.Add(labelBrutoEfectivo);
             Controls.Add(TextBoxmontoBrutoTotal);
             Controls.Add(labelBrutoTotal);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimizeBox = false;
             Name = "ConfirmarContratoForm";
             Text = "ConfirmarContratoForm";

@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearContratoForm));
             listaEmpComponent1 = new Components.Utils.ListaEmpComponent();
             labelDni = new Label();
             labelNombre = new Label();
@@ -263,6 +264,7 @@
             Controls.Add(groupBox1);
             Controls.Add(groupBox);
             Controls.Add(listaEmpComponent1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "CrearContratoForm";

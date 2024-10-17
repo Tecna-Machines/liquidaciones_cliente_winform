@@ -246,7 +246,7 @@ namespace UI.Screens.HacerLiquidacion
             {
                 var item = new ListViewItem(d.Descripcion);
                 item.SubItems.Add(d.Fecha.ToString("dd/MM/yyyy"));
-                item.SubItems.Add(d.Monto.ToString("c"));
+                item.SubItems.Add($"- {d.Monto.ToString("c")}");
 
                 listaSueldoBillete.Items.Add(item);
             });

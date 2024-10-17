@@ -178,6 +178,10 @@ namespace UI.Screens.VerLiquidacion
             }
         }
 
+        private void btnPagos_Click(object sender, EventArgs e)
+        {
+            MessageUtils.ErrorMessage("esta funcionalidad aun no esta disponible");
+        }
     }
 
 }

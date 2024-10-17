@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MarcasForm));
             listaMarcas = new ListView();
             columDate = new ColumnHeader();
             columnEnt = new ColumnHeader();
@@ -85,7 +86,7 @@
             // labelMarcas
             // 
             labelMarcas.BackColor = Color.DeepSkyBlue;
-            labelMarcas.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelMarcas.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             labelMarcas.Location = new Point(179, 25);
             labelMarcas.Name = "labelMarcas";
             labelMarcas.Padding = new Padding(3);
@@ -95,13 +96,14 @@
             // 
             // btnAgregarMarca
             // 
-            btnAgregarMarca.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAgregarMarca.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregarMarca.Location = new Point(12, 52);
             btnAgregarMarca.Name = "btnAgregarMarca";
             btnAgregarMarca.Size = new Size(161, 56);
             btnAgregarMarca.TabIndex = 21;
             btnAgregarMarca.Text = "AGREGAR MARCA";
             btnAgregarMarca.UseVisualStyleBackColor = true;
+            btnAgregarMarca.Click += btnAgregarMarca_Click;
             // 
             // MarcasForm
             // 
@@ -111,6 +113,7 @@
             Controls.Add(btnAgregarMarca);
             Controls.Add(listaMarcas);
             Controls.Add(labelMarcas);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MarcasForm";
             Text = "Marcas";
             ResumeLayout(false);

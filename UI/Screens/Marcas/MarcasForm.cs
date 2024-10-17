@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Utils;
 
 namespace UI.Screens.Marcas
 {
@@ -35,7 +36,7 @@ namespace UI.Screens.Marcas
             // Iterar sobre cada día en el período
             for (DateTime dia = fechaInicio; dia <= fechaFin; dia = dia.AddDays(1))
             {
- 
+
                 MarcaVista? marcaDelDia = marcas?.FirstOrDefault(m => m.Ingreso.Date == dia.Date);
 
                 // Si hay una marca
@@ -53,7 +54,7 @@ namespace UI.Screens.Marcas
                 }
                 else
                 {
-                   
+
                     var item = new ListViewItem(dia.ToString("dd/MM/yyyy"));
                     item.SubItems.Add(""); // Ingreso vacío
                     item.SubItems.Add(""); // Egreso vacío
@@ -67,5 +68,9 @@ namespace UI.Screens.Marcas
             }
         }
 
+        private void btnAgregarMarca_Click(object sender, EventArgs e)
+        {
+            MessageUtils.ErrorMessage("esta funcionalidad aun no esta disponible");
+        }
     }
 }

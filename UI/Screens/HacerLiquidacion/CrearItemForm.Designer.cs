@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearItemForm));
             btnRemuneracion = new Button();
             btnRetencion = new Button();
             btnDesc = new Button();
@@ -83,6 +84,7 @@
             Controls.Add(btnDesc);
             Controls.Add(btnRetencion);
             Controls.Add(btnRemuneracion);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CrearItemForm";
             Text = "CrearItem";
             ResumeLayout(false);
