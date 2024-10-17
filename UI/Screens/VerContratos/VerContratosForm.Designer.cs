@@ -43,10 +43,10 @@
             label5 = new Label();
             label4 = new Label();
             groupBox1 = new GroupBox();
-            textBox12 = new TextBox();
-            textBox13 = new TextBox();
-            textBox11 = new TextBox();
-            textBox10 = new TextBox();
+            textBoxMontoBrutoBanco = new TextBox();
+            textBoxMontoValorHora = new TextBox();
+            textBoxMontoBrutoEfectiv = new TextBox();
+            textBoxMontoBrutoFijo = new TextBox();
             label13 = new Label();
             label12 = new Label();
             label11 = new Label();
@@ -215,10 +215,10 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox12);
-            groupBox1.Controls.Add(textBox13);
-            groupBox1.Controls.Add(textBox11);
-            groupBox1.Controls.Add(textBox10);
+            groupBox1.Controls.Add(textBoxMontoBrutoBanco);
+            groupBox1.Controls.Add(textBoxMontoValorHora);
+            groupBox1.Controls.Add(textBoxMontoBrutoEfectiv);
+            groupBox1.Controls.Add(textBoxMontoBrutoFijo);
             groupBox1.Controls.Add(label13);
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(label11);
@@ -231,45 +231,45 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "datos sobre montos";
             // 
-            // textBox12
+            // textBoxMontoBrutoBanco
             // 
-            textBox12.BackColor = SystemColors.ButtonHighlight;
-            textBox12.ForeColor = SystemColors.ActiveCaptionText;
-            textBox12.Location = new Point(426, 58);
-            textBox12.Name = "textBox12";
-            textBox12.ReadOnly = true;
-            textBox12.Size = new Size(102, 23);
-            textBox12.TabIndex = 22;
+            textBoxMontoBrutoBanco.BackColor = SystemColors.ButtonHighlight;
+            textBoxMontoBrutoBanco.ForeColor = SystemColors.ActiveCaptionText;
+            textBoxMontoBrutoBanco.Location = new Point(426, 58);
+            textBoxMontoBrutoBanco.Name = "textBoxMontoBrutoBanco";
+            textBoxMontoBrutoBanco.ReadOnly = true;
+            textBoxMontoBrutoBanco.Size = new Size(102, 23);
+            textBoxMontoBrutoBanco.TabIndex = 22;
             // 
-            // textBox13
+            // textBoxMontoValorHora
             // 
-            textBox13.BackColor = SystemColors.ButtonHighlight;
-            textBox13.ForeColor = SystemColors.ActiveCaptionText;
-            textBox13.Location = new Point(426, 28);
-            textBox13.Name = "textBox13";
-            textBox13.ReadOnly = true;
-            textBox13.Size = new Size(102, 23);
-            textBox13.TabIndex = 21;
+            textBoxMontoValorHora.BackColor = SystemColors.ButtonHighlight;
+            textBoxMontoValorHora.ForeColor = SystemColors.ActiveCaptionText;
+            textBoxMontoValorHora.Location = new Point(426, 28);
+            textBoxMontoValorHora.Name = "textBoxMontoValorHora";
+            textBoxMontoValorHora.ReadOnly = true;
+            textBoxMontoValorHora.Size = new Size(102, 23);
+            textBoxMontoValorHora.TabIndex = 21;
             // 
-            // textBox11
+            // textBoxMontoBrutoEfectiv
             // 
-            textBox11.BackColor = SystemColors.ButtonHighlight;
-            textBox11.ForeColor = SystemColors.ActiveCaptionText;
-            textBox11.Location = new Point(170, 58);
-            textBox11.Name = "textBox11";
-            textBox11.ReadOnly = true;
-            textBox11.Size = new Size(102, 23);
-            textBox11.TabIndex = 20;
+            textBoxMontoBrutoEfectiv.BackColor = SystemColors.ButtonHighlight;
+            textBoxMontoBrutoEfectiv.ForeColor = SystemColors.ActiveCaptionText;
+            textBoxMontoBrutoEfectiv.Location = new Point(170, 58);
+            textBoxMontoBrutoEfectiv.Name = "textBoxMontoBrutoEfectiv";
+            textBoxMontoBrutoEfectiv.ReadOnly = true;
+            textBoxMontoBrutoEfectiv.Size = new Size(102, 23);
+            textBoxMontoBrutoEfectiv.TabIndex = 20;
             // 
-            // textBox10
+            // textBoxMontoBrutoFijo
             // 
-            textBox10.BackColor = SystemColors.ButtonHighlight;
-            textBox10.ForeColor = SystemColors.ActiveCaptionText;
-            textBox10.Location = new Point(170, 28);
-            textBox10.Name = "textBox10";
-            textBox10.ReadOnly = true;
-            textBox10.Size = new Size(102, 23);
-            textBox10.TabIndex = 19;
+            textBoxMontoBrutoFijo.BackColor = SystemColors.ButtonHighlight;
+            textBoxMontoBrutoFijo.ForeColor = SystemColors.ActiveCaptionText;
+            textBoxMontoBrutoFijo.Location = new Point(170, 28);
+            textBoxMontoBrutoFijo.Name = "textBoxMontoBrutoFijo";
+            textBoxMontoBrutoFijo.ReadOnly = true;
+            textBoxMontoBrutoFijo.Size = new Size(102, 23);
+            textBoxMontoBrutoFijo.TabIndex = 19;
             // 
             // label13
             // 
@@ -484,9 +484,9 @@
         private TextBox textBoxFechaCreacionContrato;
         private TextBox textBoxModalidad;
         private TextBox textBoxCodigoContrato;
-        private TextBox textBox12;
-        private TextBox textBox13;
-        private TextBox textBox11;
-        private TextBox textBox10;
+        private TextBox textBoxMontoBrutoBanco;
+        private TextBox textBoxMontoValorHora;
+        private TextBox textBoxMontoBrutoEfectiv;
+        private TextBox textBoxMontoBrutoFijo;
     }
 }
