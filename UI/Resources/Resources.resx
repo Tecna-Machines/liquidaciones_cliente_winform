@@ -121,6 +121,9 @@
   <data name="Logos_tecna_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Images\Logos tecna-01.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="money3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>icons\money3.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tecna_antiguo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Images\tecna_antiguo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

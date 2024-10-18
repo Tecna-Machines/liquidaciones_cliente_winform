@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9D1CCBD6F28A4397978235A300875196"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E47558C084D14340958615C0B08A62C1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -94,6 +100,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -166,6 +180,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9D1CCBD6F28A4397978235A300875196"
+            {
+            "SourcePath" = "8:..\\UI\\Resources\\icons\\money_gimp.ico"
+            "TargetName" = "8:money_gimp.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_6F410E3A0A974B2EBA3C02FC5700A01B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:TRUE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E47558C084D14340958615C0B08A62C1"
             {
             "SourcePath" = "8:..\\UI\\Resources\\icons\\money3.ico"
@@ -205,7 +239,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_6F410E3A0A974B2EBA3C02FC5700A01B"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder]Gaby\\liquidaciones"
+            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -241,24 +275,24 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Instalador"
-        "ProductCode" = "8:{372EA685-07CA-4731-9FD3-05DA0F4E6621}"
-        "PackageCode" = "8:{07D19FB1-6658-443B-8D30-49E078017777}"
+        "ProductName" = "8:liquidacion"
+        "ProductCode" = "8:{D142F1F8-4D74-4196-804C-FB2F8C8209A6}"
+        "PackageCode" = "8:{6F403A98-4325-45EE-9A56-0F557644480F}"
         "UpgradeCode" = "8:{26AF76D1-4CEF-476F-8D90-9DB5B8ABC097}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "ProductVersion" = "8:0.0.1"
+        "Manufacturer" = "8:GabySoft"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Instalador"
+        "Title" = "8:liquidaciones"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Gabriel Coria"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:"
+        "ARPCOMMENTS" = "8:aplicacion creada con el fin de utilizar la API LIQUIDACIONES ,para la generacion de la nomina"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
@@ -374,7 +408,7 @@
             "Target" = "8:_6B89B06806374960870D6504EEB77DE5"
             "Folder" = "8:_04226BFF5E0E4B00AEE2FA7733F849FF"
             "WorkingFolder" = "8:_6F410E3A0A974B2EBA3C02FC5700A01B"
-            "Icon" = "8:_9618CAF0A7AB43D9B5734D23BEC5544B"
+            "Icon" = "8:_9D1CCBD6F28A4397978235A300875196"
             "Feature" = "8:"
             }
         }
