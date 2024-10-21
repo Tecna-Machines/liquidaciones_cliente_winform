@@ -31,6 +31,13 @@ namespace UI.Screens.Marcas
             DateTime fechaInicio = periodo.Inicio;
             DateTime fechaFin = periodo.Fin;
 
+
+            if(fechaFin.Day > 15)
+            {
+                fechaInicio = new DateTime(periodo.Inicio.Year, periodo.Inicio.Month, 1);
+            }
+
+
             listaMarcas.Items.Clear();
 
             // Iterar sobre cada día en el período
