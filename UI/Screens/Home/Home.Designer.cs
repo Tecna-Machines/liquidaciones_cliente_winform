@@ -135,9 +135,9 @@
             dataVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dataVersion.Location = new Point(129, 260);
             dataVersion.Name = "dataVersion";
-            dataVersion.Size = new Size(368, 15);
+            dataVersion.Size = new Size(398, 15);
             dataVersion.TabIndex = 1;
-            dataVersion.Text = "Cliente V0.0.0 - BETA    release date 0/0/0/ compatible con V0.1.2";
+            dataVersion.Text = "Cliente V0.0.1 - BETA    release date 22/10/2024 compatible con V0.1.2";
             // 
             // btnInicio
             // 
