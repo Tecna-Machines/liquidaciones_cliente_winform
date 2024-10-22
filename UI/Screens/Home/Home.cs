@@ -3,6 +3,7 @@ using System.Configuration;
 using UI.Components.Screens;
 using UI.Screens.CrearContrato;
 using UI.Screens.VerContratos;
+using UI.Screens.VerCreditos;
 
 namespace UI
 {
@@ -66,6 +67,12 @@ namespace UI
         {
             var formHistorialContratos = new VerContratosForm();
             formHistorialContratos.ShowDialog();
+        }
+
+        private void btnCreditos_Click(object sender, EventArgs e)
+        {
+            var formCreditos = new VerCreditosForm();
+            formCreditos.ShowDialog();
         }
     }
 }

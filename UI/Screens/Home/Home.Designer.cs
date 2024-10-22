@@ -179,6 +179,7 @@
             btnCreditos.TabIndex = 7;
             btnCreditos.Text = "VER CREDITOS";
             btnCreditos.UseVisualStyleBackColor = false;
+            btnCreditos.Click += btnCreditos_Click;
             // 
             // Home
             // 
