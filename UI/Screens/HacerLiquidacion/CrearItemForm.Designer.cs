@@ -86,6 +86,7 @@
             Controls.Add(btnRemuneracion);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CrearItemForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CrearItem";
             ResumeLayout(false);
             PerformLayout();

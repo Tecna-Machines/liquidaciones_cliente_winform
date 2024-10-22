@@ -91,14 +91,14 @@
             labelDetalleLiq.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelDetalleLiq.Location = new Point(12, 18);
             labelDetalleLiq.Name = "labelDetalleLiq";
-            labelDetalleLiq.Size = new Size(553, 23);
+            labelDetalleLiq.Size = new Size(1159, 23);
             labelDetalleLiq.TabIndex = 0;
             labelDetalleLiq.Text = "Detalle Liquidacion";
             // 
             // textBoxCodigoLiq
             // 
             textBoxCodigoLiq.BackColor = SystemColors.HighlightText;
-            textBoxCodigoLiq.Location = new Point(85, 53);
+            textBoxCodigoLiq.Location = new Point(85, 51);
             textBoxCodigoLiq.Name = "textBoxCodigoLiq";
             textBoxCodigoLiq.ReadOnly = true;
             textBoxCodigoLiq.Size = new Size(158, 23);
@@ -108,7 +108,7 @@
             // 
             labelCod.AutoSize = true;
             labelCod.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            labelCod.Location = new Point(12, 54);
+            labelCod.Location = new Point(12, 53);
             labelCod.Name = "labelCod";
             labelCod.Size = new Size(67, 19);
             labelCod.TabIndex = 2;
@@ -118,7 +118,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(12, 83);
+            label1.Location = new Point(293, 53);
             label1.Name = "label1";
             label1.Size = new Size(71, 19);
             label1.TabIndex = 4;
@@ -127,7 +127,7 @@
             // textBoxPeriodo
             // 
             textBoxPeriodo.BackColor = SystemColors.HighlightText;
-            textBoxPeriodo.Location = new Point(85, 82);
+            textBoxPeriodo.Location = new Point(381, 51);
             textBoxPeriodo.Name = "textBoxPeriodo";
             textBoxPeriodo.ReadOnly = true;
             textBoxPeriodo.Size = new Size(158, 23);
@@ -137,7 +137,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(284, 56);
+            label2.Location = new Point(624, 53);
             label2.Name = "label2";
             label2.Size = new Size(117, 19);
             label2.TabIndex = 5;
@@ -147,7 +147,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(285, 83);
+            label3.Location = new Point(911, 53);
             label3.Name = "label3";
             label3.Size = new Size(96, 19);
             label3.TabIndex = 6;
@@ -156,7 +156,7 @@
             // textBoxFechaInicio
             // 
             textBoxFechaInicio.BackColor = SystemColors.HighlightText;
-            textBoxFechaInicio.Location = new Point(407, 52);
+            textBoxFechaInicio.Location = new Point(747, 51);
             textBoxFechaInicio.Name = "textBoxFechaInicio";
             textBoxFechaInicio.ReadOnly = true;
             textBoxFechaInicio.Size = new Size(158, 23);
@@ -165,7 +165,7 @@
             // textBoxFechaFin
             // 
             textBoxFechaFin.BackColor = SystemColors.HighlightText;
-            textBoxFechaFin.Location = new Point(407, 82);
+            textBoxFechaFin.Location = new Point(1013, 51);
             textBoxFechaFin.Name = "textBoxFechaFin";
             textBoxFechaFin.ReadOnly = true;
             textBoxFechaFin.Size = new Size(158, 23);
@@ -175,25 +175,25 @@
             // 
             label4.BackColor = SystemColors.ActiveCaption;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(12, 121);
+            label4.Location = new Point(12, 98);
             label4.Name = "label4";
-            label4.Size = new Size(553, 23);
+            label4.Size = new Size(1159, 23);
             label4.TabIndex = 9;
             label4.Text = "Detalle Empleado";
             // 
             // textBoxDni
             // 
             textBoxDni.BackColor = SystemColors.HighlightText;
-            textBoxDni.Location = new Point(91, 162);
+            textBoxDni.Location = new Point(54, 133);
             textBoxDni.Name = "textBoxDni";
             textBoxDni.ReadOnly = true;
-            textBoxDni.Size = new Size(158, 23);
+            textBoxDni.Size = new Size(134, 23);
             textBoxDni.TabIndex = 10;
             // 
             // textBoxNombre
             // 
             textBoxNombre.BackColor = SystemColors.HighlightText;
-            textBoxNombre.Location = new Point(91, 199);
+            textBoxNombre.Location = new Point(277, 133);
             textBoxNombre.Name = "textBoxNombre";
             textBoxNombre.ReadOnly = true;
             textBoxNombre.Size = new Size(158, 23);
@@ -202,7 +202,7 @@
             // textBoxApellido
             // 
             textBoxApellido.BackColor = SystemColors.HighlightText;
-            textBoxApellido.Location = new Point(91, 237);
+            textBoxApellido.Location = new Point(533, 133);
             textBoxApellido.Name = "textBoxApellido";
             textBoxApellido.ReadOnly = true;
             textBoxApellido.Size = new Size(158, 23);
@@ -211,17 +211,17 @@
             // textBoxFechaIng
             // 
             textBoxFechaIng.BackColor = SystemColors.HighlightText;
-            textBoxFechaIng.Location = new Point(393, 167);
+            textBoxFechaIng.Location = new Point(822, 133);
             textBoxFechaIng.Name = "textBoxFechaIng";
             textBoxFechaIng.ReadOnly = true;
-            textBoxFechaIng.Size = new Size(158, 23);
+            textBoxFechaIng.Size = new Size(104, 23);
             textBoxFechaIng.TabIndex = 13;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(43, 166);
+            label5.Location = new Point(12, 135);
             label5.Name = "label5";
             label5.Size = new Size(36, 19);
             label5.TabIndex = 14;
@@ -231,7 +231,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(12, 199);
+            label6.Location = new Point(199, 135);
             label6.Name = "label6";
             label6.Size = new Size(73, 19);
             label6.TabIndex = 15;
@@ -241,7 +241,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(12, 238);
+            label7.Location = new Point(454, 135);
             label7.Name = "label7";
             label7.Size = new Size(72, 19);
             label7.TabIndex = 16;
@@ -251,7 +251,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(272, 166);
+            label8.Location = new Point(700, 135);
             label8.Name = "label8";
             label8.Size = new Size(115, 19);
             label8.TabIndex = 17;
@@ -261,9 +261,9 @@
             // 
             label9.BackColor = SystemColors.ActiveCaption;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(21, 278);
+            label9.Location = new Point(12, 288);
             label9.Name = "label9";
-            label9.Size = new Size(1150, 23);
+            label9.Size = new Size(1159, 23);
             label9.TabIndex = 18;
             label9.Text = "Detalle de sueldo";
             // 
@@ -271,7 +271,7 @@
             // 
             label10.BackColor = Color.PaleGreen;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(21, 315);
+            label10.Location = new Point(12, 332);
             label10.Name = "label10";
             label10.Size = new Size(572, 23);
             label10.TabIndex = 19;
@@ -282,7 +282,7 @@
             listaSueldoBlanco.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnFecha, columnRemunerativo, columnNORemu, columnDesc });
             listaSueldoBlanco.FullRowSelect = true;
             listaSueldoBlanco.GridLines = true;
-            listaSueldoBlanco.Location = new Point(21, 341);
+            listaSueldoBlanco.Location = new Point(12, 355);
             listaSueldoBlanco.Name = "listaSueldoBlanco";
             listaSueldoBlanco.Size = new Size(572, 219);
             listaSueldoBlanco.TabIndex = 20;
@@ -317,7 +317,7 @@
             // 
             label11.BackColor = Color.OrangeRed;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(599, 315);
+            label11.Location = new Point(590, 332);
             label11.Name = "label11";
             label11.Size = new Size(572, 23);
             label11.TabIndex = 21;
@@ -328,7 +328,7 @@
             listaSueldoBillete.Columns.AddRange(new ColumnHeader[] { columDescrip, columFecha, columMonto });
             listaSueldoBillete.FullRowSelect = true;
             listaSueldoBillete.GridLines = true;
-            listaSueldoBillete.Location = new Point(599, 341);
+            listaSueldoBillete.Location = new Point(590, 355);
             listaSueldoBillete.Name = "listaSueldoBillete";
             listaSueldoBillete.Size = new Size(572, 219);
             listaSueldoBillete.TabIndex = 22;
@@ -354,7 +354,7 @@
             // 
             label12.BackColor = SystemColors.ActiveCaption;
             label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(21, 579);
+            label12.Location = new Point(12, 591);
             label12.Name = "label12";
             label12.Size = new Size(572, 23);
             label12.TabIndex = 23;
@@ -364,9 +364,9 @@
             // 
             label13.BackColor = SystemColors.ActiveCaption;
             label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(583, 121);
+            label13.Location = new Point(12, 174);
             label13.Name = "label13";
-            label13.Size = new Size(588, 23);
+            label13.Size = new Size(1159, 23);
             label13.TabIndex = 24;
             label13.Text = "Detalle del acuerdo";
             // 
@@ -374,7 +374,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(705, 199);
+            label14.Location = new Point(12, 209);
             label14.Name = "label14";
             label14.Size = new Size(67, 19);
             label14.TabIndex = 26;
@@ -383,7 +383,7 @@
             // textBoxCodigoContrato
             // 
             textBoxCodigoContrato.BackColor = SystemColors.HighlightText;
-            textBoxCodigoContrato.Location = new Point(778, 200);
+            textBoxCodigoContrato.Location = new Point(87, 207);
             textBoxCodigoContrato.Name = "textBoxCodigoContrato";
             textBoxCodigoContrato.ReadOnly = true;
             textBoxCodigoContrato.Size = new Size(103, 23);
@@ -393,7 +393,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.Location = new Point(705, 234);
+            label15.Location = new Point(198, 209);
             label15.Name = "label15";
             label15.Size = new Size(54, 19);
             label15.TabIndex = 28;
@@ -402,7 +402,7 @@
             // textBoxFechaContrato
             // 
             textBoxFechaContrato.BackColor = SystemColors.HighlightText;
-            textBoxFechaContrato.Location = new Point(778, 233);
+            textBoxFechaContrato.Location = new Point(260, 207);
             textBoxFechaContrato.Name = "textBoxFechaContrato";
             textBoxFechaContrato.ReadOnly = true;
             textBoxFechaContrato.Size = new Size(103, 23);
@@ -412,7 +412,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.Location = new Point(890, 233);
+            label16.Location = new Point(651, 209);
             label16.Name = "label16";
             label16.Size = new Size(105, 19);
             label16.TabIndex = 32;
@@ -421,7 +421,7 @@
             // textBoxMontoHoraContrato
             // 
             textBoxMontoHoraContrato.BackColor = SystemColors.HighlightText;
-            textBoxMontoHoraContrato.Location = new Point(1001, 232);
+            textBoxMontoHoraContrato.Location = new Point(764, 207);
             textBoxMontoHoraContrato.Name = "textBoxMontoHoraContrato";
             textBoxMontoHoraContrato.ReadOnly = true;
             textBoxMontoHoraContrato.Size = new Size(170, 23);
@@ -431,7 +431,7 @@
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label17.Location = new Point(890, 200);
+            label17.Location = new Point(371, 209);
             label17.Name = "label17";
             label17.Size = new Size(94, 19);
             label17.TabIndex = 30;
@@ -440,7 +440,7 @@
             // textBoxMontoFijoContrato
             // 
             textBoxMontoFijoContrato.BackColor = SystemColors.HighlightText;
-            textBoxMontoFijoContrato.Location = new Point(1001, 198);
+            textBoxMontoFijoContrato.Location = new Point(473, 207);
             textBoxMontoFijoContrato.Name = "textBoxMontoFijoContrato";
             textBoxMontoFijoContrato.ReadOnly = true;
             textBoxMontoFijoContrato.Size = new Size(170, 23);
@@ -450,7 +450,7 @@
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label18.Location = new Point(583, 166);
+            label18.Location = new Point(12, 250);
             label18.Name = "label18";
             label18.Size = new Size(95, 19);
             label18.TabIndex = 33;
@@ -459,17 +459,17 @@
             // textBoxModalidad
             // 
             textBoxModalidad.BackColor = SystemColors.HighlightText;
-            textBoxModalidad.Location = new Point(684, 162);
+            textBoxModalidad.Location = new Point(113, 250);
             textBoxModalidad.Name = "textBoxModalidad";
             textBoxModalidad.ReadOnly = true;
-            textBoxModalidad.Size = new Size(487, 23);
+            textBoxModalidad.Size = new Size(352, 23);
             textBoxModalidad.TabIndex = 34;
             // 
             // label19
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label19.Location = new Point(583, 199);
+            label19.Location = new Point(942, 209);
             label19.Name = "label19";
             label19.Size = new Size(105, 19);
             label19.TabIndex = 35;
@@ -478,10 +478,10 @@
             // textBoxParteBlancaContrato
             // 
             textBoxParteBlancaContrato.BackColor = SystemColors.HighlightText;
-            textBoxParteBlancaContrato.Location = new Point(583, 229);
+            textBoxParteBlancaContrato.Location = new Point(1055, 207);
             textBoxParteBlancaContrato.Name = "textBoxParteBlancaContrato";
             textBoxParteBlancaContrato.ReadOnly = true;
-            textBoxParteBlancaContrato.Size = new Size(103, 23);
+            textBoxParteBlancaContrato.Size = new Size(116, 23);
             textBoxParteBlancaContrato.TabIndex = 36;
             // 
             // listaPagos
@@ -489,9 +489,9 @@
             listaPagos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
             listaPagos.FullRowSelect = true;
             listaPagos.GridLines = true;
-            listaPagos.Location = new Point(21, 605);
+            listaPagos.Location = new Point(12, 631);
             listaPagos.Name = "listaPagos";
-            listaPagos.Size = new Size(572, 68);
+            listaPagos.Size = new Size(572, 111);
             listaPagos.TabIndex = 37;
             listaPagos.UseCompatibleStateImageBehavior = false;
             listaPagos.View = View.Details;
@@ -515,7 +515,7 @@
             // 
             button1.BackColor = Color.SpringGreen;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(619, 619);
+            button1.Location = new Point(619, 653);
             button1.Name = "button1";
             button1.Size = new Size(122, 54);
             button1.TabIndex = 38;
@@ -526,17 +526,17 @@
             // textBoxFechaCreacion
             // 
             textBoxFechaCreacion.BackColor = SystemColors.HighlightText;
-            textBoxFechaCreacion.Location = new Point(393, 200);
+            textBoxFechaCreacion.Location = new Point(1067, 133);
             textBoxFechaCreacion.Name = "textBoxFechaCreacion";
             textBoxFechaCreacion.ReadOnly = true;
-            textBoxFechaCreacion.Size = new Size(158, 23);
+            textBoxFechaCreacion.Size = new Size(104, 23);
             textBoxFechaCreacion.TabIndex = 39;
             // 
             // label20
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(272, 202);
+            label20.Location = new Point(930, 135);
             label20.Name = "label20";
             label20.Size = new Size(120, 19);
             label20.TabIndex = 40;
@@ -545,7 +545,7 @@
             // progressBar
             // 
             progressBar.BackColor = SystemColors.AppWorkspace;
-            progressBar.Location = new Point(340, 278);
+            progressBar.Location = new Point(334, 407);
             progressBar.Name = "progressBar";
             progressBar.Size = new Size(493, 51);
             progressBar.TabIndex = 41;
@@ -555,7 +555,7 @@
             // 
             btnPagos.BackColor = SystemColors.ActiveCaption;
             btnPagos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPagos.Location = new Point(758, 619);
+            btnPagos.Location = new Point(782, 653);
             btnPagos.Name = "btnPagos";
             btnPagos.Size = new Size(123, 54);
             btnPagos.TabIndex = 42;
@@ -567,7 +567,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1205, 694);
+            ClientSize = new Size(1183, 767);
+            Controls.Add(label11);
+            Controls.Add(label10);
             Controls.Add(btnPagos);
             Controls.Add(progressBar);
             Controls.Add(label20);
@@ -589,9 +591,7 @@
             Controls.Add(label13);
             Controls.Add(label12);
             Controls.Add(listaSueldoBillete);
-            Controls.Add(label11);
             Controls.Add(listaSueldoBlanco);
-            Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);

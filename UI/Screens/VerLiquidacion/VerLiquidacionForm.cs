@@ -21,6 +21,7 @@ namespace UI.Screens.VerLiquidacion
             this.CargarTablaSueldoBlanco(contexto.ObtenerLiquidacion()!);
             this.CargarTablaSueldoBillete(contexto.ObtenerLiquidacion()!);
             this.CargarTablaEmpleado(contexto.ObtenerLiquidacion()!);
+            this.CargarTablaPagos(contexto.ObtenerLiquidacion()!);
             this.AjustarTablas();
         }
 
@@ -112,6 +113,19 @@ namespace UI.Screens.VerLiquidacion
                 item.SubItems.Add(d.Monto.ToString("c"));
 
                 listaSueldoBillete.Items.Add(item);
+            });
+        }
+
+        private void CargarTablaPagos(LiquidacionDTO liquidacion)
+        {
+            var tablaPagos = this.listaPagos.Items;
+            liquidacion.Pagos.ForEach(p =>
+            {
+                var item = new ListViewItem(p.codigo.ToString());
+                item.SubItems.Add(p.Fecha.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(p.Monto.ToString("C"));
+
+                tablaPagos.Add(item);
             });
         }
 

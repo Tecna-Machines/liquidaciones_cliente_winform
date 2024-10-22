@@ -293,7 +293,7 @@ namespace UI.Screens.HacerLiquidacion
         {
             var formItems = new CrearItemForm();
 
-            formItems.Show();
+            formItems.ShowDialog();
         }
     }
 }

@@ -39,52 +39,65 @@
             dataVersion = new Label();
             btnInicio = new Button();
             btnHistorialTrabajo = new Button();
+            btnCreditos = new Button();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // btnCrearEmpleado
             // 
+            btnCrearEmpleado.BackColor = SystemColors.ButtonHighlight;
+            btnCrearEmpleado.Cursor = Cursors.Hand;
+            btnCrearEmpleado.FlatStyle = FlatStyle.Flat;
             btnCrearEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnCrearEmpleado.Location = new Point(23, 91);
             btnCrearEmpleado.Name = "btnCrearEmpleado";
-            btnCrearEmpleado.Size = new Size(150, 45);
+            btnCrearEmpleado.Size = new Size(218, 45);
             btnCrearEmpleado.TabIndex = 0;
             btnCrearEmpleado.Text = "AGREGAR EMPLEADO";
-            btnCrearEmpleado.UseVisualStyleBackColor = true;
+            btnCrearEmpleado.UseVisualStyleBackColor = false;
             btnCrearEmpleado.Click += btnCrearEmpleado_Click;
             // 
             // btnCrearContrato
             // 
+            btnCrearContrato.BackColor = SystemColors.ButtonHighlight;
+            btnCrearContrato.Cursor = Cursors.Hand;
+            btnCrearContrato.FlatStyle = FlatStyle.Flat;
             btnCrearContrato.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCrearContrato.Location = new Point(23, 154);
+            btnCrearContrato.Location = new Point(24, 198);
             btnCrearContrato.Name = "btnCrearContrato";
-            btnCrearContrato.Size = new Size(150, 50);
+            btnCrearContrato.Size = new Size(218, 50);
             btnCrearContrato.TabIndex = 1;
-            btnCrearContrato.Text = "CREAR CONTRATO DE TRABAJO";
-            btnCrearContrato.UseVisualStyleBackColor = true;
+            btnCrearContrato.Text = "AGREGAR CONTRATO DE TRABAJO";
+            btnCrearContrato.UseVisualStyleBackColor = false;
             btnCrearContrato.Click += btnCrearContrato_Click;
             // 
             // button1
             // 
+            button1.BackColor = SystemColors.ButtonHighlight;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(23, 221);
+            button1.Location = new Point(24, 143);
             button1.Name = "button1";
-            button1.Size = new Size(150, 50);
+            button1.Size = new Size(218, 50);
             button1.TabIndex = 2;
-            button1.Text = "HACER UNA LIQUIDACION";
-            button1.UseVisualStyleBackColor = true;
+            button1.Text = "CREAR UNA LIQUIDACION";
+            button1.UseVisualStyleBackColor = false;
             button1.Click += ClickBtnHacerLiquidacion;
             // 
             // button2
             // 
+            button2.BackColor = SystemColors.ButtonHighlight;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(23, 367);
+            button2.Location = new Point(23, 310);
             button2.Name = "button2";
-            button2.Size = new Size(150, 47);
+            button2.Size = new Size(218, 47);
             button2.TabIndex = 3;
             button2.Text = "VER HISTORIAL LIQUIDACIONES";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += ClickBtnHistorialLiquidacion;
             // 
             // panelPrincipal
@@ -92,7 +105,7 @@
             panelPrincipal.Controls.Add(labelServerInfo);
             panelPrincipal.Controls.Add(pictureBoxLogo);
             panelPrincipal.Controls.Add(dataVersion);
-            panelPrincipal.Location = new Point(197, 33);
+            panelPrincipal.Location = new Point(283, 40);
             panelPrincipal.Name = "panelPrincipal";
             panelPrincipal.Size = new Size(591, 381);
             panelPrincipal.TabIndex = 4;
@@ -109,7 +122,7 @@
             // 
             // pictureBoxLogo
             // 
-            pictureBoxLogo.Image = Resources.Resources.Logos_tecna_01;
+            pictureBoxLogo.Image = Resources.Resources.logo_tecna_azul_rd;
             pictureBoxLogo.Location = new Point(57, 58);
             pictureBoxLogo.Name = "pictureBoxLogo";
             pictureBoxLogo.Size = new Size(495, 180);
@@ -128,40 +141,65 @@
             // 
             // btnInicio
             // 
+            btnInicio.BackColor = SystemColors.ButtonHighlight;
+            btnInicio.Cursor = Cursors.Hand;
+            btnInicio.FlatStyle = FlatStyle.Flat;
             btnInicio.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnInicio.Location = new Point(23, 33);
+            btnInicio.Location = new Point(23, 40);
             btnInicio.Name = "btnInicio";
-            btnInicio.Size = new Size(150, 45);
+            btnInicio.Size = new Size(218, 45);
             btnInicio.TabIndex = 5;
             btnInicio.Text = "INICIO";
-            btnInicio.UseVisualStyleBackColor = true;
+            btnInicio.UseVisualStyleBackColor = false;
             btnInicio.Click += ClickBtnInicio;
             // 
             // btnHistorialTrabajo
             // 
+            btnHistorialTrabajo.BackColor = SystemColors.ButtonHighlight;
+            btnHistorialTrabajo.Cursor = Cursors.Hand;
+            btnHistorialTrabajo.FlatStyle = FlatStyle.Flat;
             btnHistorialTrabajo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnHistorialTrabajo.Location = new Point(23, 293);
+            btnHistorialTrabajo.Location = new Point(23, 254);
             btnHistorialTrabajo.Name = "btnHistorialTrabajo";
-            btnHistorialTrabajo.Size = new Size(150, 50);
+            btnHistorialTrabajo.Size = new Size(218, 50);
             btnHistorialTrabajo.TabIndex = 6;
             btnHistorialTrabajo.Text = "VER CONTRATOS";
-            btnHistorialTrabajo.UseVisualStyleBackColor = true;
+            btnHistorialTrabajo.UseVisualStyleBackColor = false;
             btnHistorialTrabajo.Click += btnHistorialTrabajo_Click;
+            // 
+            // btnCreditos
+            // 
+            btnCreditos.BackColor = SystemColors.ButtonHighlight;
+            btnCreditos.Cursor = Cursors.Hand;
+            btnCreditos.FlatStyle = FlatStyle.Flat;
+            btnCreditos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCreditos.Location = new Point(23, 363);
+            btnCreditos.Name = "btnCreditos";
+            btnCreditos.Size = new Size(218, 50);
+            btnCreditos.TabIndex = 7;
+            btnCreditos.Text = "VER CREDITOS";
+            btnCreditos.UseVisualStyleBackColor = false;
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = SystemColors.InactiveBorder;
+            ClientSize = new Size(968, 450);
+            Controls.Add(btnCreditos);
             Controls.Add(btnHistorialTrabajo);
             Controls.Add(btnInicio);
+            Controls.Add(btnCrearContrato);
             Controls.Add(panelPrincipal);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(btnCrearContrato);
             Controls.Add(btnCrearEmpleado);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Home";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio";
             panelPrincipal.ResumeLayout(false);
             panelPrincipal.PerformLayout();
@@ -181,5 +219,6 @@
         private Button btnInicio;
         private Label labelServerInfo;
         private Button btnHistorialTrabajo;
+        private Button btnCreditos;
     }
 }
