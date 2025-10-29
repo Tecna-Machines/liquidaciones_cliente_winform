@@ -45,13 +45,15 @@
             btnConfigCuenta = new Button();
             labelCuenta = new Label();
             textBoxNumeroCuenta = new TextBox();
+            labelFechaAlta = new Label();
+            fechaAlta = new DateTimePicker();
             SuspendLayout();
             // 
             // textBoxDni
             // 
-            textBoxDni.Location = new Point(50, 72);
+            textBoxDni.Location = new Point(90, 72);
             textBoxDni.Name = "textBoxDni";
-            textBoxDni.Size = new Size(224, 23);
+            textBoxDni.Size = new Size(184, 23);
             textBoxDni.TabIndex = 0;
             // 
             // textBoxNombre
@@ -70,23 +72,23 @@
             // 
             // fechaIngreso
             // 
-            fechaIngreso.Location = new Point(114, 227);
+            fechaIngreso.Location = new Point(99, 227);
             fechaIngreso.Name = "fechaIngreso";
-            fechaIngreso.Size = new Size(160, 23);
+            fechaIngreso.Size = new Size(175, 23);
             fechaIngreso.TabIndex = 3;
             // 
             // fechaNacimiento
             // 
-            fechaNacimiento.Location = new Point(141, 185);
+            fechaNacimiento.Location = new Point(99, 185);
             fechaNacimiento.Name = "fechaNacimiento";
-            fechaNacimiento.Size = new Size(133, 23);
+            fechaNacimiento.Size = new Size(175, 23);
             fechaNacimiento.TabIndex = 4;
             // 
             // labelDni
             // 
             labelDni.AutoSize = true;
             labelDni.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDni.Location = new Point(9, 73);
+            labelDni.Location = new Point(46, 71);
             labelDni.Name = "labelDni";
             labelDni.Size = new Size(35, 19);
             labelDni.TabIndex = 5;
@@ -116,21 +118,21 @@
             // 
             labelNaci.AutoSize = true;
             labelNaci.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            labelNaci.Location = new Point(3, 185);
+            labelNaci.Location = new Point(1, 185);
             labelNaci.Name = "labelNaci";
-            labelNaci.Size = new Size(132, 19);
+            labelNaci.Size = new Size(90, 19);
             labelNaci.TabIndex = 8;
-            labelNaci.Text = "Fecha Nacimiento:";
+            labelNaci.Text = "Nacimiento:";
             // 
             // labelFechaIng
             // 
             labelFechaIng.AutoSize = true;
             labelFechaIng.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            labelFechaIng.Location = new Point(3, 227);
+            labelFechaIng.Location = new Point(32, 227);
             labelFechaIng.Name = "labelFechaIng";
-            labelFechaIng.Size = new Size(105, 19);
+            labelFechaIng.Size = new Size(59, 19);
             labelFechaIng.TabIndex = 9;
-            labelFechaIng.Text = "Fecha ingreso:";
+            labelFechaIng.Text = "Ingreso";
             // 
             // labelTitulo
             // 
@@ -146,7 +148,7 @@
             // 
             btnCrearEmp.BackColor = SystemColors.ActiveBorder;
             btnCrearEmp.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCrearEmp.Location = new Point(50, 272);
+            btnCrearEmp.Location = new Point(71, 310);
             btnCrearEmp.Name = "btnCrearEmp";
             btnCrearEmp.Size = new Size(203, 46);
             btnCrearEmp.TabIndex = 11;
@@ -169,14 +171,14 @@
             checkedListRetenciones.FormattingEnabled = true;
             checkedListRetenciones.Location = new Point(298, 124);
             checkedListRetenciones.Name = "checkedListRetenciones";
-            checkedListRetenciones.Size = new Size(262, 112);
+            checkedListRetenciones.Size = new Size(262, 166);
             checkedListRetenciones.TabIndex = 13;
             // 
             // btnConfigCuenta
             // 
             btnConfigCuenta.BackColor = SystemColors.ActiveBorder;
             btnConfigCuenta.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnConfigCuenta.Location = new Point(298, 272);
+            btnConfigCuenta.Location = new Point(320, 310);
             btnConfigCuenta.Name = "btnConfigCuenta";
             btnConfigCuenta.Size = new Size(203, 46);
             btnConfigCuenta.TabIndex = 14;
@@ -204,10 +206,29 @@
             textBoxNumeroCuenta.Size = new Size(179, 23);
             textBoxNumeroCuenta.TabIndex = 16;
             // 
+            // labelFechaAlta
+            // 
+            labelFechaAlta.AutoSize = true;
+            labelFechaAlta.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            labelFechaAlta.Location = new Point(51, 272);
+            labelFechaAlta.Name = "labelFechaAlta";
+            labelFechaAlta.Size = new Size(40, 19);
+            labelFechaAlta.TabIndex = 17;
+            labelFechaAlta.Text = "Alta:";
+            // 
+            // fechaAlta
+            // 
+            fechaAlta.Location = new Point(99, 268);
+            fechaAlta.Name = "fechaAlta";
+            fechaAlta.Size = new Size(175, 23);
+            fechaAlta.TabIndex = 18;
+            // 
             // AgregarEmpController
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(fechaAlta);
+            Controls.Add(labelFechaAlta);
             Controls.Add(textBoxNumeroCuenta);
             Controls.Add(labelCuenta);
             Controls.Add(btnConfigCuenta);
@@ -226,7 +247,7 @@
             Controls.Add(textBoxNombre);
             Controls.Add(textBoxDni);
             Name = "AgregarEmpController";
-            Size = new Size(565, 346);
+            Size = new Size(565, 386);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -250,5 +271,7 @@
         private Button btnConfigCuenta;
         private Label labelCuenta;
         private TextBox textBoxNumeroCuenta;
+        private Label labelFechaAlta;
+        private DateTimePicker fechaAlta;
     }
 }

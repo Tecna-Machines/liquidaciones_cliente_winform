@@ -24,12 +24,14 @@ namespace UI.Components.Screens
             string apellidos;
             DateTime fechaIngreso;
             DateTime fechaNacimiento;
+            DateTime fechaAlta;
 
             dni = this.textBoxDni.Text;
             nombres = this.textBoxNombre.Text;
             apellidos = this.textBoxApellido.Text;
             fechaIngreso = this.fechaIngreso.Value;
             fechaNacimiento = this.fechaNacimiento.Value;
+            fechaAlta = this.fechaAlta.Value;
 
             try
             {
@@ -38,6 +40,7 @@ namespace UI.Components.Screens
                                            nombre: nombres,
                                            apellido: apellidos,
                                            fechaNac: fechaNacimiento,
+                                           fechaAlta: fechaAlta,
                                            fechaIng: fechaIngreso);
 
 

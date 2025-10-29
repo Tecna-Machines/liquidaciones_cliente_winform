@@ -37,9 +37,10 @@
             // 
             // barraBusqueda
             // 
-            barraBusqueda.Location = new Point(15, 29);
+            barraBusqueda.BackColor = SystemColors.GradientActiveCaption;
+            barraBusqueda.Location = new Point(88, 29);
             barraBusqueda.Name = "barraBusqueda";
-            barraBusqueda.Size = new Size(270, 23);
+            barraBusqueda.Size = new Size(197, 23);
             barraBusqueda.TabIndex = 0;
             barraBusqueda.TextChanged += BuscarEmpUsandoNombre;
             // 
@@ -51,6 +52,7 @@
             listEmp.Location = new Point(15, 58);
             listEmp.Name = "listEmp";
             listEmp.Size = new Size(270, 615);
+            listEmp.Sorting = SortOrder.Ascending;
             listEmp.TabIndex = 1;
             listEmp.UseCompatibleStateImageBehavior = false;
             listEmp.View = View.Details;
@@ -70,11 +72,11 @@
             // 
             labelNombre.AutoSize = true;
             labelNombre.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelNombre.Location = new Point(15, 11);
+            labelNombre.Location = new Point(15, 33);
             labelNombre.Name = "labelNombre";
-            labelNombre.Size = new Size(124, 15);
+            labelNombre.Size = new Size(57, 15);
             labelNombre.TabIndex = 2;
-            labelNombre.Text = "Buscar (por nombre):";
+            labelNombre.Text = "BUSCAR:";
             // 
             // ListaEmpComponent
             // 

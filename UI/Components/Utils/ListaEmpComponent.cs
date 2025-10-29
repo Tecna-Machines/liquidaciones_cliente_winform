@@ -53,14 +53,14 @@ namespace UI.Components.Utils
 
         private void BuscarEmpUsandoNombre(object sender, EventArgs e)
         {
-            string nomMatch = this.barraBusqueda.Text.ToLower();
+            string nombreBuscado = this.barraBusqueda.Text.ToLower();
 
             // Desactivar el redibujado para evitar parpadeos
             listEmp.BeginUpdate();
             listEmp.Items.Clear(); // Limpiar la lista actual
 
             // Si la búsqueda está vacía, restauramos todos los ítems originales
-            if (string.IsNullOrWhiteSpace(nomMatch))
+            if (string.IsNullOrWhiteSpace(nombreBuscado))
             {
                 listEmp.Items.AddRange(listaOriginal.ToArray());
             }
@@ -69,7 +69,10 @@ namespace UI.Components.Utils
                 // Si hay texto en la búsqueda, filtramos los ítems coincidentes usando foreach
                 foreach (var item in listaOriginal)
                 {
-                    if (item.Text.ToLower().Contains(nomMatch))
+                    string nombre = item.Text.ToLower();                 // Nombre está en item.Text
+                    string apellido = item.SubItems[1].Text.ToLower();   // Apellido está en la segunda columna
+
+                    if (nombre.Contains(nombreBuscado) || apellido.Contains(nombreBuscado))
                     {
                         listEmp.Items.Add((ListViewItem)item.Clone());
                     }

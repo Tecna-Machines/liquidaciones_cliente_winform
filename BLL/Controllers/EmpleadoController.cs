@@ -37,7 +37,7 @@ namespace BLL.Controllers
             return await this.descargarRecibo.DescargarReciboAsync(codigoLiquidacion);
         }
 
-        public async Task<EmpleadoDTO> CrearNuevoEmpleado(string dni, string nombre, string apellido, DateTime fechaIng, DateTime fechaNac)
+        public async Task<EmpleadoDTO> CrearNuevoEmpleado(string dni, string nombre, string apellido,DateTime fechaAlta, DateTime fechaIng, DateTime fechaNac)
         {
 
             var empDto = new CrearEmpleadoDTO
@@ -46,7 +46,8 @@ namespace BLL.Controllers
                 Nombre = nombre,
                 Apellido = apellido,
                 FechaIngreso = fechaIng,
-                FechaNacimiento = fechaNac
+                FechaNacimiento = fechaNac,
+                FechaAlta = fechaAlta
             };
 
             try

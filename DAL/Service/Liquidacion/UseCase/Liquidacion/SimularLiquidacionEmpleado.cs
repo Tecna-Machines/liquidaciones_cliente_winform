@@ -21,8 +21,8 @@ namespace DAL.Service.Liquidacion.UseCase.Liquidacion
 
         public async Task<LiquidacionDTO> SimularLiquidacion(string dniEmp,PeriodoDTO periodo)
         {
-            string fechaInicio = periodo.Inicio.ToString("s", System.Globalization.CultureInfo.InvariantCulture);
-            string fechaFin = periodo.Fin.ToString("s", System.Globalization.CultureInfo.InvariantCulture);
+            string fechaInicio = periodo.Inicio.ToString("yyyy-MM-ddTHH:mm:ssZ", System.Globalization.CultureInfo.InvariantCulture);
+            string fechaFin = periodo.Fin.ToString("yyyy-MM-ddTHH:mm:ssZ", System.Globalization.CultureInfo.InvariantCulture);
 
             string endpoint = $"Liquidacion/empleado/{dniEmp}/simular?desde={fechaInicio}&hasta={fechaFin}";
             HttpResponseMessage response = await Client.PostAsync(endpoint,null);
