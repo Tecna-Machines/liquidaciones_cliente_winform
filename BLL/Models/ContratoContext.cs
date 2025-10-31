@@ -1,4 +1,5 @@
-﻿using LAUCHA.application.DTOs.AcuerdoBlancoDTOs;
+﻿using DAL.Service.Liquidacion.UseCase.Contrato;
+using LAUCHA.application.DTOs.AcuerdoBlancoDTOs;
 using LAUCHA.application.DTOs.ContratoDTOs;
 
 namespace BLL.Models
@@ -21,26 +22,12 @@ namespace BLL.Models
             return _instancia;
         }
 
-        public CrearContratoDTO CrearContrato(string dni, string modaliad, decimal montoFijo, decimal montoBlanco, decimal montoHora)
+        public CrearAcuerdoRequest CrearContrato(string dni, string modaliad, decimal montoFijo, decimal montoBlanco, decimal montoHora)
         {
 
             VerificarMontos(montoFijo, montoBlanco, montoHora);
 
-            return new CrearContratoDTO
-            {
-                Dni = dni,
-                MontoHora = montoHora,
-                MontoFijo = montoFijo,
-                Modalidad = modaliad,
-                Tipo = "permanente",
-                Adicionales = Array.Empty<string>(),
-                AcuerdoBlanco = new AcuerdoBlancoDTO
-                {
-                    Concepto = "monto bruto en el banco",
-                    Cantidad = montoBlanco,
-                    EsPorcentual = false
-                }
-            };
+            throw new NotImplementedException();
         }
 
         public void SetContrato(ContratoDTO contrato)

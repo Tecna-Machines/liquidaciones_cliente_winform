@@ -1,19 +1,9 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
-using DAL.Service.Liquidacion.Http;
+using DAL.Service.Liquidacion.UseCase.Contrato;
 using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.EmpleadoDTO;
 using LAUCHA.application.DTOs.ModalidadDTOs;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 using UI.Utils;
 
 namespace UI.Screens.CrearContrato
@@ -54,9 +44,9 @@ namespace UI.Screens.CrearContrato
             this.CargarOpcionesModalidad(modalidades);
         }
 
-        private void textBoxMontoFijo_TextChanged(object sender, EventArgs e)
+        private void TextBoxMontoFijo_TextChanged(object sender, EventArgs e)
         {
-            string sueldoFijoStr = this.textBoxMontoFijo.Text;
+            string sueldoFijoStr = this.textBoxSueldo.Text;
             string sueldoBancoStr = this.textBoxMontoBanco.Text;
 
             decimal montoFijo, montoBanco;
@@ -64,43 +54,15 @@ namespace UI.Screens.CrearContrato
             decimal.TryParse(sueldoFijoStr, out montoFijo);
             decimal.TryParse(sueldoBancoStr, out montoBanco);
 
-            this.ActualizarGrafico(montoFijo, montoBanco);
 
             if (montoBanco > montoFijo)
             {
                 MessageUtils.ErrorMessage("el monto en el banco no puede ser mayor al monto fijo");
 
-                this.textBoxMontoFijo.Clear();
+                this.textBoxSueldo.Clear();
                 this.textBoxMontoBanco.Clear();
-                this.textBoxMontoHora.Clear();
+                this.textBoxValorHora.Clear();
             }
-        }
-
-        private void ActualizarGrafico(decimal sueldoFijo, decimal montoBanco)
-        {
-            this.chart.Series.Clear();
-
-            var series = new Series("Sueldos")
-            {
-                ChartType = SeriesChartType.Pie
-            };
-
-            series.Points.AddXY("monto en negro", sueldoFijo - montoBanco);
-            series.Points.AddXY("monto en banco", montoBanco);
-
-            foreach (var point in series.Points)
-            {
-                point.LabelForeColor = Color.White;
-            }
-
-            chart.Series.Add(series);
-
-            if (chart.Titles.Count == 0)
-            {
-                chart.Titles.Add("Distribución del Sueldo");
-            }
-
-            chart.Invalidate();
         }
 
         private void CargarOpcionesModalidad(List<ModalidadDTO> modalidades)
@@ -117,42 +79,44 @@ namespace UI.Screens.CrearContrato
             menuOpciones.SelectedIndex = 0;
         }
 
-        private void btnConfirmarContrato_Click(object sender, EventArgs e)
+        private void BtnConfirmarContrato_Click(object sender, EventArgs e)
         {
-          
+
             var contratoContext = ContratoContext.GetInstance();
-            var  emp = LiquidacionContext.GetInstance().ObtenerDatosEmpleado();
+            var emp = LiquidacionContext.GetInstance().ObtenerDatosEmpleado();
             string dniEmp = emp.Dni;
 
-            string sueldoFijoStr = this.textBoxMontoFijo.Text;
-            string sueldoBancoStr = this.textBoxMontoBanco.Text;
-            string sueldoHoraStr = this.textBoxMontoHora.Text;
+            string sueldoStr = this.textBoxSueldo.Text;
+            string valorBlancoStr = this.textBoxMontoBanco.Text;
+            string valorHoraStr = this.textBoxValorHora.Text;
 
-            decimal montoFijo, montoBanco,montoHora;
+            decimal sueldo, valorBlanco, valorHora;
 
-            decimal.TryParse(sueldoHoraStr,out montoHora);
-            decimal.TryParse(sueldoFijoStr, out montoFijo);
-            decimal.TryParse(sueldoBancoStr, out montoBanco);
+            decimal.TryParse(valorHoraStr, out valorHora);
+            decimal.TryParse(sueldoStr, out sueldo);
+            decimal.TryParse(valorBlancoStr, out valorBlanco);
 
             ModalidadItem modalidad = (ModalidadItem)this.comboBoxModalidad.SelectedItem;
-            CrearContratoDTO contratoReq;
+            CrearAcuerdoRequest contratoReq;
 
             try
             {
-                contratoReq = contratoContext.CrearContrato(dni: dniEmp,
-                                          modaliad: modalidad.Codigo,
-                                          montoHora: montoHora,
-                                          montoFijo: montoFijo,
-                                          montoBlanco: montoBanco);
-            }catch(Exception)
+                contratoReq = new(Dni: dniEmp,
+                                  Sueldo:sueldo,
+                                  ValorBlanco: valorBlanco,
+                                  ValorHora: valorHora,
+                                  TipoSueldo: 999,
+                                  Notas: "blabla",
+                                  Adicionales: new List<AdicionalesRequest>());
+            }
+            catch (Exception)
             {
                 MessageUtils.ErrorMessage("ocurrio un problema, revisa bien los datos del contrato");
                 return;
             }
 
 
-            var formConfirmar = new ConfirmarContratoForm(contratoReq,emp,modalidad.Descripcion);
-            formConfirmar.ShowDialog();
+            MessageBox.Show("pipip");
 
         }
     }
@@ -173,6 +137,6 @@ namespace UI.Screens.CrearContrato
         {
             return $"{Codigo} - {Descripcion}";
         }
-    
+
     }
 }

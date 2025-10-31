@@ -68,7 +68,7 @@
             btnCrearContrato.Name = "btnCrearContrato";
             btnCrearContrato.Size = new Size(218, 50);
             btnCrearContrato.TabIndex = 1;
-            btnCrearContrato.Text = "AGREGAR CONTRATO DE TRABAJO";
+            btnCrearContrato.Text = "CREAR ACUERDO";
             btnCrearContrato.UseVisualStyleBackColor = false;
             btnCrearContrato.Click += btnCrearContrato_Click;
             // 

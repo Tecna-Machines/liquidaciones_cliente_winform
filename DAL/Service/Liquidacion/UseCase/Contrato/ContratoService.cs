@@ -14,21 +14,50 @@ namespace DAL.Service.Liquidacion.UseCase.Contrato
             _client = client;
         }
 
-        public async Task<ContratoDTO> CrearUnContrato(CrearContratoDTO contratoNuevo)
+        public async Task<string> CrearUnContrato(CrearAcuerdoRequest acuerdo)
         {
-            HttpContent data = JsonContent.Create(contratoNuevo);
-            HttpResponseMessage response = await _client.PostAsync("Contrato", data);
+            using HttpContent data = JsonContent.Create(acuerdo);
 
-            response.EnsureSuccessStatusCode();
+            HttpResponseMessage response = await _client.PostAsync("Acuerdo", data);
+            string body = await response.Content.ReadAsStringAsync();
 
-            string responseBody = await response.Content.ReadAsStringAsync();
+            // Parseamos la respuesta tipo:
+            // { "value": { ... }, "statusCode": 200, "contentType": null }
+            using JsonDocument doc = JsonDocument.Parse(body);
 
+            JsonElement root = doc.RootElement;
 
+            // leo el statusCode que vino en el JSON envuelto
+            int statusCode = root.GetProperty("statusCode").GetInt32();
 
-            ContratoDTO? contrato = JsonSerializer.Deserialize<ContratoDTO>(responseBody, _client.GetJsonOptions());
+            JsonElement value = root.GetProperty("value");
 
-            return contrato ?? throw new NullReferenceException();
+            // si statusCode indica error:
+            if (statusCode >= 400)
+            {
+                // intento leer el mensaje de error para tirarlo como excepción linda
+                if (value.TryGetProperty("descripcion", out JsonElement desc))
+                {
+                    string? msg = desc.GetString();
+                    throw new InvalidOperationException(msg ?? "Error al crear el acuerdo.");
+                }
+
+                throw new InvalidOperationException("Error al crear el acuerdo.");
+            }
+
+            // si fue OK: saco el código del acuerdo
+            if (value.TryGetProperty("codigo", out JsonElement codigoElement))
+            {
+                string? codigo = codigoElement.GetString();
+
+                if (!string.IsNullOrWhiteSpace(codigo))
+                    return codigo;
+            }
+
+            throw new NullReferenceException("No se encontró 'codigo' en la respuesta.");
         }
+
+
 
         public async Task<List<ResumenContratoDTO>> ObtenerContratosEmpleados(string dniEmp)
         {

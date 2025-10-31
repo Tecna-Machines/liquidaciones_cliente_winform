@@ -23,13 +23,13 @@ namespace BLL.Controllers
             return await _modalidades.recuperarModalidades();
         }
 
-        public async Task<ContratoDTO> CargarContrato(CrearContratoDTO contrato)
+        public async Task<ContratoDTO> CargarContrato(CrearAcuerdoRequest contrato)
         {
             ContratoDTO contratoCreado;
 
             try
             {
-                contratoCreado = await _crearContrato.CrearUnContrato(contrato);
+                contratoCreado = new(); await _crearContrato.CrearUnContrato(contrato);
 
             }catch(Exception)
             {

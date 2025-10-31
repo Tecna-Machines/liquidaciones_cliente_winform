@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearContratoForm));
-            listaEmpComponent1 = new Components.Utils.ListaEmpComponent();
             labelDni = new Label();
             labelNombre = new Label();
             groupBox = new GroupBox();
@@ -41,28 +37,20 @@
             groupBox1 = new GroupBox();
             comboBoxModalidad = new ComboBox();
             textBoxMontoBanco = new TextBox();
-            textBoxMontoHora = new TextBox();
-            textBoxMontoFijo = new TextBox();
-            label4 = new Label();
+            textBoxValorHora = new TextBox();
+            textBoxSueldo = new TextBox();
+            textBoxValorBlanco = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            groupBox2 = new GroupBox();
+            groupBoxAdicionales = new GroupBox();
             label5 = new Label();
             btnConfirmarContrato = new Button();
+            BtnAgregarAdicional = new Button();
+            listaEmpComponent1 = new UI.Components.Utils.ListaEmpComponent();
             groupBox.SuspendLayout();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chart).BeginInit();
-            groupBox2.SuspendLayout();
             SuspendLayout();
-            // 
-            // listaEmpComponent1
-            // 
-            listaEmpComponent1.Location = new Point(3, 12);
-            listaEmpComponent1.Name = "listaEmpComponent1";
-            listaEmpComponent1.Size = new Size(304, 690);
-            listaEmpComponent1.TabIndex = 0;
             // 
             // labelDni
             // 
@@ -96,7 +84,7 @@
             groupBox.Size = new Size(475, 141);
             groupBox.TabIndex = 3;
             groupBox.TabStop = false;
-            groupBox.Text = "datos personales";
+            groupBox.Text = "DATOS EMPLEADO";
             // 
             // textBoxNombre
             // 
@@ -120,9 +108,9 @@
             // 
             groupBox1.Controls.Add(comboBoxModalidad);
             groupBox1.Controls.Add(textBoxMontoBanco);
-            groupBox1.Controls.Add(textBoxMontoHora);
-            groupBox1.Controls.Add(textBoxMontoFijo);
-            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(textBoxValorHora);
+            groupBox1.Controls.Add(textBoxSueldo);
+            groupBox1.Controls.Add(textBoxValorBlanco);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
@@ -132,7 +120,7 @@
             groupBox1.Size = new Size(475, 143);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
-            groupBox1.Text = "datos del contrato";
+            groupBox1.Text = "DATOS ACUERDO";
             // 
             // comboBoxModalidad
             // 
@@ -149,87 +137,68 @@
             textBoxMontoBanco.Name = "textBoxMontoBanco";
             textBoxMontoBanco.Size = new Size(115, 23);
             textBoxMontoBanco.TabIndex = 6;
-            textBoxMontoBanco.TextChanged += textBoxMontoFijo_TextChanged;
+            textBoxMontoBanco.TextChanged += TextBoxMontoFijo_TextChanged;
             // 
-            // textBoxMontoHora
+            // textBoxValorHora
             // 
-            textBoxMontoHora.Location = new Point(354, 41);
-            textBoxMontoHora.Name = "textBoxMontoHora";
-            textBoxMontoHora.Size = new Size(115, 23);
-            textBoxMontoHora.TabIndex = 5;
+            textBoxValorHora.Location = new Point(354, 41);
+            textBoxValorHora.Name = "textBoxValorHora";
+            textBoxValorHora.Size = new Size(115, 23);
+            textBoxValorHora.TabIndex = 5;
             // 
-            // textBoxMontoFijo
+            // textBoxSueldo
             // 
-            textBoxMontoFijo.Location = new Point(85, 38);
-            textBoxMontoFijo.Name = "textBoxMontoFijo";
-            textBoxMontoFijo.Size = new Size(147, 23);
-            textBoxMontoFijo.TabIndex = 4;
-            textBoxMontoFijo.TextChanged += textBoxMontoFijo_TextChanged;
+            textBoxSueldo.Location = new Point(85, 38);
+            textBoxSueldo.Name = "textBoxSueldo";
+            textBoxSueldo.Size = new Size(147, 23);
+            textBoxSueldo.TabIndex = 4;
+            textBoxSueldo.TextChanged += TextBoxMontoFijo_TextChanged;
             // 
-            // label4
+            // textBoxValorBlanco
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(238, 86);
-            label4.Name = "label4";
-            label4.Size = new Size(110, 15);
-            label4.TabIndex = 3;
-            label4.Text = "Monto en el banco";
+            textBoxValorBlanco.AutoSize = true;
+            textBoxValorBlanco.Location = new Point(238, 86);
+            textBoxValorBlanco.Name = "textBoxValorBlanco";
+            textBoxValorBlanco.Size = new Size(98, 15);
+            textBoxValorBlanco.TabIndex = 3;
+            textBoxValorBlanco.Text = "VALOR BLANCO:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(14, 86);
+            label3.Location = new Point(43, 91);
             label3.Name = "label3";
-            label3.Size = new Size(64, 15);
+            label3.Size = new Size(37, 15);
             label3.TabIndex = 2;
-            label3.Text = "Modalidad";
+            label3.Text = "TIPO:";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(254, 44);
             label2.Name = "label2";
-            label2.Size = new Size(94, 15);
+            label2.Size = new Size(85, 15);
             label2.TabIndex = 1;
-            label2.Text = "Monto por hora";
+            label2.Text = "VALOR HORA:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 44);
+            label1.Location = new Point(21, 44);
             label1.Name = "label1";
-            label1.Size = new Size(65, 15);
+            label1.Size = new Size(56, 15);
             label1.TabIndex = 0;
-            label1.Text = "Monto fijo";
+            label1.Text = "SUELDO:";
             // 
-            // chart
+            // groupBoxAdicionales
             // 
-            chartArea1.Name = "ChartArea1";
-            chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chart.Legends.Add(legend1);
-            chart.Location = new Point(14, 22);
-            chart.Name = "chart";
-            chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chart.Series.Add(series1);
-            chart.Size = new Size(455, 202);
-            chart.TabIndex = 5;
-            chart.Text = "chart1";
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(chart);
-            groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox2.Location = new Point(313, 401);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(475, 243);
-            groupBox2.TabIndex = 6;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "grafico de distribucion";
+            groupBoxAdicionales.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBoxAdicionales.Location = new Point(313, 395);
+            groupBoxAdicionales.Name = "groupBoxAdicionales";
+            groupBoxAdicionales.Size = new Size(475, 172);
+            groupBoxAdicionales.TabIndex = 6;
+            groupBoxAdicionales.TabStop = false;
+            groupBoxAdicionales.Text = "ADICIONALES";
             // 
             // label5
             // 
@@ -237,33 +206,52 @@
             label5.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             label5.Location = new Point(409, 29);
             label5.Name = "label5";
-            label5.Size = new Size(294, 25);
+            label5.Size = new Size(283, 25);
             label5.TabIndex = 7;
-            label5.Text = "CREAR CONTRATO DE TRABAJO";
+            label5.Text = "CREAR ACUERDO DE TRABAJO";
             // 
             // btnConfirmarContrato
             // 
-            btnConfirmarContrato.BackColor = Color.Lime;
+            btnConfirmarContrato.BackColor = Color.PaleGreen;
             btnConfirmarContrato.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnConfirmarContrato.Location = new Point(610, 650);
+            btnConfirmarContrato.Location = new Point(514, 590);
             btnConfirmarContrato.Name = "btnConfirmarContrato";
             btnConfirmarContrato.Size = new Size(178, 43);
             btnConfirmarContrato.TabIndex = 8;
             btnConfirmarContrato.Text = "CONTINUAR";
             btnConfirmarContrato.UseVisualStyleBackColor = false;
-            btnConfirmarContrato.Click += btnConfirmarContrato_Click;
+            btnConfirmarContrato.Click += BtnConfirmarContrato_Click;
+            // 
+            // BtnAgregarAdicional
+            // 
+            BtnAgregarAdicional.BackColor = Color.SkyBlue;
+            BtnAgregarAdicional.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnAgregarAdicional.Location = new Point(313, 590);
+            BtnAgregarAdicional.Name = "BtnAgregarAdicional";
+            BtnAgregarAdicional.Size = new Size(178, 43);
+            BtnAgregarAdicional.TabIndex = 9;
+            BtnAgregarAdicional.Text = "AGREGAR ADICIONAL";
+            BtnAgregarAdicional.UseVisualStyleBackColor = false;
+            // 
+            // listaEmpComponent1
+            // 
+            listaEmpComponent1.Location = new Point(3, 4);
+            listaEmpComponent1.Name = "listaEmpComponent1";
+            listaEmpComponent1.Size = new Size(304, 690);
+            listaEmpComponent1.TabIndex = 10;
             // 
             // CrearContratoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 705);
+            ClientSize = new Size(824, 706);
+            Controls.Add(listaEmpComponent1);
+            Controls.Add(BtnAgregarAdicional);
             Controls.Add(btnConfirmarContrato);
             Controls.Add(label5);
-            Controls.Add(groupBox2);
+            Controls.Add(groupBoxAdicionales);
             Controls.Add(groupBox1);
             Controls.Add(groupBox);
-            Controls.Add(listaEmpComponent1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
@@ -274,15 +262,12 @@
             groupBox.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)chart).EndInit();
-            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Components.Utils.ListaEmpComponent listaEmpComponent1;
         private Label labelDni;
         private Label labelNombre;
         private GroupBox groupBox;
@@ -293,13 +278,14 @@
         private Label label1;
         private ComboBox comboBoxModalidad;
         private TextBox textBoxMontoBanco;
-        private TextBox textBoxMontoHora;
-        private TextBox textBoxMontoFijo;
-        private Label label4;
+        private TextBox textBoxValorHora;
+        private TextBox textBoxSueldo;
+        private Label textBoxValorBlanco;
         private Label label3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
-        private GroupBox groupBox2;
+        private GroupBox groupBoxAdicionales;
         private Label label5;
         private Button btnConfirmarContrato;
+        private Button BtnAgregarAdicional;
+        private Components.Utils.ListaEmpComponent listaEmpComponent1;
     }
 }

@@ -60,7 +60,7 @@ namespace UI
         private void btnCrearContrato_Click(object sender, EventArgs e)
         {
             var formContrato = new CrearContratoForm();
-            formContrato.ShowDialog();
+            formContrato.Show();
         }
 
         private void btnHistorialTrabajo_Click(object sender, EventArgs e)
