@@ -8,9 +8,9 @@ namespace DAL.Service.Liquidacion.UseCase.AgregarItems
 {
     public class AgregarRemuneracion
     {
-        private readonly ClienteLiq _client;
+        private readonly ApiLiquidacion _client;
 
-        public AgregarRemuneracion(ClienteLiq client)
+        public AgregarRemuneracion(ApiLiquidacion client)
         {
             _client = client;
         }

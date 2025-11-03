@@ -6,9 +6,9 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
 {
     public class RecuperarEmpleado
     {
-        private readonly ClienteLiq Client;
+        private readonly ApiLiquidacion Client;
 
-        public RecuperarEmpleado(ClienteLiq client)
+        public RecuperarEmpleado(ApiLiquidacion client)
         {
             this.Client = client;
         }

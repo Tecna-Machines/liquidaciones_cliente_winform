@@ -6,9 +6,9 @@ namespace DAL.Service.Liquidacion.UseCase.Liquidacion
 {
     public class ConfirmarLiquidacion
     {
-        private readonly ClienteLiq Client;
+        private readonly ApiLiquidacion Client;
 
-        public ConfirmarLiquidacion(ClienteLiq client)
+        public ConfirmarLiquidacion(ApiLiquidacion client)
         {
             Client = client;
         }

@@ -1,3 +1,6 @@
+using BLL;
+using DAL;
+using Microsoft.Extensions.Hosting;
 using System.Globalization;
 
 namespace UI
@@ -20,9 +23,24 @@ namespace UI
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            var host = CreateHostBuilder().Build();
+            ServiceProvider = host.Services;
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Home());
         }
+        public static IServiceProvider ServiceProvider { get; private set; }
+
+        static IHostBuilder CreateHostBuilder()
+        {
+            return Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddLiquidacionApi();
+                    services.AddControllers();
+                    services.AddFormsServices();
+                });
+        }
+
     }
 }

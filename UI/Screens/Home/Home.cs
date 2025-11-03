@@ -1,4 +1,5 @@
 using BLL.Controllers;
+using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using UI.Components.Screens;
 using UI.Screens.CrearContrato;
@@ -59,7 +60,7 @@ namespace UI
 
         private void btnCrearContrato_Click(object sender, EventArgs e)
         {
-            var formContrato = new CrearContratoForm();
+            var formContrato = Program.ServiceProvider.GetRequiredService<CrearAcuerdoForm>();
             formContrato.Show();
         }
 

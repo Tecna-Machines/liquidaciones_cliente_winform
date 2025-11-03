@@ -6,9 +6,9 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
 {
     public class ObtenerContratoEmpleado
     {
-        private readonly ClienteLiq Client;
+        private readonly ApiLiquidacion Client;
 
-        public ObtenerContratoEmpleado(ClienteLiq client)
+        public ObtenerContratoEmpleado(ApiLiquidacion client)
         {
             Client = client;
         }

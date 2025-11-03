@@ -1,6 +1,5 @@
-﻿using BLL.Models;
-using DAL.Service.Liquidacion.Http;
-using DAL.Service.Liquidacion.UseCase.Contrato;
+﻿using DAL.Service.Liquidacion.UseCase.Contrato;
+using DAL.Service.Liquidacion.UseCase.Contrato.Abstracciones;
 using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.ModalidadDTOs;
 
@@ -8,41 +7,42 @@ namespace BLL.Controllers
 {
     public class ContratoController
     {
-        private readonly ClienteLiq client;
-        private readonly RecuperarModalidades _modalidades;
-        private readonly ContratoService _crearContrato;
-        public ContratoController()
+        private readonly IAcuerdoService _service;
+        public ContratoController(IAcuerdoService service)
         {
-            client = new ClienteLiq();
-            _modalidades = new(client);
-            _crearContrato = new(client);
+            _service = service;
         }
 
         public async Task<List<ModalidadDTO>> ObtenerModalidades()
         {
-            return await _modalidades.recuperarModalidades();
+            var Mensual = new ModalidadDTO { Codigo = "10", Descripcion = "mensual" };
+            var MensualFijoMasExtra = new ModalidadDTO { Codigo = "12", Descripcion = "mensual fijo mas extra" };
+            var QuincenalHora = new ModalidadDTO { Codigo = "20", Descripcion = "quincenal hora" };
+            var QuincenalFijo = new ModalidadDTO { Codigo = "22", Descripcion = "quincenal fijo" };
+
+            return new List<ModalidadDTO> { Mensual, MensualFijoMasExtra, QuincenalFijo, QuincenalHora };
         }
 
-        public async Task<ContratoDTO> CargarContrato(CrearAcuerdoRequest contrato)
+        public async Task<string> CargarContrato(CrearAcuerdoRequest contrato)
         {
-            ContratoDTO contratoCreado;
+            string codigoAcuerdo;
 
             try
             {
-                contratoCreado = new(); await _crearContrato.CrearUnContrato(contrato);
+                codigoAcuerdo = await _service.Crear(contrato);
 
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 throw new HttpRequestException();
             }
 
-            ContratoContext.GetInstance().SetContrato(contratoCreado);
-            return contratoCreado;
+            return codigoAcuerdo;
         }
 
         public async Task<ContratoDTO> ConsultarUnContrato(string codContrato)
         {
-            return await _crearContrato.ObtenerContrato(codContrato);
+            throw new NotImplementedException();
         }
     }
 }

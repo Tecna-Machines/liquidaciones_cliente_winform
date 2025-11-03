@@ -11,7 +11,7 @@ namespace BLL.Controllers
 {
     public class EmpleadoController
     {
-        private readonly ClienteLiq ClienteHttp;
+        private readonly ApiLiquidacion ClienteHttp;
         private readonly RecuperarEmpleado recuperarEmpleados;
         private readonly DescargarRecibo descargarRecibo;
         private readonly CrearEmpleado crearEmpleado;

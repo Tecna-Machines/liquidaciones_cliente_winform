@@ -4,9 +4,9 @@ namespace DAL.Service.Liquidacion.UseCase.Liquidacion
 {
     public class DescargarRecibo
     {
-        private readonly ClienteLiq _httpClient;
+        private readonly ApiLiquidacion _httpClient;
 
-        public DescargarRecibo(ClienteLiq httpClient)
+        public DescargarRecibo(ApiLiquidacion httpClient)
         {
             this._httpClient = httpClient;
         }

@@ -7,9 +7,9 @@ namespace DAL.Service.Liquidacion.UseCase.Contrato
 {
     public class ContratoService
     {
-        private readonly ClienteLiq _client;
+        private readonly ApiLiquidacion _client;
 
-        public ContratoService(ClienteLiq client)
+        public ContratoService(ApiLiquidacion client)
         {
             _client = client;
         }

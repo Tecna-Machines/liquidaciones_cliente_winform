@@ -7,9 +7,9 @@ namespace DAL.Service.Liquidacion.UseCase.AgregarItems
 {
     public class AgregarRetencion
     {
-        private readonly ClienteLiq _client;
+        private readonly ApiLiquidacion _client;
 
-        public AgregarRetencion(ClienteLiq client)
+        public AgregarRetencion(ApiLiquidacion client)
         {
             _client = client;
         }

@@ -4,6 +4,7 @@ using BLL.Models;
 using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.EmpleadoDTO;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
+using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.Marcas;
 using UI.Screens.VerLiquidacion;
 using UI.Utils;
@@ -26,7 +27,7 @@ namespace UI.Screens.HacerLiquidacion
             _context = LiquidacionContext.GetInstance();
             _periodoLiquidar = _context.GetPeriodo();
 
-            _controller = new();
+            _controller = Program.ServiceProvider.GetRequiredService<CrearLiquidacionController>(); ;
             IniciarConfiguraciones();
 
             InitializeComponent();

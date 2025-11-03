@@ -7,9 +7,9 @@ namespace DAL.Service.Liquidacion.UseCase.Liquidacion
 {
     public class RecuperarLiquidaciones
     {
-        private readonly ClienteLiq _httpClient;
+        private readonly ApiLiquidacion _httpClient;
 
-        public RecuperarLiquidaciones(ClienteLiq httpClient)
+        public RecuperarLiquidaciones(ApiLiquidacion httpClient)
         {
             _httpClient = httpClient;
         }

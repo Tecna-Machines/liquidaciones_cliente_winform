@@ -6,9 +6,9 @@ namespace DAL.Service.Liquidacion.UseCase.Contrato
 {
     public class RecuperarModalidades
     {
-        private readonly ClienteLiq _client;
+        private readonly ApiLiquidacion _client;
 
-        public RecuperarModalidades(ClienteLiq httpClient)
+        public RecuperarModalidades(ApiLiquidacion httpClient)
         {
             _client = httpClient;
         }

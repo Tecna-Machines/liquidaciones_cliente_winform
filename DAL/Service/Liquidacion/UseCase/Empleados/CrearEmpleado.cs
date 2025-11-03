@@ -7,9 +7,9 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
 {
     public class CrearEmpleado
     {
-        private readonly ClienteLiq _client;
+        private readonly ApiLiquidacion _client;
 
-        public CrearEmpleado(ClienteLiq client)
+        public CrearEmpleado(ApiLiquidacion client)
         {
             _client = client;
         }

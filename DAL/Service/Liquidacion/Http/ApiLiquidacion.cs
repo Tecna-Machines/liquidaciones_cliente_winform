@@ -1,17 +1,14 @@
-﻿using System;
-using System.Configuration;
-using System.Net.Http;
+﻿using System.Configuration;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace DAL.Service.Liquidacion.Http
 {
-    public class ClienteLiq
+    public class ApiLiquidacion
     {
         private readonly HttpClient _httpClient;
         private readonly JsonSerializerOptions _jsonOptiones;
 
-        public ClienteLiq()
+        public ApiLiquidacion()
         {
 
             string baseUrl = ConfigurationManager.AppSettings["server"]!;
@@ -29,7 +26,7 @@ namespace DAL.Service.Liquidacion.Http
             // Configurar otros aspectos del HttpClient si es necesario
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
-           _jsonOptiones = new JsonSerializerOptions
+            _jsonOptiones = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             };

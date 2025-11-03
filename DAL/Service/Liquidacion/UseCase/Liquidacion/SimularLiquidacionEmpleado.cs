@@ -12,9 +12,9 @@ namespace DAL.Service.Liquidacion.UseCase.Liquidacion
 {
     public class SimularLiquidacionEmpleado
     {
-        private readonly ClienteLiq Client;
+        private readonly ApiLiquidacion Client;
 
-        public SimularLiquidacionEmpleado(ClienteLiq client)
+        public SimularLiquidacionEmpleado(ApiLiquidacion client)
         {
             Client = client;
         }

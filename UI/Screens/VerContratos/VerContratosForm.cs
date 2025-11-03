@@ -23,7 +23,7 @@ namespace UI.Screens.VerContratos
             InitializeComponent();
 
             this._empleadoController = new();
-            this._contratoController = new();
+            this._contratoController = null;
             this.listaEmpComponent1.ForzarCargarLista();
             this.listaEmpComponent1.EventEmpleadoSeleccionado += ClickEnEmpleado;
         }

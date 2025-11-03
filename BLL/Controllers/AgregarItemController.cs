@@ -8,14 +8,14 @@ namespace BLL.Controllers
 {
     public class AgregarItemController
     {
-        private readonly ClienteLiq clienteLiq;
+        private readonly ApiLiquidacion clienteLiq;
         private readonly AgregarRemuneracion agregarRemuneracion;
         private readonly AgregarDescuento agregarDescuento;
         private readonly AgregarRetencion agregarRetencion;
 
         public AgregarItemController()
         {
-            clienteLiq = new ClienteLiq();
+            clienteLiq = new ApiLiquidacion();
             agregarRemuneracion = new(clienteLiq);
             agregarDescuento = new(clienteLiq);
             agregarRetencion = new(clienteLiq);

@@ -7,11 +7,11 @@ namespace BLL.Controllers
 {
     public class ConsultarLiquidacionController
     {
-        private readonly ClienteLiq client;
+        private readonly ApiLiquidacion client;
         private readonly RecuperarLiquidaciones recuperarLiquidaciones;
         public ConsultarLiquidacionController()
         {
-            this.client = new ClienteLiq();
+            this.client = new ApiLiquidacion();
             this.recuperarLiquidaciones = new(this.client);
         }
 

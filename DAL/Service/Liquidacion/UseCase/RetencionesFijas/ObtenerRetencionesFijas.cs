@@ -6,9 +6,9 @@ namespace DAL.Service.Liquidacion.UseCase.RetencionesFijas
 {
     public class ObtenerRetencionesFijas
     {
-        private readonly ClienteLiq _cliente;
+        private readonly ApiLiquidacion _cliente;
 
-        public ObtenerRetencionesFijas(ClienteLiq cliente)
+        public ObtenerRetencionesFijas(ApiLiquidacion cliente)
         {
             _cliente = cliente;
         }

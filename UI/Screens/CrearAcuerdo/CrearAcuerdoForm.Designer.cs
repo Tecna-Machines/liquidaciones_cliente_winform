@@ -1,6 +1,6 @@
 ﻿namespace UI.Screens.CrearContrato
 {
-    partial class CrearContratoForm
+    partial class CrearAcuerdoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearContratoForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearAcuerdoForm));
             labelDni = new Label();
             labelNombre = new Label();
             groupBox = new GroupBox();
@@ -44,12 +44,18 @@
             label2 = new Label();
             label1 = new Label();
             groupBoxAdicionales = new GroupBox();
+            listAdicionales = new ListView();
+            columnDescripcion = new ColumnHeader();
+            columnMonto = new ColumnHeader();
+            columnBlanco = new ColumnHeader();
+            columnPorcentual = new ColumnHeader();
             label5 = new Label();
             btnConfirmarContrato = new Button();
             BtnAgregarAdicional = new Button();
             listaEmpComponent1 = new UI.Components.Utils.ListaEmpComponent();
             groupBox.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBoxAdicionales.SuspendLayout();
             SuspendLayout();
             // 
             // labelDni
@@ -152,7 +158,7 @@
             textBoxSueldo.Name = "textBoxSueldo";
             textBoxSueldo.Size = new Size(147, 23);
             textBoxSueldo.TabIndex = 4;
-            textBoxSueldo.TextChanged += TextBoxMontoFijo_TextChanged;
+            textBoxSueldo.TextChanged += this.TextBoxMontoFijo_TextChanged;
             // 
             // textBoxValorBlanco
             // 
@@ -192,6 +198,7 @@
             // 
             // groupBoxAdicionales
             // 
+            groupBoxAdicionales.Controls.Add(listAdicionales);
             groupBoxAdicionales.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             groupBoxAdicionales.Location = new Point(313, 395);
             groupBoxAdicionales.Name = "groupBoxAdicionales";
@@ -199,6 +206,38 @@
             groupBoxAdicionales.TabIndex = 6;
             groupBoxAdicionales.TabStop = false;
             groupBoxAdicionales.Text = "ADICIONALES";
+            // 
+            // listAdicionales
+            // 
+            listAdicionales.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnMonto, columnBlanco, columnPorcentual });
+            listAdicionales.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+            listAdicionales.Location = new Point(15, 22);
+            listAdicionales.Name = "listAdicionales";
+            listAdicionales.Size = new Size(454, 132);
+            listAdicionales.TabIndex = 0;
+            listAdicionales.UseCompatibleStateImageBehavior = false;
+            listAdicionales.View = View.Details;
+            listAdicionales.MouseDoubleClick += EliminarAdicional_DobleClick;
+            // 
+            // columnDescripcion
+            // 
+            columnDescripcion.Text = "DESCRIPCION";
+            columnDescripcion.Width = 200;
+            // 
+            // columnMonto
+            // 
+            columnMonto.Text = "MONTO";
+            columnMonto.Width = 80;
+            // 
+            // columnBlanco
+            // 
+            columnBlanco.Text = "BLANCO";
+            columnBlanco.Width = 80;
+            // 
+            // columnPorcentual
+            // 
+            columnPorcentual.Text = "PORCENTUAL";
+            columnPorcentual.Width = 90;
             // 
             // label5
             // 
@@ -232,6 +271,7 @@
             BtnAgregarAdicional.TabIndex = 9;
             BtnAgregarAdicional.Text = "AGREGAR ADICIONAL";
             BtnAgregarAdicional.UseVisualStyleBackColor = false;
+            BtnAgregarAdicional.Click += BtnAgregarAdicional_Click;
             // 
             // listaEmpComponent1
             // 
@@ -240,7 +280,7 @@
             listaEmpComponent1.Size = new Size(304, 690);
             listaEmpComponent1.TabIndex = 10;
             // 
-            // CrearContratoForm
+            // CrearAcuerdoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -255,13 +295,14 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "CrearContratoForm";
+            Name = "CrearAcuerdoForm";
             ShowInTaskbar = false;
             Text = "CrearContratoForm";
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBoxAdicionales.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -287,5 +328,10 @@
         private Button btnConfirmarContrato;
         private Button BtnAgregarAdicional;
         private Components.Utils.ListaEmpComponent listaEmpComponent1;
+        private ListView listAdicionales;
+        private ColumnHeader columnDescripcion;
+        private ColumnHeader columnMonto;
+        private ColumnHeader columnBlanco;
+        private ColumnHeader columnPorcentual;
     }
 }

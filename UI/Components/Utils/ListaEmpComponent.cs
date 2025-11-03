@@ -1,5 +1,6 @@
 ﻿using BLL.Controllers;
 using LAUCHA.application.DTOs.EmpleadoDTO;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace UI.Components.Utils
 {
@@ -21,7 +22,7 @@ namespace UI.Components.Utils
 
         public async void ForzarCargarLista()
         {
-            _liquidacionController = new();
+            _liquidacionController = Program.ServiceProvider.GetRequiredService<CrearLiquidacionController>();
 
             var lista = await _liquidacionController.ObtenerTodosLosEmpleado();
 
