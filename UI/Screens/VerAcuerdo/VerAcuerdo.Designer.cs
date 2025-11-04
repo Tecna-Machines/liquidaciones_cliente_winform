@@ -1,6 +1,6 @@
 ﻿namespace UI.Screens.VerContratos
 {
-    partial class VerContratosForm
+    partial class VerAcuerdo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerContratosForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerAcuerdo));
             listaEmpComponent1 = new Components.Utils.ListaEmpComponent();
             groupBoxEmpleado = new GroupBox();
             textBoxFechaCarga = new TextBox();
@@ -407,7 +407,7 @@
             listHistorial.TabIndex = 0;
             listHistorial.UseCompatibleStateImageBehavior = false;
             listHistorial.View = View.Details;
-            listHistorial.SelectedIndexChanged += listHistorial_SelectedIndexChanged;
+            listHistorial.SelectedIndexChanged += Historial_SelectedIndexChanged;
             // 
             // columnHeaderCod
             // 

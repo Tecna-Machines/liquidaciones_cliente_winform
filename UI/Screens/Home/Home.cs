@@ -66,7 +66,7 @@ namespace UI
 
         private void btnHistorialTrabajo_Click(object sender, EventArgs e)
         {
-            var formHistorialContratos = new VerContratosForm();
+            var formHistorialContratos = new VerAcuerdo();
             formHistorialContratos.ShowDialog();
         }
 

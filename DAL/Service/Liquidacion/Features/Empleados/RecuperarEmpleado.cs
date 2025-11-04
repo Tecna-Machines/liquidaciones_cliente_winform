@@ -1,5 +1,5 @@
 ﻿using DAL.Service.Liquidacion.Http;
-using LAUCHA.application.DTOs.EmpleadoDTO;
+using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using System.Text.Json;
 
 namespace DAL.Service.Liquidacion.UseCase.Empleados
@@ -13,7 +13,7 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
             this.Client = client;
         }
 
-        public async Task<List<EmpleadoDTO>> ObtenerEmpleados()
+        public async Task<List<EmpleadoResponse>> ObtenerEmpleados()
         {
             HttpResponseMessage response = await Client.GetAsync("Empleado");
 
@@ -23,12 +23,12 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
 
 
 
-            List<EmpleadoDTO>? lista = JsonSerializer.Deserialize<List<EmpleadoDTO>>(responseBody,Client.GetJsonOptions());
+            List<EmpleadoResponse>? lista = JsonSerializer.Deserialize<List<EmpleadoResponse>>(responseBody,Client.GetJsonOptions());
 
             return lista ?? throw new NullReferenceException();
         }
 
-        public async Task<EmpleadoDTO> RecuperarEmpleadoDetalle(string dniEmp)
+        public async Task<EmpleadoResponse> RecuperarEmpleadoDetalle(string dniEmp)
         {
             HttpResponseMessage response = await Client.GetAsync($"Empleado/{dniEmp}");
 
@@ -38,7 +38,7 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
 
 
 
-            EmpleadoDTO? emp = JsonSerializer.Deserialize<EmpleadoDTO>(responseBody, Client.GetJsonOptions());
+            EmpleadoResponse? emp = JsonSerializer.Deserialize<EmpleadoResponse>(responseBody, Client.GetJsonOptions());
 
             return emp ?? throw new NullReferenceException();
         }

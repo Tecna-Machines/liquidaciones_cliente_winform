@@ -49,14 +49,14 @@ namespace UI.Components.Screens
             }
             catch (Exception)
             {
-                MessageUtils.ErrorMessage("ocurrio un problema");
+                Dialog.Error("ocurrio un problema");
                 return;
             }
 
             var empleado = context.ObtenerDatosEmpleado();
             this.textBoxNumeroCuenta.Text = empleado.NumeroCuenta;
 
-            MessageUtils.SuccessMessage($"{empleado.Nombre} se creo exitosamente (NO OLVIDES CONFIGURAR SU CUENTA)");
+            Dialog.Success($"{empleado.Nombre} se creo exitosamente (NO OLVIDES CONFIGURAR SU CUENTA)");
         }
 
         private void SetListaRetencionesFijas(List<RetencionFijaDTO> retencionesFijas)
@@ -89,11 +89,11 @@ namespace UI.Components.Screens
 
             }catch(Exception)
             {
-                MessageUtils.ErrorMessage("ocurrio un problema al setear las retenciones fijas");
+                Dialog.Error("ocurrio un problema al setear las retenciones fijas");
                 return;
             }
 
-            MessageUtils.SuccessMessage("se configuro exitosamente las retenciones!");
+            Dialog.Success("se configuro exitosamente las retenciones!");
         }
     }
 

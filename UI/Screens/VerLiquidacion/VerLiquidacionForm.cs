@@ -1,6 +1,6 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
-using LAUCHA.application.DTOs.EmpleadoDTO;
+using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
 using UI.Utils;
 
@@ -133,7 +133,7 @@ namespace UI.Screens.VerLiquidacion
         {
             string dniEmp = liquidacion.Dni;
 
-            EmpleadoDTO emp = await this.empleadoController.ObtenerDataEmpleado(dniEmp);
+            EmpleadoResponse emp = await this.empleadoController.ObtenerDataEmpleado(dniEmp);
 
             this.textBoxDni.Text = emp.Dni;
             this.textBoxNombre.Text = emp.Nombre;
@@ -194,7 +194,7 @@ namespace UI.Screens.VerLiquidacion
 
         private void btnPagos_Click(object sender, EventArgs e)
         {
-            MessageUtils.ErrorMessage("esta funcionalidad aun no esta disponible");
+            Dialog.Error("esta funcionalidad aun no esta disponible");
         }
     }
 

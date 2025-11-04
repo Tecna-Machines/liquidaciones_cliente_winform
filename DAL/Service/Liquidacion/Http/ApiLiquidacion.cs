@@ -18,12 +18,6 @@ namespace DAL.Service.Liquidacion.Http
                 BaseAddress = new Uri(baseUrl)
             };
 
-            //_httpClient = new HttpClient
-            //{
-            //    BaseAddress = new Uri("https://localhost:7033/api/v1/")
-            //};
-
-            // Configurar otros aspectos del HttpClient si es necesario
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
             _jsonOptiones = new JsonSerializerOptions

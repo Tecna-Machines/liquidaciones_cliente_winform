@@ -1,19 +1,19 @@
-﻿using DAL.Service.Liquidacion.UseCase.Contrato;
-using DAL.Service.Liquidacion.UseCase.Contrato.Abstracciones;
+﻿using DAL.Service.Liquidacion.UseCase.Contrato.Abstracciones;
+using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
 using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.ModalidadDTOs;
 
 namespace BLL.Controllers
 {
-    public class ContratoController
+    public class AcuerdoController
     {
         private readonly IAcuerdoService _service;
-        public ContratoController(IAcuerdoService service)
+        public AcuerdoController(IAcuerdoService service)
         {
             _service = service;
         }
 
-        public async Task<List<ModalidadDTO>> ObtenerModalidades()
+        public List<ModalidadDTO> ObtenerModalidades()
         {
             var Mensual = new ModalidadDTO { Codigo = "10", Descripcion = "mensual" };
             var MensualFijoMasExtra = new ModalidadDTO { Codigo = "12", Descripcion = "mensual fijo mas extra" };
@@ -23,13 +23,13 @@ namespace BLL.Controllers
             return new List<ModalidadDTO> { Mensual, MensualFijoMasExtra, QuincenalFijo, QuincenalHora };
         }
 
-        public async Task<string> CargarContrato(CrearAcuerdoRequest contrato)
+        public async Task<string> CargarAcuerdo(CrearAcuerdoRequest acuerdo)
         {
             string codigoAcuerdo;
 
             try
             {
-                codigoAcuerdo = await _service.Crear(contrato);
+                codigoAcuerdo = await _service.Crear(acuerdo);
 
             }
             catch (Exception)
@@ -40,7 +40,7 @@ namespace BLL.Controllers
             return codigoAcuerdo;
         }
 
-        public async Task<ContratoDTO> ConsultarUnContrato(string codContrato)
+        public async Task<ContratoDTO> ConsultarAcuerdo(string codContrato)
         {
             throw new NotImplementedException();
         }

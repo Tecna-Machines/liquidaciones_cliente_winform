@@ -22,7 +22,7 @@ namespace UI.Screens.VerCreditos
 
         private void btnCrearCredito_Click(object sender, EventArgs e)
         {
-            MessageUtils.ErrorMessage("esta funcionalidad aun no esta disponible");
+            Dialog.Error("esta funcionalidad aun no esta disponible");
         }
     }
 }

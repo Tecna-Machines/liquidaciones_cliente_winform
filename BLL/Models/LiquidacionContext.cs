@@ -1,4 +1,4 @@
-﻿using LAUCHA.application.DTOs.EmpleadoDTO;
+﻿using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
 
 namespace BLL.Models
@@ -8,7 +8,7 @@ namespace BLL.Models
         private string? dniEmpleado;
         private PeriodoDTO? periodoALiquidar;
         private LiquidacionDTO? liquidacion;
-        private EmpleadoDTO? empleado;
+        private EmpleadoResponse? empleado;
 
 
         private LiquidacionContext() { }
@@ -68,11 +68,11 @@ namespace BLL.Models
             this.dniEmpleado = dni;
         }
 
-        public void SetEmpleado(EmpleadoDTO emp)
+        public void SetEmpleado(EmpleadoResponse emp)
         {
             this.empleado = emp;
         }
 
-        public EmpleadoDTO ObtenerDatosEmpleado() => this.empleado!;
+        public EmpleadoResponse ObtenerDatosEmpleado() => this.empleado!;
     }
 }

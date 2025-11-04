@@ -1,10 +1,10 @@
 ﻿using DAL.Service.Liquidacion.Http;
 using DAL.Service.Liquidacion.UseCase.Contrato;
 using DAL.Service.Liquidacion.UseCase.Empleados;
+using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using DAL.Service.Liquidacion.UseCase.Liquidacion;
 using DAL.Service.Liquidacion.UseCase.RetencionesFijas;
 using LAUCHA.application.DTOs.ContratoDTOs;
-using LAUCHA.application.DTOs.EmpleadoDTO;
 using LAUCHA.application.DTOs.RetencionesFijasDTOs;
 
 namespace BLL.Controllers
@@ -27,7 +27,7 @@ namespace BLL.Controllers
             _contratoService = new(ClienteHttp);
         }
 
-        public async Task<EmpleadoDTO> ObtenerDataEmpleado(string dniEmp)
+        public async Task<EmpleadoResponse> ObtenerDataEmpleado(string dniEmp)
         {
             return await this.recuperarEmpleados.RecuperarEmpleadoDetalle(dniEmp);
         }
@@ -37,18 +37,15 @@ namespace BLL.Controllers
             return await this.descargarRecibo.DescargarReciboAsync(codigoLiquidacion);
         }
 
-        public async Task<EmpleadoDTO> CrearNuevoEmpleado(string dni, string nombre, string apellido,DateTime fechaAlta, DateTime fechaIng, DateTime fechaNac)
+        public async Task<EmpleadoResponse> CrearNuevoEmpleado(string dni, string nombre, string apellido,DateTime fechaAlta, DateTime fechaIng, DateTime fechaNac)
         {
 
-            var empDto = new CrearEmpleadoDTO
-            {
-                Dni = dni,
-                Nombre = nombre,
-                Apellido = apellido,
-                FechaIngreso = fechaIng,
-                FechaNacimiento = fechaNac,
-                FechaAlta = fechaAlta
-            };
+            var empDto = new CrearEmpleadoRequest(dni,
+                                                  nombre,
+                                                  apellido,
+                                                  fechaIng,
+                                                  fechaNac,
+                                                  fechaAlta);
 
             try
             {

@@ -77,7 +77,7 @@ namespace UI.Screens.Marcas
 
         private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
-            MessageUtils.ErrorMessage("esta funcionalidad aun no esta disponible");
+            Dialog.Error("esta funcionalidad aun no esta disponible");
         }
     }
 }

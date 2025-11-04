@@ -1,6 +1,6 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
-using LAUCHA.application.DTOs.EmpleadoDTO;
+using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +14,11 @@ using UI.Utils;
 
 namespace UI.Screens.VerContratos
 {
-    public partial class VerContratosForm : Form
+    public partial class VerAcuerdo : Form
     {
         private readonly EmpleadoController _empleadoController;
-        private readonly ContratoController _contratoController;
-        public VerContratosForm()
+        private readonly AcuerdoController _contratoController;
+        public VerAcuerdo()
         {
             InitializeComponent();
 
@@ -28,7 +28,7 @@ namespace UI.Screens.VerContratos
             this.listaEmpComponent1.EventEmpleadoSeleccionado += ClickEnEmpleado;
         }
 
-        private void ClickEnEmpleado(object? sender, EmpleadoDTO emp)
+        private void ClickEnEmpleado(object? sender, EmpleadoResponse emp)
         {
             this.Clean();
 
@@ -36,7 +36,7 @@ namespace UI.Screens.VerContratos
             this.CargarHistorialContratos(emp.Dni);
         }
 
-        private void CargarDatosEmpleado(EmpleadoDTO empleado)
+        private void CargarDatosEmpleado(EmpleadoResponse empleado)
         {
             this.textBoxDni.Text = empleado.Dni;
             this.textBoxNombres.Text = empleado.Nombre;
@@ -65,15 +65,15 @@ namespace UI.Screens.VerContratos
             ListUtils.AjustarColumnas(this.listHistorial);
         }
 
-        private async void listHistorial_SelectedIndexChanged(object sender, EventArgs e)
+        private async void Historial_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             if (listHistorial.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = listHistorial.SelectedItems[0];
 
-                string codigoContrato = selectedItem.Text; // Esto asume que 'CodigoContrato' es el texto del ítem
-                var contrato = await _contratoController.ConsultarUnContrato(codigoContrato);
+                string codigoContrato = selectedItem.Text;
+                var contrato = await _contratoController.ConsultarAcuerdo(codigoContrato);
 
                 ContratoContext.GetInstance().SetContrato(contrato);
 

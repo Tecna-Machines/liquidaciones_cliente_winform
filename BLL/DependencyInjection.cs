@@ -20,7 +20,7 @@ namespace BLL
         services.AddScoped<ObtenerContratoEmpleado>();
         services.AddScoped<RecuperarEmpleado>();
         services.AddScoped<CrearLiquidacionController>();
-        services.AddScoped<ContratoController>();
+        services.AddScoped<AcuerdoController>();
             return services;
         }
     }

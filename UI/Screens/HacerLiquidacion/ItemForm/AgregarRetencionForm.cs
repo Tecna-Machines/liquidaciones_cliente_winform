@@ -26,7 +26,7 @@ namespace UI.Screens.HacerLiquidacion.ItemForm
 
         private async void btnConfirmar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageUtils.PopUpDeConfirmacion("estas seguro de agregar este item?",
+            DialogResult result = Dialog.PopUpDeConfirmacion("estas seguro de agregar este item?",
                                                                     "confirma retencion");
 
             if (!result.HasFlag(DialogResult.Yes))

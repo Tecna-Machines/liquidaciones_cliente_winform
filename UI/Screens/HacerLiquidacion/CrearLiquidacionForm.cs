@@ -1,8 +1,8 @@
 ﻿using BLL.Controllers;
 using BLL.Enums;
 using BLL.Models;
+using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using LAUCHA.application.DTOs.ContratoDTOs;
-using LAUCHA.application.DTOs.EmpleadoDTO;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
 using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.Marcas;
@@ -14,14 +14,14 @@ namespace UI.Screens.HacerLiquidacion
     public partial class CrearLiquidacionForm : Form
     {
         private readonly CrearLiquidacionController _controller;
-        private List<EmpleadoDTO> _empleados;
+        private List<EmpleadoResponse> _empleados;
         private LiquidacionContext _context;
         private PeriodoDTO _periodoLiquidar;
         private bool _esPrimeraQuincena;
         private PeriodoLiquiComponent _periodoComponent;
 
 
-        private List<EmpleadoDTO> empleadoDTOs;
+        private List<EmpleadoResponse> empleadoDTOs;
         public CrearLiquidacionForm(PeriodoLiquiComponent periodoComponent, bool esPrimeraQuincena)
         {
             _context = LiquidacionContext.GetInstance();
@@ -74,7 +74,7 @@ namespace UI.Screens.HacerLiquidacion
 
         private async void OnEmpleadoSeleccionado(object? sender, string dni)
         {
-            EmpleadoDTO? empleado = empleadoDTOs.FirstOrDefault(emp => emp.Dni == dni);
+            EmpleadoResponse? empleado = empleadoDTOs.FirstOrDefault(emp => emp.Dni == dni);
             this.LimpiarTodasLasTablasLiquidacion();
 
             if (empleado == null)

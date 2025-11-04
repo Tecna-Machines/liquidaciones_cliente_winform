@@ -27,7 +27,6 @@ namespace DAL.Service.Liquidacion.UseCase.Contrato.Crear
 
             JsonElement value = root.GetProperty("value");
 
-            // si statusCode indica error:
             if (statusCode >= 400)
             {
                 if (value.TryGetProperty("descripcion", out JsonElement desc))

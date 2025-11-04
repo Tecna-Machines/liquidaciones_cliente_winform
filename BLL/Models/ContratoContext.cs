@@ -1,4 +1,4 @@
-﻿using DAL.Service.Liquidacion.UseCase.Contrato;
+﻿using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
 using LAUCHA.application.DTOs.AcuerdoBlancoDTOs;
 using LAUCHA.application.DTOs.ContratoDTOs;
 

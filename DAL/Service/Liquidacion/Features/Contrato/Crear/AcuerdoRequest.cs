@@ -1,4 +1,4 @@
-﻿namespace DAL.Service.Liquidacion.UseCase.Contrato
+﻿namespace DAL.Service.Liquidacion.UseCase.Contrato.Crear
 {
     public sealed record CrearAcuerdoRequest(string Dni,
                                          decimal Sueldo,

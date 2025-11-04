@@ -1,7 +1,8 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
 using DAL.Service.Liquidacion.UseCase.Contrato;
-using LAUCHA.application.DTOs.EmpleadoDTO;
+using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
+using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using LAUCHA.application.DTOs.ModalidadDTOs;
 using UI.Utils;
 
@@ -10,8 +11,8 @@ namespace UI.Screens.CrearContrato
     public partial class CrearAcuerdoForm : Form
     {
         private readonly CrearLiquidacionController _controller;
-        private readonly ContratoController _contratoController;
-        public CrearAcuerdoForm(ContratoController contratoController, CrearLiquidacionController controller)
+        private readonly AcuerdoController _contratoController;
+        public CrearAcuerdoForm(AcuerdoController contratoController, CrearLiquidacionController controller)
         {
             _contratoController = contratoController; ;
             _controller = controller;
@@ -22,7 +23,7 @@ namespace UI.Screens.CrearContrato
             _controller = controller;
         }
 
-        private void ClickEnEmpleado(object? sender, EmpleadoDTO e)
+        private void ClickEnEmpleado(object? sender, EmpleadoResponse e)
         {
             this.textBoxDni.ForeColor = Color.Red;
             this.textBoxNombre.ForeColor = Color.Red;
@@ -35,7 +36,7 @@ namespace UI.Screens.CrearContrato
         private async void CargarListaEmpleados()
         {
             var empleados = await _controller.ObtenerTodosLosEmpleado();
-            var modalidades = await _contratoController.ObtenerModalidades();
+            var modalidades = _contratoController.ObtenerModalidades();
 
             this.listaEmpComponent1.CargarLista(empleados);
             this.CargarOpcionesModalidad(modalidades);
@@ -60,7 +61,7 @@ namespace UI.Screens.CrearContrato
 
             if (valorBlanco > sueldo)
             {
-                MessageUtils.ErrorMessage("el monto en el banco no puede ser mayor al monto fijo");
+                Dialog.Error("el monto en el banco no puede ser mayor al monto fijo");
 
                 this.textBoxSueldo.Clear();
                 this.textBoxMontoBanco.Clear();
@@ -140,9 +141,9 @@ namespace UI.Screens.CrearContrato
 
         private async Task GuardarAcuerdo(CrearAcuerdoRequest acuerdo)
         {
-            string codigo = await _contratoController.CargarContrato(acuerdo);
+            string codigo = await _contratoController.CargarAcuerdo(acuerdo);
 
-            MessageBox.Show(codigo);
+            Dialog.Success($"se creo el acuerdo: {codigo}");
         }
 
         private void BtnAgregarAdicional_Click(object sender, EventArgs e)

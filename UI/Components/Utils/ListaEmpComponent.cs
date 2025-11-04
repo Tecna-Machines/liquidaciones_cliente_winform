@@ -1,5 +1,5 @@
 ﻿using BLL.Controllers;
-using LAUCHA.application.DTOs.EmpleadoDTO;
+using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace UI.Components.Utils
@@ -7,16 +7,16 @@ namespace UI.Components.Utils
     public partial class ListaEmpComponent : UserControl
     {
         private string dniEmp;
-        private List<EmpleadoDTO> empleadosDTOs;
+        private List<EmpleadoResponse> empleadosDTOs;
         public event EventHandler<string>? EventDniSeleccionado;
-        public event EventHandler<EmpleadoDTO> EventEmpleadoSeleccionado;
+        public event EventHandler<EmpleadoResponse> EventEmpleadoSeleccionado;
         private CrearLiquidacionController _liquidacionController;
 
         private List<ListViewItem> listaOriginal = new List<ListViewItem>();
         public ListaEmpComponent()
         {
             this.dniEmp = string.Empty;
-            this.empleadosDTOs = new List<EmpleadoDTO>();
+            this.empleadosDTOs = new List<EmpleadoResponse>();
             InitializeComponent();
         }
 
@@ -28,7 +28,7 @@ namespace UI.Components.Utils
 
             this.CargarLista(lista);
         }
-        public void CargarLista(List<EmpleadoDTO> lista)
+        public void CargarLista(List<EmpleadoResponse> lista)
         {
             this.empleadosDTOs = lista;
             listEmp.Items.Clear();
