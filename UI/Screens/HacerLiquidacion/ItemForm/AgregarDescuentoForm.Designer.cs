@@ -90,7 +90,7 @@
             btnConfirmar.TabIndex = 13;
             btnConfirmar.Text = "CONFIRMAR";
             btnConfirmar.UseVisualStyleBackColor = false;
-            btnConfirmar.Click += btnConfirmar_Click;
+            btnConfirmar.Click += BtnConfirmar_Click;
             // 
             // AgregarDescuentoForm
             // 

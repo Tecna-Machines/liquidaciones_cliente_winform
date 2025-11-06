@@ -1,9 +1,6 @@
-﻿using DAL.Service.Liquidacion.Http;
-using DAL.Service.Liquidacion.UseCase.Contrato;
-using DAL.Service.Liquidacion.UseCase.Empleados;
+﻿using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
+using DAL.Service.Liquidacion.UseCase.Empleados.Abstracciones;
 using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
-using DAL.Service.Liquidacion.UseCase.Liquidacion;
-using DAL.Service.Liquidacion.UseCase.RetencionesFijas;
 using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.RetencionesFijasDTOs;
 
@@ -11,33 +8,27 @@ namespace BLL.Controllers
 {
     public class EmpleadoController
     {
-        private readonly ApiLiquidacion ClienteHttp;
-        private readonly RecuperarEmpleado recuperarEmpleados;
-        private readonly DescargarRecibo descargarRecibo;
-        private readonly CrearEmpleado crearEmpleado;
-        private readonly ObtenerRetencionesFijas obtenerRetencionesFijas;
-        private readonly ContratoService _contratoService;
-        public EmpleadoController()
+
+        private readonly IEmpleadoService _empleados;
+        public EmpleadoController(IEmpleadoService empleados)
         {
-            ClienteHttp = new();
-            recuperarEmpleados = new(ClienteHttp);
-            descargarRecibo = new(ClienteHttp);
-            crearEmpleado = new(ClienteHttp);
-            obtenerRetencionesFijas = new(ClienteHttp);
-            _contratoService = new(ClienteHttp);
+            _empleados = empleados;
         }
 
-        public async Task<EmpleadoResponse> ObtenerDataEmpleado(string dniEmp)
+        public async Task<GetEmpleadoResponse> ObtenerDataEmpleado(string dniEmp)
         {
-            return await this.recuperarEmpleados.RecuperarEmpleadoDetalle(dniEmp);
+            //return await this.recuperarEmpleados.RecuperarEmpleadoDetalle(dniEmp);
+            throw new NotImplementedException();
         }
 
         public async Task<byte[]> DescargarReciboLiquidacionEmp(string codigoLiquidacion)
         {
-            return await this.descargarRecibo.DescargarReciboAsync(codigoLiquidacion);
+            //return await this.descargarRecibo.DescargarReciboAsync(codigoLiquidacion);
+
+            throw new NotImplementedException();
         }
 
-        public async Task<EmpleadoResponse> CrearNuevoEmpleado(string dni, string nombre, string apellido,DateTime fechaAlta, DateTime fechaIng, DateTime fechaNac)
+        public async Task CrearNuevoEmpleado(string dni, string nombre, string apellido, DateTime fechaAlta, DateTime fechaIng, DateTime fechaNac)
         {
 
             var empDto = new CrearEmpleadoRequest(dni,
@@ -49,8 +40,7 @@ namespace BLL.Controllers
 
             try
             {
-                var emp = await crearEmpleado.CrearUnEmpleado(empDto);
-                return emp;
+                await _empleados.Crear(empDto);
             }
             catch (Exception)
             {
@@ -58,19 +48,27 @@ namespace BLL.Controllers
             }
         }
 
+        public async Task<List<GetEmpleadoResponse>> ObtenerEmpleados()
+        {
+            var response = await _empleados.GetAll();
+            return response.Empleados;
+        }
         public async Task<List<RetencionFijaDTO>> ObtenerRetencionesFijasParaEmpleados()
         {
-            return await obtenerRetencionesFijas.ObtenerListaRetencionesFijas();
+            //return await obtenerRetencionesFijas.ObtenerListaRetencionesFijas();
+            throw new NotImplementedException();
+
         }
 
-        public async Task ConfigurarRetencionesDeEmpleado(List<string> codigosRetenciones,string numeroCuenta)
+        public async Task ConfigurarRetencionesDeEmpleado(List<string> codigosRetenciones, string numeroCuenta)
         {
-            await this.crearEmpleado.AsignarRetencionesEmpleado(codigosRetenciones,numeroCuenta);
+            throw new NotImplementedException();
         }
 
         public async Task<List<ResumenContratoDTO>> ObtenerHistorialContratosEmpleado(string dniEmp)
         {
-            return await _contratoService.ObtenerContratosEmpleados(dniEmp);
+            //return await _contratoService.ObtenerContratosEmpleados(dniEmp);
+            throw new NotImplementedException();
         }
     }
 }

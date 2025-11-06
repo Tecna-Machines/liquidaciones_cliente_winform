@@ -1,21 +1,26 @@
 using BLL.Controllers;
-using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using UI.Components.Screens;
 using UI.Screens.CrearContrato;
 using UI.Screens.VerContratos;
-using UI.Screens.VerCreditos;
 
 namespace UI
 {
     public partial class Home : Form
     {
-        public Home()
+        private readonly VerAcuerdoForm _verAcuerdo;
+        private readonly CrearAcuerdoForm _crearAcuerdo;
+
+        public Home(VerAcuerdoForm verAcuerdo, CrearAcuerdoForm crearAcuerdo)
         {
             InitializeComponent();
 
             string apiBaseUrl = ConfigurationManager.AppSettings["server"]!;
             labelServerInfo.Text = $"SERVER: {apiBaseUrl}";
+
+            _verAcuerdo = verAcuerdo;
+            _crearAcuerdo = crearAcuerdo;
+            //_verCreditoForm = verCreditoForm;
         }
 
         private void ShowPanelContexto(Control content)
@@ -60,20 +65,18 @@ namespace UI
 
         private void btnCrearContrato_Click(object sender, EventArgs e)
         {
-            var formContrato = Program.ServiceProvider.GetRequiredService<CrearAcuerdoForm>();
-            formContrato.Show();
+            _crearAcuerdo.Show();
         }
 
         private void btnHistorialTrabajo_Click(object sender, EventArgs e)
         {
-            var formHistorialContratos = new VerAcuerdo();
-            formHistorialContratos.ShowDialog();
+            _verAcuerdo.ShowDialog();
         }
 
         private void btnCreditos_Click(object sender, EventArgs e)
         {
-            var formCreditos = new VerCreditosForm();
-            formCreditos.ShowDialog();
+            //var formCreditos = new VerCreditosForm();
+            //formCreditos.ShowDialog();
         }
     }
 }

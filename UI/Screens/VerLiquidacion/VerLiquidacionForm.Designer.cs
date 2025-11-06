@@ -561,7 +561,7 @@
             btnPagos.TabIndex = 42;
             btnPagos.Text = "AGREGAR PAGO";
             btnPagos.UseVisualStyleBackColor = false;
-            btnPagos.Click += btnPagos_Click;
+            btnPagos.Click += BtnPagos_Click;
             // 
             // VerLiquidacionForm
             // 

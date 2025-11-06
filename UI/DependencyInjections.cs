@@ -1,6 +1,9 @@
 ﻿using BLL.Controllers;
 using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.CrearContrato;
+using UI.Screens.HacerLiquidacion;
+using UI.Screens.VerContratos;
+using UI.Screens.VerLiquidacion;
 
 namespace UI
 {
@@ -9,6 +12,9 @@ namespace UI
         public static IServiceCollection AddFormsServices(this IServiceCollection services)
         {
             services.AddScoped<CrearAcuerdoForm>();
+            services.AddScoped<VerAcuerdoForm>();
+            services.AddScoped<VerLiquidacionForm>();
+            services.AddScoped<CrearLiquidacionForm>();
             return services;
         }
     }

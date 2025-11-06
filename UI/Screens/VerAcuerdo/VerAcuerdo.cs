@@ -1,5 +1,6 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
+using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using System;
 using System.Collections.Generic;
@@ -14,21 +15,21 @@ using UI.Utils;
 
 namespace UI.Screens.VerContratos
 {
-    public partial class VerAcuerdo : Form
+    public partial class VerAcuerdoForm : Form
     {
         private readonly EmpleadoController _empleadoController;
         private readonly AcuerdoController _contratoController;
-        public VerAcuerdo()
+        public VerAcuerdoForm(EmpleadoController empleadoController)
         {
             InitializeComponent();
 
-            this._empleadoController = new();
+            _empleadoController = empleadoController;
             this._contratoController = null;
             this.listaEmpComponent1.ForzarCargarLista();
             this.listaEmpComponent1.EventEmpleadoSeleccionado += ClickEnEmpleado;
         }
 
-        private void ClickEnEmpleado(object? sender, EmpleadoResponse emp)
+        private void ClickEnEmpleado(object? sender, GetEmpleadoResponse emp)
         {
             this.Clean();
 
@@ -36,15 +37,15 @@ namespace UI.Screens.VerContratos
             this.CargarHistorialContratos(emp.Dni);
         }
 
-        private void CargarDatosEmpleado(EmpleadoResponse empleado)
+        private void CargarDatosEmpleado(GetEmpleadoResponse empleado)
         {
             this.textBoxDni.Text = empleado.Dni;
             this.textBoxNombres.Text = empleado.Nombre;
             this.textBoxApellidos.Text = empleado.Apellido;
 
-            this.textBoxFechaCarga.Text = empleado.FechaCreacion.ToString("dd/MM/yyyy");
-            this.textBoxFechaNacimiento.Text = empleado.FechaNacimiento.ToString("dd/MM/yyyy");
-            this.textBoxFechaIngreso.Text = empleado.FechaIngreso.ToString("dd/MM/yyyy");
+            //this.textBoxFechaCarga.Text = empleado.FechaCreacion.ToString("dd/MM/yyyy");
+            //this.textBoxFechaNacimiento.Text = empleado.FechaNacimiento.ToString("dd/MM/yyyy");
+            //this.textBoxFechaIngreso.Text = empleado.FechaIngreso.ToString("dd/MM/yyyy");
         }
 
         private async void CargarHistorialContratos(string dni)

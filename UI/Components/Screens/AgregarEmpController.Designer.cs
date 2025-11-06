@@ -154,7 +154,7 @@
             btnCrearEmp.TabIndex = 11;
             btnCrearEmp.Text = "CREAR EMPLEADO";
             btnCrearEmp.UseVisualStyleBackColor = false;
-            btnCrearEmp.Click += btnCrearEmp_Click;
+            btnCrearEmp.Click += BtnCrearEmp_Click;
             // 
             // label1
             // 

@@ -1,5 +1,6 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
+using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
 using UI.Utils;
@@ -9,9 +10,9 @@ namespace UI.Screens.VerLiquidacion
     public partial class VerLiquidacionForm : Form
     {
         private readonly EmpleadoController empleadoController;
-        public VerLiquidacionForm()
+        public VerLiquidacionForm(EmpleadoController empleadoController)
         {
-            empleadoController = new();
+            this.empleadoController = empleadoController;
             InitializeComponent();
 
             var contexto = LiquidacionContext.GetInstance();
@@ -133,13 +134,13 @@ namespace UI.Screens.VerLiquidacion
         {
             string dniEmp = liquidacion.Dni;
 
-            EmpleadoResponse emp = await this.empleadoController.ObtenerDataEmpleado(dniEmp);
+            GetEmpleadoResponse emp = await this.empleadoController.ObtenerDataEmpleado(dniEmp);
 
             this.textBoxDni.Text = emp.Dni;
             this.textBoxNombre.Text = emp.Nombre;
             this.textBoxApellido.Text = emp.Apellido;
-            this.textBoxFechaIng.Text = emp.FechaIngreso.ToString("dd/MM/yyyy");
-            this.textBoxFechaCreacion.Text = emp.FechaCreacion.ToString("dd/MM/yyyy");
+            //this.textBoxFechaIng.Text = emp.FechaIngreso.ToString("dd/MM/yyyy");
+            //this.textBoxFechaCreacion.Text = emp.FechaCreacion.ToString("dd/MM/yyyy");
         }
 
         private void AjustarTablas()
@@ -192,7 +193,7 @@ namespace UI.Screens.VerLiquidacion
             }
         }
 
-        private void btnPagos_Click(object sender, EventArgs e)
+        private void BtnPagos_Click(object sender, EventArgs e)
         {
             Dialog.Error("esta funcionalidad aun no esta disponible");
         }

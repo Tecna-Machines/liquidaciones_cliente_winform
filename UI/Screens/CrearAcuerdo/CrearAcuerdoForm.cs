@@ -1,8 +1,6 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
-using DAL.Service.Liquidacion.UseCase.Contrato;
 using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
-using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using LAUCHA.application.DTOs.ModalidadDTOs;
 using UI.Utils;
 
@@ -10,20 +8,19 @@ namespace UI.Screens.CrearContrato
 {
     public partial class CrearAcuerdoForm : Form
     {
-        private readonly CrearLiquidacionController _controller;
+        private readonly EmpleadoController _empleadoController;
         private readonly AcuerdoController _contratoController;
-        public CrearAcuerdoForm(AcuerdoController contratoController, CrearLiquidacionController controller)
+        public CrearAcuerdoForm(AcuerdoController contratoController, CrearLiquidacionController controller, EmpleadoController empleadoController)
         {
             _contratoController = contratoController; ;
-            _controller = controller;
             InitializeComponent();
 
             this.listaEmpComponent1.EventEmpleadoSeleccionado += ClickEnEmpleado; //se suscribe al evento de la lista
+            _empleadoController = empleadoController;
             CargarListaEmpleados();
-            _controller = controller;
         }
 
-        private void ClickEnEmpleado(object? sender, EmpleadoResponse e)
+        private void ClickEnEmpleado(object? sender, DAL.Service.Liquidacion.Features.Empleados.GetEmpleados.GetEmpleadoResponse e)
         {
             this.textBoxDni.ForeColor = Color.Red;
             this.textBoxNombre.ForeColor = Color.Red;
@@ -35,7 +32,7 @@ namespace UI.Screens.CrearContrato
 
         private async void CargarListaEmpleados()
         {
-            var empleados = await _controller.ObtenerTodosLosEmpleado();
+            var empleados = await _empleadoController.ObtenerEmpleados();
             var modalidades = _contratoController.ObtenerModalidades();
 
             this.listaEmpComponent1.CargarLista(empleados);
@@ -83,13 +80,15 @@ namespace UI.Screens.CrearContrato
             menuOpciones.SelectedIndex = 0;
         }
 
-        private void BtnConfirmarContrato_Click(object sender, EventArgs e)
+        private async void BtnConfirmarContrato_Click(object sender, EventArgs e)
         {
             var acuerdo = CrearAcuerdo();
 
             try
             {
-                GuardarAcuerdo(acuerdo);
+                await GuardarAcuerdo(acuerdo);
+
+                this.Close();
             }
             catch (Exception exp)
             {

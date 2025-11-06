@@ -2,7 +2,7 @@
 
 namespace DAL.Service.Liquidacion.UseCase.Empleados.Crear
 {
-    internal class CrearEmpleado
+    public class CrearEmpleado
     {
         private readonly ApiLiquidacion _api;
 

@@ -1,7 +1,7 @@
 ﻿using BLL.Controllers;
 using BLL.Enums;
 using BLL.Models;
-using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
+using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,15 +14,16 @@ namespace UI.Screens.HacerLiquidacion
     public partial class CrearLiquidacionForm : Form
     {
         private readonly CrearLiquidacionController _controller;
-        private List<EmpleadoResponse> _empleados;
+        private readonly EmpleadoController _empleadoController;
+        private List<GetEmpleadoResponse> _empleados;
         private LiquidacionContext _context;
         private PeriodoDTO _periodoLiquidar;
         private bool _esPrimeraQuincena;
         private PeriodoLiquiComponent _periodoComponent;
 
 
-        private List<EmpleadoResponse> empleadoDTOs;
-        public CrearLiquidacionForm(PeriodoLiquiComponent periodoComponent, bool esPrimeraQuincena)
+        private List<GetEmpleadoResponse> empleadoDTOs;
+        public CrearLiquidacionForm(EmpleadoController empleadoController)
         {
             _context = LiquidacionContext.GetInstance();
             _periodoLiquidar = _context.GetPeriodo();
@@ -35,8 +36,11 @@ namespace UI.Screens.HacerLiquidacion
 
             this.listaEmpComponent1.EventDniSeleccionado += OnEmpleadoSeleccionado;
 
-            _esPrimeraQuincena = esPrimeraQuincena;
+            _esPrimeraQuincena = false;
+            _empleadoController = empleadoController;
         }
+
+        public void EsPrimeraQuicena() => _esPrimeraQuincena = true;
 
         private async void PrimeraQuincenaSeteada(bool primeraQuincenaActiva)
         {
@@ -44,9 +48,8 @@ namespace UI.Screens.HacerLiquidacion
             {
                 var empleadosPrimeraQuincena = this.empleadoDTOs
                  .Where(emp =>
-                !string.IsNullOrEmpty(emp.ContratoResumen.CodigoModalidad) &&
-                int.TryParse(emp.ContratoResumen.CodigoModalidad, out int codigoModalidad) &&
-                EsModalidadQuincenal(codigoModalidad)) // Llama a un método que verifica si es modalidad quincenal
+                emp.TipoSueldo != -1 &&
+                EsModalidadQuincenal(emp.TipoSueldo)) // Llama a un método que verifica si es modalidad quincenal
                 .ToList();
 
                 this.listaEmpComponent1.CargarLista(empleadosPrimeraQuincena);
@@ -63,7 +66,8 @@ namespace UI.Screens.HacerLiquidacion
 
         private async void IniciarConfiguraciones()
         {
-            this.empleadoDTOs = await this._controller.ObtenerTodosLosEmpleado();
+            var response = await _empleadoController.ObtenerEmpleados();
+            this.empleadoDTOs = response.ToList();
             this.listaEmpComponent1.CargarLista(this.empleadoDTOs);
 
             this.SetearLabelPeriodo(_periodoLiquidar);
@@ -74,7 +78,7 @@ namespace UI.Screens.HacerLiquidacion
 
         private async void OnEmpleadoSeleccionado(object? sender, string dni)
         {
-            EmpleadoResponse? empleado = empleadoDTOs.FirstOrDefault(emp => emp.Dni == dni);
+            GetEmpleadoResponse? empleado = empleadoDTOs.FirstOrDefault(emp => emp.Dni == dni);
             this.LimpiarTodasLasTablasLiquidacion();
 
             if (empleado == null)
@@ -179,7 +183,7 @@ namespace UI.Screens.HacerLiquidacion
 
                 _context.SetLiquidacion(liquidacion);
 
-                var formVerLiqui = new VerLiquidacionForm();
+                var formVerLiqui = Program.ServiceProvider.GetRequiredService<VerLiquidacionForm>();
                 formVerLiqui.Show();
             }
             else

@@ -14,16 +14,16 @@ namespace DAL.Service.Liquidacion.UseCase.Contrato.Crear
 
         public async Task<string> CargarAcuerdo(CrearAcuerdoRequest acuerdo)
         {
-            using HttpContent data = JsonContent.Create(acuerdo);
+            using HttpContent requestContent = JsonContent.Create(acuerdo);
 
-            HttpResponseMessage response = await _api.PostAsync("Acuerdo", data);
+            HttpResponseMessage response = await _api.PostAsync("Acuerdo", requestContent);
             string body = await response.Content.ReadAsStringAsync();
 
             using JsonDocument doc = JsonDocument.Parse(body);
 
             JsonElement root = doc.RootElement;
 
-            int statusCode = root.GetProperty("statusCode").GetInt32();
+            int statusCode = await GetHttpStatusCode.GetCode(response);
 
             JsonElement value = root.GetProperty("value");
 
@@ -38,15 +38,10 @@ namespace DAL.Service.Liquidacion.UseCase.Contrato.Crear
                 throw new InvalidOperationException("Error al crear el acuerdo.");
             }
 
-            if (value.TryGetProperty("codigo", out JsonElement codigoElement))
-            {
-                string? codigo = codigoElement.GetString();
-
-                if (!string.IsNullOrWhiteSpace(codigo))
-                    return codigo;
-            }
-
-            throw new NullReferenceException("No se encontró 'codigo' en la respuesta.");
+            CrearAcuerdoResponse acuerdoCreado = await GetJsonValue<CrearAcuerdoResponse>
+                                                       .GetBodyValue(response);
+            return acuerdoCreado.Codigo;
+            
         }
     }
 }

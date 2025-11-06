@@ -1,4 +1,5 @@
-﻿using DAL.Service.Liquidacion.Http;
+﻿using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
+using DAL.Service.Liquidacion.Http;
 using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using System.Text.Json;
 
@@ -13,7 +14,7 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
             this.Client = client;
         }
 
-        public async Task<List<EmpleadoResponse>> ObtenerEmpleados()
+        public async Task<List<GetEmpleadoResponse>> ObtenerEmpleados()
         {
             HttpResponseMessage response = await Client.GetAsync("Empleado");
 
@@ -23,12 +24,12 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
 
 
 
-            List<EmpleadoResponse>? lista = JsonSerializer.Deserialize<List<EmpleadoResponse>>(responseBody,Client.GetJsonOptions());
+            List<GetEmpleadoResponse>? lista = JsonSerializer.Deserialize<List<GetEmpleadoResponse>>(responseBody,Client.GetJsonOptions());
 
             return lista ?? throw new NullReferenceException();
         }
 
-        public async Task<EmpleadoResponse> RecuperarEmpleadoDetalle(string dniEmp)
+        public async Task<GetEmpleadoResponse> RecuperarEmpleadoDetalle(string dniEmp)
         {
             HttpResponseMessage response = await Client.GetAsync($"Empleado/{dniEmp}");
 
@@ -38,7 +39,7 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
 
 
 
-            EmpleadoResponse? emp = JsonSerializer.Deserialize<EmpleadoResponse>(responseBody, Client.GetJsonOptions());
+            GetEmpleadoResponse? emp = JsonSerializer.Deserialize<GetEmpleadoResponse>(responseBody, Client.GetJsonOptions());
 
             return emp ?? throw new NullReferenceException();
         }

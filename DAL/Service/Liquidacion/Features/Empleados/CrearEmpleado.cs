@@ -1,4 +1,5 @@
-﻿using DAL.Service.Liquidacion.Http;
+﻿using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
+using DAL.Service.Liquidacion.Http;
 using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -14,7 +15,7 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
             _client = client;
         }
 
-        public async Task<EmpleadoResponse> CrearUnEmpleado(CrearEmpleadoRequest emp)
+        public async Task<GetEmpleadoResponse> CrearUnEmpleado(CrearEmpleadoRequest emp)
         {
             HttpContent data = JsonContent.Create(emp);
             HttpResponseMessage response = await _client.PostAsync("Empleado", data);
@@ -25,7 +26,7 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
 
 
 
-            EmpleadoResponse? remu = JsonSerializer.Deserialize<EmpleadoResponse>(responseBody, _client.GetJsonOptions());
+            GetEmpleadoResponse? remu = JsonSerializer.Deserialize<GetEmpleadoResponse>(responseBody, _client.GetJsonOptions());
 
             return remu ?? throw new NullReferenceException();
         }

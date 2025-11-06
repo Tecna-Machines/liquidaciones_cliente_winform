@@ -1,36 +1,46 @@
-﻿using BLL.Controllers;
-using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
+﻿using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
+using DAL.Service.Liquidacion.UseCase.Empleados.Abstracciones;
 using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel;
 
 namespace UI.Components.Utils
 {
     public partial class ListaEmpComponent : UserControl
     {
         private string dniEmp;
-        private List<EmpleadoResponse> empleadosDTOs;
+        private List<GetEmpleadoResponse> _empleados;
         public event EventHandler<string>? EventDniSeleccionado;
-        public event EventHandler<EmpleadoResponse> EventEmpleadoSeleccionado;
-        private CrearLiquidacionController _liquidacionController;
+        public event EventHandler<GetEmpleadoResponse> EventEmpleadoSeleccionado;
+        private readonly IEmpleadoService _empleadoService;
 
         private List<ListViewItem> listaOriginal = new List<ListViewItem>();
-        public ListaEmpComponent()
+        public ListaEmpComponent(IEmpleadoService service)
         {
             this.dniEmp = string.Empty;
-            this.empleadosDTOs = new List<EmpleadoResponse>();
+            this._empleados = new();
             InitializeComponent();
+            _empleadoService = service;
         }
+
+        public ListaEmpComponent()
+        {
+            InitializeComponent();
+            _empleadoService = Program.ServiceProvider.GetRequiredService<IEmpleadoService>();
+            this.dniEmp = string.Empty;
+            this._empleados = new();
+
+        }
+
 
         public async void ForzarCargarLista()
         {
-            _liquidacionController = Program.ServiceProvider.GetRequiredService<CrearLiquidacionController>();
 
-            var lista = await _liquidacionController.ObtenerTodosLosEmpleado();
-
-            this.CargarLista(lista);
+            var response = await _empleadoService.GetAll();
+            this.CargarLista(response.Empleados);
         }
-        public void CargarLista(List<EmpleadoResponse> lista)
+        public void CargarLista(List<GetEmpleadoResponse> lista)
         {
-            this.empleadosDTOs = lista;
+            this._empleados = lista;
             listEmp.Items.Clear();
             listaOriginal.Clear();
 
@@ -41,7 +51,7 @@ namespace UI.Components.Utils
                 item.SubItems.Add(emp.Apellido);
                 item.SubItems.Add(emp.Dni);
 
-                if(emp.ContratoResumen.CodigoContrato == null)
+                if (emp.AcuerdoId.Length <= 0)
                 {
                     item.BackColor = Color.Red;
                 }
@@ -95,7 +105,7 @@ namespace UI.Components.Utils
                 string dniEmp = selectedItem.SubItems[2].Text;
                 this.dniEmp = dniEmp;
 
-                var emp = this.empleadosDTOs.Where(e => e.Dni.Equals(this.dniEmp)).FirstOrDefault();
+                var emp = this._empleados.Where(e => e.Dni.Equals(this.dniEmp)).FirstOrDefault();
 
                 EventDniSeleccionado?.Invoke(this, dniEmp);
                 EventEmpleadoSeleccionado?.Invoke(this, emp!);

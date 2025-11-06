@@ -60,7 +60,7 @@ namespace UI.Screens.HacerLiquidacion.ItemForm
             }
 
             var context = LiquidacionContext.GetInstance();
-            string numeroCuenta = context.ObtenerDatosEmpleado().NumeroCuenta;
+            string numeroCuenta = context.ObtenerDatosEmpleado().Cuenta;
 
             string montoStr = this.textBoxMonto.Text;
 

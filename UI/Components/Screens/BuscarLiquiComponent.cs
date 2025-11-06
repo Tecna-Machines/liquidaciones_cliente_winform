@@ -2,6 +2,7 @@
 using BLL.Models;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
 using LAUCHA.application.DTOs.PaginaDTOs;
+using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.VerLiquidacion;
 
 namespace UI.Components.Screens
@@ -63,7 +64,7 @@ namespace UI.Components.Screens
 
                     contexto.SetLiquidacion(liquidacion);
 
-                    var formlIquidacion = new VerLiquidacionForm();
+                    var formlIquidacion = Program.ServiceProvider.GetRequiredService<VerLiquidacionForm>();
                     formlIquidacion.Show();
                 }
             }catch(Exception)

@@ -1,5 +1,6 @@
 ﻿using BLL.Models;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
+using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.HacerLiquidacion;
 
 namespace UI
@@ -89,7 +90,11 @@ namespace UI
                 return;
             }
 
-            CrearLiquidacionForm form = new(this, this.primeraQuincenaActiva);
+            CrearLiquidacionForm form = Program.ServiceProvider.GetRequiredService<CrearLiquidacionForm>();
+
+            if (primeraQuincenaActiva)
+                    form.EsPrimeraQuicena();
+            
             form.Show();
         }
 

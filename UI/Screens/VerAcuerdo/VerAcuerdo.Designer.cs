@@ -1,6 +1,6 @@
 ﻿namespace UI.Screens.VerContratos
 {
-    partial class VerAcuerdo
+    partial class VerAcuerdoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerAcuerdo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerAcuerdoForm));
             listaEmpComponent1 = new Components.Utils.ListaEmpComponent();
             groupBoxEmpleado = new GroupBox();
             textBoxFechaCarga = new TextBox();

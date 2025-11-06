@@ -1,6 +1,6 @@
-﻿using DAL.Service.Liquidacion.Http;
+﻿using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
+using DAL.Service.Liquidacion.Http;
 using DAL.Service.Liquidacion.UseCase.Empleados;
-using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using DAL.Service.Liquidacion.UseCase.Liquidacion;
 using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
@@ -28,7 +28,7 @@ namespace BLL.Controllers
             this.recuperarEmpleados = recuperarEmpleados;
         }
 
-        public async Task<List<EmpleadoResponse>> ObtenerTodosLosEmpleado()
+        public async Task<List<GetEmpleadoResponse>> ObtenerTodosLosEmpleado()
         {
             return await this.recuperarEmpleados.ObtenerEmpleados();
         }

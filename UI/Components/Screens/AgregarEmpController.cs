@@ -1,6 +1,7 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
 using LAUCHA.application.DTOs.RetencionesFijasDTOs;
+using Microsoft.Extensions.DependencyInjection;
 using UI.Utils;
 
 namespace UI.Components.Screens
@@ -11,11 +12,10 @@ namespace UI.Components.Screens
         public AgregarEmpController()
         {
             InitializeComponent();
-
-            _controller = new EmpleadoController();
+            _controller = Program.ServiceProvider.GetRequiredService<EmpleadoController>();
         }
 
-        private async void btnCrearEmp_Click(object sender, EventArgs e)
+        private async void BtnCrearEmp_Click(object sender, EventArgs e)
         {
             var context = LiquidacionContext.GetInstance();
 
@@ -36,7 +36,7 @@ namespace UI.Components.Screens
             try
             {
                 var retencionesFijas = await _controller.ObtenerRetencionesFijasParaEmpleados();
-                var result = await _controller.CrearNuevoEmpleado(dni: dni,
+                await  _controller.CrearNuevoEmpleado(dni: dni,
                                            nombre: nombres,
                                            apellido: apellidos,
                                            fechaNac: fechaNacimiento,
@@ -45,7 +45,7 @@ namespace UI.Components.Screens
 
 
                 this.SetListaRetencionesFijas(retencionesFijas);
-                context.SetEmpleado(result);
+                Dialog.Success("se cargo el nuevo empleado");
             }
             catch (Exception)
             {
@@ -54,7 +54,7 @@ namespace UI.Components.Screens
             }
 
             var empleado = context.ObtenerDatosEmpleado();
-            this.textBoxNumeroCuenta.Text = empleado.NumeroCuenta;
+            this.textBoxNumeroCuenta.Text = empleado.Cuenta;
 
             Dialog.Success($"{empleado.Nombre} se creo exitosamente (NO OLVIDES CONFIGURAR SU CUENTA)");
         }
@@ -84,7 +84,7 @@ namespace UI.Components.Screens
 
             try
             {
-                var numCuenta = LiquidacionContext.GetInstance().ObtenerDatosEmpleado().NumeroCuenta;
+                var numCuenta = LiquidacionContext.GetInstance().ObtenerDatosEmpleado().Cuenta;
                  await _controller.ConfigurarRetencionesDeEmpleado(codigos,numCuenta);
 
             }catch(Exception)

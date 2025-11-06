@@ -15,7 +15,7 @@ namespace UI.Screens.HacerLiquidacion.ItemForm
             formAnterior.Close();
         }
 
-        private async void btnConfirmar_Click(object sender, EventArgs e)
+        private async void BtnConfirmar_Click(object sender, EventArgs e)
         {
             DialogResult result = Dialog.PopUpDeConfirmacion("estas seguro de agregar este item?",
                                                                    "confirma descuento");
@@ -29,7 +29,7 @@ namespace UI.Screens.HacerLiquidacion.ItemForm
             var context = LiquidacionContext.GetInstance();
 
             string descripcion = this.textBoxDescripcion.Text;
-            string numeroCuenta = context.ObtenerDatosEmpleado().NumeroCuenta;
+            string numeroCuenta = context.ObtenerDatosEmpleado().Cuenta;
             string montoStr = this.textBoxMonto.Text;
 
 
