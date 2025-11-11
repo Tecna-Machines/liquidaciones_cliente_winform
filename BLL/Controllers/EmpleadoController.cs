@@ -28,15 +28,8 @@ namespace BLL.Controllers
             throw new NotImplementedException();
         }
 
-        public async Task CrearNuevoEmpleado(string dni, string nombre, string apellido, DateTime fechaAlta, DateTime fechaIng, DateTime fechaNac)
+        public async Task CrearEmpleado(CrearEmpleadoRequest empDto)
         {
-
-            var empDto = new CrearEmpleadoRequest(dni,
-                                                  nombre,
-                                                  apellido,
-                                                  fechaIng,
-                                                  fechaNac,
-                                                  fechaAlta);
 
             try
             {

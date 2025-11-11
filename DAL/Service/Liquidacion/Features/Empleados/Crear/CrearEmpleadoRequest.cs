@@ -7,5 +7,9 @@
                                        DateTime FechaNacimiento,
                                        DateTime FechaAlta);
 
-    
+    public record CrearEmpleadoResponse(string Dni,
+                                          string Nombre,
+                                          string Apellido);
+
+
 }

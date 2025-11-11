@@ -29,7 +29,6 @@ namespace UI.Screens.HacerLiquidacion
             _periodoLiquidar = _context.GetPeriodo();
 
             _controller = Program.ServiceProvider.GetRequiredService<CrearLiquidacionController>(); ;
-            IniciarConfiguraciones();
 
             InitializeComponent();
 
@@ -38,6 +37,7 @@ namespace UI.Screens.HacerLiquidacion
 
             _esPrimeraQuincena = false;
             _empleadoController = empleadoController;
+            IniciarConfiguraciones();
         }
 
         public void EsPrimeraQuicena() => _esPrimeraQuincena = true;

@@ -14,7 +14,7 @@ namespace DAL.Service.Liquidacion.Features.Empleados.GetEmpleados
         public async Task<GetEmpleadosResponse> GetTodos()
         {
 
-            HttpResponseMessage response = await _api.GetAsync("Empleados");
+            HttpResponseMessage response = await _api.GetAsync("Empleado");
             int statusCode = await GetHttpStatusCode.GetCode(response);
 
             if (statusCode != 200)

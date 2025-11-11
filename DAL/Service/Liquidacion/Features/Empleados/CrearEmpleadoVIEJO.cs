@@ -6,11 +6,11 @@ using System.Text.Json;
 
 namespace DAL.Service.Liquidacion.UseCase.Empleados
 {
-    public class CrearEmpleado
+    internal class CrearEmpleadoVIEJO
     {
         private readonly ApiLiquidacion _client;
 
-        public CrearEmpleado(ApiLiquidacion client)
+        public CrearEmpleadoVIEJO(ApiLiquidacion client)
         {
             _client = client;
         }

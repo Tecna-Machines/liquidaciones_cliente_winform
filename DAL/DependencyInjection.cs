@@ -4,6 +4,7 @@ using DAL.Service.Liquidacion.Http;
 using DAL.Service.Liquidacion.UseCase.Contrato.Abstracciones;
 using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
 using DAL.Service.Liquidacion.UseCase.Empleados.Abstracciones;
+using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DAL
@@ -30,7 +31,7 @@ namespace DAL
 
         private static IServiceCollection AddEmpleados(this IServiceCollection services)
         {
-            services.AddScoped<DAL.Service.Liquidacion.UseCase.Empleados.Crear.CrearEmpleado>();
+            services.AddScoped<CrearEmpleado>();
             services.AddScoped<GetTodosEmpleados>();
 
             services.AddScoped<IEmpleadoService, EmpleadoService>();

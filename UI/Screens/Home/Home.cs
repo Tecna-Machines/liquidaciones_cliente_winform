@@ -1,26 +1,23 @@
 using BLL.Controllers;
+using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using UI.Components.Screens;
 using UI.Screens.CrearContrato;
-using UI.Screens.VerContratos;
+using UI.Screens.CrearEmpleado;
 
 namespace UI
 {
     public partial class Home : Form
     {
-        private readonly VerAcuerdoForm _verAcuerdo;
-        private readonly CrearAcuerdoForm _crearAcuerdo;
 
-        public Home(VerAcuerdoForm verAcuerdo, CrearAcuerdoForm crearAcuerdo)
+        public Home()
         {
             InitializeComponent();
 
             string apiBaseUrl = ConfigurationManager.AppSettings["server"]!;
             labelServerInfo.Text = $"SERVER: {apiBaseUrl}";
 
-            _verAcuerdo = verAcuerdo;
-            _crearAcuerdo = crearAcuerdo;
-            //_verCreditoForm = verCreditoForm;
+
         }
 
         private void ShowPanelContexto(Control content)
@@ -60,17 +57,20 @@ namespace UI
 
         private void btnCrearEmpleado_Click(object sender, EventArgs e)
         {
-            this.ShowPanelContexto(new AgregarEmpController());
+            var crearEmpleado = Program.ServiceProvider.GetRequiredService<CrearEmpleadoForm>();
+            crearEmpleado.ShowDialog();
         }
 
         private void btnCrearContrato_Click(object sender, EventArgs e)
         {
-            _crearAcuerdo.Show();
+            var crearAcuerdo = Program.ServiceProvider.GetRequiredService<CrearAcuerdoForm>();
+            crearAcuerdo.ShowDialog();
         }
 
         private void btnHistorialTrabajo_Click(object sender, EventArgs e)
         {
-            _verAcuerdo.ShowDialog();
+            var crearAcuerdo = Program.ServiceProvider.GetRequiredService<CrearAcuerdoForm>();
+            crearAcuerdo.ShowDialog();
         }
 
         private void btnCreditos_Click(object sender, EventArgs e)

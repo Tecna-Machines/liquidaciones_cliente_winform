@@ -54,7 +54,7 @@
             btnCrearEmpleado.Name = "btnCrearEmpleado";
             btnCrearEmpleado.Size = new Size(218, 45);
             btnCrearEmpleado.TabIndex = 0;
-            btnCrearEmpleado.Text = "AGREGAR EMPLEADO";
+            btnCrearEmpleado.Text = "CREAR EMPLEADO";
             btnCrearEmpleado.UseVisualStyleBackColor = false;
             btnCrearEmpleado.Click += btnCrearEmpleado_Click;
             // 

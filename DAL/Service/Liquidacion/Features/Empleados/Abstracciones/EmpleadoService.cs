@@ -4,7 +4,7 @@ using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 
 namespace DAL.Service.Liquidacion.Features.Empleados.Abstracciones
 {
-    public class EmpleadoService : IEmpleadoService
+    internal class EmpleadoService : IEmpleadoService
     {
         private readonly CrearEmpleado _crear;
         private readonly GetTodosEmpleados _getEmpleados;
@@ -15,10 +15,9 @@ namespace DAL.Service.Liquidacion.Features.Empleados.Abstracciones
             _getEmpleados = getEmpleados;
         }
 
-        public Task Crear(CrearEmpleadoRequest empleado)
+        public async Task<CrearEmpleadoResponse> Crear(CrearEmpleadoRequest empleado)
         {
-            _crear.CargarEmpleado(empleado);
-            throw new NotImplementedException();
+            return await _crear.CargarEmpleado(empleado);
         }
 
         public async Task<GetEmpleadosResponse> GetAll()

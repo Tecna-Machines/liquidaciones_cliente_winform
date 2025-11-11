@@ -1,6 +1,5 @@
 using BLL;
 using DAL;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Globalization;
 
@@ -28,11 +27,7 @@ namespace UI
             ServiceProvider = host.Services;
 
             ApplicationConfiguration.Initialize();
-
-            // ?? scope para que los servicios Scoped (p.ej. DbContext) tengan vida correcta
-            using var scope = ServiceProvider.CreateScope();
-            var home = scope.ServiceProvider.GetRequiredService<Home>();
-            Application.Run(home);
+            Application.Run(new Home());
         }
         public static IServiceProvider ServiceProvider { get; private set; }
 
@@ -41,12 +36,9 @@ namespace UI
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-
                     services.AddLiquidacionApi();
                     services.AddControllers();
                     services.AddFormsServices();
-
-                    services.AddScoped<Home>();
                 });
         }
 

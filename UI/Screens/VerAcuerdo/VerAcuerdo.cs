@@ -25,7 +25,6 @@ namespace UI.Screens.VerContratos
 
             _empleadoController = empleadoController;
             this._contratoController = null;
-            this.listaEmpComponent1.ForzarCargarLista();
             this.listaEmpComponent1.EventEmpleadoSeleccionado += ClickEnEmpleado;
         }
 
