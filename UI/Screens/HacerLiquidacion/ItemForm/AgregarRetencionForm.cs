@@ -1,14 +1,5 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using UI.Utils;
 
 namespace UI.Screens.HacerLiquidacion.ItemForm
@@ -16,7 +7,7 @@ namespace UI.Screens.HacerLiquidacion.ItemForm
     public partial class AgregarRetencionForm : Form
     {
         private readonly AgregarItemController _itemController;
-        public AgregarRetencionForm(Form formAnterior,AgregarItemController controller)
+        public AgregarRetencionForm(Form formAnterior, AgregarItemController controller)
         {
             InitializeComponent();
 
@@ -50,7 +41,7 @@ namespace UI.Screens.HacerLiquidacion.ItemForm
             }
             catch (Exception)
             {
-                MessageBox.Show("ocurrio un problema","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("ocurrio un problema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

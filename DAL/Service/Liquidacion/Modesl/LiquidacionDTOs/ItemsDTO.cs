@@ -1,7 +1,6 @@
 ﻿using LAUCHA.application.DTOs.DescuentoDTOs;
 using LAUCHA.application.DTOs.NoRemuneracionDTOs;
 using LAUCHA.application.DTOs.RemuneracionDTOs;
-using LAUCHA.application.DTOs.RetencionDTOs;
 
 namespace LAUCHA.application.DTOs.LiquidacionDTOs
 {

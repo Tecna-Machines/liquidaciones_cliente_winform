@@ -51,7 +51,7 @@ namespace BLL.Controllers
             return result;
         }
 
-        public async Task<DescuentoDTO> CrearUnDescuento(string description,string monto,string numeroCuenta,int? numeroConcepto)
+        public async Task<DescuentoDTO> CrearUnDescuento(string description, string monto, string numeroCuenta, int? numeroConcepto)
         {
             if (string.IsNullOrEmpty(description) || string.IsNullOrEmpty(monto) || string.IsNullOrEmpty(numeroCuenta))
             {
@@ -80,7 +80,7 @@ namespace BLL.Controllers
             return descuento;
         }
 
-        public async Task<RetencionDTO> CrearUnaRetencion(string descripcion,string monto,string numeroCuenta)
+        public async Task<RetencionDTO> CrearUnaRetencion(string descripcion, string monto, string numeroCuenta)
         {
             if (string.IsNullOrEmpty(descripcion) || string.IsNullOrEmpty(monto) || string.IsNullOrEmpty(numeroCuenta))
             {

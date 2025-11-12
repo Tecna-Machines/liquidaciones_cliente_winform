@@ -1,7 +1,6 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
-using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
 using UI.Utils;
 

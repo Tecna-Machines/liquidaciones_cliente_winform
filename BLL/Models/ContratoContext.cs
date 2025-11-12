@@ -1,5 +1,4 @@
-﻿using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
-using LAUCHA.application.DTOs.AcuerdoBlancoDTOs;
+﻿using DAL.Service.Liquidacion.Features.Contrato.Crear;
 using LAUCHA.application.DTOs.ContratoDTOs;
 
 namespace BLL.Models

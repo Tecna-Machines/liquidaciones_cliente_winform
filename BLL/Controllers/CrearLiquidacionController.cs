@@ -10,14 +10,14 @@ namespace BLL.Controllers
     public class CrearLiquidacionController
     {
         private readonly ApiLiquidacion ClienteHttp;
-        private readonly RecuperarEmpleado recuperarEmpleados;
-        private readonly ObtenerContratoEmpleado recuperarContrato;
+        private readonly RecuperarEmpleadovIEJO recuperarEmpleados;
+        private readonly ObtenerContratoEmpleadoVIEJO recuperarContrato;
         private readonly SimularLiquidacionEmpleado simulador;
         private readonly ConfirmarLiquidacion confirmarLiquidacion;
 
         public ConfirmarLiquidacion ConfirmarLiquidacion1 => confirmarLiquidacion;
 
-        public CrearLiquidacionController(ApiLiquidacion api, SimularLiquidacionEmpleado simulador, ObtenerContratoEmpleado recuperarContrato, RecuperarEmpleado recuperarEmpleados)
+        public CrearLiquidacionController(ApiLiquidacion api, SimularLiquidacionEmpleado simulador, ObtenerContratoEmpleadoVIEJO recuperarContrato, RecuperarEmpleadovIEJO recuperarEmpleados)
         {
 
             ClienteHttp = api;

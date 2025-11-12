@@ -41,9 +41,9 @@ namespace UI.Screens.HacerLiquidacion.ItemForm
                                                             numeroConcepto: null
                                                             );
             }
-            catch(Exception)
+            catch (Exception)
             {
-                MessageBox.Show("ocurrio un problema","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("ocurrio un problema", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             MessageBox.Show("se creo el descuento exitosamente");

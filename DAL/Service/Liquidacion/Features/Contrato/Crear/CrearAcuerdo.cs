@@ -2,7 +2,7 @@
 using System.Net.Http.Json;
 using System.Text.Json;
 
-namespace DAL.Service.Liquidacion.UseCase.Contrato.Crear
+namespace DAL.Service.Liquidacion.Features.Contrato.Crear
 {
     internal class CrearAcuerdo
     {
@@ -41,7 +41,7 @@ namespace DAL.Service.Liquidacion.UseCase.Contrato.Crear
             CrearAcuerdoResponse acuerdoCreado = await GetJsonValue<CrearAcuerdoResponse>
                                                        .GetBodyValue(response);
             return acuerdoCreado.Codigo;
-            
+
         }
     }
 }

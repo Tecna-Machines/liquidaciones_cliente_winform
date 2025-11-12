@@ -1,8 +1,6 @@
-﻿using System.Net.NetworkInformation;
-
-namespace UI.Utils
+﻿namespace UI.Utils
 {
-    internal  static class ListUtils
+    internal static class ListUtils
     {
         public static void AjustarColumnas(ListView listView)
         {

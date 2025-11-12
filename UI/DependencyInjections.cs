@@ -1,5 +1,4 @@
-﻿using BLL.Controllers;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.CrearContrato;
 using UI.Screens.CrearEmpleado;
 using UI.Screens.HacerLiquidacion;

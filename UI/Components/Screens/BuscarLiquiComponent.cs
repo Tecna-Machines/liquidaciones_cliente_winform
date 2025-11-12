@@ -39,10 +39,10 @@ namespace UI.Components.Screens
                 lista.Items.Add(item);
             });
 
-            this.SetearLabelPagina(pagina.TotalEncontrados,pagina.Paginas,pagina.Index);
+            this.SetearLabelPagina(pagina.TotalEncontrados, pagina.Paginas, pagina.Index);
         }
 
-        private void SetearLabelPagina(int cantidadResultados,int cantPaginas,int pagActual)
+        private void SetearLabelPagina(int cantidadResultados, int cantPaginas, int pagActual)
         {
             this.labelTotalResult.Text = $"Cant. resultados: {cantidadResultados}";
             this.labelPagina.Text = $"{pagActual} de {cantPaginas} pagina/s";
@@ -67,7 +67,8 @@ namespace UI.Components.Screens
                     var formlIquidacion = Program.ServiceProvider.GetRequiredService<VerLiquidacionForm>();
                     formlIquidacion.Show();
                 }
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("ocurrio una catastrofe");
             }

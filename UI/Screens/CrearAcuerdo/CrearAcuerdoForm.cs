@@ -1,6 +1,6 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
-using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
+using DAL.Service.Liquidacion.Features.Contrato.Crear;
 using LAUCHA.application.DTOs.ModalidadDTOs;
 using UI.Utils;
 

@@ -1,7 +1,8 @@
-﻿using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
+﻿using DAL.Service.Liquidacion.Features.Contrato.Abstracciones;
+using DAL.Service.Liquidacion.Features.Contrato.GetAcuerdosEmpleado;
+using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.UseCase.Empleados.Abstracciones;
 using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
-using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.RetencionesFijasDTOs;
 
 namespace BLL.Controllers
@@ -10,9 +11,12 @@ namespace BLL.Controllers
     {
 
         private readonly IEmpleadoService _empleados;
-        public EmpleadoController(IEmpleadoService empleados)
+        private readonly IAcuerdoService _acuerdos;
+        public EmpleadoController(IEmpleadoService empleados,
+                                  IAcuerdoService acuerdos)
         {
             _empleados = empleados;
+            _acuerdos = acuerdos;
         }
 
         public async Task<GetEmpleadoResponse> ObtenerDataEmpleado(string dniEmp)
@@ -53,15 +57,9 @@ namespace BLL.Controllers
 
         }
 
-        public async Task ConfigurarRetencionesDeEmpleado(List<string> codigosRetenciones, string numeroCuenta)
+        public async Task<GetAcuerdosEmpleadosResponse> GetHistorialAcuerdosEmpleado(string dniEmp)
         {
-            throw new NotImplementedException();
-        }
-
-        public async Task<List<ResumenContratoDTO>> ObtenerHistorialContratosEmpleado(string dniEmp)
-        {
-            //return await _contratoService.ObtenerContratosEmpleados(dniEmp);
-            throw new NotImplementedException();
+            return await _acuerdos.GetAcuerdosEmpleado(dniEmp);
         }
     }
 }

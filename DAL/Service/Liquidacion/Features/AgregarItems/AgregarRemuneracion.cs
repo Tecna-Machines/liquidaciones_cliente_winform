@@ -1,6 +1,5 @@
 ﻿using DAL.Service.Liquidacion.Http;
 using LAUCHA.application.DTOs.RemuneracionDTOs;
-using LAUCHA.application.DTOs.RetencionDTOs;
 using System.Net.Http.Json;
 using System.Text.Json;
 

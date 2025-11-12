@@ -4,6 +4,7 @@ using System.Configuration;
 using UI.Components.Screens;
 using UI.Screens.CrearContrato;
 using UI.Screens.CrearEmpleado;
+using UI.Screens.VerContratos;
 
 namespace UI
 {
@@ -69,7 +70,7 @@ namespace UI
 
         private void btnHistorialTrabajo_Click(object sender, EventArgs e)
         {
-            var crearAcuerdo = Program.ServiceProvider.GetRequiredService<CrearAcuerdoForm>();
+            var crearAcuerdo = Program.ServiceProvider.GetRequiredService<VerAcuerdoForm>();
             crearAcuerdo.ShowDialog();
         }
 

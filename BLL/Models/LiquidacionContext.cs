@@ -1,5 +1,4 @@
 ﻿using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
-using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
 
 namespace BLL.Models
@@ -18,7 +17,7 @@ namespace BLL.Models
 
         public static LiquidacionContext GetInstance()
         {
-            if(_instancia == null)
+            if (_instancia == null)
             {
                 _instancia = new LiquidacionContext();
             }
@@ -44,7 +43,7 @@ namespace BLL.Models
         public PeriodoDTO SetearPeriodo(PeriodoDTO periodo)
         {
 
-            if(periodo.Inicio == periodo.Fin)
+            if (periodo.Inicio == periodo.Fin)
             {
                 throw new IOException();
             }

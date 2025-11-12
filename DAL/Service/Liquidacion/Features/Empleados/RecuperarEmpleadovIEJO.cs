@@ -1,15 +1,14 @@
 ﻿using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.Http;
-using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using System.Text.Json;
 
 namespace DAL.Service.Liquidacion.UseCase.Empleados
 {
-    public class RecuperarEmpleado
+    public class RecuperarEmpleadovIEJO
     {
         private readonly ApiLiquidacion Client;
 
-        public RecuperarEmpleado(ApiLiquidacion client)
+        public RecuperarEmpleadovIEJO(ApiLiquidacion client)
         {
             this.Client = client;
         }
@@ -24,7 +23,7 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
 
 
 
-            List<GetEmpleadoResponse>? lista = JsonSerializer.Deserialize<List<GetEmpleadoResponse>>(responseBody,Client.GetJsonOptions());
+            List<GetEmpleadoResponse>? lista = JsonSerializer.Deserialize<List<GetEmpleadoResponse>>(responseBody, Client.GetJsonOptions());
 
             return lista ?? throw new NullReferenceException();
         }

@@ -6,6 +6,6 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados.Abstracciones
     public interface IEmpleadoService
     {
         Task<CrearEmpleadoResponse> Crear(CrearEmpleadoRequest empleado);
-        Task<GetEmpleadosResponse> GetAll(); 
+        Task<GetEmpleadosResponse> GetAll();
     }
 }

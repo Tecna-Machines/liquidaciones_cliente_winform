@@ -1,8 +1,11 @@
-﻿using DAL.Service.Liquidacion.Features.Empleados.Abstracciones;
+﻿using DAL.Service.Liquidacion.Features.Contrato.Abstracciones;
+using DAL.Service.Liquidacion.Features.Contrato.Crear;
+using DAL.Service.Liquidacion.Features.Contrato.GetAcuerdosEmpleado;
+using DAL.Service.Liquidacion.Features.Contrato.GetById;
+using DAL.Service.Liquidacion.Features.Empleados.Abstracciones;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.Http;
 using DAL.Service.Liquidacion.UseCase.Contrato.Abstracciones;
-using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
 using DAL.Service.Liquidacion.UseCase.Empleados.Abstracciones;
 using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +28,8 @@ namespace DAL
         {
 
             services.AddScoped<CrearAcuerdo>();
+            services.AddScoped<GetAcuerdoById>();
+            services.AddScoped<GetAcuerdoEmpleadoHandler>();
             services.AddScoped<IAcuerdoService, AcuerdoService>();
             return services;
         }

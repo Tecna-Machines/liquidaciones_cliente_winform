@@ -9,7 +9,7 @@ namespace UI.Screens.HacerLiquidacion.ItemForm
         private Form _formAnterior;
         private bool _esRemuneracionBlanca;
         private readonly AgregarItemController _itemController;
-        public AgregarRemuneracionForm(Form formAnterior,AgregarItemController itemController)
+        public AgregarRemuneracionForm(Form formAnterior, AgregarItemController itemController)
         {
 
             InitializeComponent();

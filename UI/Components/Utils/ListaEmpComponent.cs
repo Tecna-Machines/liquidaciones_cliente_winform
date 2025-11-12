@@ -1,6 +1,5 @@
 ﻿using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.UseCase.Empleados.Abstracciones;
-using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 
 namespace UI.Components.Utils
@@ -11,28 +10,34 @@ namespace UI.Components.Utils
         private List<GetEmpleadoResponse> _empleados;
         public event EventHandler<string>? EventDniSeleccionado;
         public event EventHandler<GetEmpleadoResponse> EventEmpleadoSeleccionado;
-        private readonly IEmpleadoService _empleadoService;
+        private IEmpleadoService _empleadoService;
+        public IServiceProvider? ServiceProvider { get; set; }
 
         private List<ListViewItem> listaOriginal = new List<ListViewItem>();
-        public ListaEmpComponent(IEmpleadoService service)
-        {
-            this.dniEmp = string.Empty;
-            this._empleados = new();
-            InitializeComponent();
-            _empleadoService = service;
-        }
 
         public ListaEmpComponent()
         {
             InitializeComponent();
-            _empleadoService = Program.ServiceProvider.GetRequiredService<IEmpleadoService>();
-            this.dniEmp = string.Empty;
-            this._empleados = new();
+            // Evita romper el diseñador
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                return;
+        }
 
+        protected override async void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                return;
+
+            _empleadoService = ServiceProvider?.GetService(typeof(IEmpleadoService)) as IEmpleadoService;
+
+            if (_empleadoService != null)
+                await ForzarCargarLista();
         }
 
 
-        public async void ForzarCargarLista()
+        public async Task ForzarCargarLista()
         {
 
             var response = await _empleadoService.GetAll();

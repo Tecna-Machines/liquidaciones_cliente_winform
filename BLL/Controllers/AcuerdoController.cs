@@ -1,5 +1,6 @@
-﻿using DAL.Service.Liquidacion.UseCase.Contrato.Abstracciones;
-using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
+﻿using DAL.Service.Liquidacion.Features.Contrato.Abstracciones;
+using DAL.Service.Liquidacion.Features.Contrato.Crear;
+using DAL.Service.Liquidacion.Features.Contrato.GetById;
 using LAUCHA.application.DTOs.ContratoDTOs;
 using LAUCHA.application.DTOs.ModalidadDTOs;
 
@@ -40,9 +41,9 @@ namespace BLL.Controllers
             return codigoAcuerdo;
         }
 
-        public async Task<ContratoDTO> ConsultarAcuerdo(string codContrato)
+        public async Task<GetAcuerdoByIdResponse> GetAcuerdo(string codContrato)
         {
-            throw new NotImplementedException();
+            return await _service.GetById(codContrato);
         }
     }
 }

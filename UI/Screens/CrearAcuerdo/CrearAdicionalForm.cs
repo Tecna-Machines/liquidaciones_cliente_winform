@@ -1,4 +1,4 @@
-﻿using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
+﻿using DAL.Service.Liquidacion.Features.Contrato.Crear;
 
 namespace UI.Screens.CrearContrato
 {

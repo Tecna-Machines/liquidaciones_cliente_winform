@@ -1,14 +1,13 @@
-﻿using DAL.Service.Liquidacion.UseCase.Contrato.Crear;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DAL.Service.Liquidacion.Features.Contrato.Crear;
+using DAL.Service.Liquidacion.Features.Contrato.GetAcuerdosEmpleado;
+using DAL.Service.Liquidacion.Features.Contrato.GetById;
 
-namespace DAL.Service.Liquidacion.UseCase.Contrato.Abstracciones
+namespace DAL.Service.Liquidacion.Features.Contrato.Abstracciones
 {
     public interface IAcuerdoService
     {
-        public Task<string> Crear(CrearAcuerdoRequest req);
+        Task<string> Crear(CrearAcuerdoRequest req);
+        Task<GetAcuerdosEmpleadosResponse> GetAcuerdosEmpleado(string dni);
+        Task<GetAcuerdoByIdResponse> GetById(string id);
     }
 }

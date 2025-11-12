@@ -28,7 +28,7 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados.Crear
                 return await GetJsonValue<CrearEmpleadoResponse>.GetBodyValue(response);
             }
 
-                throw new ArgumentException("no se pudo crear un empleado");
+            throw new ArgumentException("no se pudo crear un empleado");
         }
     }
 }

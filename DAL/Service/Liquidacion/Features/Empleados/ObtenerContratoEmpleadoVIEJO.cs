@@ -4,11 +4,11 @@ using System.Text.Json;
 
 namespace DAL.Service.Liquidacion.UseCase.Empleados
 {
-    public class ObtenerContratoEmpleado
+    public class ObtenerContratoEmpleadoVIEJO
     {
         private readonly ApiLiquidacion Client;
 
-        public ObtenerContratoEmpleado(ApiLiquidacion client)
+        public ObtenerContratoEmpleadoVIEJO(ApiLiquidacion client)
         {
             Client = client;
         }
@@ -26,7 +26,7 @@ namespace DAL.Service.Liquidacion.UseCase.Empleados
             }
 
             string responseBody = await response.Content.ReadAsStringAsync();
-            ContratoDTO? contrato = JsonSerializer.Deserialize<ContratoDTO>(responseBody,Client.GetJsonOptions());
+            ContratoDTO? contrato = JsonSerializer.Deserialize<ContratoDTO>(responseBody, Client.GetJsonOptions());
 
             return contrato ?? throw new NullReferenceException();
         }

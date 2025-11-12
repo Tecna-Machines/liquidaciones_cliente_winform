@@ -12,8 +12,8 @@ namespace BLL
 
             services.AddScoped<ConfirmarLiquidacion>();
             services.AddScoped<SimularLiquidacionEmpleado>();
-            services.AddScoped<ObtenerContratoEmpleado>();
-            services.AddScoped<RecuperarEmpleado>();
+            services.AddScoped<ObtenerContratoEmpleadoVIEJO>();
+            services.AddScoped<RecuperarEmpleadovIEJO>();
             services.AddScoped<CrearLiquidacionController>();
             services.AddScoped<AcuerdoController>();
             services.AddScoped<EmpleadoController>();

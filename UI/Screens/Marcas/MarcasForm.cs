@@ -1,14 +1,5 @@
 ﻿using BLL.Models;
 using DAL.Service.Liquidacion.Modesl.MarcasDTOs;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using UI.Utils;
 
 namespace UI.Screens.Marcas
@@ -32,7 +23,7 @@ namespace UI.Screens.Marcas
             DateTime fechaFin = periodo.Fin;
 
 
-            if(fechaFin.Day > 15)
+            if (fechaFin.Day > 15)
             {
                 fechaInicio = new DateTime(periodo.Inicio.Year, periodo.Inicio.Month, 1);
             }
