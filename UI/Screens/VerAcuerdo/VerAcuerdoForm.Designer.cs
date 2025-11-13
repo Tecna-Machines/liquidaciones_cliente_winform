@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerAcuerdoForm));
             groupBox2 = new GroupBox();
             textBoxFechaAcuerdo = new TextBox();
-            textBoxBlanco = new TextBox();
+            textBoxValorBlanco = new TextBox();
             textBoxValorSueldo = new TextBox();
             textBoxValorHora = new TextBox();
             label6 = new Label();
@@ -69,7 +69,7 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(textBoxFechaAcuerdo);
-            groupBox2.Controls.Add(textBoxBlanco);
+            groupBox2.Controls.Add(textBoxValorBlanco);
             groupBox2.Controls.Add(textBoxValorSueldo);
             groupBox2.Controls.Add(textBoxValorHora);
             groupBox2.Controls.Add(label6);
@@ -98,15 +98,15 @@
             textBoxFechaAcuerdo.Size = new Size(202, 23);
             textBoxFechaAcuerdo.TabIndex = 27;
             // 
-            // textBoxBlanco
+            // textBoxValorBlanco
             // 
-            textBoxBlanco.BackColor = SystemColors.ButtonHighlight;
-            textBoxBlanco.ForeColor = SystemColors.ActiveCaptionText;
-            textBoxBlanco.Location = new Point(413, 102);
-            textBoxBlanco.Name = "textBoxBlanco";
-            textBoxBlanco.ReadOnly = true;
-            textBoxBlanco.Size = new Size(149, 23);
-            textBoxBlanco.TabIndex = 24;
+            textBoxValorBlanco.BackColor = SystemColors.ButtonHighlight;
+            textBoxValorBlanco.ForeColor = SystemColors.ActiveCaptionText;
+            textBoxValorBlanco.Location = new Point(413, 102);
+            textBoxValorBlanco.Name = "textBoxValorBlanco";
+            textBoxValorBlanco.ReadOnly = true;
+            textBoxValorBlanco.Size = new Size(149, 23);
+            textBoxValorBlanco.TabIndex = 24;
             // 
             // textBoxValorSueldo
             // 
@@ -383,7 +383,7 @@
         private TextBox textBoxTipoSueldo;
         private TextBox textBoxCodAcuerdo;
         private TextBox textBoxFechaAcuerdo;
-        private TextBox textBoxBlanco;
+        private TextBox textBoxValorBlanco;
         private TextBox textBoxValorSueldo;
         private TextBox textBoxValorHora;
         private Label label6;

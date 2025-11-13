@@ -23,6 +23,7 @@ namespace UI.Screens.VerContratos
 
         private void ClickEnEmpleado(object? sender, GetEmpleadoResponse emp)
         {
+            LimpiarHistorialAnterior();
             CargarHistorialContratos(emp);
         }
 
@@ -34,7 +35,6 @@ namespace UI.Screens.VerContratos
 
         private async void CargarHistorialContratos(GetEmpleadoResponse emp)
         {
-            LimpiarHistorialAnterior();
             SetDatosEmpleado(emp);
 
             var response = await _empleadoController.GetHistorialAcuerdosEmpleado(emp.Dni);
@@ -56,37 +56,71 @@ namespace UI.Screens.VerContratos
 
         private async void Select_AcuerdoDeHistorial(object sender, EventArgs e)
         {
+            listAdicionales.Items.Clear();
 
-             var acuerdo = await GetAcuerdoSeleccionado();
-            SetDatosAcuerdo(acuerdo);
+            var codAcuerdo = GetCodigoAcuerdoSeleccionado();
+
+            if(codAcuerdo != string.Empty)
+            {
+                var acuerdo = await GetAcuerdoSeleccionado(codAcuerdo);
+                SetDatosAcuerdo(acuerdo);
+            }
         }
 
-        private async Task<GetAcuerdoByIdResponse> GetAcuerdoSeleccionado()
+        private async Task<GetAcuerdoByIdResponse> GetAcuerdoSeleccionado(string codAcuerdo)
         {
-            var codAcuerdo = GetCodigoAcuerdoSeleccionado();
             var acuerdo = await _acuerdoController.GetAcuerdo(codAcuerdo);
             return acuerdo;
         }
         private string GetCodigoAcuerdoSeleccionado()
         {
-            if (listHistorial.SelectedItems.Count == 0)
-                return "";
+            if (listHistorial.SelectedItems.Count > 0)
+            {
+                var contrato = listHistorial.SelectedItems[0].Tag as GetAcuerdoEmpleado;
+                if (contrato == null)
+                    return "";
 
-            var contrato = listHistorial.SelectedItems[0].Tag as GetAcuerdoEmpleado;
-            if (contrato == null)
-                return "";
-
-            return contrato.Codigo;
+                return contrato.Codigo;
+            }
+            return string.Empty;
         }
 
         private void SetDatosAcuerdo(GetAcuerdoByIdResponse acuerdo)
         {
             textBoxCodAcuerdo.Text = acuerdo.Codigo;
+            textBoxValorHora.Text = acuerdo.ValorHora.ToString("C");
+            textBoxValorSueldo.Text = acuerdo.Sueldo.ToString("C");
+            textBoxValorBlanco.Text = acuerdo.ValorBlanco.ToString("C");
+            textBoxFechaAcuerdo.Text = acuerdo.Fecha.ToString("dd/MM/yyyy");
+            textBoxTipoSueldo.Text = acuerdo.TipoSueldo.Descripcion;
+
+            SetTablaAdicionales(acuerdo.Adicionales);
+        }
+
+        private void SetTablaAdicionales(IEnumerable<AdicionalAcuerdoResponse> adi)
+        {
+            foreach (var adicional in adi)
+            {
+                ListViewItem item = new(adicional.Concepto);
+                item.SubItems.Add(adicional.Monto.ToString("C"));
+                item.SubItems.Add(adicional.EsEnBlanco.ToString());
+                item.SubItems.Add(adicional.EsPorcentual.ToString());
+
+                listAdicionales.Items.Add(item);
+            }
         }
 
         private void LimpiarHistorialAnterior()
         {
+            ListUtils.LimpiarElementos(this.listAdicionales);
             ListUtils.LimpiarElementos(this.listHistorial);
+
+            textBoxCodAcuerdo.Text = string.Empty;
+            textBoxValorHora.Text = string.Empty;
+            textBoxValorSueldo.Text = string.Empty;
+            textBoxValorBlanco.Text = string.Empty;
+            textBoxFechaAcuerdo.Text = string.Empty;
+            textBoxTipoSueldo.Text = string.Empty;
         }
     }
 }
