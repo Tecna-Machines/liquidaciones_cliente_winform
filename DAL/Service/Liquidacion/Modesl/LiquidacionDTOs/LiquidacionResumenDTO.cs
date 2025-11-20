@@ -9,6 +9,6 @@
         public decimal TotalDescuentos { get; set; }
         public decimal TotalNoRemunerativo { get; set; }
         public DateTime Fecha { get; set; }
-        public PeriodoDTO Periodo { get; set; } = null!;
+        public Quincena Periodo { get; set; } = null!;
     }
 }

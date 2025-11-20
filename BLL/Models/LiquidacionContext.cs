@@ -6,7 +6,7 @@ namespace BLL.Models
     public sealed class LiquidacionContext
     {
         private string? dniEmpleado;
-        private PeriodoDTO? periodoALiquidar;
+        private Quincena? periodoALiquidar;
         private LiquidacionDTO? liquidacion;
         private GetEmpleadoResponse? empleado;
 
@@ -29,7 +29,7 @@ namespace BLL.Models
             return liquidacion;
         }
 
-        public PeriodoDTO? GetPeriodo()
+        public Quincena? GetPeriodo()
         {
             return periodoALiquidar;
         }
@@ -40,7 +40,7 @@ namespace BLL.Models
             return liquidacion;
         }
 
-        public PeriodoDTO SetearPeriodo(PeriodoDTO periodo)
+        public Quincena SetearPeriodo(Quincena periodo)
         {
 
             if (periodo.Inicio == periodo.Fin)

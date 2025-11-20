@@ -17,7 +17,7 @@ namespace UI.Screens.HacerLiquidacion
         private readonly EmpleadoController _empleadoController;
         private List<GetEmpleadoResponse> _empleados;
         private LiquidacionContext _context;
-        private PeriodoDTO _periodoLiquidar;
+        private Quincena _periodoLiquidar;
         private bool _esPrimeraQuincena;
         private PeriodoLiquiComponent _periodoComponent;
 
@@ -96,7 +96,7 @@ namespace UI.Screens.HacerLiquidacion
             this.CargarTablaContrato(contrato);
         }
 
-        private void SetearLabelPeriodo(PeriodoDTO? periodo)
+        private void SetearLabelPeriodo(Quincena? periodo)
         {
             if (periodo == null)
             {
@@ -146,7 +146,7 @@ namespace UI.Screens.HacerLiquidacion
         {
             this.LimpiarTodasLasTablasLiquidacion();
             string dni = _context.GetDniEmpleado();
-            PeriodoDTO periodo = _context.GetPeriodo();
+            Quincena periodo = _context.GetPeriodo();
 
             LiquidacionDTO liquidacionSimulada;
 
@@ -196,7 +196,6 @@ namespace UI.Screens.HacerLiquidacion
         {
             ListUtils.LimpiarElementos(this.listaSueldoBlanco);
             ListUtils.LimpiarElementos(this.listaSueldoBillete);
-            ListUtils.LimpiarElementos(this.listaSubtotales);
         }
 
         private void ClickBtnMarcas(object sender, EventArgs e)
@@ -273,16 +272,11 @@ namespace UI.Screens.HacerLiquidacion
 
             var itemNegro = new ListViewItem("EN NEGRO");
             itemNegro.SubItems.Add(liquidacion.TotalBrutoEfectivo.ToString("c"));
-
-            listaSubtotales.Items.Add(itemRemunerativo);
-            listaSubtotales.Items.Add(itemRetenciones);
-            listaSubtotales.Items.Add(itemNegro);
         }
 
         private void CargarTablaPagarEmpleado(LiquidacionDTO liquidacion)
         {
 
-            listaPagarEmpleado.Items.Clear();
 
             var itemEfectivo = new ListViewItem("EN EL SOBRE");
             itemEfectivo.SubItems.Add(liquidacion.TotalPagarEfectivo.ToString("C"));
@@ -290,8 +284,7 @@ namespace UI.Screens.HacerLiquidacion
             var itemBanco = new ListViewItem("EN EL BANCO");
             itemBanco.SubItems.Add(liquidacion.TotalPagarBanco.ToString("C"));
 
-            listaPagarEmpleado.Items.Add(itemBanco);
-            listaPagarEmpleado.Items.Add(itemEfectivo);
+
         }
 
         private void ClickBtnAgregarItem(object sender, EventArgs e)

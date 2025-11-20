@@ -65,13 +65,13 @@ namespace UI
         private void btnCrearContrato_Click(object sender, EventArgs e)
         {
             var crearAcuerdo = Program.ServiceProvider.GetRequiredService<CrearAcuerdoForm>();
-            crearAcuerdo.ShowDialog();
+            crearAcuerdo.Show();
         }
 
         private void btnHistorialTrabajo_Click(object sender, EventArgs e)
         {
-            var crearAcuerdo = Program.ServiceProvider.GetRequiredService<VerAcuerdoForm>();
-            crearAcuerdo.ShowDialog();
+            var crearAcuerdo = Program.ServiceProvider.GetRequiredService<VerAcuerdosForm>();
+            crearAcuerdo.Show();
         }
 
         private void btnCreditos_Click(object sender, EventArgs e)

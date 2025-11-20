@@ -33,7 +33,7 @@ namespace BLL.Controllers
             return await this.recuperarEmpleados.ObtenerEmpleados();
         }
 
-        public async Task<LiquidacionDTO> SimularLiquidacion(string dni, PeriodoDTO periodo)
+        public async Task<LiquidacionDTO> SimularLiquidacion(string dni, Quincena periodo)
         {
             return await simulador.SimularLiquidacion(dni, periodo);
         }
@@ -43,7 +43,7 @@ namespace BLL.Controllers
             return await recuperarContrato.ObtenerUltimoContratoEmp(dniEmp);
         }
 
-        public async Task<LiquidacionDTO> ConfirmarLiquidacion(string dni, PeriodoDTO periodo)
+        public async Task<LiquidacionDTO> ConfirmarLiquidacion(string dni, Quincena periodo)
         {
             return await ConfirmarLiquidacion1.CompletarLiquidacion(dni, periodo);
         }

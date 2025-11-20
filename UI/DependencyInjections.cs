@@ -12,7 +12,7 @@ namespace UI
         public static IServiceCollection AddFormsServices(this IServiceCollection services)
         {
             services.AddScoped<CrearAcuerdoForm>();
-            services.AddScoped<VerAcuerdoForm>();
+            services.AddScoped<VerAcuerdosForm>();
             services.AddScoped<VerLiquidacionForm>();
             services.AddScoped<CrearLiquidacionForm>();
             services.AddScoped<CrearEmpleadoForm>();

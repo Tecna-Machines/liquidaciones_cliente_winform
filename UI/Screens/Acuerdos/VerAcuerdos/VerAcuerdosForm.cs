@@ -6,11 +6,11 @@ using UI.Utils;
 
 namespace UI.Screens.VerContratos
 {
-    public partial class VerAcuerdoForm : Form
+    public partial class VerAcuerdosForm : Form
     {
         private readonly EmpleadoController _empleadoController;
         private readonly AcuerdoController _acuerdoController;
-        public VerAcuerdoForm(EmpleadoController empleadoController, IServiceProvider sp, AcuerdoController acuerdoController)
+        public VerAcuerdosForm(EmpleadoController empleadoController, IServiceProvider sp, AcuerdoController acuerdoController)
         {
             InitializeComponent();
 
@@ -60,7 +60,7 @@ namespace UI.Screens.VerContratos
 
             var codAcuerdo = GetCodigoAcuerdoSeleccionado();
 
-            if(codAcuerdo != string.Empty)
+            if (codAcuerdo != string.Empty)
             {
                 var acuerdo = await GetAcuerdoSeleccionado(codAcuerdo);
                 SetDatosAcuerdo(acuerdo);

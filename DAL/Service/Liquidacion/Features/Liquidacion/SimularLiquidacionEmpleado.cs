@@ -13,7 +13,7 @@ namespace DAL.Service.Liquidacion.UseCase.Liquidacion
             Client = client;
         }
 
-        public async Task<LiquidacionDTO> SimularLiquidacion(string dniEmp, PeriodoDTO periodo)
+        public async Task<LiquidacionDTO> SimularLiquidacion(string dniEmp, Quincena periodo)
         {
             string fechaInicio = periodo.Inicio.ToString("yyyy-MM-ddTHH:mm:ssZ", System.Globalization.CultureInfo.InvariantCulture);
             string fechaFin = periodo.Fin.ToString("yyyy-MM-ddTHH:mm:ssZ", System.Globalization.CultureInfo.InvariantCulture);

@@ -30,7 +30,7 @@ namespace DAL.Service.Liquidacion.UseCase.Contrato.Abstracciones
 
         async Task<GetAcuerdoByIdResponse> IAcuerdoService.GetById(string id)
         {
-            return  await _getAcuerdoById.GetById(id);
+            return await _getAcuerdoById.GetById(id);
         }
     }
 }

@@ -31,13 +31,13 @@ namespace UI
 
         private void ClickBtnConfirmarPeriodo(object sender, EventArgs e)
         {
-            DateTime fechaInicio = this.calendarioFechaInicio.SelectionStart;
-            DateTime fechaFin = this.calendarioFechaFin.SelectionStart;
-
-            var periodoLiquidacion = new PeriodoDTO
+            var quincenaElegida = new Quincena
             {
-                Inicio = fechaInicio,
-                Fin = fechaFin
+                Inicio = DateTime.Now,
+                Fin = DateTime.Now,
+                Nro = primeraQuincenaActiva ? 1 : 2,
+                Anio = year,
+                Mes = mes
             };
 
 
@@ -50,7 +50,7 @@ namespace UI
                 this.mes = selectedMesIndex;
                 this.year = selectedYear;
 
-                periodoLiquidacion = new PeriodoDTO
+                quincenaElegida = new Quincena
                 {
                     Inicio = new DateTime(this.year, this.mes, 1),
                     Fin = new DateTime(this.year, this.mes, 15)
@@ -58,7 +58,7 @@ namespace UI
 
             }
 
-            if (this.segundaQuincenaActiva)
+            if (!this.primeraQuincenaActiva)
             {
                 int selectedMesIndex = comboBoxMeses.SelectedIndex + 1;
                 int selectedYear = int.Parse(comboBoxYear.SelectedItem.ToString());
@@ -69,7 +69,7 @@ namespace UI
 
                 int ultimoDiaMes = DateTime.DaysInMonth(this.year, this.mes);
 
-                periodoLiquidacion = new PeriodoDTO
+                quincenaElegida = new Quincena
                 {
                     Inicio = new DateTime(this.year, this.mes, 16),
                     Fin = new DateTime(this.year, this.mes, ultimoDiaMes),
@@ -82,7 +82,7 @@ namespace UI
 
             try
             {
-                context.SetearPeriodo(periodoLiquidacion);
+                context.SetearPeriodo(quincenaElegida);
             }
             catch (IOException)
             {
@@ -178,6 +178,7 @@ namespace UI
             }
 
         }
+
 
     }
 }
