@@ -36,7 +36,7 @@ namespace UI
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    services.AddLiquidacionApi();
+                    services.AddInfrastructureServices();
                     services.AddControllers();
                     services.AddFormsServices();
                 });

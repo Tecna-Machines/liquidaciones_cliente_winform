@@ -4,6 +4,8 @@ using DAL.Service.Liquidacion.Features.Contrato.GetAcuerdosEmpleado;
 using DAL.Service.Liquidacion.Features.Contrato.GetById;
 using DAL.Service.Liquidacion.Features.Empleados.Abstracciones;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
+using DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones;
+using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using DAL.Service.Liquidacion.Http;
 using DAL.Service.Liquidacion.UseCase.Contrato.Abstracciones;
 using DAL.Service.Liquidacion.UseCase.Empleados.Abstracciones;
@@ -14,12 +16,13 @@ namespace DAL
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddLiquidacionApi(this IServiceCollection services)
+        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
-            services.AddScoped<ApiLiquidacion>();
+            services.AddScoped<ClientApiLiquidacion>();
 
             AddAcuerdos(services);
             AddEmpleados(services);
+            AddLiquidacion(services);
 
             return services;
         }
@@ -40,6 +43,14 @@ namespace DAL
             services.AddScoped<GetTodosEmpleados>();
 
             services.AddScoped<IEmpleadoService, EmpleadoService>();
+            return services;
+        }
+
+        private static IServiceCollection AddLiquidacion(this IServiceCollection services)
+        {
+            services.AddScoped<GetLiquidacion>();
+            services.AddScoped<ILiquidacionService, LiquidacionService>();
+
             return services;
         }
     }

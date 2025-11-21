@@ -16,50 +16,6 @@ namespace UI.Screens.VerLiquidacion
 
             var contexto = LiquidacionContext.GetInstance();
 
-            this.CargarTablaDetalleLiquidacion(contexto.ObtenerLiquidacion()!);
-            this.CargarTablaAcuerdo(contexto.ObtenerLiquidacion()!);
-            this.CargarTablaSueldoBlanco(contexto.ObtenerLiquidacion()!);
-            this.CargarTablaSueldoBillete(contexto.ObtenerLiquidacion()!);
-            this.CargarTablaEmpleado(contexto.ObtenerLiquidacion()!);
-            this.CargarTablaPagos(contexto.ObtenerLiquidacion()!);
-            this.AjustarTablas();
-        }
-
-        private void CargarTablaDetalleLiquidacion(LiquidacionDTO liquidacion)
-        {
-            this.textBoxCodigoLiq.Text = liquidacion.Codigo;
-            this.textBoxFechaInicio.Text = liquidacion.Periodo.Inicio.ToString("dd/MM/yyyy");
-            this.textBoxFechaFin.Text = liquidacion.Periodo.Fin.ToString("dd/MM/yyyy");
-
-            if (liquidacion.Periodo.Inicio.Day < 15)
-            {
-                this.textBoxPeriodo.Text = $"2da Quicena de {liquidacion.Periodo.Inicio.ToString("MMMM")}";
-            }
-            else
-            {
-                this.textBoxPeriodo.Text = $"1ra Quicena de {liquidacion.Periodo.Inicio.ToString("MMMM")}";
-
-            }
-        }
-
-        private void CargarTablaAcuerdo(LiquidacionDTO liquidacion)
-        {
-            var acuerdo = liquidacion.Contrato;
-
-            this.textBoxCodigoContrato.Text = acuerdo.Codigo;
-            this.textBoxModalidad.Text = acuerdo.Modalidad.Descripcion;
-            this.textBoxFechaContrato.Text = acuerdo.Fecha;
-            this.textBoxMontoFijoContrato.Text = acuerdo.MontoFijo.ToString("c");
-            this.textBoxMontoHoraContrato.Text = acuerdo.MontoHora.ToString("c");
-
-            if (acuerdo.AcuerdoBlanco.EsPorcentual)
-            {
-                this.textBoxParteBlancaContrato.Text = $"{acuerdo.AcuerdoBlanco.Cantidad} %";
-            }
-            else
-            {
-                this.textBoxParteBlancaContrato.Text = acuerdo.AcuerdoBlanco.Cantidad.ToString("c");
-            }
         }
 
         private void CargarTablaSueldoBlanco(LiquidacionDTO liquidacion)
