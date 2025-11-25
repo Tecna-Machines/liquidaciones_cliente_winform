@@ -92,9 +92,7 @@ namespace UI
 
             CrearLiquidacionForm form = Program.ServiceProvider.GetRequiredService<CrearLiquidacionForm>();
 
-            if (primeraQuincenaActiva)
-                form.EsPrimeraQuicena();
-
+            form.SetQuincena(primeraQuincenaActiva ? 1 : 2,mes,year);
             form.Show();
         }
 

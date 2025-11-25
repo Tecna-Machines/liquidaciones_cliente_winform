@@ -14,7 +14,7 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
         public async Task<GetLiquidacionByIdResponse> Get(string codigo)
         {
 
-            HttpResponseMessage response = await _api.GetAsync($"Liquidaciones/{codigo}");
+            HttpResponseMessage response = await _api.GetAsync($"Liquidacion/{codigo}");
 
             int statusCode = await GetHttpStatusCode.GetCode(response);
 

@@ -2,9 +2,10 @@
 using BLL.Enums;
 using BLL.Models;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
-using LAUCHA.application.DTOs.ContratoDTOs;
+using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using LAUCHA.application.DTOs.LiquidacionDTOs;
 using Microsoft.Extensions.DependencyInjection;
+using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Marcas;
 using UI.Screens.VerLiquidacion;
 using UI.Utils;
@@ -15,15 +16,19 @@ namespace UI.Screens.HacerLiquidacion
     {
         private readonly CrearLiquidacionController _controller;
         private readonly EmpleadoController _empleadoController;
-        private List<GetEmpleadoResponse> _empleados;
         private LiquidacionContext _context;
         private Quincena _periodoLiquidar;
         private bool _esPrimeraQuincena;
-        private PeriodoLiquiComponent _periodoComponent;
+        private LiquidacionController _liquidacionController;
 
+
+        private int _quincena;
+        private int _anio;
+        private int _mes;
+        private string _dniEmpleado;
 
         private List<GetEmpleadoResponse> empleadoDTOs;
-        public CrearLiquidacionForm(EmpleadoController empleadoController)
+        public CrearLiquidacionForm(EmpleadoController empleadoController, LiquidacionController liquidacionController)
         {
             _context = LiquidacionContext.GetInstance();
             _periodoLiquidar = _context.GetPeriodo();
@@ -38,8 +43,32 @@ namespace UI.Screens.HacerLiquidacion
             _esPrimeraQuincena = false;
             _empleadoController = empleadoController;
             IniciarConfiguraciones();
+            _liquidacionController = liquidacionController;
         }
 
+        public void SetQuincena(int quincena, int mes, int anio)
+        {
+            string quincenaStr = "error";
+            string mesStr = MesMapper.MapToString(mes);
+
+            _mes = mes;
+            _anio = anio;
+
+            if (quincena == 1)
+            {
+                _quincena = quincena;
+                quincenaStr = "1ra";
+                _esPrimeraQuincena = true;
+            }
+            else
+            {
+                quincenaStr = "2da";
+                _quincena = quincena;
+                _esPrimeraQuincena = false;
+            }
+
+            textBoxPeriodo.Text = $"{quincenaStr} {mesStr} {anio}";
+        }
         public void EsPrimeraQuicena() => _esPrimeraQuincena = true;
 
         private async void PrimeraQuincenaSeteada(bool primeraQuincenaActiva)
@@ -76,24 +105,18 @@ namespace UI.Screens.HacerLiquidacion
 
         }
 
-        private async void OnEmpleadoSeleccionado(object? sender, string dni)
+        private void OnEmpleadoSeleccionado(object? sender, string dni)
         {
-            GetEmpleadoResponse? empleado = empleadoDTOs.FirstOrDefault(emp => emp.Dni == dni);
+            GetEmpleadoResponse? emp = empleadoDTOs.FirstOrDefault(emp => emp.Dni == dni);
             this.LimpiarTodasLasTablasLiquidacion();
 
-            if (empleado == null)
+            if (emp == null)
             {
                 return;
             }
 
-            this.dniLabel.Text = $"DNI: {empleado.Dni}";
-            this.nombreLabel.Text = $"Nombre Completo: {empleado.Nombre} {empleado.Apellido}";
-
-            _context.SetDniEmpleado(empleado.Dni);
-            _context.SetEmpleado(empleado);
-
-            var contrato = await _controller.ObtenerContratoActual(empleado.Dni);
-            this.CargarTablaContrato(contrato);
+            _dniEmpleado = emp.Dni;
+            textBoxEmpleado.Text = $"{emp.Dni} - {emp.Nombre} {emp.Apellido}";
         }
 
         private void SetearLabelPeriodo(Quincena? periodo)
@@ -107,63 +130,25 @@ namespace UI.Screens.HacerLiquidacion
             string inicio = periodo.Inicio.ToString("dd/MM/yyyy");
             string fin = periodo.Fin.ToString("dd/MM/yyyy");
 
-            this.labelPeriodo.Text = $"periodo a liquidar: {inicio} hasta {fin}";
 
             bool primeraQuincea = periodo.Inicio.Day <= 15;
             string mes = periodo.Inicio.ToString("MMMM");
 
-            this.labelQuincena.Text = $"[1ra quincena {mes}]";
-
-            if (!primeraQuincea)
-            {
-                this.labelQuincena.Text = $"[ 2da quincena {mes}]";
-            }
         }
 
-        private void CargarTablaContrato(ContratoDTO contrato)
+        private async void BtnRecalcular_Click(object sender, EventArgs e)
         {
+            var codigo = GenerarCodigoLiquidacion();
 
-            ListUtils.LimpiarElementos(this.listContrato);
+            var liquidacion = await _liquidacionController.GetById(codigo);
+            SetLiqidacion(liquidacion);
 
-
-            string montoBlanco = contrato.AcuerdoBlanco.Cantidad.ToString("c");
-
-            if (contrato.AcuerdoBlanco.EsPorcentual)
-            {
-                montoBlanco = $"{contrato.AcuerdoBlanco.Cantidad}%";
-            }
-
-            var contratoItem = new ListViewItem(contrato.Codigo);
-            contratoItem.SubItems.Add(contrato.MontoFijo.ToString("c"));
-            contratoItem.SubItems.Add(contrato.MontoHora.ToString("c"));
-            contratoItem.SubItems.Add(contrato.Modalidad.Descripcion);
-            contratoItem.SubItems.Add(montoBlanco);
-            listContrato.Items.Add(contratoItem);
-
+            Dialog.Success(liquidacion.Empleado.Dni + "existe!!1");
         }
 
-        private async void ClickBtnPreLiquidar(object sender, EventArgs e)
+        private void SetLiqidacion(GetLiquidacionByIdResponse liquidacion)
         {
-            this.LimpiarTodasLasTablasLiquidacion();
-            string dni = _context.GetDniEmpleado();
-            Quincena periodo = _context.GetPeriodo();
-
-            LiquidacionDTO liquidacionSimulada;
-
-            try
-            {
-                liquidacionSimulada = await _controller.SimularLiquidacion(dni, periodo);
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("ocurrio un problema durante la simulacion");
-                return;
-            }
-
-            _context.SetLiquidacion(liquidacionSimulada);
-
-            this.CargarTablasLiquidacion(liquidacionSimulada);
+            TablasLiquidacionForm.SetTablaAcuerdo(liquidacion, tablaAcuerdo);
         }
 
 
@@ -293,5 +278,8 @@ namespace UI.Screens.HacerLiquidacion
 
             formItems.ShowDialog();
         }
+
+        private  string GenerarCodigoLiquidacion()
+            => $"{_anio}:{_mes}:{_quincena}:{_dniEmpleado}";
     }
 }

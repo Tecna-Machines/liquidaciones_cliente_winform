@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearLiquidacionForm));
             listaEmpComponent1 = new UI.Components.Utils.ListaEmpComponent();
-            panel1 = new Panel();
-            labelQuincena = new Label();
-            labelPeriodo = new Label();
-            nombreLabel = new Label();
-            dniLabel = new Label();
+            panelDatos = new Panel();
+            label4 = new Label();
+            textBoxEmpleado = new TextBox();
+            label3 = new Label();
+            textBoxPeriodo = new TextBox();
             labelRemuneraciones = new Label();
             labelRetenciones = new Label();
             listaSueldoBlanco = new ListView();
@@ -45,23 +45,23 @@
             columnFecha = new ColumnHeader();
             listaSueldoBillete = new ListView();
             columDescrip = new ColumnHeader();
+            columnRemu = new ColumnHeader();
+            columnDescuento = new ColumnHeader();
             columFecha = new ColumnHeader();
             labelaAcuerdo = new Label();
-            listContrato = new ListView();
+            tablaAcuerdo = new ListView();
             columnItem = new ColumnHeader();
             columValor = new ColumnHeader();
-            btnRecalcularRetenciones = new Button();
+            BtnRecalcular = new Button();
             btnSellar = new Button();
             btnMarcas = new Button();
             btnItem = new Button();
-            columnRemu = new ColumnHeader();
-            columnDescuento = new ColumnHeader();
             groupBoxMontosPagar = new GroupBox();
-            valorPagarBlanco = new Label();
-            valorPagarNegro = new Label();
-            label1 = new Label();
             label2 = new Label();
-            panel1.SuspendLayout();
+            label1 = new Label();
+            valorPagarNegro = new Label();
+            valorPagarBlanco = new Label();
+            panelDatos.SuspendLayout();
             groupBoxMontosPagar.SuspendLayout();
             SuspendLayout();
             // 
@@ -73,54 +73,64 @@
             listaEmpComponent1.Size = new Size(314, 682);
             listaEmpComponent1.TabIndex = 0;
             // 
-            // panel1
+            // panelDatos
             // 
-            panel1.Controls.Add(labelQuincena);
-            panel1.Controls.Add(labelPeriodo);
-            panel1.Controls.Add(nombreLabel);
-            panel1.Controls.Add(dniLabel);
-            panel1.Location = new Point(314, 27);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(963, 100);
-            panel1.TabIndex = 1;
+            panelDatos.Controls.Add(label4);
+            panelDatos.Controls.Add(textBoxEmpleado);
+            panelDatos.Controls.Add(label3);
+            panelDatos.Controls.Add(textBoxPeriodo);
+            panelDatos.Location = new Point(314, 42);
+            panelDatos.Name = "panelDatos";
+            panelDatos.Size = new Size(1001, 109);
+            panelDatos.TabIndex = 1;
             // 
-            // labelQuincena
+            // label4
             // 
-            labelQuincena.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            labelQuincena.Location = new Point(201, 0);
-            labelQuincena.Name = "labelQuincena";
-            labelQuincena.Size = new Size(283, 38);
-            labelQuincena.TabIndex = 3;
-            labelQuincena.Text = "[QUINCENA]";
+            label4.BackColor = SystemColors.ActiveCaption;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(224, 35);
+            label4.Name = "label4";
+            label4.Padding = new Padding(3);
+            label4.Size = new Size(579, 24);
+            label4.TabIndex = 22;
+            label4.Text = "EMPLEADO";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // labelPeriodo
+            // textBoxEmpleado
             // 
-            labelPeriodo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelPeriodo.Location = new Point(530, 0);
-            labelPeriodo.Name = "labelPeriodo";
-            labelPeriodo.Size = new Size(433, 38);
-            labelPeriodo.TabIndex = 2;
-            labelPeriodo.Text = "<error de periodo>";
+            textBoxEmpleado.BackColor = SystemColors.ButtonHighlight;
+            textBoxEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            textBoxEmpleado.Location = new Point(224, 62);
+            textBoxEmpleado.Name = "textBoxEmpleado";
+            textBoxEmpleado.ReadOnly = true;
+            textBoxEmpleado.Size = new Size(579, 29);
+            textBoxEmpleado.TabIndex = 21;
+            textBoxEmpleado.Text = "00000000 - Mariano Mirian Leguizamol";
+            textBoxEmpleado.TextAlign = HorizontalAlignment.Center;
             // 
-            // nombreLabel
+            // label3
             // 
-            nombreLabel.AutoSize = true;
-            nombreLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            nombreLabel.Location = new Point(3, 52);
-            nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new Size(133, 21);
-            nombreLabel.TabIndex = 1;
-            nombreLabel.Text = "<sin seleccionar>";
+            label3.BackColor = SystemColors.ActiveCaption;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(18, 35);
+            label3.Name = "label3";
+            label3.Padding = new Padding(3);
+            label3.Size = new Size(181, 24);
+            label3.TabIndex = 20;
+            label3.Text = "PERIODO";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // dniLabel
+            // textBoxPeriodo
             // 
-            dniLabel.AutoSize = true;
-            dniLabel.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            dniLabel.Location = new Point(3, 10);
-            dniLabel.Name = "dniLabel";
-            dniLabel.Size = new Size(165, 28);
-            dniLabel.TabIndex = 0;
-            dniLabel.Text = "<sin seleccionar>";
+            textBoxPeriodo.BackColor = SystemColors.ButtonHighlight;
+            textBoxPeriodo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            textBoxPeriodo.Location = new Point(18, 62);
+            textBoxPeriodo.Name = "textBoxPeriodo";
+            textBoxPeriodo.ReadOnly = true;
+            textBoxPeriodo.Size = new Size(181, 29);
+            textBoxPeriodo.TabIndex = 0;
+            textBoxPeriodo.Text = "1ra Diciembre 1990";
+            textBoxPeriodo.TextAlign = HorizontalAlignment.Center;
             // 
             // labelRemuneraciones
             // 
@@ -201,6 +211,16 @@
             columDescrip.Text = "Conceptos";
             columDescrip.Width = 350;
             // 
+            // columnRemu
+            // 
+            columnRemu.DisplayIndex = 2;
+            columnRemu.Text = "Remunerativo";
+            // 
+            // columnDescuento
+            // 
+            columnDescuento.DisplayIndex = 3;
+            columnDescuento.Text = "Descuentos";
+            // 
             // columFecha
             // 
             columFecha.DisplayIndex = 1;
@@ -218,18 +238,18 @@
             labelaAcuerdo.TabIndex = 8;
             labelaAcuerdo.Text = "Acuerdo";
             // 
-            // listContrato
+            // tablaAcuerdo
             // 
-            listContrato.Columns.AddRange(new ColumnHeader[] { columnItem, columValor });
-            listContrato.FullRowSelect = true;
-            listContrato.GridLines = true;
-            listContrato.Location = new Point(997, 248);
-            listContrato.Name = "listContrato";
-            listContrato.Scrollable = false;
-            listContrato.Size = new Size(318, 436);
-            listContrato.TabIndex = 9;
-            listContrato.UseCompatibleStateImageBehavior = false;
-            listContrato.View = View.Details;
+            tablaAcuerdo.Columns.AddRange(new ColumnHeader[] { columnItem, columValor });
+            tablaAcuerdo.FullRowSelect = true;
+            tablaAcuerdo.GridLines = true;
+            tablaAcuerdo.Location = new Point(997, 248);
+            tablaAcuerdo.Name = "tablaAcuerdo";
+            tablaAcuerdo.Scrollable = false;
+            tablaAcuerdo.Size = new Size(318, 436);
+            tablaAcuerdo.TabIndex = 9;
+            tablaAcuerdo.UseCompatibleStateImageBehavior = false;
+            tablaAcuerdo.View = View.Details;
             // 
             // columnItem
             // 
@@ -241,17 +261,17 @@
             columValor.Text = "Valor";
             columValor.Width = 130;
             // 
-            // btnRecalcularRetenciones
+            // BtnRecalcular
             // 
-            btnRecalcularRetenciones.BackColor = SystemColors.GradientActiveCaption;
-            btnRecalcularRetenciones.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnRecalcularRetenciones.Location = new Point(751, 157);
-            btnRecalcularRetenciones.Name = "btnRecalcularRetenciones";
-            btnRecalcularRetenciones.Size = new Size(109, 41);
-            btnRecalcularRetenciones.TabIndex = 10;
-            btnRecalcularRetenciones.Text = "RECALCULAR";
-            btnRecalcularRetenciones.UseVisualStyleBackColor = false;
-            btnRecalcularRetenciones.Click += ClickBtnPreLiquidar;
+            BtnRecalcular.BackColor = SystemColors.GradientActiveCaption;
+            BtnRecalcular.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnRecalcular.Location = new Point(751, 157);
+            BtnRecalcular.Name = "BtnRecalcular";
+            BtnRecalcular.Size = new Size(109, 41);
+            BtnRecalcular.TabIndex = 10;
+            BtnRecalcular.Text = "RECALCULAR";
+            BtnRecalcular.UseVisualStyleBackColor = false;
+            BtnRecalcular.Click += BtnRecalcular_Click;
             // 
             // btnSellar
             // 
@@ -289,16 +309,6 @@
             btnItem.UseVisualStyleBackColor = true;
             btnItem.Click += ClickBtnAgregarItem;
             // 
-            // columnRemu
-            // 
-            columnRemu.DisplayIndex = 2;
-            columnRemu.Text = "Remunerativo";
-            // 
-            // columnDescuento
-            // 
-            columnDescuento.DisplayIndex = 3;
-            columnDescuento.Text = "Descuentos";
-            // 
             // groupBoxMontosPagar
             // 
             groupBoxMontosPagar.Controls.Add(label2);
@@ -313,16 +323,25 @@
             groupBoxMontosPagar.TabStop = false;
             groupBoxMontosPagar.Text = "Pago neto:";
             // 
-            // valorPagarBlanco
+            // label2
             // 
-            valorPagarBlanco.AutoSize = true;
-            valorPagarBlanco.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            valorPagarBlanco.ForeColor = Color.SeaGreen;
-            valorPagarBlanco.Location = new Point(24, 34);
-            valorPagarBlanco.Name = "valorPagarBlanco";
-            valorPagarBlanco.Size = new Size(124, 28);
-            valorPagarBlanco.TabIndex = 0;
-            valorPagarBlanco.Text = "$ 8.000.000";
+            label2.AutoSize = true;
+            label2.ForeColor = Color.Tomato;
+            label2.Location = new Point(195, 64);
+            label2.Name = "label2";
+            label2.Size = new Size(91, 21);
+            label2.TabIndex = 3;
+            label2.Text = "EN NEGRO";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.SeaGreen;
+            label1.Location = new Point(36, 64);
+            label1.Name = "label1";
+            label1.Size = new Size(100, 21);
+            label1.TabIndex = 2;
+            label1.Text = "EN BLANCO";
             // 
             // valorPagarNegro
             // 
@@ -335,25 +354,16 @@
             valorPagarNegro.TabIndex = 1;
             valorPagarNegro.Text = "$ 2.000.000";
             // 
-            // label1
+            // valorPagarBlanco
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.SeaGreen;
-            label1.Location = new Point(36, 64);
-            label1.Name = "label1";
-            label1.Size = new Size(100, 21);
-            label1.TabIndex = 2;
-            label1.Text = "EN BLANCO";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.Tomato;
-            label2.Location = new Point(195, 64);
-            label2.Name = "label2";
-            label2.Size = new Size(91, 21);
-            label2.TabIndex = 3;
-            label2.Text = "EN NEGRO";
+            valorPagarBlanco.AutoSize = true;
+            valorPagarBlanco.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            valorPagarBlanco.ForeColor = Color.SeaGreen;
+            valorPagarBlanco.Location = new Point(24, 34);
+            valorPagarBlanco.Name = "valorPagarBlanco";
+            valorPagarBlanco.Size = new Size(124, 28);
+            valorPagarBlanco.TabIndex = 0;
+            valorPagarBlanco.Text = "$ 8.000.000";
             // 
             // CrearLiquidacionForm
             // 
@@ -364,22 +374,22 @@
             Controls.Add(btnItem);
             Controls.Add(btnMarcas);
             Controls.Add(btnSellar);
-            Controls.Add(btnRecalcularRetenciones);
-            Controls.Add(listContrato);
+            Controls.Add(BtnRecalcular);
+            Controls.Add(tablaAcuerdo);
             Controls.Add(labelaAcuerdo);
             Controls.Add(listaSueldoBillete);
             Controls.Add(listaSueldoBlanco);
             Controls.Add(labelRetenciones);
             Controls.Add(labelRemuneraciones);
-            Controls.Add(panel1);
+            Controls.Add(panelDatos);
             Controls.Add(listaEmpComponent1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CrearLiquidacionForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CrearLiquidacion";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panelDatos.ResumeLayout(false);
+            panelDatos.PerformLayout();
             groupBoxMontosPagar.ResumeLayout(false);
             groupBoxMontosPagar.PerformLayout();
             ResumeLayout(false);
@@ -388,20 +398,17 @@
         #endregion
 
         private Components.Utils.ListaEmpComponent listaEmpComponent1;
-        private Panel panel1;
-        private Label dniLabel;
-        private Label nombreLabel;
+        private Panel panelDatos;
         private Label labelDescuentos;
         private Label labelRemuneraciones;
         private Label labelRetenciones;
         private ListView listaSueldoBlanco;
         private Label labelNoRemuneraciones;
-        private ListView listContrato;
+        private ListView tablaAcuerdo;
         private ListView listaSueldoBillete;
         private ColumnHeader columnDescripcion;
         private ColumnHeader columnRemunerativo;
         private ColumnHeader columnNORemu;
-        private Label labelPeriodo;
         private ListView listView3;
         private ColumnHeader columnFecha;
         private ColumnHeader columnDesc;
@@ -410,11 +417,10 @@
         private Label labelaAcuerdo;
         private ColumnHeader columnItem;
         private ColumnHeader columValor;
-        private Button btnRecalcularRetenciones;
+        private Button BtnRecalcular;
         private Button btnSellar;
         private Button btnMarcas;
         private Button btnItem;
-        private Label labelQuincena;
         private ColumnHeader columnRemu;
         private ColumnHeader columnDescuento;
         private GroupBox groupBoxMontosPagar;
@@ -422,5 +428,9 @@
         private Label label1;
         private Label valorPagarNegro;
         private Label label2;
+        private TextBox textBoxPeriodo;
+        private Label label3;
+        private Label label4;
+        private TextBox textBoxEmpleado;
     }
 }

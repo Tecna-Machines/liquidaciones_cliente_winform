@@ -3,14 +3,14 @@
 namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
 {
     public sealed record GetLiquidacionByIdResponse(string Codigo,
-                                                    DateTime Creacion,
-                                                    string Concepto,
-                                                    QuincenaLiquidacion Quincena,
-                                                    EmpleadoLiquidacion Empleado,
-                                                    GetAcuerdoByIdResponse Acuerdo,
-                                                    MontosPagar Montos,
-                                                    IEnumerable<ItemLiquidacionByIdResponse> Items,
-                                                    IEnumerable<PagoLiquidacionById> Pagos);
+                                                   DateTime Creacion,
+                                                   string Concepto,
+                                                   QuincenaLiquidacion Quincena,
+                                                   EmpleadoLiquidacion Empleado,
+                                                   GetAcuerdoByIdResponse Acuerdo,
+                                                   MontosPagar Montos,
+                                                   IEnumerable<ItemLiquidacionByIdResponse> Items,
+                                                   IEnumerable<PagoLiquidacionById> Pagos);
 
     public sealed record QuincenaLiquidacion(int Anio, int Mes, int Nro);
     public sealed record EmpleadoLiquidacion(string Dni,
