@@ -1,5 +1,6 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
+using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.GetCatalogo;
 using DAL.Service.Liquidacion.Features.Contrato.Crear;
 using LAUCHA.application.DTOs.ModalidadDTOs;
 using UI.Utils;
@@ -10,14 +11,21 @@ namespace UI.Screens.CrearContrato
     {
         private readonly EmpleadoController _empleadoController;
         private readonly AcuerdoController _contratoController;
-        public CrearAcuerdoForm(AcuerdoController contratoController, CrearLiquidacionController controller, EmpleadoController empleadoController)
+        private readonly RetencionController _retencionController;
+        public CrearAcuerdoForm(AcuerdoController contratoController,
+                                EmpleadoController empleadoController,
+                                RetencionController retencionController)
         {
             _contratoController = contratoController; ;
             InitializeComponent();
 
             this.listaEmpComponent1.EventEmpleadoSeleccionado += ClickEnEmpleado; //se suscribe al evento de la lista
             _empleadoController = empleadoController;
+            _retencionController = retencionController;
+
             CargarListaEmpleados();
+            CargarCatalogoRetenciones();
+
         }
 
         private void ClickEnEmpleado(object? sender, DAL.Service.Liquidacion.Features.Empleados.GetEmpleados.GetEmpleadoResponse e)
@@ -125,10 +133,28 @@ namespace UI.Screens.CrearContrato
                               ValorHora: valorHora,
                               TipoSueldo: tipoSueldo,
                               Notas: "blabla",
+                              Retenciones: RecuperarRetencionesSeleccionadas(),
                               Adicionales: RecuperarAdicionalesDesdeLista());
 
             return contratoReq;
         }
+
+        private string[] RecuperarRetencionesSeleccionadas()
+        {
+            var codigos = new List<string>();
+
+            foreach (ListViewItem item in listRetenciones.Items)
+            {
+                if (item.Checked)
+                {
+                    string codigo = item.SubItems[1].Text;
+                    codigos.Add(codigo);
+                }
+            }
+
+            return codigos.ToArray();
+        }
+
 
         private List<AdicionalesRequest> RecuperarAdicionalesDesdeLista()
         {
@@ -182,6 +208,34 @@ namespace UI.Screens.CrearContrato
                     listAdicionales.Items.Remove(item);
                 }
             }
+        }
+
+        private async void CargarCatalogoRetenciones()
+        {
+            var catalogo = await _retencionController.GetCatalogo();
+
+            foreach (var r in catalogo.Items)
+            {
+                ListViewItem item = new();
+                item.SubItems.Add(r.Codigo);
+                item.SubItems.Add(r.Concepto);
+                item.SubItems.Add(GetRetencionValor(r));
+                item.SubItems.Add(r.EsPrimeraQuincena ? "1ra" : "2da");
+
+                item.Tag = r;
+                
+
+                listRetenciones.Items.Add(item);
+            }
+        }
+
+        private string GetRetencionValor(RetencionResponse r)
+        {
+            if (r.EsPorcentual)
+                return $"{r.Unidades:F2} %";
+
+
+            return r.Unidades.ToString("C2");
         }
 
         //solo debe usarse para representar a la modalidad aqui

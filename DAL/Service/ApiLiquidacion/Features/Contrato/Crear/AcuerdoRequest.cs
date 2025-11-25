@@ -1,12 +1,13 @@
 ﻿namespace DAL.Service.Liquidacion.Features.Contrato.Crear
 {
     public sealed record CrearAcuerdoRequest(string Dni,
-                                         decimal Sueldo,
-                                         decimal ValorBlanco,
-                                         decimal ValorHora,
-                                         int TipoSueldo,
-                                         string Notas,
-                                         ICollection<AdicionalesRequest> Adicionales);
+                                           decimal Sueldo,
+                                           decimal ValorBlanco,
+                                           decimal ValorHora,
+                                           int TipoSueldo,
+                                           string Notas,
+                                           string[] Retenciones,
+                                           ICollection<AdicionalesRequest> Adicionales);
 
 
 

@@ -1,4 +1,6 @@
-﻿using DAL.Service.Liquidacion.Features.Contrato.Abstracciones;
+﻿using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.Abstracciones;
+using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.GetCatalogo;
+using DAL.Service.Liquidacion.Features.Contrato.Abstracciones;
 using DAL.Service.Liquidacion.Features.Contrato.Crear;
 using DAL.Service.Liquidacion.Features.Contrato.GetAcuerdosEmpleado;
 using DAL.Service.Liquidacion.Features.Contrato.GetById;
@@ -23,6 +25,7 @@ namespace DAL
             AddAcuerdos(services);
             AddEmpleados(services);
             AddLiquidacion(services);
+            AddCatalogoRetenciones(services);
 
             return services;
         }
@@ -50,6 +53,14 @@ namespace DAL
         {
             services.AddScoped<GetLiquidacion>();
             services.AddScoped<ILiquidacionService, LiquidacionService>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddCatalogoRetenciones(this IServiceCollection services)
+        {
+            services.AddScoped<GetRetenciones>();
+            services.AddScoped<IRetencionesService, RetencionesService>();
 
             return services;
         }

@@ -17,6 +17,8 @@ namespace BLL
             services.AddScoped<CrearLiquidacionController>();
             services.AddScoped<AcuerdoController>();
             services.AddScoped<EmpleadoController>();
+            services.AddScoped<RetencionController>();
+
             return services;
         }
     }

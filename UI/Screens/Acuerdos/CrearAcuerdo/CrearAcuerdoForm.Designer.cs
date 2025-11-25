@@ -53,9 +53,17 @@
             btnConfirmarContrato = new Button();
             BtnAgregarAdicional = new Button();
             listaEmpComponent1 = new UI.Components.Utils.ListaEmpComponent();
+            groupBoxRetenciones = new GroupBox();
+            listRetenciones = new ListView();
+            columnSeleccionado = new ColumnHeader();
+            columnCodigo = new ColumnHeader();
+            columnConcepto = new ColumnHeader();
+            columnValor = new ColumnHeader();
+            columnQuincena = new ColumnHeader();
             groupBox.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBoxAdicionales.SuspendLayout();
+            groupBoxRetenciones.SuspendLayout();
             SuspendLayout();
             // 
             // labelDni
@@ -158,7 +166,7 @@
             textBoxSueldo.Name = "textBoxSueldo";
             textBoxSueldo.Size = new Size(147, 23);
             textBoxSueldo.TabIndex = 4;
-            textBoxSueldo.TextChanged += this.TextBoxMontoFijo_TextChanged;
+            textBoxSueldo.TextChanged += TextBoxMontoFijo_TextChanged;
             // 
             // textBoxValorBlanco
             // 
@@ -277,14 +285,64 @@
             // 
             listaEmpComponent1.Location = new Point(3, 4);
             listaEmpComponent1.Name = "listaEmpComponent1";
+            listaEmpComponent1.ServiceProvider = null;
             listaEmpComponent1.Size = new Size(304, 690);
             listaEmpComponent1.TabIndex = 10;
+            // 
+            // groupBoxRetenciones
+            // 
+            groupBoxRetenciones.Controls.Add(listRetenciones);
+            groupBoxRetenciones.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBoxRetenciones.Location = new Point(806, 82);
+            groupBoxRetenciones.Name = "groupBoxRetenciones";
+            groupBoxRetenciones.Size = new Size(361, 485);
+            groupBoxRetenciones.TabIndex = 7;
+            groupBoxRetenciones.TabStop = false;
+            groupBoxRetenciones.Text = "RETENCIONES";
+            // 
+            // listRetenciones
+            // 
+            listRetenciones.CheckBoxes = true;
+            listRetenciones.Columns.AddRange(new ColumnHeader[] { columnSeleccionado, columnCodigo, columnConcepto, columnValor, columnQuincena });
+            listRetenciones.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+            listRetenciones.Location = new Point(15, 22);
+            listRetenciones.Name = "listRetenciones";
+            listRetenciones.Size = new Size(340, 445);
+            listRetenciones.TabIndex = 0;
+            listRetenciones.UseCompatibleStateImageBehavior = false;
+            listRetenciones.View = View.Details;
+            // 
+            // columnSeleccionado
+            // 
+            columnSeleccionado.Text = "#";
+            columnSeleccionado.Width = 20;
+            // 
+            // columnCodigo
+            // 
+            columnCodigo.Text = "Codigo";
+            columnCodigo.Width = 65;
+            // 
+            // columnConcepto
+            // 
+            columnConcepto.Text = "Concepto";
+            columnConcepto.Width = 80;
+            // 
+            // columnValor
+            // 
+            columnValor.Text = "Valor";
+            columnValor.Width = 80;
+            // 
+            // columnQuincena
+            // 
+            columnQuincena.Text = "Quincena";
+            columnQuincena.Width = 65;
             // 
             // CrearAcuerdoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(824, 706);
+            ClientSize = new Size(1179, 706);
+            Controls.Add(groupBoxRetenciones);
             Controls.Add(listaEmpComponent1);
             Controls.Add(BtnAgregarAdicional);
             Controls.Add(btnConfirmarContrato);
@@ -303,6 +361,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBoxAdicionales.ResumeLayout(false);
+            groupBoxRetenciones.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -333,5 +392,12 @@
         private ColumnHeader columnMonto;
         private ColumnHeader columnBlanco;
         private ColumnHeader columnPorcentual;
+        private GroupBox groupBoxRetenciones;
+        private ListView listRetenciones;
+        private ColumnHeader columnSeleccionado;
+        private ColumnHeader columnCodigo;
+        private ColumnHeader columnConcepto;
+        private ColumnHeader columnValor;
+        private ColumnHeader columnQuincena;
     }
 }
