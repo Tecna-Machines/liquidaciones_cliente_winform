@@ -37,11 +37,11 @@
             textBoxPeriodo = new TextBox();
             labelRemuneraciones = new Label();
             labelRetenciones = new Label();
-            listaSueldoBlanco = new ListView();
+            tablaDetalleEnBlanco = new ListView();
             columnDescripcion = new ColumnHeader();
+            columnDesc = new ColumnHeader();
             columnRemunerativo = new ColumnHeader();
             columnNORemu = new ColumnHeader();
-            columnDesc = new ColumnHeader();
             columnFecha = new ColumnHeader();
             listaSueldoBillete = new ListView();
             columDescrip = new ColumnHeader();
@@ -154,45 +154,42 @@
             labelRetenciones.TabIndex = 4;
             labelRetenciones.Text = "Detalle ";
             // 
-            // listaSueldoBlanco
+            // tablaDetalleEnBlanco
             // 
-            listaSueldoBlanco.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnRemunerativo, columnNORemu, columnDesc, columnFecha });
-            listaSueldoBlanco.FullRowSelect = true;
-            listaSueldoBlanco.GridLines = true;
-            listaSueldoBlanco.Location = new Point(314, 248);
-            listaSueldoBlanco.Name = "listaSueldoBlanco";
-            listaSueldoBlanco.Size = new Size(670, 219);
-            listaSueldoBlanco.TabIndex = 6;
-            listaSueldoBlanco.UseCompatibleStateImageBehavior = false;
-            listaSueldoBlanco.View = View.Details;
+            tablaDetalleEnBlanco.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnDesc, columnRemunerativo, columnNORemu, columnFecha });
+            tablaDetalleEnBlanco.FullRowSelect = true;
+            tablaDetalleEnBlanco.GridLines = true;
+            tablaDetalleEnBlanco.Location = new Point(314, 248);
+            tablaDetalleEnBlanco.Name = "tablaDetalleEnBlanco";
+            tablaDetalleEnBlanco.Size = new Size(670, 219);
+            tablaDetalleEnBlanco.TabIndex = 6;
+            tablaDetalleEnBlanco.UseCompatibleStateImageBehavior = false;
+            tablaDetalleEnBlanco.View = View.Details;
             // 
             // columnDescripcion
             // 
             columnDescripcion.Text = "Conceptos";
             columnDescripcion.Width = 180;
             // 
+            // columnDesc
+            // 
+            columnDesc.Text = "Descuentos";
+            columnDesc.Width = 90;
+            // 
             // columnRemunerativo
             // 
-            columnRemunerativo.DisplayIndex = 2;
             columnRemunerativo.Text = "Remuneraciones";
             columnRemunerativo.Width = 95;
             // 
             // columnNORemu
             // 
-            columnNORemu.DisplayIndex = 3;
             columnNORemu.Text = "No Remunerativo";
             columnNORemu.Width = 120;
             // 
-            // columnDesc
-            // 
-            columnDesc.DisplayIndex = 4;
-            columnDesc.Text = "Descuentos";
-            columnDesc.Width = 90;
-            // 
             // columnFecha
             // 
-            columnFecha.DisplayIndex = 1;
             columnFecha.Text = "Fecha";
+            columnFecha.Width = 120;
             // 
             // listaSueldoBillete
             // 
@@ -209,23 +206,22 @@
             // columDescrip
             // 
             columDescrip.Text = "Conceptos";
-            columDescrip.Width = 350;
+            columDescrip.Width = 300;
             // 
             // columnRemu
             // 
-            columnRemu.DisplayIndex = 2;
             columnRemu.Text = "Remunerativo";
+            columnRemu.Width = 90;
             // 
             // columnDescuento
             // 
-            columnDescuento.DisplayIndex = 3;
             columnDescuento.Text = "Descuentos";
+            columnDescuento.Width = 90;
             // 
             // columFecha
             // 
-            columFecha.DisplayIndex = 1;
             columFecha.Text = "Fecha";
-            columFecha.Width = 90;
+            columFecha.Width = 120;
             // 
             // labelaAcuerdo
             // 
@@ -254,7 +250,7 @@
             // columnItem
             // 
             columnItem.Text = "Item";
-            columnItem.Width = 130;
+            columnItem.Width = 160;
             // 
             // columValor
             // 
@@ -378,7 +374,7 @@
             Controls.Add(tablaAcuerdo);
             Controls.Add(labelaAcuerdo);
             Controls.Add(listaSueldoBillete);
-            Controls.Add(listaSueldoBlanco);
+            Controls.Add(tablaDetalleEnBlanco);
             Controls.Add(labelRetenciones);
             Controls.Add(labelRemuneraciones);
             Controls.Add(panelDatos);
@@ -402,7 +398,7 @@
         private Label labelDescuentos;
         private Label labelRemuneraciones;
         private Label labelRetenciones;
-        private ListView listaSueldoBlanco;
+        private ListView tablaDetalleEnBlanco;
         private Label labelNoRemuneraciones;
         private ListView tablaAcuerdo;
         private ListView listaSueldoBillete;

@@ -3,11 +3,12 @@ using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 
 namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
 {
-    internal static class TablasLiquidacionForm
+    internal static class TablaAcuerdoLiquidacionForm
     {
         public static void SetTablaAcuerdo(GetLiquidacionByIdResponse liquidacion, ListView tablaAcuerdo)
         {
             var acuerdo = liquidacion.Acuerdo;
+
 
             var itemCodigo = new ListViewItem("codigo:");
             itemCodigo.SubItems.Add(acuerdo.Codigo);
@@ -33,7 +34,8 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
             itemTipoSueldo.SubItems.Add(acuerdo.TipoSueldo.Descripcion);
             tablaAcuerdo.Items.Add(itemTipoSueldo);
 
-            SetAdicionales(acuerdo.Adicionales,tablaAcuerdo); 
+            SetAdicionales(acuerdo.Adicionales,tablaAcuerdo);
+            SetRetenciones(acuerdo.Retenciones, tablaAcuerdo);
            
         }
 
@@ -63,6 +65,34 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
 
                 tablaAcuerdo.Items.Add(itemAdicional);
 
+            }
+        }
+
+        private static void SetRetenciones(IEnumerable<RetencionResponse> retenciones,ListView tablaAcuerdo)
+        {
+            var itemTitleRetenciones = new ListViewItem("RETENCIONES")
+            {
+                BackColor = Color.GreenYellow,
+                Font = new Font(SystemFonts.DefaultFont, FontStyle.Bold)
+            };
+
+            tablaAcuerdo.Items.Add(itemTitleRetenciones);
+
+            foreach (var r in retenciones)
+            {
+                var itemAdicional = new ListViewItem(r.Concepto);
+
+                if (r.EsPorcentual)
+                {
+                    itemAdicional.SubItems.Add($"{Math.Round(r.Unidades,2)} %");
+
+                }
+                else
+                {
+                    itemAdicional.SubItems.Add(r.Unidades.ToString("C"));
+                }
+
+                tablaAcuerdo.Items.Add(itemAdicional);
             }
         }
     }
