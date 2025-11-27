@@ -16,6 +16,7 @@ namespace UI
             services.AddTransient<VerLiquidacionForm>();
             services.AddTransient<CrearLiquidacionForm>();
             services.AddTransient<CrearEmpleadoForm>();
+            services.AddTransient<CrearItemForm>();
             return services;
         }
     }

@@ -1,4 +1,7 @@
-﻿using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.Abstracciones;
+﻿using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.Liquidar;
+using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.GetCatalogo;
 using DAL.Service.Liquidacion.Features.Contrato.Abstracciones;
 using DAL.Service.Liquidacion.Features.Contrato.Crear;
@@ -52,6 +55,9 @@ namespace DAL
         private static IServiceCollection AddLiquidacion(this IServiceCollection services)
         {
             services.AddScoped<GetLiquidacion>();
+            services.AddScoped<CrearLiquidacionHandler>();
+            services.AddScoped<RealizarLiquidacion>();
+            services.AddScoped<AgregarItemLiquidacion>();
             services.AddScoped<ILiquidacionService, LiquidacionService>();
 
             return services;

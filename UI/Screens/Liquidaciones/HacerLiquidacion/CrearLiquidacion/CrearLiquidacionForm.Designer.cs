@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearLiquidacionForm));
-            listaEmpComponent1 = new UI.Components.Utils.ListaEmpComponent();
+            listaConBuscador = new UI.Components.Utils.ListaEmpComponent();
             panelDatos = new Panel();
             label4 = new Label();
             textBoxEmpleado = new TextBox();
@@ -43,7 +43,7 @@
             columnRemunerativo = new ColumnHeader();
             columnNORemu = new ColumnHeader();
             columnFecha = new ColumnHeader();
-            listaSueldoBillete = new ListView();
+            tablaDetalleEnNegro = new ListView();
             columDescrip = new ColumnHeader();
             columnRemu = new ColumnHeader();
             columnDescuento = new ColumnHeader();
@@ -67,11 +67,11 @@
             // 
             // listaEmpComponent1
             // 
-            listaEmpComponent1.Location = new Point(12, 12);
-            listaEmpComponent1.Name = "listaEmpComponent1";
-            listaEmpComponent1.ServiceProvider = null;
-            listaEmpComponent1.Size = new Size(314, 682);
-            listaEmpComponent1.TabIndex = 0;
+            listaConBuscador.Location = new Point(12, 12);
+            listaConBuscador.Name = "listaEmpComponent1";
+            listaConBuscador.ServiceProvider = null;
+            listaConBuscador.Size = new Size(314, 682);
+            listaConBuscador.TabIndex = 0;
             // 
             // panelDatos
             // 
@@ -193,15 +193,15 @@
             // 
             // listaSueldoBillete
             // 
-            listaSueldoBillete.Columns.AddRange(new ColumnHeader[] { columDescrip, columnRemu, columnDescuento, columFecha });
-            listaSueldoBillete.FullRowSelect = true;
-            listaSueldoBillete.GridLines = true;
-            listaSueldoBillete.Location = new Point(314, 511);
-            listaSueldoBillete.Name = "listaSueldoBillete";
-            listaSueldoBillete.Size = new Size(667, 173);
-            listaSueldoBillete.TabIndex = 7;
-            listaSueldoBillete.UseCompatibleStateImageBehavior = false;
-            listaSueldoBillete.View = View.Details;
+            tablaDetalleEnNegro.Columns.AddRange(new ColumnHeader[] { columDescrip, columnRemu, columnDescuento, columFecha });
+            tablaDetalleEnNegro.FullRowSelect = true;
+            tablaDetalleEnNegro.GridLines = true;
+            tablaDetalleEnNegro.Location = new Point(314, 511);
+            tablaDetalleEnNegro.Name = "listaSueldoBillete";
+            tablaDetalleEnNegro.Size = new Size(667, 173);
+            tablaDetalleEnNegro.TabIndex = 7;
+            tablaDetalleEnNegro.UseCompatibleStateImageBehavior = false;
+            tablaDetalleEnNegro.View = View.Details;
             // 
             // columDescrip
             // 
@@ -281,7 +281,7 @@
             btnSellar.TabIndex = 11;
             btnSellar.Text = "SELLAR";
             btnSellar.UseVisualStyleBackColor = false;
-            btnSellar.Click += ClickBtnConfirmarLiquidacion;
+            btnSellar.Click += BtnSellar_Click;
             // 
             // btnMarcas
             // 
@@ -373,12 +373,12 @@
             Controls.Add(BtnRecalcular);
             Controls.Add(tablaAcuerdo);
             Controls.Add(labelaAcuerdo);
-            Controls.Add(listaSueldoBillete);
+            Controls.Add(tablaDetalleEnNegro);
             Controls.Add(tablaDetalleEnBlanco);
             Controls.Add(labelRetenciones);
             Controls.Add(labelRemuneraciones);
             Controls.Add(panelDatos);
-            Controls.Add(listaEmpComponent1);
+            Controls.Add(listaConBuscador);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CrearLiquidacionForm";
@@ -393,7 +393,7 @@
 
         #endregion
 
-        private Components.Utils.ListaEmpComponent listaEmpComponent1;
+        private Components.Utils.ListaEmpComponent listaConBuscador;
         private Panel panelDatos;
         private Label labelDescuentos;
         private Label labelRemuneraciones;
@@ -401,7 +401,7 @@
         private ListView tablaDetalleEnBlanco;
         private Label labelNoRemuneraciones;
         private ListView tablaAcuerdo;
-        private ListView listaSueldoBillete;
+        private ListView tablaDetalleEnNegro;
         private ColumnHeader columnDescripcion;
         private ColumnHeader columnRemunerativo;
         private ColumnHeader columnNORemu;

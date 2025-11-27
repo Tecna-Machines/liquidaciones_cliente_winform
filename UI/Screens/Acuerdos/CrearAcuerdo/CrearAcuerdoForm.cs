@@ -223,7 +223,7 @@ namespace UI.Screens.CrearContrato
                 item.SubItems.Add(r.EsPrimeraQuincena ? "1ra" : "2da");
 
                 item.Tag = r;
-                
+
 
                 listRetenciones.Items.Add(item);
             }

@@ -42,6 +42,7 @@
             toolStripDropDownLiquidacion = new ToolStripDropDownButton();
             crearLiquidacionToolStripMenuItem = new ToolStripMenuItem();
             historialLiquidacionesToolStripMenuItem = new ToolStripMenuItem();
+            toolStripButtonCreditos = new ToolStripLabel();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             toolStrip1.SuspendLayout();
@@ -52,16 +53,16 @@
             panelPrincipal.Controls.Add(labelServerInfo);
             panelPrincipal.Controls.Add(pictureBoxLogo);
             panelPrincipal.Controls.Add(dataVersion);
-            panelPrincipal.Location = new Point(37, 39);
+            panelPrincipal.Location = new Point(12, 39);
             panelPrincipal.Name = "panelPrincipal";
-            panelPrincipal.Size = new Size(547, 271);
+            panelPrincipal.Size = new Size(587, 296);
             panelPrincipal.TabIndex = 4;
             // 
             // labelServerInfo
             // 
             labelServerInfo.AutoSize = true;
             labelServerInfo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelServerInfo.Location = new Point(205, 238);
+            labelServerInfo.Location = new Point(263, 238);
             labelServerInfo.Name = "labelServerInfo";
             labelServerInfo.Size = new Size(84, 15);
             labelServerInfo.TabIndex = 3;
@@ -70,7 +71,7 @@
             // pictureBoxLogo
             // 
             pictureBoxLogo.Image = Resources.Resources.logo_tecna_azul_rd;
-            pictureBoxLogo.Location = new Point(16, 12);
+            pictureBoxLogo.Location = new Point(51, 12);
             pictureBoxLogo.Name = "pictureBoxLogo";
             pictureBoxLogo.Size = new Size(509, 180);
             pictureBoxLogo.TabIndex = 2;
@@ -80,7 +81,7 @@
             // 
             dataVersion.AutoSize = true;
             dataVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataVersion.Location = new Point(55, 210);
+            dataVersion.Location = new Point(106, 210);
             dataVersion.Name = "dataVersion";
             dataVersion.Size = new Size(398, 15);
             dataVersion.TabIndex = 1;
@@ -88,7 +89,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripEmpleado, toolStripButtonAcuerdos, toolStripDropDownLiquidacion });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripEmpleado, toolStripButtonAcuerdos, toolStripDropDownLiquidacion, toolStripButtonCreditos });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(636, 25);
@@ -160,6 +161,15 @@
             historialLiquidacionesToolStripMenuItem.Text = "Historial liquidaciones";
             historialLiquidacionesToolStripMenuItem.Click += HistorialLiquidacionesToolStripMenuItem_Click;
             // 
+            // toolStripButtonCreditos
+            // 
+            toolStripButtonCreditos.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButtonCreditos.Image = (Image)resources.GetObject("toolStripButtonCreditos.Image");
+            toolStripButtonCreditos.ImageTransparentColor = Color.Magenta;
+            toolStripButtonCreditos.Name = "toolStripButtonCreditos";
+            toolStripButtonCreditos.Size = new Size(51, 22);
+            toolStripButtonCreditos.Text = "Creditos";
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -198,5 +208,6 @@
         private ToolStripDropDownButton toolStripDropDownLiquidacion;
         private ToolStripMenuItem crearLiquidacionToolStripMenuItem;
         private ToolStripMenuItem historialLiquidacionesToolStripMenuItem;
+        private ToolStripLabel toolStripButtonCreditos;
     }
 }

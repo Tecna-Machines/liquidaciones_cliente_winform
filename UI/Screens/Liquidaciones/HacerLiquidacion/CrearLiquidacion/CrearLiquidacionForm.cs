@@ -1,24 +1,17 @@
 ﻿using BLL.Controllers;
 using BLL.Enums;
-using BLL.Models;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
-using LAUCHA.application.DTOs.LiquidacionDTOs;
-using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Marcas;
-using UI.Screens.VerLiquidacion;
 using UI.Utils;
 
 namespace UI.Screens.HacerLiquidacion
 {
     public partial class CrearLiquidacionForm : Form
     {
-        private readonly CrearLiquidacionController _controller;
+        private readonly CrearItemForm _formItem;
         private readonly EmpleadoController _empleadoController;
-        private LiquidacionContext _context;
-        private Quincena _periodoLiquidar;
-        private bool _esPrimeraQuincena;
         private LiquidacionController _liquidacionController;
 
 
@@ -26,24 +19,23 @@ namespace UI.Screens.HacerLiquidacion
         private int _anio;
         private int _mes;
         private string _dniEmpleado;
+        private bool _esPrimeraQuincena;
 
-        private List<GetEmpleadoResponse> empleadoDTOs;
-        public CrearLiquidacionForm(EmpleadoController empleadoController, LiquidacionController liquidacionController)
+        private List<GetEmpleadoResponse> _empleados;
+        public CrearLiquidacionForm(EmpleadoController empleadoController, LiquidacionController liquidacionController, CrearItemForm formItem)
         {
-            _context = LiquidacionContext.GetInstance();
-            _periodoLiquidar = null;
-
-            _controller = Program.ServiceProvider.GetRequiredService<CrearLiquidacionController>(); ;
-
             InitializeComponent();
 
+            listaConBuscador.EventDniSeleccionado += ClickEnEmpleadoSeleccionado;
 
-            this.listaEmpComponent1.EventDniSeleccionado += OnEmpleadoSeleccionado;
-
+            _empleados = new();
+            _dniEmpleado = "default";
             _esPrimeraQuincena = false;
             _empleadoController = empleadoController;
-            IniciarConfiguraciones();
             _liquidacionController = liquidacionController;
+
+            CargarListaDeEmpleados();
+            _formItem = formItem;
         }
 
         public void SetQuincena(int quincena, int mes, int anio)
@@ -69,19 +61,18 @@ namespace UI.Screens.HacerLiquidacion
 
             textBoxPeriodo.Text = $"{quincenaStr} {mesStr} {anio}";
         }
-        public void EsPrimeraQuicena() => _esPrimeraQuincena = true;
 
-        private async void PrimeraQuincenaSeteada(bool primeraQuincenaActiva)
+        private void MostrarSoloEmpleadosQuincenales()
         {
-            if (primeraQuincenaActiva)
+            if (_esPrimeraQuincena)
             {
-                var empleadosPrimeraQuincena = this.empleadoDTOs
+                var empleadosPrimeraQuincena = this._empleados
                  .Where(emp =>
                 emp.TipoSueldo != -1 &&
                 EsModalidadQuincenal(emp.TipoSueldo)) // Llama a un método que verifica si es modalidad quincenal
                 .ToList();
 
-                this.listaEmpComponent1.CargarLista(empleadosPrimeraQuincena);
+                listaConBuscador.CargarLista(empleadosPrimeraQuincena);
             }
 
         }
@@ -93,21 +84,21 @@ namespace UI.Screens.HacerLiquidacion
                    codigoModalidad == (int)Modalidad.QuincenajFijoMasExtra;
         }
 
-        private async void IniciarConfiguraciones()
+        private async void CargarListaDeEmpleados()
         {
             var response = await _empleadoController.ObtenerEmpleados();
-            this.empleadoDTOs = response.ToList();
-            this.listaEmpComponent1.CargarLista(this.empleadoDTOs);
 
+            _empleados = response.ToList();
+            listaConBuscador.CargarLista(this._empleados);
 
-            this.PrimeraQuincenaSeteada(this._esPrimeraQuincena);
+            MostrarSoloEmpleadosQuincenales();
 
         }
 
-        private void OnEmpleadoSeleccionado(object? sender, string dni)
+        private void ClickEnEmpleadoSeleccionado(object? sender, string dni)
         {
-            GetEmpleadoResponse? emp = empleadoDTOs.FirstOrDefault(emp => emp.Dni == dni);
-            this.LimpiarTodasLasTablasLiquidacion();
+            GetEmpleadoResponse? emp = _empleados.FirstOrDefault(emp => emp.Dni == dni);
+            this.RemoverLiquidacionDePantalla();
 
             if (emp == null)
             {
@@ -116,59 +107,68 @@ namespace UI.Screens.HacerLiquidacion
 
             _dniEmpleado = emp.Dni;
             textBoxEmpleado.Text = $"{emp.Dni} - {emp.Nombre} {emp.Apellido}";
-        }   
+        }
 
 
         private async void BtnRecalcular_Click(object sender, EventArgs e)
         {
             var codigo = GenerarCodigoLiquidacion();
 
-            var liquidacion = await _liquidacionController.GetById(codigo);
-            SetLiquidacion(liquidacion);
+            try
+            {
+                var liquidacion = await _liquidacionController.GetById(codigo);
 
-            Dialog.Success(liquidacion.Empleado.Dni + "existe!!1");
+                var liquidacionMostrar = await _liquidacionController.Liquidar(codigo);
+                MostrarLiquidacionEnPantalla(liquidacionMostrar);
+
+            }
+            catch (Exception)
+            {
+                CrearLiquidacionSinItems();
+            }
+
+
         }
 
-        private void SetLiquidacion(GetLiquidacionByIdResponse liquidacion)
+        private async void CrearLiquidacionSinItems()
         {
+            string leyenda = "al parecer esta persona aun no se ha liquidado , deseas crear una liquidacion nueva?";
+            var result = Dialog.PopUpDeConfirmacion(leyenda, "nueva liquidacion");
+
+            if (result == DialogResult.Yes)
+            {
+
+                var codigoNuevaLiquidacion = await _liquidacionController.Create(_dniEmpleado, _mes, _anio, _quincena);
+                var liquidacion = await _liquidacionController.GetById(codigoNuevaLiquidacion);
+                MostrarLiquidacionEnPantalla(liquidacion);
+            }
+;
+        }
+
+        private void MostrarLiquidacionEnPantalla(GetLiquidacionByIdResponse liquidacion)
+        {
+            RemoverLiquidacionDePantalla();
+
             TablaAcuerdoLiquidacionForm.SetTablaAcuerdo(liquidacion, tablaAcuerdo);
             TablaDetalleLiquidacionForm.SetTablaDetalleEnBlanco(liquidacion, tablaDetalleEnBlanco);
-            TablaDetalleLiquidacionForm.SetTablaDetalleEnNegro(liquidacion, listaSueldoBillete);
+            TablaDetalleLiquidacionForm.SetTablaDetalleEnNegro(liquidacion, tablaDetalleEnNegro);
 
             valorPagarBlanco.Text = liquidacion.Montos.EnBlanco.ToString("C");
             valorPagarNegro.Text = liquidacion.Montos.EnNegro.ToString("C");
         }
 
 
-        private async void ClickBtnConfirmarLiquidacion(object sender, EventArgs e)
+        private void BtnSellar_Click(object sender, EventArgs e)
         {
-            string leyenda = "Estás a punto de confirmar la liquidación, revisa cuidadosamente.";
-
-            DialogResult result = MessageBox.Show(leyenda, "Confirmar Liquidación",
-                                                  MessageBoxButtons.YesNo,
-                                                  MessageBoxIcon.Warning);
-
-
-
-            if (result == DialogResult.Yes)
-            {
-                var liquidacion = await _controller.ConfirmarLiquidacion(_context.GetDniEmpleado(), _context.GetPeriodo());
-
-                _context.SetLiquidacion(liquidacion);
-
-                var formVerLiqui = Program.ServiceProvider.GetRequiredService<VerLiquidacionForm>();
-                formVerLiqui.Show();
-            }
-            else
-            {
-                MessageBox.Show("La liquidación no ha sido confirmada.", "Acción cancelada");
-            }
+            //TODO: completar
+            throw new NotImplementedException();
         }
 
-        private void LimpiarTodasLasTablasLiquidacion()
+        private void RemoverLiquidacionDePantalla()
         {
             ListUtils.LimpiarElementos(this.tablaDetalleEnBlanco);
-            ListUtils.LimpiarElementos(this.listaSueldoBillete);
+            ListUtils.LimpiarElementos(this.tablaDetalleEnNegro);
+            ListUtils.LimpiarElementos(this.tablaAcuerdo);
         }
 
         private void ClickBtnMarcas(object sender, EventArgs e)
@@ -177,43 +177,13 @@ namespace UI.Screens.HacerLiquidacion
             marcasForm.Show();
         }
 
-
-        private void CargaTablaSubtotales(LiquidacionDTO liquidacion)
-        {
-            var itemRemunerativo = new ListViewItem("REMUNERATIVO");
-            itemRemunerativo.SubItems.Add(liquidacion.TotalBrutoBanco.ToString("c"));
-
-
-            var montoRetenciones = liquidacion.Items.Retenciones.Sum(r => r.Monto);
-
-            var itemRetenciones = new ListViewItem("RETENCIONES");
-            itemRetenciones.SubItems.Add(montoRetenciones.ToString("c"));
-
-            var itemNegro = new ListViewItem("EN NEGRO");
-            itemNegro.SubItems.Add(liquidacion.TotalBrutoEfectivo.ToString("c"));
-        }
-
-        private void CargarTablaPagarEmpleado(LiquidacionDTO liquidacion)
-        {
-
-
-            var itemEfectivo = new ListViewItem("EN EL SOBRE");
-            itemEfectivo.SubItems.Add(liquidacion.TotalPagarEfectivo.ToString("C"));
-
-            var itemBanco = new ListViewItem("EN EL BANCO");
-            itemBanco.SubItems.Add(liquidacion.TotalPagarBanco.ToString("C"));
-
-
-        }
-
         private void ClickBtnAgregarItem(object sender, EventArgs e)
         {
-            var formItems = new CrearItemForm();
-
-            formItems.ShowDialog();
+            _formItem.SetLiquidacion(GenerarCodigoLiquidacion());
+            _formItem.ShowDialog();
         }
 
-        private  string GenerarCodigoLiquidacion()
+        private string GenerarCodigoLiquidacion()
             => $"{_anio}:{_mes}:{_quincena}:{_dniEmpleado}";
     }
 }

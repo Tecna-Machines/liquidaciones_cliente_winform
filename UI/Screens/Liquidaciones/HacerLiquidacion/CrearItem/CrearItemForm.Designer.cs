@@ -29,61 +29,106 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearItemForm));
-            btnRemuneracion = new Button();
-            btnRetencion = new Button();
-            btnDesc = new Button();
             labelAgre = new Label();
+            textBoxConcepto = new TextBox();
+            comboBoxTipo = new ComboBox();
+            label1 = new Label();
+            label2 = new Label();
+            BtnAgregar = new Button();
+            textBoxMonto = new TextBox();
+            label3 = new Label();
             SuspendLayout();
-            // 
-            // btnRemuneracion
-            // 
-            btnRemuneracion.Location = new Point(22, 54);
-            btnRemuneracion.Name = "btnRemuneracion";
-            btnRemuneracion.Size = new Size(151, 44);
-            btnRemuneracion.TabIndex = 0;
-            btnRemuneracion.Text = "REMUNERACION";
-            btnRemuneracion.UseVisualStyleBackColor = true;
-            btnRemuneracion.Click += btnRemuneracion_Click;
-            // 
-            // btnRetencion
-            // 
-            btnRetencion.Location = new Point(22, 115);
-            btnRetencion.Name = "btnRetencion";
-            btnRetencion.Size = new Size(151, 44);
-            btnRetencion.TabIndex = 1;
-            btnRetencion.Text = "RETENCION";
-            btnRetencion.UseVisualStyleBackColor = true;
-            btnRetencion.Click += btnRetencion_Click;
-            // 
-            // btnDesc
-            // 
-            btnDesc.Location = new Point(22, 180);
-            btnDesc.Name = "btnDesc";
-            btnDesc.Size = new Size(151, 44);
-            btnDesc.TabIndex = 2;
-            btnDesc.Text = "DESCUENTO";
-            btnDesc.UseVisualStyleBackColor = true;
-            btnDesc.Click += btnDesc_Click;
             // 
             // labelAgre
             // 
             labelAgre.AutoSize = true;
             labelAgre.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelAgre.Location = new Point(39, 20);
+            labelAgre.Location = new Point(23, 31);
             labelAgre.Name = "labelAgre";
-            labelAgre.Size = new Size(114, 21);
+            labelAgre.Size = new Size(93, 21);
             labelAgre.TabIndex = 3;
-            labelAgre.Text = "Agregar Item:";
+            labelAgre.Text = "Crear item:";
+            // 
+            // textBoxConcepto
+            // 
+            textBoxConcepto.Location = new Point(141, 70);
+            textBoxConcepto.Name = "textBoxConcepto";
+            textBoxConcepto.Size = new Size(277, 23);
+            textBoxConcepto.TabIndex = 4;
+            // 
+            // comboBoxTipo
+            // 
+            comboBoxTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTipo.FormattingEnabled = true;
+            comboBoxTipo.Items.AddRange(new object[] { "Remunerativo (en blanco)", "Remunerativo (en negro)", "No Remunerativo (en blanco)", "Descuento (en negro)" });
+            comboBoxTipo.Location = new Point(141, 134);
+            comboBoxTipo.Name = "comboBoxTipo";
+            comboBoxTipo.Size = new Size(277, 23);
+            comboBoxTipo.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(48, 72);
+            label1.Name = "label1";
+            label1.Size = new Size(77, 19);
+            label1.TabIndex = 6;
+            label1.Text = "Concepto:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(82, 136);
+            label2.Name = "label2";
+            label2.Size = new Size(43, 19);
+            label2.TabIndex = 7;
+            label2.Text = "Tipo:";
+            // 
+            // BtnAgregar
+            // 
+            BtnAgregar.BackColor = Color.LightSalmon;
+            BtnAgregar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnAgregar.ForeColor = SystemColors.ActiveCaptionText;
+            BtnAgregar.Location = new Point(302, 180);
+            BtnAgregar.Name = "BtnAgregar";
+            BtnAgregar.Size = new Size(116, 51);
+            BtnAgregar.TabIndex = 8;
+            BtnAgregar.Text = "AGREGAR";
+            BtnAgregar.UseVisualStyleBackColor = false;
+            BtnAgregar.Click += BtnAgregar_Click;
+            // 
+            // textBoxMonto
+            // 
+            textBoxMonto.Location = new Point(141, 101);
+            textBoxMonto.Name = "textBoxMonto";
+            textBoxMonto.Size = new Size(277, 23);
+            textBoxMonto.TabIndex = 9;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(68, 103);
+            label3.Name = "label3";
+            label3.Size = new Size(57, 19);
+            label3.TabIndex = 10;
+            label3.Text = "Monto:";
             // 
             // CrearItemForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(192, 243);
+            ClientSize = new Size(512, 243);
+            Controls.Add(label3);
+            Controls.Add(textBoxMonto);
+            Controls.Add(BtnAgregar);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(comboBoxTipo);
+            Controls.Add(textBoxConcepto);
             Controls.Add(labelAgre);
-            Controls.Add(btnDesc);
-            Controls.Add(btnRetencion);
-            Controls.Add(btnRemuneracion);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CrearItemForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -93,10 +138,13 @@
         }
 
         #endregion
-
-        private Button btnRemuneracion;
-        private Button btnRetencion;
-        private Button btnDesc;
         private Label labelAgre;
+        private TextBox textBoxConcepto;
+        private ComboBox comboBoxTipo;
+        private Label label1;
+        private Label label2;
+        private Button BtnAgregar;
+        private TextBox textBoxMonto;
+        private Label label3;
     }
 }

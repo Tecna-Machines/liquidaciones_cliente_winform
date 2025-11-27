@@ -41,7 +41,7 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
             }
         }
 
-        public static void SetTablaDetalleEnNegro(GetLiquidacionByIdResponse liq,ListView tablaNegro)
+        public static void SetTablaDetalleEnNegro(GetLiquidacionByIdResponse liq, ListView tablaNegro)
         {
             var itemsNegro = liq.Items.Where(it => !it.EsEnBlanco);
 

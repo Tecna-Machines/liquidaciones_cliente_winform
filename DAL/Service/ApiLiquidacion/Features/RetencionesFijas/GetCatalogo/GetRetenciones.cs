@@ -1,5 +1,4 @@
 ﻿using DAL.Service.Liquidacion.Http;
-using System.Text.Json;
 
 namespace DAL.Service.ApiLiquidacion.Features.RetencionesFijas.GetCatalogo
 {

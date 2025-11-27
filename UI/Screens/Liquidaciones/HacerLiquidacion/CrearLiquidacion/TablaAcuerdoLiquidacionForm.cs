@@ -34,9 +34,9 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
             itemTipoSueldo.SubItems.Add(acuerdo.TipoSueldo.Descripcion);
             tablaAcuerdo.Items.Add(itemTipoSueldo);
 
-            SetAdicionales(acuerdo.Adicionales,tablaAcuerdo);
+            SetAdicionales(acuerdo.Adicionales, tablaAcuerdo);
             SetRetenciones(acuerdo.Retenciones, tablaAcuerdo);
-           
+
         }
 
         private static void SetAdicionales(IEnumerable<AdicionalAcuerdoResponse> adicionales, ListView tablaAcuerdo)
@@ -53,14 +53,14 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
             {
                 var itemAdicional = new ListViewItem(adi.Concepto);
 
-                if(adi.EsPorcentual)
+                if (adi.EsPorcentual)
                 {
-                itemAdicional.SubItems.Add($"{adi.Monto} %");
+                    itemAdicional.SubItems.Add($"{adi.Monto} %");
 
                 }
                 else
                 {
-                  itemAdicional.SubItems.Add(adi.Monto.ToString("C"));
+                    itemAdicional.SubItems.Add(adi.Monto.ToString("C"));
                 }
 
                 tablaAcuerdo.Items.Add(itemAdicional);
@@ -68,7 +68,7 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
             }
         }
 
-        private static void SetRetenciones(IEnumerable<RetencionResponse> retenciones,ListView tablaAcuerdo)
+        private static void SetRetenciones(IEnumerable<RetencionResponse> retenciones, ListView tablaAcuerdo)
         {
             var itemTitleRetenciones = new ListViewItem("RETENCIONES")
             {
@@ -84,7 +84,7 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
 
                 if (r.EsPorcentual)
                 {
-                    itemAdicional.SubItems.Add($"{Math.Round(r.Unidades,2)} %");
+                    itemAdicional.SubItems.Add($"{Math.Round(r.Unidades, 2)} %");
 
                 }
                 else
