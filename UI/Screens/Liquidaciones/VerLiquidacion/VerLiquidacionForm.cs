@@ -1,7 +1,7 @@
 ﻿using BLL.Controllers;
 using BLL.Models;
-using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
-using LAUCHA.application.DTOs.LiquidacionDTOs;
+using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
+using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Utils;
 
 namespace UI.Screens.VerLiquidacion
@@ -14,95 +14,53 @@ namespace UI.Screens.VerLiquidacion
             this.empleadoController = empleadoController;
             InitializeComponent();
 
-            var contexto = LiquidacionContext.GetInstance();
+            var contexto = BLL.Models.LiquidacionContext.GetInstance();
 
         }
 
-        private void CargarTablaSueldoBlanco(LiquidacionDTO liquidacion)
+        public void SetLiquidacion(GetLiquidacionByIdResponse liq)
         {
+            TablaDetalleLiquidacionForm.SetTablaDetalleEnBlanco(liq, tablaDetalleBlanco);
+            TablaDetalleLiquidacionForm.SetTablaDetalleEnNegro(liq, tablaDetalleNegro);
+            TablaAcuerdoLiquidacionForm.SetTablaAcuerdo(liq, tablaAcuerdo);
 
-            liquidacion.Items.Remuneraciones.Where(r => r.EsBlanco == true).ToList().ForEach(r =>
-            {
-                DateTime result;
-                DateTime.TryParse(r.Fecha, out result);
-
-                var item = new ListViewItem(r.Descripcion);
-                item.SubItems.Add(result.ToString("dd/MM/yyyyy"));
-                item.SubItems.Add(r.Monto.ToString("c"));
-                item.SubItems.Add("");
-                item.SubItems.Add("");
-
-                this.listaSueldoBlanco.Items.Add(item);
-            });
-
-            liquidacion.Items.Retenciones.ForEach(rt =>
-            {
-                var item = new ListViewItem(rt.Descripcion);
-                item.SubItems.Add(rt.Fecha.ToString("dd/MM/yyyyy"));
-                item.SubItems.Add("");
-                item.SubItems.Add("");
-                item.SubItems.Add(rt.Monto.ToString("c"));
-
-                this.listaSueldoBlanco.Items.Add(item);
-            });
+            SetDatosLiquidacion(liq);
+            SetDetalleEmpleado(liq);
         }
 
-        private void CargarTablaSueldoBillete(LiquidacionDTO liquidacion)
+        private void SetDatosLiquidacion(GetLiquidacionByIdResponse liq)
         {
-            liquidacion.Items.Remuneraciones.Where(r => r.EsBlanco == false).ToList().ForEach(rn =>
+            string quincena = "1ra";
+            textBoxCodigoLiq.Text = liq.Codigo;
+
+            if (liq.Quincena.Nro == 2)
+                quincena = "2da";
+
+            textBoxPeriodo.Text = $"{quincena} del {liq.Quincena.Mes} de{liq.Quincena.Anio}";
+
+            if (!liq.SeSello)
             {
-                DateTime result;
-                DateTime.TryParse(rn.Fecha, out result);
-
-                var item = new ListViewItem(rn.Descripcion);
-                item.SubItems.Add(result.ToString("dd/MM/yyyy"));
-                item.SubItems.Add(rn.Monto.ToString("c"));
-
-                listaSueldoBillete.Items.Add(item);
-
-            });
-
-            liquidacion.Items.Descuentos.ForEach(d =>
+                textBoxEstado.Text = "PENDIENTE";
+                textBoxEstado.ForeColor = Color.Red;
+            }
+            else
             {
-                var item = new ListViewItem(d.Descripcion);
-                item.SubItems.Add(d.Fecha.ToString("dd/MM/yyyy"));
-                item.SubItems.Add(d.Monto.ToString("c"));
+                textBoxEstado.Text = "SELLADA";
+                textBoxEstado.ForeColor = Color.DarkGreen;
+            }
 
-                listaSueldoBillete.Items.Add(item);
-            });
         }
+  
+        
 
-        private void CargarTablaPagos(LiquidacionDTO liquidacion)
+        private void SetDetalleEmpleado(GetLiquidacionByIdResponse liq)
         {
-            var tablaPagos = this.listaPagos.Items;
-            liquidacion.Pagos.ForEach(p =>
-            {
-                var item = new ListViewItem(p.codigo.ToString());
-                item.SubItems.Add(p.Fecha.ToString("dd/MM/yyyy"));
-                item.SubItems.Add(p.Monto.ToString("C"));
+            textBoxDni.Text = liq.Empleado.Dni;
+            textBoxNombre.Text = $"{liq.Empleado.Nombre}";
+            textBoxApellido.Text = $"{liq.Empleado.Apellido}";
+            textBoxFechaIng.Text = liq.Empleado.FechaIngreso.ToString("dd/MM/yyyy");
+            textBoxFechaAlta.Text = liq.Empleado.FechaAlta.ToString("dd/MM/yyyy");
 
-                tablaPagos.Add(item);
-            });
-        }
-
-        private async void CargarTablaEmpleado(LiquidacionDTO liquidacion)
-        {
-            string dniEmp = liquidacion.Dni;
-
-            GetEmpleadoResponse emp = await this.empleadoController.ObtenerDataEmpleado(dniEmp);
-
-            this.textBoxDni.Text = emp.Dni;
-            this.textBoxNombre.Text = emp.Nombre;
-            this.textBoxApellido.Text = emp.Apellido;
-            //this.textBoxFechaIng.Text = emp.FechaIngreso.ToString("dd/MM/yyyy");
-            //this.textBoxFechaCreacion.Text = emp.FechaCreacion.ToString("dd/MM/yyyy");
-        }
-
-        private void AjustarTablas()
-        {
-            ListUtils.AjustarColumnas(this.listaSueldoBillete);
-            ListUtils.AjustarColumnas(this.listaSueldoBlanco);
-            ListUtils.AjustarColumnas(this.listaPagos);
         }
 
         private async void ClickBtnGenerarRecibo(object sender, EventArgs e)
@@ -113,7 +71,7 @@ namespace UI.Screens.VerLiquidacion
                 progressBar.Visible = true;
                 progressBar.Style = ProgressBarStyle.Marquee; // Indicador de progreso indefinido
 
-                var liquidacion = LiquidacionContext.GetInstance().ObtenerLiquidacion();
+                var liquidacion = BLL.Models.LiquidacionContext.GetInstance().ObtenerLiquidacion();
                 string codigoLiq = liquidacion.Codigo;
                 string nombreCompletao = liquidacion.Empleado;
 

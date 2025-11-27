@@ -48,29 +48,29 @@
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             button1 = new Button();
-            textBoxFechaCreacion = new TextBox();
+            textBoxFechaAlta = new TextBox();
             label20 = new Label();
             progressBar = new ProgressBar();
             btnPagos = new Button();
-            listContrato = new ListView();
+            tablaAcuerdo = new ListView();
             columnItem = new ColumnHeader();
             columValor = new ColumnHeader();
             labelaAcuerdo = new Label();
-            listaSueldoBillete = new ListView();
+            tablaDetalleNegro = new ListView();
             columDescrip = new ColumnHeader();
             columnRemu = new ColumnHeader();
             columnDescuento = new ColumnHeader();
             columFecha = new ColumnHeader();
-            listaSueldoBlanco = new ListView();
+            tablaDetalleBlanco = new ListView();
             columnDescripcion = new ColumnHeader();
+            columnDesc = new ColumnHeader();
             columnRemunerativo = new ColumnHeader();
             columnNORemu = new ColumnHeader();
-            columnDesc = new ColumnHeader();
             columnFecha = new ColumnHeader();
             labelRetenciones = new Label();
             labelRemuneraciones = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
+            textBoxEstado = new TextBox();
             SuspendLayout();
             // 
             // textBoxCodigoLiq
@@ -81,6 +81,7 @@
             textBoxCodigoLiq.ReadOnly = true;
             textBoxCodigoLiq.Size = new Size(158, 23);
             textBoxCodigoLiq.TabIndex = 1;
+            textBoxCodigoLiq.TabStop = false;
             // 
             // labelCod
             // 
@@ -246,14 +247,14 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += ClickBtnGenerarRecibo;
             // 
-            // textBoxFechaCreacion
+            // textBoxFechaAlta
             // 
-            textBoxFechaCreacion.BackColor = SystemColors.HighlightText;
-            textBoxFechaCreacion.Location = new Point(920, 133);
-            textBoxFechaCreacion.Name = "textBoxFechaCreacion";
-            textBoxFechaCreacion.ReadOnly = true;
-            textBoxFechaCreacion.Size = new Size(104, 23);
-            textBoxFechaCreacion.TabIndex = 39;
+            textBoxFechaAlta.BackColor = SystemColors.HighlightText;
+            textBoxFechaAlta.Location = new Point(920, 133);
+            textBoxFechaAlta.Name = "textBoxFechaAlta";
+            textBoxFechaAlta.ReadOnly = true;
+            textBoxFechaAlta.Size = new Size(104, 23);
+            textBoxFechaAlta.TabIndex = 39;
             // 
             // label20
             // 
@@ -286,18 +287,18 @@
             btnPagos.UseVisualStyleBackColor = false;
             btnPagos.Click += BtnPagos_Click;
             // 
-            // listContrato
+            // tablaAcuerdo
             // 
-            listContrato.Columns.AddRange(new ColumnHeader[] { columnItem, columValor });
-            listContrato.FullRowSelect = true;
-            listContrato.GridLines = true;
-            listContrato.Location = new Point(709, 195);
-            listContrato.Name = "listContrato";
-            listContrato.Scrollable = false;
-            listContrato.Size = new Size(318, 436);
-            listContrato.TabIndex = 48;
-            listContrato.UseCompatibleStateImageBehavior = false;
-            listContrato.View = View.Details;
+            tablaAcuerdo.Columns.AddRange(new ColumnHeader[] { columnItem, columValor });
+            tablaAcuerdo.FullRowSelect = true;
+            tablaAcuerdo.GridLines = true;
+            tablaAcuerdo.Location = new Point(709, 195);
+            tablaAcuerdo.Name = "tablaAcuerdo";
+            tablaAcuerdo.Scrollable = false;
+            tablaAcuerdo.Size = new Size(318, 436);
+            tablaAcuerdo.TabIndex = 48;
+            tablaAcuerdo.UseCompatibleStateImageBehavior = false;
+            tablaAcuerdo.View = View.Details;
             // 
             // columnItem
             // 
@@ -320,78 +321,74 @@
             labelaAcuerdo.TabIndex = 47;
             labelaAcuerdo.Text = "Acuerdo";
             // 
-            // listaSueldoBillete
+            // tablaDetalleNegro
             // 
-            listaSueldoBillete.Columns.AddRange(new ColumnHeader[] { columDescrip, columnRemu, columnDescuento, columFecha });
-            listaSueldoBillete.FullRowSelect = true;
-            listaSueldoBillete.GridLines = true;
-            listaSueldoBillete.Location = new Point(26, 458);
-            listaSueldoBillete.Name = "listaSueldoBillete";
-            listaSueldoBillete.Size = new Size(667, 173);
-            listaSueldoBillete.TabIndex = 46;
-            listaSueldoBillete.UseCompatibleStateImageBehavior = false;
-            listaSueldoBillete.View = View.Details;
+            tablaDetalleNegro.Columns.AddRange(new ColumnHeader[] { columDescrip, columnRemu, columnDescuento, columFecha });
+            tablaDetalleNegro.FullRowSelect = true;
+            tablaDetalleNegro.GridLines = true;
+            tablaDetalleNegro.Location = new Point(26, 458);
+            tablaDetalleNegro.Name = "tablaDetalleNegro";
+            tablaDetalleNegro.Size = new Size(667, 173);
+            tablaDetalleNegro.TabIndex = 46;
+            tablaDetalleNegro.UseCompatibleStateImageBehavior = false;
+            tablaDetalleNegro.View = View.Details;
             // 
             // columDescrip
             // 
             columDescrip.Text = "Conceptos";
-            columDescrip.Width = 350;
+            columDescrip.Width = 320;
             // 
             // columnRemu
             // 
-            columnRemu.DisplayIndex = 2;
             columnRemu.Text = "Remunerativo";
+            columnRemu.Width = 90;
             // 
             // columnDescuento
             // 
-            columnDescuento.DisplayIndex = 3;
             columnDescuento.Text = "Descuentos";
+            columnDescuento.Width = 90;
             // 
             // columFecha
             // 
-            columFecha.DisplayIndex = 1;
             columFecha.Text = "Fecha";
-            columFecha.Width = 90;
+            columFecha.Width = 100;
             // 
-            // listaSueldoBlanco
+            // tablaDetalleBlanco
             // 
-            listaSueldoBlanco.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnRemunerativo, columnNORemu, columnDesc, columnFecha });
-            listaSueldoBlanco.FullRowSelect = true;
-            listaSueldoBlanco.GridLines = true;
-            listaSueldoBlanco.Location = new Point(26, 195);
-            listaSueldoBlanco.Name = "listaSueldoBlanco";
-            listaSueldoBlanco.Size = new Size(670, 219);
-            listaSueldoBlanco.TabIndex = 45;
-            listaSueldoBlanco.UseCompatibleStateImageBehavior = false;
-            listaSueldoBlanco.View = View.Details;
+            tablaDetalleBlanco.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnDesc, columnRemunerativo, columnNORemu, columnFecha });
+            tablaDetalleBlanco.FullRowSelect = true;
+            tablaDetalleBlanco.GridLines = true;
+            tablaDetalleBlanco.Location = new Point(26, 195);
+            tablaDetalleBlanco.Name = "tablaDetalleBlanco";
+            tablaDetalleBlanco.Size = new Size(670, 219);
+            tablaDetalleBlanco.TabIndex = 45;
+            tablaDetalleBlanco.UseCompatibleStateImageBehavior = false;
+            tablaDetalleBlanco.View = View.Details;
             // 
             // columnDescripcion
             // 
             columnDescripcion.Text = "Conceptos";
-            columnDescripcion.Width = 180;
-            // 
-            // columnRemunerativo
-            // 
-            columnRemunerativo.DisplayIndex = 2;
-            columnRemunerativo.Text = "Remuneraciones";
-            columnRemunerativo.Width = 95;
-            // 
-            // columnNORemu
-            // 
-            columnNORemu.DisplayIndex = 3;
-            columnNORemu.Text = "No Remunerativo";
-            columnNORemu.Width = 120;
+            columnDescripcion.Width = 210;
             // 
             // columnDesc
             // 
-            columnDesc.DisplayIndex = 4;
             columnDesc.Text = "Descuentos";
             columnDesc.Width = 90;
             // 
+            // columnRemunerativo
+            // 
+            columnRemunerativo.Text = "Remuneraciones";
+            columnRemunerativo.Width = 100;
+            // 
+            // columnNORemu
+            // 
+            columnNORemu.Text = "No Remunerativo";
+            columnNORemu.Width = 120;
+            // 
             // columnFecha
             // 
-            columnFecha.DisplayIndex = 1;
             columnFecha.Text = "Fecha";
+            columnFecha.Width = 110;
             // 
             // labelRetenciones
             // 
@@ -425,32 +422,32 @@
             label2.TabIndex = 49;
             label2.Text = "ESTADO:";
             // 
-            // textBox1
+            // textBoxEstado
             // 
-            textBox1.BackColor = SystemColors.HighlightText;
-            textBox1.Location = new Point(595, 54);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(158, 23);
-            textBox1.TabIndex = 50;
+            textBoxEstado.BackColor = SystemColors.HighlightText;
+            textBoxEstado.Location = new Point(595, 54);
+            textBoxEstado.Name = "textBoxEstado";
+            textBoxEstado.ReadOnly = true;
+            textBoxEstado.Size = new Size(158, 23);
+            textBoxEstado.TabIndex = 50;
             // 
             // VerLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1050, 767);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxEstado);
             Controls.Add(label2);
             Controls.Add(progressBar);
-            Controls.Add(listContrato);
+            Controls.Add(tablaAcuerdo);
             Controls.Add(labelaAcuerdo);
-            Controls.Add(listaSueldoBillete);
-            Controls.Add(listaSueldoBlanco);
+            Controls.Add(tablaDetalleNegro);
+            Controls.Add(tablaDetalleBlanco);
             Controls.Add(labelRetenciones);
             Controls.Add(labelRemuneraciones);
             Controls.Add(btnPagos);
             Controls.Add(label20);
-            Controls.Add(textBoxFechaCreacion);
+            Controls.Add(textBoxFechaAlta);
             Controls.Add(button1);
             Controls.Add(listaPagos);
             Controls.Add(label12);
@@ -469,6 +466,7 @@
             Controls.Add(textBoxCodigoLiq);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "VerLiquidacionForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "VerLiquidacionForm";
             ResumeLayout(false);
             PerformLayout();
@@ -494,20 +492,20 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private Button button1;
-        private TextBox textBoxFechaCreacion;
+        private TextBox textBoxFechaAlta;
         private Label label20;
         private ProgressBar progressBar;
         private Button btnPagos;
-        private ListView listContrato;
+        private ListView tablaAcuerdo;
         private ColumnHeader columnItem;
         private ColumnHeader columValor;
         private Label labelaAcuerdo;
-        private ListView listaSueldoBillete;
+        private ListView tablaDetalleNegro;
         private ColumnHeader columDescrip;
         private ColumnHeader columnRemu;
         private ColumnHeader columnDescuento;
         private ColumnHeader columFecha;
-        private ListView listaSueldoBlanco;
+        private ListView tablaDetalleBlanco;
         private ColumnHeader columnDescripcion;
         private ColumnHeader columnRemunerativo;
         private ColumnHeader columnNORemu;
@@ -516,6 +514,6 @@
         private Label labelRetenciones;
         private Label labelRemuneraciones;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox textBoxEstado;
     }
 }

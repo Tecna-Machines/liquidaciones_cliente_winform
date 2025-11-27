@@ -60,7 +60,7 @@ namespace UI.Components.Screens
 
                     var liquidacion = await _ControllerLiquidacion.ConsultarLiquidacionById(codigoLiquidacion);
 
-                    var contexto = LiquidacionContext.GetInstance();
+                    var contexto = BLL.Models.LiquidacionContext.GetInstance();
 
                     contexto.SetLiquidacion(liquidacion);
 

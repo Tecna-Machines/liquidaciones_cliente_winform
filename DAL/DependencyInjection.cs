@@ -1,5 +1,6 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Liquidar;
 using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.GetCatalogo;
@@ -58,6 +59,8 @@ namespace DAL
             services.AddScoped<CrearLiquidacionHandler>();
             services.AddScoped<RealizarLiquidacion>();
             services.AddScoped<AgregarItemLiquidacion>();
+            services.AddScoped<GetLiquidaciones>();
+
             services.AddScoped<ILiquidacionService, LiquidacionService>();
 
             return services;

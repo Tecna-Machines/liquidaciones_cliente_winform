@@ -1,5 +1,6 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Liquidar;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 
@@ -11,16 +12,19 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         private readonly CrearLiquidacionHandler _crearLiquidacion;
         private readonly RealizarLiquidacion _realizarLiquidacion;
         private readonly AgregarItemLiquidacion _itemsLiquidacion;
+        private readonly GetLiquidaciones _getLiquidaciones;
 
         public LiquidacionService(GetLiquidacion getLiquidacionById,
                                   CrearLiquidacionHandler crearLiquidacion,
                                   RealizarLiquidacion realizarLiquidacion,
-                                  AgregarItemLiquidacion itemsLiquidacion)
+                                  AgregarItemLiquidacion itemsLiquidacion,
+                                  GetLiquidaciones getLiquidaciones)
         {
             _getLiquidacionById = getLiquidacionById;
             _crearLiquidacion = crearLiquidacion;
             _realizarLiquidacion = realizarLiquidacion;
             _itemsLiquidacion = itemsLiquidacion;
+            _getLiquidaciones = getLiquidaciones;
         }
 
         public Task<GetLiquidacionByIdResponse> GetLiquidacion(string id)
@@ -41,6 +45,11 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         public Task<CrearItemResponse> AgregarItem(string codLiqudiacion, CrearItemRequest itemData)
         {
             return _itemsLiquidacion.CrearItem(codLiqudiacion, itemData);
+        }
+
+        public async Task<GetLiquidacionesResponse> GetByQuincena(int quincena,int mes,int anio)
+        {
+            return await _getLiquidaciones.GetByQuincena(quincena,mes,anio);
         }
     }
 }

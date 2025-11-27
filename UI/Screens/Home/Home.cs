@@ -4,6 +4,7 @@ using System.Configuration;
 using UI.Components.Screens;
 using UI.Screens.CrearContrato;
 using UI.Screens.CrearEmpleado;
+using UI.Screens.Liquidaciones.HistorialLiquidaciones;
 using UI.Screens.VerContratos;
 
 namespace UI
@@ -28,12 +29,6 @@ namespace UI
             this.panelPrincipal.Controls.Add(content);
         }
 
-        private void ClickBtnHacerLiquidacion(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         private async void ClickBtnHistorialLiquidacion(object sender, EventArgs e)
         {
@@ -56,26 +51,6 @@ namespace UI
             panelPrincipal.Controls.Add(this.labelServerInfo);
         }
 
-        private void btnCrearEmpleado_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCrearContrato_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnHistorialTrabajo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCreditos_Click(object sender, EventArgs e)
-        {
-            //var formCreditos = new VerCreditosForm();
-            //formCreditos.ShowDialog();
-        }
 
         private void CrearEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -102,7 +77,8 @@ namespace UI
 
         private void HistorialLiquidacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var formHistorial = Program.ServiceProvider.GetRequiredService<HistorialLiquidacionesForm>();
+            formHistorial.ShowDialog();
         }
 
     }

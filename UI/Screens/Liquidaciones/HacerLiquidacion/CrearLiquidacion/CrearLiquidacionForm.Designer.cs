@@ -65,10 +65,10 @@
             groupBoxMontosPagar.SuspendLayout();
             SuspendLayout();
             // 
-            // listaEmpComponent1
+            // listaConBuscador
             // 
             listaConBuscador.Location = new Point(12, 12);
-            listaConBuscador.Name = "listaEmpComponent1";
+            listaConBuscador.Name = "listaConBuscador";
             listaConBuscador.ServiceProvider = null;
             listaConBuscador.Size = new Size(314, 682);
             listaConBuscador.TabIndex = 0;
@@ -159,6 +159,7 @@
             tablaDetalleEnBlanco.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnDesc, columnRemunerativo, columnNORemu, columnFecha });
             tablaDetalleEnBlanco.FullRowSelect = true;
             tablaDetalleEnBlanco.GridLines = true;
+            tablaDetalleEnBlanco.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             tablaDetalleEnBlanco.Location = new Point(314, 248);
             tablaDetalleEnBlanco.Name = "tablaDetalleEnBlanco";
             tablaDetalleEnBlanco.Size = new Size(670, 219);
@@ -191,13 +192,13 @@
             columnFecha.Text = "Fecha";
             columnFecha.Width = 120;
             // 
-            // listaSueldoBillete
+            // tablaDetalleEnNegro
             // 
             tablaDetalleEnNegro.Columns.AddRange(new ColumnHeader[] { columDescrip, columnRemu, columnDescuento, columFecha });
             tablaDetalleEnNegro.FullRowSelect = true;
             tablaDetalleEnNegro.GridLines = true;
             tablaDetalleEnNegro.Location = new Point(314, 511);
-            tablaDetalleEnNegro.Name = "listaSueldoBillete";
+            tablaDetalleEnNegro.Name = "tablaDetalleEnNegro";
             tablaDetalleEnNegro.Size = new Size(667, 173);
             tablaDetalleEnNegro.TabIndex = 7;
             tablaDetalleEnNegro.UseCompatibleStateImageBehavior = false;

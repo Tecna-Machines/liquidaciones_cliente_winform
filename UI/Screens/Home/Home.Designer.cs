@@ -41,7 +41,7 @@
             verAcuerdosToolStripMenuItem = new ToolStripMenuItem();
             toolStripDropDownLiquidacion = new ToolStripDropDownButton();
             crearLiquidacionToolStripMenuItem = new ToolStripMenuItem();
-            historialLiquidacionesToolStripMenuItem = new ToolStripMenuItem();
+            historialLiquidacionesToolStrip = new ToolStripMenuItem();
             toolStripButtonCreditos = new ToolStripLabel();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
@@ -126,21 +126,21 @@
             // crearAcuerdoToolStripMenuItem
             // 
             crearAcuerdoToolStripMenuItem.Name = "crearAcuerdoToolStripMenuItem";
-            crearAcuerdoToolStripMenuItem.Size = new Size(148, 22);
+            crearAcuerdoToolStripMenuItem.Size = new Size(180, 22);
             crearAcuerdoToolStripMenuItem.Text = "Crear acuerdo";
             crearAcuerdoToolStripMenuItem.Click += CrearAcuerdoToolStripMenuItem_Click;
             // 
             // verAcuerdosToolStripMenuItem
             // 
             verAcuerdosToolStripMenuItem.Name = "verAcuerdosToolStripMenuItem";
-            verAcuerdosToolStripMenuItem.Size = new Size(148, 22);
+            verAcuerdosToolStripMenuItem.Size = new Size(180, 22);
             verAcuerdosToolStripMenuItem.Text = "Ver acuerdos";
             verAcuerdosToolStripMenuItem.Click += VerAcuerdosToolStripMenuItem_Click;
             // 
             // toolStripDropDownLiquidacion
             // 
             toolStripDropDownLiquidacion.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripDropDownLiquidacion.DropDownItems.AddRange(new ToolStripItem[] { crearLiquidacionToolStripMenuItem, historialLiquidacionesToolStripMenuItem });
+            toolStripDropDownLiquidacion.DropDownItems.AddRange(new ToolStripItem[] { crearLiquidacionToolStripMenuItem, historialLiquidacionesToolStrip });
             toolStripDropDownLiquidacion.Image = (Image)resources.GetObject("toolStripDropDownLiquidacion.Image");
             toolStripDropDownLiquidacion.ImageTransparentColor = Color.Magenta;
             toolStripDropDownLiquidacion.Name = "toolStripDropDownLiquidacion";
@@ -150,16 +150,16 @@
             // crearLiquidacionToolStripMenuItem
             // 
             crearLiquidacionToolStripMenuItem.Name = "crearLiquidacionToolStripMenuItem";
-            crearLiquidacionToolStripMenuItem.Size = new Size(191, 22);
+            crearLiquidacionToolStripMenuItem.Size = new Size(180, 22);
             crearLiquidacionToolStripMenuItem.Text = "Crear liquidacion";
             crearLiquidacionToolStripMenuItem.Click += CrearLiquidacionToolStripMenuItem_Click;
             // 
-            // historialLiquidacionesToolStripMenuItem
+            // historialLiquidacionesToolStrip
             // 
-            historialLiquidacionesToolStripMenuItem.Name = "historialLiquidacionesToolStripMenuItem";
-            historialLiquidacionesToolStripMenuItem.Size = new Size(191, 22);
-            historialLiquidacionesToolStripMenuItem.Text = "Historial liquidaciones";
-            historialLiquidacionesToolStripMenuItem.Click += HistorialLiquidacionesToolStripMenuItem_Click;
+            historialLiquidacionesToolStrip.Name = "historialLiquidacionesToolStrip";
+            historialLiquidacionesToolStrip.Size = new Size(180, 22);
+            historialLiquidacionesToolStrip.Text = "Historial";
+            historialLiquidacionesToolStrip.Click += HistorialLiquidacionesToolStripMenuItem_Click;
             // 
             // toolStripButtonCreditos
             // 
@@ -207,7 +207,7 @@
         private ToolStripMenuItem verAcuerdosToolStripMenuItem;
         private ToolStripDropDownButton toolStripDropDownLiquidacion;
         private ToolStripMenuItem crearLiquidacionToolStripMenuItem;
-        private ToolStripMenuItem historialLiquidacionesToolStripMenuItem;
+        private ToolStripMenuItem historialLiquidacionesToolStrip;
         private ToolStripLabel toolStripButtonCreditos;
     }
 }

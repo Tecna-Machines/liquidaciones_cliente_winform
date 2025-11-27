@@ -4,6 +4,8 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
 {
     public sealed record GetLiquidacionByIdResponse(string Codigo,
                                                    DateTime Creacion,
+                                                   DateTime FechaSello,
+                                                   bool SeSello,
                                                    string Concepto,
                                                    QuincenaLiquidacion Quincena,
                                                    EmpleadoLiquidacion Empleado,
@@ -16,6 +18,7 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
     public sealed record EmpleadoLiquidacion(string Dni,
                                              string Nombre,
                                              string Apellido,
+                                             DateTime FechaAlta,
                                              DateTime FechaIngreso);
 
     public sealed record MontosPagar(decimal EnBlanco, decimal EnNegro);
