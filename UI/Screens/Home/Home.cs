@@ -1,7 +1,5 @@
-using BLL.Controllers;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
-using UI.Components.Screens;
 using UI.Screens.CrearContrato;
 using UI.Screens.CrearEmpleado;
 using UI.Screens.Liquidaciones.HistorialLiquidaciones;
@@ -28,20 +26,6 @@ namespace UI
             content.Dock = DockStyle.Fill;
             this.panelPrincipal.Controls.Add(content);
         }
-
-
-        private async void ClickBtnHistorialLiquidacion(object sender, EventArgs e)
-        {
-            var controllre = new ConsultarLiquidacionController();
-            var pag = await controllre.ConsultarLiquidaciones(new DAL.Service.Liquidacion.UseCase.Liquidacion.FiltroLiquidacion());
-
-            var buscardor = new BuscarLiquiComponent();
-            this.ShowPanelContexto(buscardor);
-
-            buscardor.CargarLista(pag);
-        }
-
-
 
         private void ClickBtnInicio(object sender, EventArgs e)
         {

@@ -2,6 +2,7 @@
 using UI.Screens.CrearContrato;
 using UI.Screens.CrearEmpleado;
 using UI.Screens.HacerLiquidacion;
+using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Liquidaciones.HistorialLiquidaciones;
 using UI.Screens.VerContratos;
 using UI.Screens.VerLiquidacion;
@@ -19,6 +20,8 @@ namespace UI
             services.AddTransient<CrearEmpleadoForm>();
             services.AddTransient<CrearItemForm>();
             services.AddTransient<HistorialLiquidacionesForm>();
+
+            services.AddTransient<SellarLiquidacionForm>();
             return services;
         }
     }

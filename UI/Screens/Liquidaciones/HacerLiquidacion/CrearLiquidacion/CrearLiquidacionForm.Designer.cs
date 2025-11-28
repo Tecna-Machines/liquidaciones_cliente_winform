@@ -53,9 +53,9 @@
             columnItem = new ColumnHeader();
             columValor = new ColumnHeader();
             BtnRecalcular = new Button();
-            btnSellar = new Button();
+            BtnSellar = new Button();
             btnMarcas = new Button();
-            btnItem = new Button();
+            BtnItem = new Button();
             groupBoxMontosPagar = new GroupBox();
             label2 = new Label();
             label1 = new Label();
@@ -166,11 +166,12 @@
             tablaDetalleEnBlanco.TabIndex = 6;
             tablaDetalleEnBlanco.UseCompatibleStateImageBehavior = false;
             tablaDetalleEnBlanco.View = View.Details;
+            tablaDetalleEnBlanco.MouseDoubleClick += TablaDetalleEnBlanco_MouseDoubleClick;
             // 
             // columnDescripcion
             // 
             columnDescripcion.Text = "Conceptos";
-            columnDescripcion.Width = 180;
+            columnDescripcion.Width = 190;
             // 
             // columnDesc
             // 
@@ -180,7 +181,7 @@
             // columnRemunerativo
             // 
             columnRemunerativo.Text = "Remuneraciones";
-            columnRemunerativo.Width = 95;
+            columnRemunerativo.Width = 100;
             // 
             // columnNORemu
             // 
@@ -203,6 +204,7 @@
             tablaDetalleEnNegro.TabIndex = 7;
             tablaDetalleEnNegro.UseCompatibleStateImageBehavior = false;
             tablaDetalleEnNegro.View = View.Details;
+            tablaDetalleEnNegro.MouseDoubleClick += TablaDetalleEnNegro_MouseDoubleClick;
             // 
             // columDescrip
             // 
@@ -270,19 +272,19 @@
             BtnRecalcular.UseVisualStyleBackColor = false;
             BtnRecalcular.Click += BtnRecalcular_Click;
             // 
-            // btnSellar
+            // BtnSellar
             // 
-            btnSellar.BackColor = Color.Gold;
-            btnSellar.BackgroundImageLayout = ImageLayout.None;
-            btnSellar.Cursor = Cursors.Hand;
-            btnSellar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSellar.Location = new Point(872, 157);
-            btnSellar.Name = "btnSellar";
-            btnSellar.Size = new Size(109, 41);
-            btnSellar.TabIndex = 11;
-            btnSellar.Text = "SELLAR";
-            btnSellar.UseVisualStyleBackColor = false;
-            btnSellar.Click += BtnSellar_Click;
+            BtnSellar.BackColor = Color.Gold;
+            BtnSellar.BackgroundImageLayout = ImageLayout.None;
+            BtnSellar.Cursor = Cursors.Hand;
+            BtnSellar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnSellar.Location = new Point(872, 157);
+            BtnSellar.Name = "BtnSellar";
+            BtnSellar.Size = new Size(109, 41);
+            BtnSellar.TabIndex = 11;
+            BtnSellar.Text = "SELLAR";
+            BtnSellar.UseVisualStyleBackColor = false;
+            BtnSellar.Click += BtnSellar_Click;
             // 
             // btnMarcas
             // 
@@ -295,16 +297,16 @@
             btnMarcas.UseVisualStyleBackColor = true;
             btnMarcas.Click += ClickBtnMarcas;
             // 
-            // btnItem
+            // BtnItem
             // 
-            btnItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnItem.Location = new Point(592, 157);
-            btnItem.Name = "btnItem";
-            btnItem.Size = new Size(147, 41);
-            btnItem.TabIndex = 18;
-            btnItem.Text = "AGREGAR ITEM";
-            btnItem.UseVisualStyleBackColor = true;
-            btnItem.Click += ClickBtnAgregarItem;
+            BtnItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnItem.Location = new Point(592, 157);
+            BtnItem.Name = "BtnItem";
+            BtnItem.Size = new Size(147, 41);
+            BtnItem.TabIndex = 18;
+            BtnItem.Text = "AGREGAR ITEM";
+            BtnItem.UseVisualStyleBackColor = true;
+            BtnItem.Click += ClickBtnAgregarItem;
             // 
             // groupBoxMontosPagar
             // 
@@ -368,9 +370,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1335, 821);
             Controls.Add(groupBoxMontosPagar);
-            Controls.Add(btnItem);
+            Controls.Add(BtnItem);
             Controls.Add(btnMarcas);
-            Controls.Add(btnSellar);
+            Controls.Add(BtnSellar);
             Controls.Add(BtnRecalcular);
             Controls.Add(tablaAcuerdo);
             Controls.Add(labelaAcuerdo);
@@ -415,9 +417,9 @@
         private ColumnHeader columnItem;
         private ColumnHeader columValor;
         private Button BtnRecalcular;
-        private Button btnSellar;
+        private Button BtnSellar;
         private Button btnMarcas;
-        private Button btnItem;
+        private Button BtnItem;
         private ColumnHeader columnRemu;
         private ColumnHeader columnDescuento;
         private GroupBox groupBoxMontosPagar;

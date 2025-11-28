@@ -11,7 +11,7 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
             foreach (var it in itemsEnBlanco)
             {
                 var item = new ListViewItem(it.Concepto);
-
+                item.Tag = it;
                 string colRetencion = "";
                 string colRemunerativo = "";
                 string colNoRemunerativo = "";
@@ -48,6 +48,7 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
             foreach (var it in itemsNegro)
             {
                 var item = new ListViewItem(it.Concepto);
+                item.Tag = it;
 
                 string colRemunerativo = "";
                 string colDescuento = "";

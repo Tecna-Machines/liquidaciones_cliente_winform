@@ -1,6 +1,7 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.Sellar;
 using DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 
@@ -15,7 +16,7 @@ namespace BLL.Controllers
             _liquidacion = liquidacion;
         }
 
-        public async Task<GetLiquidacionByIdResponse> GetById(string id)
+        public async Task<GetLiquidacionByIdResponse?> GetById(string id)
         {
             return await _liquidacion.GetLiquidacion(id);
         }
@@ -40,9 +41,14 @@ namespace BLL.Controllers
             return await _liquidacion.AgregarItem(codigo, req);
         }
 
-        public async Task<GetLiquidacionesResponse> GetLiquidacionesByQuincena(int quincena,int mes,int anio)
+        public async Task<GetLiquidacionesResponse> GetLiquidacionesByQuincena(int quincena, int mes, int anio)
         {
             return await _liquidacion.GetByQuincena(quincena, mes, anio);
+        }
+
+        public async Task<SellarLiquidacionResponse> SellarLiquidacion(string id)
+        {
+            return await _liquidacion.Sellar(id);
         }
     }
 }

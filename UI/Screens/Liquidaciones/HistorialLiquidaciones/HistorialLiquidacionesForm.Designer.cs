@@ -43,6 +43,7 @@
             comboBoxQuincena = new ComboBox();
             labelFiltro = new Label();
             BtnBuscar = new Button();
+            BtnDescargarRecibos = new Button();
             SuspendLayout();
             // 
             // tablaLiquidaciones
@@ -50,9 +51,9 @@
             tablaLiquidaciones.Columns.AddRange(new ColumnHeader[] { columnCodigo, columnEmpleadoNombre, columnDni, columnFechaCreacion, ColumnFechaSello, columnEstado });
             tablaLiquidaciones.FullRowSelect = true;
             tablaLiquidaciones.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            tablaLiquidaciones.Location = new Point(21, 87);
+            tablaLiquidaciones.Location = new Point(21, 65);
             tablaLiquidaciones.Name = "tablaLiquidaciones";
-            tablaLiquidaciones.Size = new Size(710, 339);
+            tablaLiquidaciones.Size = new Size(745, 339);
             tablaLiquidaciones.TabIndex = 0;
             tablaLiquidaciones.UseCompatibleStateImageBehavior = false;
             tablaLiquidaciones.View = View.Details;
@@ -93,9 +94,9 @@
             comboBoxYear.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxYear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxYear.FormattingEnabled = true;
-            comboBoxYear.Location = new Point(490, 30);
+            comboBoxYear.Location = new Point(412, 29);
             comboBoxYear.Name = "comboBoxYear";
-            comboBoxYear.Size = new Size(121, 23);
+            comboBoxYear.Size = new Size(107, 23);
             comboBoxYear.TabIndex = 11;
             // 
             // labelAnio
@@ -103,7 +104,7 @@
             labelAnio.AutoSize = true;
             labelAnio.BackColor = SystemColors.ActiveCaption;
             labelAnio.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelAnio.Location = new Point(442, 34);
+            labelAnio.Location = new Point(378, 33);
             labelAnio.Name = "labelAnio";
             labelAnio.Size = new Size(25, 15);
             labelAnio.TabIndex = 10;
@@ -114,9 +115,9 @@
             comboBoxMeses.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMeses.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxMeses.FormattingEnabled = true;
-            comboBoxMeses.Location = new Point(281, 30);
+            comboBoxMeses.Location = new Point(221, 29);
             comboBoxMeses.Name = "comboBoxMeses";
-            comboBoxMeses.Size = new Size(155, 23);
+            comboBoxMeses.Size = new Size(148, 23);
             comboBoxMeses.TabIndex = 9;
             // 
             // labelFecha
@@ -124,18 +125,18 @@
             labelFecha.AutoSize = true;
             labelFecha.BackColor = SystemColors.ActiveCaption;
             labelFecha.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelFecha.Location = new Point(223, 34);
+            labelFecha.Location = new Point(178, 33);
             labelFecha.Name = "labelFecha";
-            labelFecha.Size = new Size(52, 15);
+            labelFecha.Size = new Size(34, 15);
             labelFecha.TabIndex = 8;
-            labelFecha.Text = "MES DE:";
+            labelFecha.Text = "MES:";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(34, 34);
+            label1.Location = new Point(28, 33);
             label1.Name = "label1";
             label1.Size = new Size(71, 15);
             label1.TabIndex = 12;
@@ -147,9 +148,9 @@
             comboBoxQuincena.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxQuincena.FormattingEnabled = true;
             comboBoxQuincena.Items.AddRange(new object[] { "1", "2" });
-            comboBoxQuincena.Location = new Point(128, 30);
+            comboBoxQuincena.Location = new Point(108, 29);
             comboBoxQuincena.Name = "comboBoxQuincena";
-            comboBoxQuincena.Size = new Size(72, 23);
+            comboBoxQuincena.Size = new Size(61, 23);
             comboBoxQuincena.TabIndex = 13;
             // 
             // labelFiltro
@@ -159,14 +160,14 @@
             labelFiltro.Location = new Point(21, 18);
             labelFiltro.Name = "labelFiltro";
             labelFiltro.Padding = new Padding(3);
-            labelFiltro.Size = new Size(710, 44);
+            labelFiltro.Size = new Size(745, 44);
             labelFiltro.TabIndex = 14;
             // 
             // BtnBuscar
             // 
             BtnBuscar.BackColor = SystemColors.ButtonHighlight;
             BtnBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            BtnBuscar.Location = new Point(634, 30);
+            BtnBuscar.Location = new Point(528, 29);
             BtnBuscar.Name = "BtnBuscar";
             BtnBuscar.Size = new Size(75, 23);
             BtnBuscar.TabIndex = 15;
@@ -174,11 +175,23 @@
             BtnBuscar.UseVisualStyleBackColor = false;
             BtnBuscar.Click += BtnBuscar_Click;
             // 
+            // BtnDescargarRecibos
+            // 
+            BtnDescargarRecibos.BackColor = Color.IndianRed;
+            BtnDescargarRecibos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnDescargarRecibos.Location = new Point(612, 29);
+            BtnDescargarRecibos.Name = "BtnDescargarRecibos";
+            BtnDescargarRecibos.Size = new Size(139, 23);
+            BtnDescargarRecibos.TabIndex = 16;
+            BtnDescargarRecibos.Text = "DESCARGAR RECIBOS";
+            BtnDescargarRecibos.UseVisualStyleBackColor = false;
+            // 
             // HistorialLiquidacionesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(759, 450);
+            ClientSize = new Size(784, 424);
+            Controls.Add(BtnDescargarRecibos);
             Controls.Add(BtnBuscar);
             Controls.Add(comboBoxQuincena);
             Controls.Add(label1);
@@ -213,5 +226,6 @@
         private ComboBox comboBoxQuincena;
         private Label labelFiltro;
         private Button BtnBuscar;
+        private Button BtnDescargarRecibos;
     }
 }

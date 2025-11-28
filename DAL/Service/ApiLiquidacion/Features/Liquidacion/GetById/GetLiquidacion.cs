@@ -11,16 +11,16 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
             _api = api;
         }
 
-        public async Task<GetLiquidacionByIdResponse> Get(string codigo)
+        public async Task<GetLiquidacionByIdResponse?> Get(string codigo)
         {
 
             HttpResponseMessage response = await _api.GetAsync($"Liquidacion/{codigo}");
 
             int statusCode = await GetHttpStatusCode.GetCode(response);
 
-            if (statusCode != 200)
+            if (statusCode == 409)
             {
-                throw new ArgumentException("no se recuperaron");
+                return null;
             }
 
             return await GetJsonValue<GetLiquidacionByIdResponse>.GetBodyValue(response);

@@ -1,10 +1,8 @@
 ﻿using BLL.Controllers;
-using BLL.Models;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
 using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using UI.Screens.VerLiquidacion;
-using UI.Utils;
 
 namespace UI.Screens.Liquidaciones.HistorialLiquidaciones
 {
@@ -89,7 +87,7 @@ namespace UI.Screens.Liquidaciones.HistorialLiquidaciones
 
         private void TablaLiquidaciones_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if(tablaLiquidaciones.FocusedItem != null)
+            if (tablaLiquidaciones.FocusedItem != null)
             {
                 string codigoLiquidacion = tablaLiquidaciones.FocusedItem.SubItems[0].Text;
                 BuscarLiquidacion(codigoLiquidacion);

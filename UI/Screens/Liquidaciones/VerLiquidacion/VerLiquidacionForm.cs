@@ -1,5 +1,4 @@
 ﻿using BLL.Controllers;
-using BLL.Models;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Utils;
@@ -50,8 +49,8 @@ namespace UI.Screens.VerLiquidacion
             }
 
         }
-  
-        
+
+
 
         private void SetDetalleEmpleado(GetLiquidacionByIdResponse liq)
         {

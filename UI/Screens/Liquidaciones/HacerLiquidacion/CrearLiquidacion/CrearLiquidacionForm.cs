@@ -2,6 +2,7 @@
 using BLL.Enums;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
+using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Marcas;
 using UI.Utils;
@@ -21,6 +22,8 @@ namespace UI.Screens.HacerLiquidacion
         private string _dniEmpleado;
         private bool _esPrimeraQuincena;
 
+        private string? _codigoLiquidacion;
+
         private List<GetEmpleadoResponse> _empleados;
         public CrearLiquidacionForm(EmpleadoController empleadoController, LiquidacionController liquidacionController, CrearItemForm formItem)
         {
@@ -37,6 +40,7 @@ namespace UI.Screens.HacerLiquidacion
             CargarListaDeEmpleados();
             _formItem = formItem;
         }
+
 
         public void SetQuincena(int quincena, int mes, int anio)
         {
@@ -62,21 +66,6 @@ namespace UI.Screens.HacerLiquidacion
             textBoxPeriodo.Text = $"{quincenaStr} {mesStr} {anio}";
         }
 
-        private void MostrarSoloEmpleadosQuincenales()
-        {
-            if (_esPrimeraQuincena)
-            {
-                var empleadosPrimeraQuincena = this._empleados
-                 .Where(emp =>
-                emp.TipoSueldo != -1 &&
-                EsModalidadQuincenal(emp.TipoSueldo)) // Llama a un método que verifica si es modalidad quincenal
-                .ToList();
-
-                listaConBuscador.CargarLista(empleadosPrimeraQuincena);
-            }
-
-        }
-
         private bool EsModalidadQuincenal(int codigoModalidad)
         {
             return codigoModalidad == (int)Modalidad.QuincenalPorHora ||
@@ -89,16 +78,25 @@ namespace UI.Screens.HacerLiquidacion
             var response = await _empleadoController.ObtenerEmpleados();
 
             _empleados = response.ToList();
-            listaConBuscador.CargarLista(this._empleados);
+            IEnumerable<GetEmpleadoResponse> empleadosParaMostrar = _empleados;
 
-            MostrarSoloEmpleadosQuincenales();
+            if (_esPrimeraQuincena)
+            {
+                empleadosParaMostrar = _empleados
+                    .Where(emp =>
+                        emp.TipoSueldo != -1 &&
+                        EsModalidadQuincenal(emp.TipoSueldo));
+            }
 
+            listaConBuscador.CargarLista(empleadosParaMostrar.ToList());
         }
 
         private void ClickEnEmpleadoSeleccionado(object? sender, string dni)
         {
             GetEmpleadoResponse? emp = _empleados.FirstOrDefault(emp => emp.Dni == dni);
-            this.RemoverLiquidacionDePantalla();
+
+            DesbloquarAccionesLiquidacion();
+            RemoverLiquidacionDePantalla();
 
             if (emp == null)
             {
@@ -113,21 +111,23 @@ namespace UI.Screens.HacerLiquidacion
         private async void BtnRecalcular_Click(object sender, EventArgs e)
         {
             var codigo = GenerarCodigoLiquidacion();
+            var liquidacion = await _liquidacionController.GetById(codigo);
 
-            try
-            {
-                var liquidacion = await _liquidacionController.GetById(codigo);
-
-                var liquidacionMostrar = await _liquidacionController.Liquidar(codigo);
-                MostrarLiquidacionEnPantalla(liquidacionMostrar);
-
-            }
-            catch (Exception)
+            if (liquidacion is null)
             {
                 CrearLiquidacionSinItems();
+                return;
             }
 
+            if (liquidacion.SeSello)
+            {
+                BloquearAccionesLiquidacion();
+                MostrarLiquidacionEnPantalla(liquidacion);
+                return;
+            }
 
+            var liquidacionProcesada = await _liquidacionController.Liquidar(liquidacion.Codigo);
+            MostrarLiquidacionEnPantalla(liquidacionProcesada);
         }
 
         private async void CrearLiquidacionSinItems()
@@ -140,7 +140,7 @@ namespace UI.Screens.HacerLiquidacion
 
                 var codigoNuevaLiquidacion = await _liquidacionController.Create(_dniEmpleado, _mes, _anio, _quincena);
                 var liquidacion = await _liquidacionController.GetById(codigoNuevaLiquidacion);
-                MostrarLiquidacionEnPantalla(liquidacion);
+                MostrarLiquidacionEnPantalla(liquidacion!);
             }
 ;
         }
@@ -155,13 +155,18 @@ namespace UI.Screens.HacerLiquidacion
 
             valorPagarBlanco.Text = liquidacion.Montos.EnBlanco.ToString("C");
             valorPagarNegro.Text = liquidacion.Montos.EnNegro.ToString("C");
+
+            _codigoLiquidacion = liquidacion.Codigo;
         }
 
 
         private void BtnSellar_Click(object sender, EventArgs e)
         {
-            //TODO: completar
-            throw new NotImplementedException();
+            var formSellar = Program.ServiceProvider.GetRequiredService<SellarLiquidacionForm>();
+
+            if (_codigoLiquidacion != null)
+                formSellar.SetCodigoLiquidacion(_codigoLiquidacion);
+            formSellar.ShowDialog();
         }
 
         private void RemoverLiquidacionDePantalla()
@@ -185,5 +190,47 @@ namespace UI.Screens.HacerLiquidacion
 
         private string GenerarCodigoLiquidacion()
             => $"{_anio}:{_mes}:{_quincena}:{_dniEmpleado}";
+
+        private void BloquearAccionesLiquidacion()
+        {
+            BtnSellar.Enabled = false;
+            BtnRecalcular.Enabled = false;
+            BtnItem.Enabled = false;
+        }
+
+        private void DesbloquarAccionesLiquidacion()
+        {
+            BtnSellar.Enabled = true;
+            BtnRecalcular.Enabled = true;
+            BtnItem.Enabled = true;
+        }
+
+        private void TablaDetalleEnBlanco_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (tablaDetalleEnBlanco.SelectedItems.Count == 1)
+            {
+                int indx = tablaDetalleEnBlanco.SelectedItems[0].Index;
+
+                MessageBox.Show(tablaDetalleEnBlanco.Items[indx].Text);
+            }
+        }
+
+        private void TablaDetalleEnNegro_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (tablaDetalleEnNegro.SelectedItems.Count == 1)
+            {
+                int indx = tablaDetalleEnNegro.SelectedItems[0].Index;
+
+                AnularItem(tablaDetalleEnNegro.Items[indx].Tag as  ItemLiquidacionByIdResponse);
+            }
+        }
+
+        private void AnularItem(ItemLiquidacionByIdResponse? item)
+        {
+            if (item is null)
+                return;
+
+
+        }
     }
 }
