@@ -1,5 +1,4 @@
-﻿using DAL.Service.Liquidacion.Features.Contrato.Abstracciones;
-using DAL.Service.Liquidacion.Features.Contrato.Crear;
+﻿using DAL.Service.Liquidacion.Features.Contrato.Crear;
 using DAL.Service.Liquidacion.Features.Contrato.GetById;
 using LAUCHA.application.DTOs.ModalidadDTOs;
 

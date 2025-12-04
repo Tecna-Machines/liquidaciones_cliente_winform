@@ -54,7 +54,7 @@
             textBoxConcepto.Location = new Point(141, 70);
             textBoxConcepto.Name = "textBoxConcepto";
             textBoxConcepto.Size = new Size(277, 23);
-            textBoxConcepto.TabIndex = 4;
+            textBoxConcepto.TabIndex = 0;
             // 
             // comboBoxTipo
             // 
@@ -64,7 +64,7 @@
             comboBoxTipo.Location = new Point(141, 134);
             comboBoxTipo.Name = "comboBoxTipo";
             comboBoxTipo.Size = new Size(277, 23);
-            comboBoxTipo.TabIndex = 5;
+            comboBoxTipo.TabIndex = 3;
             // 
             // label1
             // 
@@ -94,7 +94,7 @@
             BtnAgregar.Location = new Point(302, 180);
             BtnAgregar.Name = "BtnAgregar";
             BtnAgregar.Size = new Size(116, 51);
-            BtnAgregar.TabIndex = 8;
+            BtnAgregar.TabIndex = 4;
             BtnAgregar.Text = "AGREGAR";
             BtnAgregar.UseVisualStyleBackColor = false;
             BtnAgregar.Click += BtnAgregar_Click;
@@ -104,7 +104,7 @@
             textBoxMonto.Location = new Point(141, 101);
             textBoxMonto.Name = "textBoxMonto";
             textBoxMonto.Size = new Size(277, 23);
-            textBoxMonto.TabIndex = 9;
+            textBoxMonto.TabIndex = 1;
             // 
             // label3
             // 

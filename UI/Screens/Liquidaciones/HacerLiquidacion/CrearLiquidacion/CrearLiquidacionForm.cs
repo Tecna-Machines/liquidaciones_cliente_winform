@@ -11,7 +11,8 @@ namespace UI.Screens.HacerLiquidacion
 {
     public partial class CrearLiquidacionForm : Form
     {
-        private readonly CrearItemForm _formItem;
+        private readonly CrearItemForm _formCrearItem;
+        private readonly AnularItemForm _formAnularItem;
         private readonly EmpleadoController _empleadoController;
         private LiquidacionController _liquidacionController;
 
@@ -25,7 +26,7 @@ namespace UI.Screens.HacerLiquidacion
         private string? _codigoLiquidacion;
 
         private List<GetEmpleadoResponse> _empleados;
-        public CrearLiquidacionForm(EmpleadoController empleadoController, LiquidacionController liquidacionController, CrearItemForm formItem)
+        public CrearLiquidacionForm(EmpleadoController empleadoController, LiquidacionController liquidacionController, CrearItemForm formItem, AnularItemForm formAnularItem)
         {
             InitializeComponent();
 
@@ -38,7 +39,8 @@ namespace UI.Screens.HacerLiquidacion
             _liquidacionController = liquidacionController;
 
             CargarListaDeEmpleados();
-            _formItem = formItem;
+            _formCrearItem = formItem;
+            _formAnularItem = formAnularItem;
         }
 
 
@@ -184,8 +186,8 @@ namespace UI.Screens.HacerLiquidacion
 
         private void ClickBtnAgregarItem(object sender, EventArgs e)
         {
-            _formItem.SetLiquidacion(GenerarCodigoLiquidacion());
-            _formItem.ShowDialog();
+            _formCrearItem.SetLiquidacion(GenerarCodigoLiquidacion());
+            _formCrearItem.ShowDialog();
         }
 
         private string GenerarCodigoLiquidacion()
@@ -210,8 +212,9 @@ namespace UI.Screens.HacerLiquidacion
             if (tablaDetalleEnBlanco.SelectedItems.Count == 1)
             {
                 int indx = tablaDetalleEnBlanco.SelectedItems[0].Index;
+                var itemSeleccionado = tablaDetalleEnBlanco.Items[indx].Tag as ItemLiquidacionByIdResponse;
 
-                MessageBox.Show(tablaDetalleEnBlanco.Items[indx].Text);
+                AnularItem(itemSeleccionado);
             }
         }
 
@@ -220,8 +223,9 @@ namespace UI.Screens.HacerLiquidacion
             if (tablaDetalleEnNegro.SelectedItems.Count == 1)
             {
                 int indx = tablaDetalleEnNegro.SelectedItems[0].Index;
+                var itemSeleccionado = tablaDetalleEnNegro.Items[indx].Tag as ItemLiquidacionByIdResponse;
 
-                AnularItem(tablaDetalleEnNegro.Items[indx].Tag as  ItemLiquidacionByIdResponse);
+                AnularItem(itemSeleccionado);
             }
         }
 
@@ -230,7 +234,11 @@ namespace UI.Screens.HacerLiquidacion
             if (item is null)
                 return;
 
+            if (_codigoLiquidacion is null)
+                return;
 
+            _formAnularItem.SetItem(_codigoLiquidacion,item);
+            _formAnularItem.ShowDialog();
         }
     }
 }

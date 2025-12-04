@@ -33,7 +33,12 @@ namespace BLL.Controllers
         {
             var req = await _liquidacion.Liquidar(codigo);
 
-            return await _liquidacion.GetLiquidacion(req.Codigo);
+            var liq = await _liquidacion.GetLiquidacion(req.Codigo);
+
+            if (liq is null)
+                throw new NullReferenceException();
+
+            return liq;
         }
 
         public async Task<CrearItemResponse> AgregarItem(string codigo, CrearItemRequest req)
@@ -49,6 +54,11 @@ namespace BLL.Controllers
         public async Task<SellarLiquidacionResponse> SellarLiquidacion(string id)
         {
             return await _liquidacion.Sellar(id);
+        }
+
+        public void BorrarItemDeLiquidacion(string idLiquidacion, int NroItem)
+        {
+            _liquidacion.AnularItem(idLiquidacion, NroItem);
         }
     }
 }

@@ -47,6 +47,11 @@ namespace DAL.Service.Liquidacion.Http
             return await _httpClient.DeleteAsync(requestUri);
         }
 
+        public async Task<HttpResponseMessage> PatchAsync(string requestUri, HttpContent content)
+        {
+            return await _httpClient.PatchAsync(requestUri, content);
+        }
+
         public JsonSerializerOptions GetJsonOptions()
             => this._jsonOptiones;
     }

@@ -20,6 +20,7 @@ namespace UI
             services.AddTransient<CrearEmpleadoForm>();
             services.AddTransient<CrearItemForm>();
             services.AddTransient<HistorialLiquidacionesForm>();
+            services.AddTransient<AnularItemForm>();
 
             services.AddTransient<SellarLiquidacionForm>();
             return services;

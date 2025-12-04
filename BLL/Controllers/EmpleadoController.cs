@@ -1,5 +1,4 @@
-﻿using DAL.Service.Liquidacion.Features.Contrato.Abstracciones;
-using DAL.Service.Liquidacion.Features.Contrato.GetAcuerdosEmpleado;
+﻿using DAL.Service.Liquidacion.Features.Contrato.GetAcuerdosEmpleado;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.UseCase.Empleados.Abstracciones;
 using DAL.Service.Liquidacion.UseCase.Empleados.Crear;

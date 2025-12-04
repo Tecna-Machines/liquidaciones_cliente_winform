@@ -34,6 +34,8 @@ namespace UI.Screens.HacerLiquidacion
             await _controller.AgregarItem(_codigoLiquidacion, itemData);
 
             Dialog.Success("se agrego el item!");
+
+            this.Close();
         }
 
         private int RecuperarTipo()
@@ -65,12 +67,12 @@ namespace UI.Screens.HacerLiquidacion
 
         private bool VerSiEsEnBlanco()
         {
-            int tipo = RecuperarTipo();
+            int indexBoxSeleccionado = comboBoxTipo.SelectedIndex;
 
-            if (tipo == 0) return true;
-            if (tipo == 1) return false;
-            if (tipo == 2) return true;
-            if (tipo == 3) return false;
+            if (indexBoxSeleccionado == 0) return true;
+            if (indexBoxSeleccionado == 1) return false;
+            if (indexBoxSeleccionado == 2) return true;
+            if (indexBoxSeleccionado == 3) return false;
 
             throw new InvalidCastException();
         }

@@ -1,4 +1,5 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.AnularItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Liquidar;
@@ -15,13 +16,14 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         private readonly AgregarItemLiquidacion _itemsLiquidacion;
         private readonly GetLiquidaciones _getLiquidaciones;
         private readonly SellarLiquidacion _sellar;
-
+        private readonly AnularItemHandler _anularItems;
         public LiquidacionService(GetLiquidacion getLiquidacionById,
                                   CrearLiquidacionHandler crearLiquidacion,
                                   RealizarLiquidacion realizarLiquidacion,
                                   AgregarItemLiquidacion itemsLiquidacion,
                                   GetLiquidaciones getLiquidaciones,
-                                  SellarLiquidacion sellar)
+                                  SellarLiquidacion sellar,
+                                  AnularItemHandler anularItems)
         {
             _getLiquidacionById = getLiquidacionById;
             _crearLiquidacion = crearLiquidacion;
@@ -29,6 +31,7 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
             _itemsLiquidacion = itemsLiquidacion;
             _getLiquidaciones = getLiquidaciones;
             _sellar = sellar;
+            _anularItems = anularItems;
         }
 
         public Task<GetLiquidacionByIdResponse?> GetLiquidacion(string id)
@@ -59,6 +62,11 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         public async Task<SellarLiquidacionResponse> Sellar(string codigo)
         {
             return await _sellar.Sellar(codigo);
+        }
+
+        public void AnularItem(string idLiquidacion, int NroItem)
+        {
+            _anularItems.CancelarItem(idLiquidacion, NroItem);
         }
     }
 }

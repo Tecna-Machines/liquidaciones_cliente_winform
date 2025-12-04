@@ -15,5 +15,6 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         Task<CrearItemResponse> AgregarItem(string codLiqudiacion, CrearItemRequest itemData);
         Task<GetLiquidacionesResponse> GetByQuincena(int quincena, int mes, int anio);
         Task<SellarLiquidacionResponse> Sellar(string codigo);
+        void AnularItem(string codLiquidacion, int NroItem);
     }
 }

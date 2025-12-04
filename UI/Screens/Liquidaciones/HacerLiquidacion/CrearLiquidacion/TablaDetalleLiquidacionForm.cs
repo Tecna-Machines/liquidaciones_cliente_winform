@@ -37,7 +37,12 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
 
                 item.SubItems.Add(it.Fecha.ToString("dd/MM/yyyy"));
 
-                tablaDetalle.Items.Add(item);
+                int ANULADO = 1;
+
+                if (it.Estado != ANULADO)
+                {
+                    tablaDetalle.Items.Add(item);
+                }
             }
         }
 
@@ -69,7 +74,14 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
 
                 item.SubItems.Add(it.Fecha.ToString("dd/MM/yyyy"));
 
-                tablaNegro.Items.Add(item);
+
+                int ANULADO = 1;
+
+                if (it.Estado != ANULADO)
+                {
+                    tablaNegro.Items.Add(item);
+                }
+
             }
 
 
