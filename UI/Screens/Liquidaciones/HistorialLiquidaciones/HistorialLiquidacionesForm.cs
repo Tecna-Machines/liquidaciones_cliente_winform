@@ -101,7 +101,7 @@ namespace UI.Screens.Liquidaciones.HistorialLiquidaciones
             var formLiquidacion = Program.ServiceProvider.GetRequiredService<VerLiquidacionForm>();
             formLiquidacion.SetLiquidacion(liquidacion);
 
-            formLiquidacion.ShowDialog();
+            formLiquidacion.Show();
         }
     }
 }

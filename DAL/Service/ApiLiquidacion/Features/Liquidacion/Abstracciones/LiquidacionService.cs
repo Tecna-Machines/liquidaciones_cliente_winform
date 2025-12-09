@@ -2,6 +2,7 @@
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.AnularItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetRecibo;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Liquidar;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Sellar;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
@@ -17,13 +18,15 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         private readonly GetLiquidaciones _getLiquidaciones;
         private readonly SellarLiquidacion _sellar;
         private readonly AnularItemHandler _anularItems;
+        private readonly GetReciboHandler _recibo;
         public LiquidacionService(GetLiquidacion getLiquidacionById,
                                   CrearLiquidacionHandler crearLiquidacion,
                                   RealizarLiquidacion realizarLiquidacion,
                                   AgregarItemLiquidacion itemsLiquidacion,
                                   GetLiquidaciones getLiquidaciones,
                                   SellarLiquidacion sellar,
-                                  AnularItemHandler anularItems)
+                                  AnularItemHandler anularItems,
+                                  GetReciboHandler recibo)
         {
             _getLiquidacionById = getLiquidacionById;
             _crearLiquidacion = crearLiquidacion;
@@ -32,6 +35,7 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
             _getLiquidaciones = getLiquidaciones;
             _sellar = sellar;
             _anularItems = anularItems;
+            _recibo = recibo;
         }
 
         public Task<GetLiquidacionByIdResponse?> GetLiquidacion(string id)
@@ -67,6 +71,11 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         public void AnularItem(string idLiquidacion, int NroItem)
         {
             _anularItems.CancelarItem(idLiquidacion, NroItem);
+        }
+
+        public async Task<byte[]> GetRecibo(string codigo)
+        {
+            return await _recibo.GetRecibo(codigo);
         }
     }
 }

@@ -47,7 +47,7 @@
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
-            button1 = new Button();
+            BtnDescargarRecibo = new Button();
             textBoxFechaAlta = new TextBox();
             label20 = new Label();
             progressBar = new ProgressBar();
@@ -235,17 +235,17 @@
             columnHeader3.Text = "Monto";
             columnHeader3.Width = 95;
             // 
-            // button1
+            // BtnDescargarRecibo
             // 
-            button1.BackColor = SystemColors.GradientActiveCaption;
-            button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(709, 644);
-            button1.Name = "button1";
-            button1.Size = new Size(315, 54);
-            button1.TabIndex = 38;
-            button1.Text = "Descargar recibo";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += ClickBtnGenerarRecibo;
+            BtnDescargarRecibo.BackColor = SystemColors.GradientActiveCaption;
+            BtnDescargarRecibo.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnDescargarRecibo.Location = new Point(709, 644);
+            BtnDescargarRecibo.Name = "BtnDescargarRecibo";
+            BtnDescargarRecibo.Size = new Size(315, 54);
+            BtnDescargarRecibo.TabIndex = 38;
+            BtnDescargarRecibo.Text = "Descargar recibo";
+            BtnDescargarRecibo.UseVisualStyleBackColor = false;
+            BtnDescargarRecibo.Click += ClickBtnGenerarRecibo;
             // 
             // textBoxFechaAlta
             // 
@@ -448,7 +448,7 @@
             Controls.Add(btnPagos);
             Controls.Add(label20);
             Controls.Add(textBoxFechaAlta);
-            Controls.Add(button1);
+            Controls.Add(BtnDescargarRecibo);
             Controls.Add(listaPagos);
             Controls.Add(label12);
             Controls.Add(label8);
@@ -491,7 +491,7 @@
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
-        private Button button1;
+        private Button BtnDescargarRecibo;
         private TextBox textBoxFechaAlta;
         private Label label20;
         private ProgressBar progressBar;

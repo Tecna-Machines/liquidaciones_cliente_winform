@@ -16,5 +16,7 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         Task<GetLiquidacionesResponse> GetByQuincena(int quincena, int mes, int anio);
         Task<SellarLiquidacionResponse> Sellar(string codigo);
         void AnularItem(string codLiquidacion, int NroItem);
+
+        Task<byte[]> GetRecibo(string idLiquidacion);
     }
 }

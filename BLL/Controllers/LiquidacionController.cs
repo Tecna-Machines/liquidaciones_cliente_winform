@@ -60,5 +60,10 @@ namespace BLL.Controllers
         {
             _liquidacion.AnularItem(idLiquidacion, NroItem);
         }
+
+        public Task<byte[]> DescargarRecibo(string codLiquidacion)
+        {
+            return _liquidacion.GetRecibo(codLiquidacion);
+        }
     }
 }

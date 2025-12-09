@@ -1,5 +1,6 @@
 ﻿using BLL.Controllers;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
+using System.Diagnostics;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Utils;
 
@@ -8,13 +9,14 @@ namespace UI.Screens.VerLiquidacion
     public partial class VerLiquidacionForm : Form
     {
         private readonly EmpleadoController empleadoController;
-        public VerLiquidacionForm(EmpleadoController empleadoController)
+        private readonly LiquidacionController _liquidacion;
+        public VerLiquidacionForm(EmpleadoController empleadoController, LiquidacionController liquidacion)
         {
             this.empleadoController = empleadoController;
             InitializeComponent();
 
             var contexto = BLL.Models.LiquidacionContext.GetInstance();
-
+            _liquidacion = liquidacion;
         }
 
         public void SetLiquidacion(GetLiquidacionByIdResponse liq)
@@ -70,18 +72,13 @@ namespace UI.Screens.VerLiquidacion
                 progressBar.Visible = true;
                 progressBar.Style = ProgressBarStyle.Marquee; // Indicador de progreso indefinido
 
-                var liquidacion = BLL.Models.LiquidacionContext.GetInstance().ObtenerLiquidacion();
-                string codigoLiq = liquidacion.Codigo;
-                string nombreCompletao = liquidacion.Empleado;
-
-                // Descargar el recibo en formato PDF desde la API
-                var pdfBytes = await empleadoController.DescargarReciboLiquidacionEmp(codigoLiq);
+                var pdfBytes = await _liquidacion.DescargarRecibo(textBoxCodigoLiq.Text);
 
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
                     saveFileDialog.Filter = "PDF Files|*.pdf";
                     saveFileDialog.Title = "Guardar Recibo";
-                    saveFileDialog.FileName = $"{nombreCompletao}_{codigoLiq}.pdf"; // Nombre por defecto
+                    saveFileDialog.FileName = $"recibo-{textBoxDni.Text}.pdf"; // Nombre por defecto
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
@@ -90,6 +87,14 @@ namespace UI.Screens.VerLiquidacion
                         MessageBox.Show("PDF descargado y guardado correctamente.",
                                             "Éxito", MessageBoxButtons.OK,
                                             MessageBoxIcon.Information);
+
+                        var psi = new ProcessStartInfo
+                        {
+                            FileName = saveFileDialog.FileName,
+                            UseShellExecute = true 
+                        };
+
+                        Process.Start(psi);
                     }
                 }
             }
@@ -100,7 +105,6 @@ namespace UI.Screens.VerLiquidacion
             }
             finally
             {
-                // Ocultar la barra de progreso una vez que termine la operación
                 progressBar.Visible = false;
             }
         }
