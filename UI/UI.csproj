@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>Resources\icons\money3.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\icons\rat.ico</ApplicationIcon>
     <AssemblyName>Liquidaciones</AssemblyName>
     <StartupObject>UI.Program</StartupObject>
   </PropertyGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\icons\money3.ico">
+    <Content Include="Resources\icons\rat.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

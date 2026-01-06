@@ -30,10 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             panelPrincipal = new Panel();
-            labelServerInfo = new Label();
+            labelServer = new Label();
+            labelVersion = new Label();
+            serverUrl = new TextBox();
+            appVersion = new TextBox();
+            labelNombre = new Label();
             pictureBoxLogo = new PictureBox();
-            dataVersion = new Label();
             toolStrip1 = new ToolStrip();
+            toolStripInicio = new ToolStripLabel();
             toolStripEmpleado = new ToolStripDropDownButton();
             crearEmpleadoToolStripMenuItem = new ToolStripMenuItem();
             toolStripButtonAcuerdos = new ToolStripDropDownButton();
@@ -42,7 +46,8 @@
             toolStripDropDownLiquidacion = new ToolStripDropDownButton();
             crearLiquidacionToolStripMenuItem = new ToolStripMenuItem();
             historialLiquidacionesToolStrip = new ToolStripMenuItem();
-            toolStripButtonCreditos = new ToolStripLabel();
+            toolStripDropDownCreditos = new ToolStripDropDownButton();
+            crearCreditoToolStripMenuItem = new ToolStripMenuItem();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             toolStrip1.SuspendLayout();
@@ -50,51 +55,94 @@
             // 
             // panelPrincipal
             // 
-            panelPrincipal.Controls.Add(labelServerInfo);
+            panelPrincipal.Controls.Add(labelServer);
+            panelPrincipal.Controls.Add(labelVersion);
+            panelPrincipal.Controls.Add(serverUrl);
+            panelPrincipal.Controls.Add(appVersion);
+            panelPrincipal.Controls.Add(labelNombre);
             panelPrincipal.Controls.Add(pictureBoxLogo);
-            panelPrincipal.Controls.Add(dataVersion);
             panelPrincipal.Location = new Point(12, 39);
             panelPrincipal.Name = "panelPrincipal";
             panelPrincipal.Size = new Size(587, 296);
             panelPrincipal.TabIndex = 4;
             // 
-            // labelServerInfo
+            // labelServer
             // 
-            labelServerInfo.AutoSize = true;
-            labelServerInfo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelServerInfo.Location = new Point(263, 238);
-            labelServerInfo.Name = "labelServerInfo";
-            labelServerInfo.Size = new Size(84, 15);
-            labelServerInfo.TabIndex = 3;
-            labelServerInfo.Text = "<server info>";
+            labelServer.AutoSize = true;
+            labelServer.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelServer.Location = new Point(238, 227);
+            labelServer.Name = "labelServer";
+            labelServer.Size = new Size(50, 15);
+            labelServer.TabIndex = 12;
+            labelServer.Text = "SERVER";
+            // 
+            // labelVersion
+            // 
+            labelVersion.AutoSize = true;
+            labelVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelVersion.Location = new Point(64, 227);
+            labelVersion.Name = "labelVersion";
+            labelVersion.Size = new Size(58, 15);
+            labelVersion.TabIndex = 11;
+            labelVersion.Text = "VERSION";
+            // 
+            // serverUrl
+            // 
+            serverUrl.BackColor = SystemColors.ActiveCaption;
+            serverUrl.Location = new Point(296, 223);
+            serverUrl.Name = "serverUrl";
+            serverUrl.ReadOnly = true;
+            serverUrl.Size = new Size(235, 23);
+            serverUrl.TabIndex = 10;
+            serverUrl.TabStop = false;
+            serverUrl.Text = "0.0.0";
+            // 
+            // appVersion
+            // 
+            appVersion.BackColor = SystemColors.ActiveCaption;
+            appVersion.Location = new Point(130, 223);
+            appVersion.Name = "appVersion";
+            appVersion.ReadOnly = true;
+            appVersion.Size = new Size(100, 23);
+            appVersion.TabIndex = 9;
+            appVersion.TabStop = false;
+            appVersion.Text = "0.0.0";
+            // 
+            // labelNombre
+            // 
+            labelNombre.AutoSize = true;
+            labelNombre.Font = new Font("Segoe UI", 40F, FontStyle.Bold, GraphicsUnit.Point);
+            labelNombre.ForeColor = Color.FromArgb(82, 169, 97);
+            labelNombre.Location = new Point(258, 81);
+            labelNombre.Name = "labelNombre";
+            labelNombre.Size = new Size(250, 72);
+            labelNombre.TabIndex = 4;
+            labelNombre.Text = "AKER LQ";
             // 
             // pictureBoxLogo
             // 
-            pictureBoxLogo.Image = Resources.Resources.logo_tecna_azul_rd;
-            pictureBoxLogo.Location = new Point(51, 12);
+            pictureBoxLogo.Image = Resources.Resources.rat;
+            pictureBoxLogo.Location = new Point(106, 54);
             pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(509, 180);
+            pictureBoxLogo.Size = new Size(133, 127);
             pictureBoxLogo.TabIndex = 2;
             pictureBoxLogo.TabStop = false;
             // 
-            // dataVersion
-            // 
-            dataVersion.AutoSize = true;
-            dataVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataVersion.Location = new Point(106, 210);
-            dataVersion.Name = "dataVersion";
-            dataVersion.Size = new Size(398, 15);
-            dataVersion.TabIndex = 1;
-            dataVersion.Text = "Cliente V0.0.1 - BETA    release date 22/10/2024 compatible con V0.1.2";
-            // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripEmpleado, toolStripButtonAcuerdos, toolStripDropDownLiquidacion, toolStripButtonCreditos });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripInicio, toolStripEmpleado, toolStripButtonAcuerdos, toolStripDropDownLiquidacion, toolStripDropDownCreditos });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(636, 25);
+            toolStrip1.Size = new Size(616, 25);
             toolStrip1.TabIndex = 8;
             toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripInicio
+            // 
+            toolStripInicio.Name = "toolStripInicio";
+            toolStripInicio.Size = new Size(36, 22);
+            toolStripInicio.Text = "Inicio";
+            toolStripInicio.Click += ClickBtnInicio;
             // 
             // toolStripEmpleado
             // 
@@ -150,32 +198,40 @@
             // crearLiquidacionToolStripMenuItem
             // 
             crearLiquidacionToolStripMenuItem.Name = "crearLiquidacionToolStripMenuItem";
-            crearLiquidacionToolStripMenuItem.Size = new Size(180, 22);
+            crearLiquidacionToolStripMenuItem.Size = new Size(164, 22);
             crearLiquidacionToolStripMenuItem.Text = "Crear liquidacion";
             crearLiquidacionToolStripMenuItem.Click += CrearLiquidacionToolStripMenuItem_Click;
             // 
             // historialLiquidacionesToolStrip
             // 
             historialLiquidacionesToolStrip.Name = "historialLiquidacionesToolStrip";
-            historialLiquidacionesToolStrip.Size = new Size(180, 22);
+            historialLiquidacionesToolStrip.Size = new Size(164, 22);
             historialLiquidacionesToolStrip.Text = "Historial";
             historialLiquidacionesToolStrip.Click += HistorialLiquidacionesToolStripMenuItem_Click;
             // 
-            // toolStripButtonCreditos
+            // toolStripDropDownCreditos
             // 
-            toolStripButtonCreditos.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripButtonCreditos.Image = (Image)resources.GetObject("toolStripButtonCreditos.Image");
-            toolStripButtonCreditos.ImageTransparentColor = Color.Magenta;
-            toolStripButtonCreditos.Name = "toolStripButtonCreditos";
-            toolStripButtonCreditos.Size = new Size(51, 22);
-            toolStripButtonCreditos.Text = "Creditos";
+            toolStripDropDownCreditos.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripDropDownCreditos.DropDownItems.AddRange(new ToolStripItem[] { crearCreditoToolStripMenuItem });
+            toolStripDropDownCreditos.Image = (Image)resources.GetObject("toolStripDropDownCreditos.Image");
+            toolStripDropDownCreditos.ImageTransparentColor = Color.Magenta;
+            toolStripDropDownCreditos.Name = "toolStripDropDownCreditos";
+            toolStripDropDownCreditos.Size = new Size(64, 22);
+            toolStripDropDownCreditos.Text = "Creditos";
+            // 
+            // crearCreditoToolStripMenuItem
+            // 
+            crearCreditoToolStripMenuItem.Name = "crearCreditoToolStripMenuItem";
+            crearCreditoToolStripMenuItem.Size = new Size(180, 22);
+            crearCreditoToolStripMenuItem.Text = "Crear";
+            crearCreditoToolStripMenuItem.Click += CrearCreditoToolStripMenuItem_Click;
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveBorder;
-            ClientSize = new Size(636, 347);
+            ClientSize = new Size(616, 361);
             Controls.Add(toolStrip1);
             Controls.Add(panelPrincipal);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -196,9 +252,7 @@
 
         #endregion
         private Panel panelPrincipal;
-        private Label dataVersion;
         private PictureBox pictureBoxLogo;
-        private Label labelServerInfo;
         private ToolStrip toolStrip1;
         private ToolStripDropDownButton toolStripEmpleado;
         private ToolStripMenuItem crearEmpleadoToolStripMenuItem;
@@ -208,6 +262,13 @@
         private ToolStripDropDownButton toolStripDropDownLiquidacion;
         private ToolStripMenuItem crearLiquidacionToolStripMenuItem;
         private ToolStripMenuItem historialLiquidacionesToolStrip;
-        private ToolStripLabel toolStripButtonCreditos;
+        private Label labelNombre;
+        private TextBox serverUrl;
+        private TextBox appVersion;
+        private Label labelServer;
+        private Label labelVersion;
+        private ToolStripLabel toolStripInicio;
+        private ToolStripDropDownButton toolStripDropDownCreditos;
+        private ToolStripMenuItem crearCreditoToolStripMenuItem;
     }
 }

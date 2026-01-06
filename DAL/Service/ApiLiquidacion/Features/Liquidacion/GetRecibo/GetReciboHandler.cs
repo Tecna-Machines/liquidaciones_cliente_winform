@@ -1,5 +1,4 @@
-﻿using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
-using DAL.Service.Liquidacion.Http;
+﻿using DAL.Service.Liquidacion.Http;
 
 namespace DAL.Service.ApiLiquidacion.Features.Liquidacion.GetRecibo
 {
@@ -15,6 +14,20 @@ namespace DAL.Service.ApiLiquidacion.Features.Liquidacion.GetRecibo
         public async Task<byte[]> GetRecibo(string liq)
         {
             HttpResponseMessage response = await _api.GetAsync($"Liquidacion/{liq}/recibo");
+
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+            return await response.Content.ReadAsByteArrayAsync();
+        }
+
+        public async Task<byte[]> GetRecibos(int quincena, int mes, int anio)
+        {
+            HttpResponseMessage response = await _api.
+                                                GetAsync($"Recibos?Quincena={quincena}&Mes={mes}&Anio={anio}");
 
 
             if (!response.IsSuccessStatusCode)

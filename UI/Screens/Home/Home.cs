@@ -4,6 +4,7 @@ using UI.Screens.CrearContrato;
 using UI.Screens.CrearEmpleado;
 using UI.Screens.Liquidaciones.HistorialLiquidaciones;
 using UI.Screens.VerContratos;
+using UI.Screens.VerCreditos;
 
 namespace UI
 {
@@ -14,9 +15,11 @@ namespace UI
         {
             InitializeComponent();
 
-            string apiBaseUrl = ConfigurationManager.AppSettings["server"]!;
-            labelServerInfo.Text = $"SERVER: {apiBaseUrl}";
+            string apiBaseUrl = ConfigurationManager.AppSettings["server"] ?? "error";
+            string clientVersion = ConfigurationManager.AppSettings["client_version"] ?? "error";
 
+            serverUrl.Text = apiBaseUrl;
+            appVersion.Text = clientVersion;
 
         }
 
@@ -31,8 +34,11 @@ namespace UI
         {
             panelPrincipal.Controls.Clear();
             panelPrincipal.Controls.Add(this.pictureBoxLogo);
-            panelPrincipal.Controls.Add(this.dataVersion);
-            panelPrincipal.Controls.Add(this.labelServerInfo);
+            panelPrincipal.Controls.Add(this.labelNombre);
+            panelPrincipal.Controls.Add(this.labelServer);
+            panelPrincipal.Controls.Add(this.labelVersion);
+            panelPrincipal.Controls.Add(this.appVersion);
+            panelPrincipal.Controls.Add(this.serverUrl);
         }
 
 
@@ -65,5 +71,10 @@ namespace UI
             formHistorial.ShowDialog();
         }
 
+        private void CrearCreditoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formCrearCredito = Program.ServiceProvider.GetRequiredService<CrearCreditosForm>();
+            formCrearCredito.ShowDialog();
+        }
     }
 }

@@ -18,5 +18,6 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         void AnularItem(string codLiquidacion, int NroItem);
 
         Task<byte[]> GetRecibo(string idLiquidacion);
+        Task<byte[]> GetRecibos(int quincena,int mes,int anio);
     }
 }

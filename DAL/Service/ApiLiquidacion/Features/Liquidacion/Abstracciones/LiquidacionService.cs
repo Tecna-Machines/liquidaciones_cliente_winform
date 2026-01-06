@@ -77,5 +77,10 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         {
             return await _recibo.GetRecibo(codigo);
         }
+
+        public async Task<byte[]> GetRecibos(int quincena, int mes, int anio)
+        {
+            return await _recibo.GetRecibos(quincena, mes, anio);
+        }
     }
 }

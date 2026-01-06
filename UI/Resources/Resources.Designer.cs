@@ -63,6 +63,26 @@ namespace UI.Resources {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap akerlq2 {
+            get {
+                object obj = ResourceManager.GetObject("akerlq2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap akerlq2min {
+            get {
+                object obj = ResourceManager.GetObject("akerlq2min", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_tecna_azul_rd {
             get {
                 object obj = ResourceManager.GetObject("logo_tecna_azul_rd", resourceCulture);
@@ -87,6 +107,16 @@ namespace UI.Resources {
             get {
                 object obj = ResourceManager.GetObject("money3", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rat {
+            get {
+                object obj = ResourceManager.GetObject("rat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

@@ -1,6 +1,7 @@
 ﻿using BLL.Controllers;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics;
 using System.Globalization;
 using UI.Screens.VerLiquidacion;
 
@@ -102,6 +103,54 @@ namespace UI.Screens.Liquidaciones.HistorialLiquidaciones
             formLiquidacion.SetLiquidacion(liquidacion);
 
             formLiquidacion.Show();
+        }
+
+        private async void BtnDescargarRecibos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Mostrar barra de progreso al comenzar la operación
+                progressBar.Visible = true;
+                progressBar.Style = ProgressBarStyle.Marquee; // Indicador de progreso indefinido
+
+                int quincena = int.Parse((string)comboBoxQuincena.SelectedItem);
+                int mes = comboBoxMeses.SelectedIndex + 1;
+                int anio = (int)comboBoxYear.SelectedItem;
+
+                var pdfBytes = await _controllerLiquidacion.DescargarRecibos(quincena, mes, anio);
+
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "PDF Files|*.pdf";
+                    saveFileDialog.Title = "Guardar Recibo";
+                    saveFileDialog.FileName = $"recibos.pdf"; // Nombre por defecto
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Guardar el archivo PDF
+                        File.WriteAllBytes(saveFileDialog.FileName, pdfBytes);
+                        MessageBox.Show("PDF descargado y guardado correctamente.",
+                                            "Éxito", MessageBoxButtons.OK,
+                                            MessageBoxIcon.Information);
+
+                        var psi = new ProcessStartInfo
+                        {
+                            FileName = saveFileDialog.FileName,
+                            UseShellExecute = true
+                        };
+
+                        Process.Start(psi);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.Dialog.Error($"Error al descargar el recibo: {ex.Message}");
+            }
+            finally
+            {
+                progressBar.Visible = false;
+            }
         }
     }
 }

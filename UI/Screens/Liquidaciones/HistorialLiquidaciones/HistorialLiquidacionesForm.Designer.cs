@@ -44,6 +44,7 @@
             labelFiltro = new Label();
             BtnBuscar = new Button();
             BtnDescargarRecibos = new Button();
+            progressBar = new ProgressBar();
             SuspendLayout();
             // 
             // tablaLiquidaciones
@@ -185,12 +186,23 @@
             BtnDescargarRecibos.TabIndex = 16;
             BtnDescargarRecibos.Text = "DESCARGAR RECIBOS";
             BtnDescargarRecibos.UseVisualStyleBackColor = false;
+            BtnDescargarRecibos.Click += BtnDescargarRecibos_Click;
+            // 
+            // progressBar
+            // 
+            progressBar.BackColor = SystemColors.AppWorkspace;
+            progressBar.Location = new Point(146, 217);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(493, 51);
+            progressBar.TabIndex = 42;
+            progressBar.Visible = false;
             // 
             // HistorialLiquidacionesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 485);
+            Controls.Add(progressBar);
             Controls.Add(BtnDescargarRecibos);
             Controls.Add(BtnBuscar);
             Controls.Add(comboBoxQuincena);
@@ -227,5 +239,6 @@
         private Label labelFiltro;
         private Button BtnBuscar;
         private Button BtnDescargarRecibos;
+        private ProgressBar progressBar;
     }
 }
