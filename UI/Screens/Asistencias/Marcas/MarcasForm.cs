@@ -1,5 +1,5 @@
-﻿using BLL.Models;
-using DAL.Service.Liquidacion.Modesl.MarcasDTOs;
+﻿using DAL.Service.Liquidacion.Modesl.MarcasDTOs;
+using LAUCHA.application.DTOs.LiquidacionDTOs;
 using UI.Utils;
 
 namespace UI.Screens.Marcas
@@ -10,7 +10,7 @@ namespace UI.Screens.Marcas
         {
             InitializeComponent();
 
-            var listaMarcas = LiquidacionContext.GetInstance()?.ObtenerLiquidacion()?.Marcas;
+            var listaMarcas = new List<MarcaVista>().DefaultIfEmpty().ToList();
 
             this.CargarTablaMarcas(listaMarcas);
         }
@@ -18,7 +18,7 @@ namespace UI.Screens.Marcas
 
         private void CargarTablaMarcas(List<MarcaVista>? marcas)
         {
-            var periodo = LiquidacionContext.GetInstance().GetPeriodo();
+            var periodo = new Quincena(); //TODO: cambiar la logica para ver marcas
             DateTime fechaInicio = periodo.Inicio;
             DateTime fechaFin = periodo.Fin;
 
@@ -66,7 +66,7 @@ namespace UI.Screens.Marcas
             }
         }
 
-        private void btnAgregarMarca_Click(object sender, EventArgs e)
+        private void BtnAgregarMarca_Click(object sender, EventArgs e)
         {
             Dialog.Error("esta funcionalidad aun no esta disponible");
         }

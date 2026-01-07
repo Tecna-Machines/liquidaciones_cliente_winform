@@ -1,4 +1,6 @@
-﻿using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
+﻿using DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones;
+using DAL.Service.ApiLiquidacion.Features.Creditos.Crear;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.AnularItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
@@ -33,6 +35,7 @@ namespace DAL
             AddEmpleados(services);
             AddLiquidacion(services);
             AddCatalogoRetenciones(services);
+            AddCreditos(services);
 
             return services;
         }
@@ -77,6 +80,13 @@ namespace DAL
             services.AddScoped<GetRetenciones>();
             services.AddScoped<IRetencionesService, RetencionesService>();
 
+            return services;
+        }
+
+        private static IServiceCollection AddCreditos(this IServiceCollection services)
+        {
+            services.AddScoped<CrearCredito>();
+            services.AddScoped<ICreditoService,CreditoService>();
             return services;
         }
     }

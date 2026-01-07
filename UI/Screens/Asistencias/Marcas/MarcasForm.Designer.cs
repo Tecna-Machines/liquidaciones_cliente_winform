@@ -103,7 +103,7 @@
             btnAgregarMarca.TabIndex = 21;
             btnAgregarMarca.Text = "AGREGAR MARCA";
             btnAgregarMarca.UseVisualStyleBackColor = true;
-            btnAgregarMarca.Click += btnAgregarMarca_Click;
+            btnAgregarMarca.Click += BtnAgregarMarca_Click;
             // 
             // MarcasForm
             // 

@@ -1,5 +1,4 @@
-﻿using BLL.Models;
-using LAUCHA.application.DTOs.LiquidacionDTOs;
+﻿using LAUCHA.application.DTOs.LiquidacionDTOs;
 using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.HacerLiquidacion;
 
@@ -77,18 +76,6 @@ namespace UI
 
             }
 
-
-            LiquidacionContext context = LiquidacionContext.GetInstance();
-
-            try
-            {
-                context.SetearPeriodo(quincenaElegida);
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("error al colocar las fechas");
-                return;
-            }
 
             CrearLiquidacionForm form = Program.ServiceProvider.GetRequiredService<CrearLiquidacionForm>();
 

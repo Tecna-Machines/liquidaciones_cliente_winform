@@ -51,9 +51,9 @@
             ComboAnio = new ComboBox();
             BtnConfirmarCredito = new Button();
             groupBoxModoPago = new GroupBox();
-            radioButton3 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            modoSegundaQuincena = new RadioButton();
+            modoPrimerQuincena = new RadioButton();
+            modoPorQuincena = new RadioButton();
             panelDatos.SuspendLayout();
             groupBoxModoPago.SuspendLayout();
             SuspendLayout();
@@ -122,6 +122,7 @@
             textBoxDni.ReadOnly = true;
             textBoxDni.Size = new Size(181, 29);
             textBoxDni.TabIndex = 0;
+            textBoxDni.TabStop = false;
             textBoxDni.Text = "90000000";
             textBoxDni.TextAlign = HorizontalAlignment.Center;
             // 
@@ -142,7 +143,7 @@
             TextDescripcion.Location = new Point(504, 170);
             TextDescripcion.Name = "TextDescripcion";
             TextDescripcion.Size = new Size(524, 33);
-            TextDescripcion.TabIndex = 25;
+            TextDescripcion.TabIndex = 0;
             TextDescripcion.Text = "";
             // 
             // label2
@@ -165,7 +166,7 @@
             comboBoxCantCuotas.Location = new Point(504, 328);
             comboBoxCantCuotas.Name = "comboBoxCantCuotas";
             comboBoxCantCuotas.Size = new Size(121, 29);
-            comboBoxCantCuotas.TabIndex = 27;
+            comboBoxCantCuotas.TabIndex = 3;
             comboBoxCantCuotas.SelectedValueChanged += ComboBoxCantCuotas_SelectedValueChanged;
             // 
             // label5
@@ -198,7 +199,7 @@
             TextMontoPrestado.Location = new Point(504, 222);
             TextMontoPrestado.Name = "TextMontoPrestado";
             TextMontoPrestado.Size = new Size(272, 33);
-            TextMontoPrestado.TabIndex = 30;
+            TextMontoPrestado.TabIndex = 1;
             TextMontoPrestado.Text = "";
             // 
             // TextMontoDevolver
@@ -207,7 +208,7 @@
             TextMontoDevolver.Location = new Point(504, 274);
             TextMontoDevolver.Name = "TextMontoDevolver";
             TextMontoDevolver.Size = new Size(272, 33);
-            TextMontoDevolver.TabIndex = 31;
+            TextMontoDevolver.TabIndex = 2;
             TextMontoDevolver.Text = "";
             TextMontoDevolver.TextChanged += TextMontoDevolver_TextChanged;
             // 
@@ -231,6 +232,7 @@
             TextValorCuota.ReadOnly = true;
             TextValorCuota.Size = new Size(121, 33);
             TextValorCuota.TabIndex = 33;
+            TextValorCuota.TabStop = false;
             TextValorCuota.Text = "";
             // 
             // label8
@@ -264,7 +266,7 @@
             ComboQuincena.Location = new Point(504, 435);
             ComboQuincena.Name = "ComboQuincena";
             ComboQuincena.Size = new Size(51, 23);
-            ComboQuincena.TabIndex = 39;
+            ComboQuincena.TabIndex = 4;
             // 
             // ComboMes
             // 
@@ -273,7 +275,7 @@
             ComboMes.Location = new Point(568, 435);
             ComboMes.Name = "ComboMes";
             ComboMes.Size = new Size(51, 23);
-            ComboMes.TabIndex = 40;
+            ComboMes.TabIndex = 5;
             // 
             // ComboAnio
             // 
@@ -282,7 +284,7 @@
             ComboAnio.Location = new Point(632, 435);
             ComboAnio.Name = "ComboAnio";
             ComboAnio.Size = new Size(76, 23);
-            ComboAnio.TabIndex = 41;
+            ComboAnio.TabIndex = 6;
             // 
             // BtnConfirmarCredito
             // 
@@ -293,56 +295,57 @@
             BtnConfirmarCredito.Location = new Point(317, 647);
             BtnConfirmarCredito.Name = "BtnConfirmarCredito";
             BtnConfirmarCredito.Size = new Size(168, 41);
-            BtnConfirmarCredito.TabIndex = 42;
+            BtnConfirmarCredito.TabIndex = 8;
             BtnConfirmarCredito.Text = "CONFIRMAR";
             BtnConfirmarCredito.UseVisualStyleBackColor = false;
+            BtnConfirmarCredito.Click += BtnConfirmarCredito_Click;
             // 
             // groupBoxModoPago
             // 
-            groupBoxModoPago.Controls.Add(radioButton3);
-            groupBoxModoPago.Controls.Add(radioButton2);
-            groupBoxModoPago.Controls.Add(radioButton1);
+            groupBoxModoPago.Controls.Add(modoSegundaQuincena);
+            groupBoxModoPago.Controls.Add(modoPrimerQuincena);
+            groupBoxModoPago.Controls.Add(modoPorQuincena);
             groupBoxModoPago.Location = new Point(317, 528);
             groupBoxModoPago.Name = "groupBoxModoPago";
             groupBoxModoPago.Size = new Size(534, 113);
-            groupBoxModoPago.TabIndex = 43;
+            groupBoxModoPago.TabIndex = 7;
             groupBoxModoPago.TabStop = false;
             // 
-            // radioButton3
+            // modoSegundaQuincena
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            radioButton3.Location = new Point(11, 90);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(512, 17);
-            radioButton3.TabIndex = 2;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "SEGUNDA QUINCENA  (el valor de la cuota se descontara solo la segunda quincena)";
-            radioButton3.UseVisualStyleBackColor = true;
+            modoSegundaQuincena.AutoSize = true;
+            modoSegundaQuincena.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            modoSegundaQuincena.Location = new Point(11, 90);
+            modoSegundaQuincena.Name = "modoSegundaQuincena";
+            modoSegundaQuincena.Size = new Size(512, 17);
+            modoSegundaQuincena.TabIndex = 2;
+            modoSegundaQuincena.TabStop = true;
+            modoSegundaQuincena.Text = "SEGUNDA QUINCENA  (el valor de la cuota se descontara solo la segunda quincena)";
+            modoSegundaQuincena.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // modoPrimerQuincena
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            radioButton2.Location = new Point(11, 58);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(490, 17);
-            radioButton2.TabIndex = 1;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "PRIMER  QUINCENA  (el valor de la cuota se descontara solo la primer quincena)";
-            radioButton2.UseVisualStyleBackColor = true;
+            modoPrimerQuincena.AutoSize = true;
+            modoPrimerQuincena.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            modoPrimerQuincena.Location = new Point(11, 58);
+            modoPrimerQuincena.Name = "modoPrimerQuincena";
+            modoPrimerQuincena.Size = new Size(490, 17);
+            modoPrimerQuincena.TabIndex = 1;
+            modoPrimerQuincena.TabStop = true;
+            modoPrimerQuincena.Text = "PRIMER  QUINCENA  (el valor de la cuota se descontara solo la primer quincena)";
+            modoPrimerQuincena.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // modoPorQuincena
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            radioButton1.Location = new Point(11, 26);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(446, 17);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "POR QUINCENA  (el valor de la cuota se descontara todas las quincenas)";
-            radioButton1.UseVisualStyleBackColor = true;
+            modoPorQuincena.AutoSize = true;
+            modoPorQuincena.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            modoPorQuincena.Location = new Point(11, 26);
+            modoPorQuincena.Name = "modoPorQuincena";
+            modoPorQuincena.Size = new Size(446, 17);
+            modoPorQuincena.TabIndex = 0;
+            modoPorQuincena.TabStop = true;
+            modoPorQuincena.Text = "POR QUINCENA  (el valor de la cuota se descontara todas las quincenas)";
+            modoPorQuincena.UseVisualStyleBackColor = true;
             // 
             // CrearCreditosForm
             // 
@@ -403,8 +406,8 @@
         private ComboBox ComboAnio;
         private Button BtnConfirmarCredito;
         private GroupBox groupBoxModoPago;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton modoSegundaQuincena;
+        private RadioButton modoPrimerQuincena;
+        private RadioButton modoPorQuincena;
     }
 }

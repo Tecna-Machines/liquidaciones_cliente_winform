@@ -19,6 +19,7 @@ namespace BLL
             services.AddScoped<EmpleadoController>();
             services.AddScoped<RetencionController>();
             services.AddScoped<LiquidacionController>();
+            services.AddScoped<CreditoController>();
 
             return services;
         }

@@ -8,14 +8,11 @@ namespace UI.Screens.VerLiquidacion
 {
     public partial class VerLiquidacionForm : Form
     {
-        private readonly EmpleadoController empleadoController;
         private readonly LiquidacionController _liquidacion;
         public VerLiquidacionForm(EmpleadoController empleadoController, LiquidacionController liquidacion)
         {
-            this.empleadoController = empleadoController;
             InitializeComponent();
 
-            var contexto = BLL.Models.LiquidacionContext.GetInstance();
             _liquidacion = liquidacion;
         }
 
@@ -91,7 +88,7 @@ namespace UI.Screens.VerLiquidacion
                         var psi = new ProcessStartInfo
                         {
                             FileName = saveFileDialog.FileName,
-                            UseShellExecute = true 
+                            UseShellExecute = true
                         };
 
                         Process.Start(psi);

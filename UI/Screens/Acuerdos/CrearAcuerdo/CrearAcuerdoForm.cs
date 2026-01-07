@@ -34,7 +34,6 @@ namespace UI.Screens.CrearContrato
             this.textBoxDni.Text = e.Dni;
             this.textBoxNombre.Text = $"{e.Nombre} {e.Apellido}";
 
-            BLL.Models.LiquidacionContext.GetInstance().SetEmpleado(e);
         }
 
         private async void CargarListaEmpleados()
