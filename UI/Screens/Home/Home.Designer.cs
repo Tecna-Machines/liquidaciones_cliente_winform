@@ -48,6 +48,7 @@
             historialLiquidacionesToolStrip = new ToolStripMenuItem();
             toolStripDropDownCreditos = new ToolStripDropDownButton();
             crearCreditoToolStripMenuItem = new ToolStripMenuItem();
+            consultarToolStripMenuItem = new ToolStripMenuItem();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             toolStrip1.SuspendLayout();
@@ -174,14 +175,14 @@
             // crearAcuerdoToolStripMenuItem
             // 
             crearAcuerdoToolStripMenuItem.Name = "crearAcuerdoToolStripMenuItem";
-            crearAcuerdoToolStripMenuItem.Size = new Size(180, 22);
+            crearAcuerdoToolStripMenuItem.Size = new Size(148, 22);
             crearAcuerdoToolStripMenuItem.Text = "Crear acuerdo";
             crearAcuerdoToolStripMenuItem.Click += CrearAcuerdoToolStripMenuItem_Click;
             // 
             // verAcuerdosToolStripMenuItem
             // 
             verAcuerdosToolStripMenuItem.Name = "verAcuerdosToolStripMenuItem";
-            verAcuerdosToolStripMenuItem.Size = new Size(180, 22);
+            verAcuerdosToolStripMenuItem.Size = new Size(148, 22);
             verAcuerdosToolStripMenuItem.Text = "Ver acuerdos";
             verAcuerdosToolStripMenuItem.Click += VerAcuerdosToolStripMenuItem_Click;
             // 
@@ -198,21 +199,21 @@
             // crearLiquidacionToolStripMenuItem
             // 
             crearLiquidacionToolStripMenuItem.Name = "crearLiquidacionToolStripMenuItem";
-            crearLiquidacionToolStripMenuItem.Size = new Size(164, 22);
+            crearLiquidacionToolStripMenuItem.Size = new Size(180, 22);
             crearLiquidacionToolStripMenuItem.Text = "Crear liquidacion";
             crearLiquidacionToolStripMenuItem.Click += CrearLiquidacionToolStripMenuItem_Click;
             // 
             // historialLiquidacionesToolStrip
             // 
             historialLiquidacionesToolStrip.Name = "historialLiquidacionesToolStrip";
-            historialLiquidacionesToolStrip.Size = new Size(164, 22);
+            historialLiquidacionesToolStrip.Size = new Size(180, 22);
             historialLiquidacionesToolStrip.Text = "Historial";
             historialLiquidacionesToolStrip.Click += HistorialLiquidacionesToolStripMenuItem_Click;
             // 
             // toolStripDropDownCreditos
             // 
             toolStripDropDownCreditos.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripDropDownCreditos.DropDownItems.AddRange(new ToolStripItem[] { crearCreditoToolStripMenuItem });
+            toolStripDropDownCreditos.DropDownItems.AddRange(new ToolStripItem[] { crearCreditoToolStripMenuItem, consultarToolStripMenuItem });
             toolStripDropDownCreditos.Image = (Image)resources.GetObject("toolStripDropDownCreditos.Image");
             toolStripDropDownCreditos.ImageTransparentColor = Color.Magenta;
             toolStripDropDownCreditos.Name = "toolStripDropDownCreditos";
@@ -225,6 +226,13 @@
             crearCreditoToolStripMenuItem.Size = new Size(180, 22);
             crearCreditoToolStripMenuItem.Text = "Crear";
             crearCreditoToolStripMenuItem.Click += CrearCreditoToolStripMenuItem_Click;
+            // 
+            // consultarToolStripMenuItem
+            // 
+            consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
+            consultarToolStripMenuItem.Size = new Size(180, 22);
+            consultarToolStripMenuItem.Text = "Consultar";
+            consultarToolStripMenuItem.Click += ConsultarToolStripMenuItem_Click;
             // 
             // Home
             // 
@@ -270,5 +278,6 @@
         private ToolStripLabel toolStripInicio;
         private ToolStripDropDownButton toolStripDropDownCreditos;
         private ToolStripMenuItem crearCreditoToolStripMenuItem;
+        private ToolStripMenuItem consultarToolStripMenuItem;
     }
 }

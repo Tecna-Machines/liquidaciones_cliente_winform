@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using UI.Screens.CrearContrato;
 using UI.Screens.CrearEmpleado;
+using UI.Screens.Creditos.BuscarCredito;
 using UI.Screens.Liquidaciones.HistorialLiquidaciones;
 using UI.Screens.VerContratos;
 using UI.Screens.VerCreditos;
@@ -75,6 +76,12 @@ namespace UI
         {
             var formCrearCredito = Program.ServiceProvider.GetRequiredService<CrearCreditosForm>();
             formCrearCredito.ShowDialog();
+        }
+
+        private void ConsultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formBuscarCreditos = Program.ServiceProvider.GetRequiredService<BuscarCreditosForm>();
+            formBuscarCreditos.Show();
         }
     }
 }

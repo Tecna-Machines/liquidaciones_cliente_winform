@@ -1,9 +1,13 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Creditos.Crear;
+using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
+using DAL.Service.ApiLiquidacion.Features.Creditos.GetCreditos;
 
 namespace DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones
 {
     public interface ICreditoService
     {
         Task<CrearCreditoResponse> CrearCredito(CrearCreditoRequest r);
+        Task<GetCreditoResponse> GetCredito(string id);
+        Task<GetCreditosResponse> BuscarCreditos(FiltroCredito filtro);
     }
 }

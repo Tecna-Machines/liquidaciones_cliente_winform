@@ -1,6 +1,7 @@
 ﻿using BLL.Controllers;
 using DAL.Service.ApiLiquidacion.Features.Creditos.Crear;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
+using UI.Screens.Creditos.VerCredito;
 using UI.Utils;
 
 namespace UI.Screens.VerCreditos
@@ -9,8 +10,9 @@ namespace UI.Screens.VerCreditos
     {
         private readonly IServiceProvider _sp;
         private readonly CreditoController _controller;
+        private VerCreditoForm _verCreditoForm;
 
-        public CrearCreditosForm(IServiceProvider sp, CreditoController controller)
+        public CrearCreditosForm(IServiceProvider sp, CreditoController controller, VerCreditoForm verCreditoForm)
         {
             InitializeComponent();
 
@@ -21,6 +23,7 @@ namespace UI.Screens.VerCreditos
 
             this.Shown += CrearCreditosForm_Shown;
             _controller = controller;
+            _verCreditoForm = verCreditoForm;
         }
 
         private void CargarDniYNombre(object? sender, GetEmpleadoResponse emp)
@@ -80,7 +83,7 @@ namespace UI.Screens.VerCreditos
 
             var nuevoCredito =  await _controller.Crear(request);
 
-            MessageBox.Show(nuevoCredito.Codigo + " " + nuevoCredito.Descripcion);
+            MostrarCredito(nuevoCredito.Codigo);
         }
 
 
@@ -163,6 +166,14 @@ namespace UI.Screens.VerCreditos
 
             quincena = new CreditoQuincenaRequest(q, m, a);
             return true;
+        }
+
+        private async void MostrarCredito(string codigo)
+        {
+            var credito = await _controller.GetCredito(codigo);
+
+            _verCreditoForm.SetCredito(credito);
+            _verCreditoForm.Show();
         }
     }
 }
