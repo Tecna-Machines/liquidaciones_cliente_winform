@@ -1,15 +1,19 @@
 ﻿using BLL.Controllers;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetCreditos;
+using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
+using UI.Screens.Creditos.VerCredito;
 
 namespace UI.Screens.Creditos.BuscarCredito
 {
     public partial class BuscarCreditosForm : Form
     {
         private readonly CreditoController _controller;
-        public BuscarCreditosForm(CreditoController controller)
+        private readonly VerCreditoForm _verCreditoForm;
+        public BuscarCreditosForm(CreditoController controller, VerCreditoForm verCreditoForm)
         {
             InitializeComponent();
             _controller = controller;
+            _verCreditoForm = verCreditoForm;
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -85,5 +89,22 @@ namespace UI.Screens.Creditos.BuscarCredito
             return item;
         }
 
+        private void TablaDeResultados_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (tablaDeResultados.SelectedItems.Count == 1)
+            {
+                int indx = tablaDeResultados.SelectedItems[0].Index;
+                var codigoCredito = tablaDeResultados.Items[indx].Text;
+
+                AbrirFormularioConCredito(codigoCredito);
+            }
+        }
+
+        private async void AbrirFormularioConCredito(string codigo)
+        {
+            var credito = await _controller.GetCredito(codigo);
+            _verCreditoForm.SetCredito(credito);
+            _verCreditoForm.ShowDialog();
+        }
     }
 }

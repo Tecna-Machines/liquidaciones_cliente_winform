@@ -2,11 +2,11 @@
 
 namespace DAL.Service.ApiLiquidacion.Features.Creditos.GetById
 {
-    internal class GetCreditoById
+    internal class GetCreditoByIdHandler
     {
         private readonly ClientApiLiquidacion _api;
 
-        public GetCreditoById(ClientApiLiquidacion api)
+        public GetCreditoByIdHandler(ClientApiLiquidacion api)
         {
             _api = api;
         }

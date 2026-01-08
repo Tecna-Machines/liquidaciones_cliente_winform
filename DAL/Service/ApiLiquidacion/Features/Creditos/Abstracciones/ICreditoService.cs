@@ -9,5 +9,6 @@ namespace DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones
         Task<CrearCreditoResponse> CrearCredito(CrearCreditoRequest r);
         Task<GetCreditoResponse> GetCredito(string id);
         Task<GetCreditosResponse> BuscarCreditos(FiltroCredito filtro);
+        Task PosponerCuota(string codigoCredito, int nroCuota);
     }
 }

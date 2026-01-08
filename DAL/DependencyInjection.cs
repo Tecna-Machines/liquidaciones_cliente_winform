@@ -1,5 +1,6 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.Creditos.Crear;
+using DAL.Service.ApiLiquidacion.Features.Creditos.Cuotas.PosponerCuota;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetCreditos;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
@@ -89,8 +90,9 @@ namespace DAL
         {
             services.AddScoped<CrearCredito>();
             services.AddScoped<ICreditoService,CreditoService>();
-            services.AddScoped<GetCreditoById>();
+            services.AddScoped<GetCreditoByIdHandler>();
             services.AddScoped<GetCreditosHandler>();
+            services.AddScoped<PosponerCuotaHandler>();
             return services;
         }
     }

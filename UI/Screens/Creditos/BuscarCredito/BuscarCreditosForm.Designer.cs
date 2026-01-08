@@ -228,6 +228,7 @@
             tablaDeResultados.TabIndex = 33;
             tablaDeResultados.UseCompatibleStateImageBehavior = false;
             tablaDeResultados.View = View.Details;
+            tablaDeResultados.MouseDoubleClick += TablaDeResultados_MouseDoubleClick;
             // 
             // columnCod
             // 
@@ -267,7 +268,9 @@
             Controls.Add(tablaDeResultados);
             Controls.Add(labelResultados);
             Controls.Add(panel1);
+            MaximizeBox = false;
             Name = "BuscarCreditosForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "BuscarCreditosForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

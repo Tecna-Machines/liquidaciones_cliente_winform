@@ -28,5 +28,10 @@ namespace BLL.Controllers
         {
             return _creditos.BuscarCreditos(filtro);
         }
+
+        public async Task PosponerCuotas(string codigoCredito,int nroCuota)
+        {
+            await _creditos.PosponerCuota(codigoCredito, nroCuota);
+        }
     }
 }
