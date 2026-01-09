@@ -1,5 +1,6 @@
 ﻿using BLL.Controllers;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
+using UI.Screens.Creditos.CrearPlanPago;
 using UI.Utils;
 
 namespace UI.Screens.Creditos.VerCredito
@@ -104,7 +105,7 @@ namespace UI.Screens.Creditos.VerCredito
         {
 
             progressBar.Visible = true;
-            BtnPosponerCuota.Enabled = false;    
+            BtnPosponerCuota.Enabled = false;
             this.Enabled = false;
 
             string codigoCredito = textCodigo.Text;
@@ -127,8 +128,8 @@ namespace UI.Screens.Creditos.VerCredito
                 this.Enabled = true;
             }
 
-            
-         }
+
+        }
 
         private void SetearDatosCuota(CuotaResponse? cuota)
         {
@@ -160,6 +161,12 @@ namespace UI.Screens.Creditos.VerCredito
             BtnPosponerCuota.Enabled = false;
             BtnVerLiquidacion.Enabled = true;
 
+        }
+
+        private void BtnPlanDePago_Click(object sender, EventArgs e)
+        {
+            var formPlanPago = new CrearPlanDePagoForm();
+            formPlanPago.ShowDialog();
         }
     }
 }

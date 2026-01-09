@@ -63,6 +63,7 @@
             BtnVerLiquidacion = new Button();
             textCuotaNro = new TextBox();
             progressBar = new ProgressBar();
+            BtnPlanDePago = new Button();
             SuspendLayout();
             // 
             // label8
@@ -253,7 +254,7 @@
             BtnPosponerCuota.BackColor = Color.Tomato;
             BtnPosponerCuota.Cursor = Cursors.Hand;
             BtnPosponerCuota.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            BtnPosponerCuota.Location = new Point(819, 466);
+            BtnPosponerCuota.Location = new Point(12, 729);
             BtnPosponerCuota.Name = "BtnPosponerCuota";
             BtnPosponerCuota.Size = new Size(172, 41);
             BtnPosponerCuota.TabIndex = 61;
@@ -304,7 +305,7 @@
             // 
             label7.BackColor = SystemColors.ActiveCaption;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(819, 261);
+            label7.Location = new Point(12, 524);
             label7.Name = "label7";
             label7.Padding = new Padding(3);
             label7.Size = new Size(486, 24);
@@ -315,7 +316,7 @@
             // 
             label9.BackColor = SystemColors.ActiveCaption;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(819, 298);
+            label9.Location = new Point(12, 561);
             label9.Name = "label9";
             label9.Padding = new Padding(3);
             label9.Size = new Size(135, 23);
@@ -327,7 +328,7 @@
             // 
             textCuotaMonto.BackColor = SystemColors.Info;
             textCuotaMonto.BorderStyle = BorderStyle.FixedSingle;
-            textCuotaMonto.Location = new Point(960, 391);
+            textCuotaMonto.Location = new Point(153, 654);
             textCuotaMonto.Name = "textCuotaMonto";
             textCuotaMonto.ReadOnly = true;
             textCuotaMonto.Size = new Size(345, 23);
@@ -337,7 +338,7 @@
             // 
             textCuotaPagada.BackColor = SystemColors.Info;
             textCuotaPagada.BorderStyle = BorderStyle.FixedSingle;
-            textCuotaPagada.Location = new Point(960, 422);
+            textCuotaPagada.Location = new Point(153, 685);
             textCuotaPagada.Name = "textCuotaPagada";
             textCuotaPagada.ReadOnly = true;
             textCuotaPagada.Size = new Size(345, 23);
@@ -347,7 +348,7 @@
             // 
             label10.BackColor = SystemColors.ActiveCaption;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(819, 391);
+            label10.Location = new Point(12, 654);
             label10.Name = "label10";
             label10.Padding = new Padding(3);
             label10.Size = new Size(135, 23);
@@ -359,7 +360,7 @@
             // 
             label11.BackColor = SystemColors.ActiveCaption;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(819, 329);
+            label11.Location = new Point(12, 592);
             label11.Name = "label11";
             label11.Padding = new Padding(3);
             label11.Size = new Size(135, 23);
@@ -371,7 +372,7 @@
             // 
             label12.BackColor = SystemColors.ActiveCaption;
             label12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(819, 360);
+            label12.Location = new Point(12, 623);
             label12.Name = "label12";
             label12.Padding = new Padding(3);
             label12.Size = new Size(135, 23);
@@ -384,7 +385,7 @@
             label13.BackColor = SystemColors.ActiveCaption;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label13.ForeColor = Color.ForestGreen;
-            label13.Location = new Point(819, 422);
+            label13.Location = new Point(12, 685);
             label13.Name = "label13";
             label13.Padding = new Padding(3);
             label13.Size = new Size(135, 23);
@@ -396,7 +397,7 @@
             // 
             textCuotaQuincena.BackColor = SystemColors.Info;
             textCuotaQuincena.BorderStyle = BorderStyle.FixedSingle;
-            textCuotaQuincena.Location = new Point(960, 360);
+            textCuotaQuincena.Location = new Point(153, 623);
             textCuotaQuincena.Name = "textCuotaQuincena";
             textCuotaQuincena.ReadOnly = true;
             textCuotaQuincena.Size = new Size(345, 23);
@@ -406,7 +407,7 @@
             // 
             textCuotaDescripcion.BackColor = SystemColors.Info;
             textCuotaDescripcion.BorderStyle = BorderStyle.FixedSingle;
-            textCuotaDescripcion.Location = new Point(960, 329);
+            textCuotaDescripcion.Location = new Point(153, 592);
             textCuotaDescripcion.Name = "textCuotaDescripcion";
             textCuotaDescripcion.ReadOnly = true;
             textCuotaDescripcion.Size = new Size(345, 23);
@@ -417,7 +418,7 @@
             BtnVerLiquidacion.BackColor = Color.LightGreen;
             BtnVerLiquidacion.Cursor = Cursors.Hand;
             BtnVerLiquidacion.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            BtnVerLiquidacion.Location = new Point(997, 466);
+            BtnVerLiquidacion.Location = new Point(190, 729);
             BtnVerLiquidacion.Name = "BtnVerLiquidacion";
             BtnVerLiquidacion.Size = new Size(172, 41);
             BtnVerLiquidacion.TabIndex = 75;
@@ -428,7 +429,7 @@
             // 
             textCuotaNro.BackColor = SystemColors.Info;
             textCuotaNro.BorderStyle = BorderStyle.FixedSingle;
-            textCuotaNro.Location = new Point(960, 298);
+            textCuotaNro.Location = new Point(153, 561);
             textCuotaNro.Name = "textCuotaNro";
             textCuotaNro.ReadOnly = true;
             textCuotaNro.Size = new Size(345, 23);
@@ -444,11 +445,22 @@
             progressBar.UseWaitCursor = true;
             progressBar.Visible = false;
             // 
+            // BtnPlanDePago
+            // 
+            BtnPlanDePago.Location = new Point(368, 729);
+            BtnPlanDePago.Name = "BtnPlanDePago";
+            BtnPlanDePago.Size = new Size(136, 41);
+            BtnPlanDePago.TabIndex = 78;
+            BtnPlanDePago.Text = "PLAN DE PAGO";
+            BtnPlanDePago.UseVisualStyleBackColor = true;
+            BtnPlanDePago.Click += BtnPlanDePago_Click;
+            // 
             // VerCreditoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1337, 561);
+            ClientSize = new Size(836, 785);
+            Controls.Add(BtnPlanDePago);
             Controls.Add(progressBar);
             Controls.Add(textCuotaNro);
             Controls.Add(BtnVerLiquidacion);
@@ -516,12 +528,12 @@
         private Label label11;
         private Label label12;
         private Label label13;
-        private Label label14;
         private TextBox textCuotaQuincena;
         private TextBox textBox4;
         private TextBox textCuotaDescripcion;
         private Button BtnVerLiquidacion;
         private TextBox textCuotaNro;
         private ProgressBar progressBar;
+        private Button BtnPlanDePago;
     }
 }
