@@ -2,6 +2,7 @@
 using UI.Screens.CrearContrato;
 using UI.Screens.CrearEmpleado;
 using UI.Screens.Creditos.BuscarCredito;
+using UI.Screens.Creditos.CrearPlanPago;
 using UI.Screens.Creditos.VerCredito;
 using UI.Screens.HacerLiquidacion;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
@@ -29,6 +30,7 @@ namespace UI
             services.AddTransient<CrearCreditosForm>();
             services.AddTransient<VerCreditoForm>();
             services.AddTransient<BuscarCreditosForm>();
+            services.AddTransient<CrearPlanDePagoForm>();
             return services;
         }
     }

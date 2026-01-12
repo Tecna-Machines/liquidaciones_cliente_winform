@@ -34,7 +34,6 @@
             comboBoxQuincena = new ComboBox();
             label17 = new Label();
             BtnCrearPlan = new Button();
-            checkBoxHabilitarPlan = new CheckBox();
             textBoxMontoCuota = new TextBox();
             label16 = new Label();
             textBoxDebe = new TextBox();
@@ -51,7 +50,6 @@
             groupBoxPlanPago.Controls.Add(comboBoxQuincena);
             groupBoxPlanPago.Controls.Add(label17);
             groupBoxPlanPago.Controls.Add(BtnCrearPlan);
-            groupBoxPlanPago.Controls.Add(checkBoxHabilitarPlan);
             groupBoxPlanPago.Controls.Add(textBoxMontoCuota);
             groupBoxPlanPago.Controls.Add(label16);
             groupBoxPlanPago.Controls.Add(textBoxDebe);
@@ -114,17 +112,7 @@
             BtnCrearPlan.TabIndex = 7;
             BtnCrearPlan.Text = "CARGAR PLAN";
             BtnCrearPlan.UseVisualStyleBackColor = false;
-            // 
-            // checkBoxHabilitarPlan
-            // 
-            checkBoxHabilitarPlan.AutoSize = true;
-            checkBoxHabilitarPlan.Location = new Point(239, 134);
-            checkBoxHabilitarPlan.Name = "checkBoxHabilitarPlan";
-            checkBoxHabilitarPlan.Size = new Size(71, 19);
-            checkBoxHabilitarPlan.TabIndex = 6;
-            checkBoxHabilitarPlan.Text = "habilitar";
-            checkBoxHabilitarPlan.UseVisualStyleBackColor = true;
-            checkBoxHabilitarPlan.CheckedChanged += CheckBoxHabilitarPlan_CheckedChanged;
+            BtnCrearPlan.Click += BtnCrearPlan_Click;
             // 
             // textBoxMontoCuota
             // 
@@ -180,6 +168,7 @@
             comboBoxCantCuotas.Name = "comboBoxCantCuotas";
             comboBoxCantCuotas.Size = new Size(84, 23);
             comboBoxCantCuotas.TabIndex = 0;
+            comboBoxCantCuotas.SelectedValueChanged += ComboBoxCantCuotas_SelectedValueChanged;
             // 
             // CrearPlanDePagoForm
             // 
@@ -202,7 +191,6 @@
         private ComboBox comboBoxQuincena;
         private Label label17;
         private Button BtnCrearPlan;
-        private CheckBox checkBoxHabilitarPlan;
         private TextBox textBoxMontoCuota;
         private Label label16;
         private TextBox textBoxDebe;

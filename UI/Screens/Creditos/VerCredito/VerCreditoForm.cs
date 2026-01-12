@@ -8,10 +8,13 @@ namespace UI.Screens.Creditos.VerCredito
     public partial class VerCreditoForm : Form
     {
         private readonly CreditoController _controller;
-        public VerCreditoForm(CreditoController controller)
+        private CrearPlanDePagoForm _formPlanPago;
+        public VerCreditoForm(CreditoController controller,
+                             CrearPlanDePagoForm formPlanPago)
         {
             InitializeComponent();
             _controller = controller;
+            _formPlanPago = formPlanPago;
         }
 
         public void SetCredito(GetCreditoResponse credito)
@@ -28,6 +31,8 @@ namespace UI.Screens.Creditos.VerCredito
             textModoPago.Text = credito.ModoPago;
 
             CargarTablaCuotas(credito.Cuotas);
+
+            _formPlanPago.SetCredito(credito);
 
         }
 
@@ -165,8 +170,8 @@ namespace UI.Screens.Creditos.VerCredito
 
         private void BtnPlanDePago_Click(object sender, EventArgs e)
         {
-            var formPlanPago = new CrearPlanDePagoForm();
-            formPlanPago.ShowDialog();
+
+            _formPlanPago.ShowDialog();
         }
     }
 }

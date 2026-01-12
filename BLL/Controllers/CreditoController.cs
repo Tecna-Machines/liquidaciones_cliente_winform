@@ -1,5 +1,6 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.Creditos.Crear;
+using DAL.Service.ApiLiquidacion.Features.Creditos.CrearPlanPago;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetCreditos;
 
@@ -32,6 +33,11 @@ namespace BLL.Controllers
         public async Task PosponerCuotas(string codigoCredito,int nroCuota)
         {
             await _creditos.PosponerCuota(codigoCredito, nroCuota);
+        }
+
+        public async Task<CrearPlanDePagoResponse> CrearPlanDePago(string codigoCredito,CrearPlanDePagoRequest plan)
+        {
+            return await _creditos.CrearPlanDePago(codigoCredito, plan);
         }
     }
 }

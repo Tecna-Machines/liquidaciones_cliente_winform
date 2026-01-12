@@ -447,12 +447,14 @@
             // 
             // BtnPlanDePago
             // 
+            BtnPlanDePago.BackColor = Color.LightSteelBlue;
+            BtnPlanDePago.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             BtnPlanDePago.Location = new Point(368, 729);
             BtnPlanDePago.Name = "BtnPlanDePago";
             BtnPlanDePago.Size = new Size(136, 41);
             BtnPlanDePago.TabIndex = 78;
             BtnPlanDePago.Text = "PLAN DE PAGO";
-            BtnPlanDePago.UseVisualStyleBackColor = true;
+            BtnPlanDePago.UseVisualStyleBackColor = false;
             BtnPlanDePago.Click += BtnPlanDePago_Click;
             // 
             // VerCreditoForm

@@ -1,45 +1,99 @@
-﻿using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
+﻿using BLL.Controllers;
+using DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones;
+using DAL.Service.ApiLiquidacion.Features.Creditos.CrearPlanPago;
+using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
 using System.Data;
+using UI.Utils;
 
 namespace UI.Screens.Creditos.CrearPlanPago
 {
     public partial class CrearPlanDePagoForm : Form
     {
-        public CrearPlanDePagoForm()
+        private readonly CreditoController _controllerCredito;
+        private GetCreditoResponse? _credito;
+        public CrearPlanDePagoForm(CreditoController controllerCredito)
         {
             InitializeComponent();
+            _controllerCredito = controllerCredito;
         }
 
         public void SetCredito(GetCreditoResponse credito)
         {
-            //TODO: refactorizar esta porqueria por favor
-            decimal montoDebe = credito.Devolver - credito.Cuotas.Where(c => !string.IsNullOrEmpty(c.Pago.CodigoLiquidacion)).Sum(c => c.Monto);
-            textBoxDebe.Text = montoDebe.ToString("C");
+            _credito = credito;
 
+            textBoxDebe.Text = CalcularMotoFaltante().ToString("C");
         }
 
-        private void CheckBoxHabilitarPlan_CheckedChanged(object sender, EventArgs e)
+        private decimal CalcularMotoFaltante()
         {
-            if (checkBoxHabilitarPlan.Checked)
+            if (_credito is null)
             {
-                HabilitarPlan();
+                MessageBox.Show("credito.null");
+                return -1;
             }
-            else
+
+            return _credito.Cuotas.Where(c => c.Pago.CodigoLiquidacion == "").Sum(c => c.Monto);
+        }
+
+        private void ComboBoxCantCuotas_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ActualizarMontoNuevaCuota();
+        }
+
+        private void ActualizarMontoNuevaCuota()
+        {
+            decimal montoDevolver = CalcularMotoFaltante();
+
+            var itemSeleccionado = comboBoxCantCuotas.SelectedItem;
+
+            int cantCuotas = 1;
+
+            if (itemSeleccionado is not null)
+                cantCuotas = int.Parse(comboBoxCantCuotas.SelectedItem.ToString() ?? "1");
+
+
+            string valorCuota = (montoDevolver / cantCuotas).ToString("F2");
+
+            textBoxMontoCuota.Text = valorCuota;
+        }
+
+        private void BtnCrearPlan_Click(object sender, EventArgs e)
+        {
+            CrearPlanDePago();
+        }
+
+        private async void CrearPlanDePago()
+        {
+            if (_credito is null)
             {
-                DeshabilitarPlan();
+                Dialog.Error("credito es nulo");
+                return;
+            }
+
+            var informacionPlan = CrearSolicitudPlan();
+            string codigoCredito = _credito.Codigo;
+
+            try
+            {
+                var credito = await _controllerCredito.CrearPlanDePago(codigoCredito, informacionPlan);
+                Dialog.Success($"se creo un plan de pago para el credito: {credito.CodigoCredito}");
+
+                this.Close();
+
+            }catch(Exception e)
+            {
+                Dialog.Error($"ocurrio un problema: {e.Message}");
             }
         }
 
-        public void HabilitarPlan()
+        private CrearPlanDePagoRequest CrearSolicitudPlan()
         {
-            decimal montoCuota = decimal.Parse(textBoxDebe.Text) / 3;
+            var quincena = int.Parse(comboBoxQuincena.Text);
+            var mes = int.Parse(comboBoxMes.Text);
+            var anio = int.Parse(comboBoxAnio.Text);
+            var cantCuotas = int.Parse(comboBoxCantCuotas.Text);
 
-            textBoxMontoCuota.Text = montoCuota.ToString("C");
-        }
-
-        public void DeshabilitarPlan()
-        {
-
+            return new CrearPlanDePagoRequest(quincena,mes,anio,cantCuotas);
         }
     }
 

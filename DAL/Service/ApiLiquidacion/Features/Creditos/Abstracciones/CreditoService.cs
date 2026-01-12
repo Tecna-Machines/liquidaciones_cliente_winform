@@ -1,4 +1,5 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Creditos.Crear;
+using DAL.Service.ApiLiquidacion.Features.Creditos.CrearPlanPago;
 using DAL.Service.ApiLiquidacion.Features.Creditos.Cuotas.PosponerCuota;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetCreditos;
@@ -11,16 +12,19 @@ namespace DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones
         private readonly GetCreditoByIdHandler _getCredito;
         private readonly GetCreditosHandler _getCreditosFiltrados;
         private readonly PosponerCuotaHandler _posponerCuota;
+        private readonly CrearPlanDePagoHandler _planDePago;
 
         public CreditoService(CrearCredito crearCredito,
                               GetCreditoByIdHandler getCredito,
                               GetCreditosHandler getCreditosFiltrados,
-                              PosponerCuotaHandler posponerCuota)
+                              PosponerCuotaHandler posponerCuota,
+                              CrearPlanDePagoHandler planDePago)
         {
             _crearCredito = crearCredito;
             _getCredito = getCredito;
             _getCreditosFiltrados = getCreditosFiltrados;
             _posponerCuota = posponerCuota;
+            _planDePago = planDePago;
         }
 
         public async Task<CrearCreditoResponse> CrearCredito(CrearCreditoRequest r)
@@ -30,7 +34,7 @@ namespace DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones
 
         public async Task<GetCreditoResponse> GetCredito(string id)
         {
-           return await _getCredito.Get(id);
+            return await _getCredito.Get(id);
         }
 
         public async Task<GetCreditosResponse> BuscarCreditos(FiltroCredito filtro)
@@ -38,9 +42,14 @@ namespace DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones
             return await _getCreditosFiltrados.BuscarCreditos(filtro);
         }
 
-        public async Task PosponerCuota(string codigoCredito,int nroCuota)
+        public async Task PosponerCuota(string codigoCredito, int nroCuota)
         {
-           await _posponerCuota.Posponer(new PosponerCuotaRequest(codigoCredito, nroCuota));
+            await _posponerCuota.Posponer(new PosponerCuotaRequest(codigoCredito, nroCuota));
+        }
+
+        public async Task<CrearPlanDePagoResponse> CrearPlanDePago(string codigoCredito, CrearPlanDePagoRequest solicitudPlan)
+        {
+            return await _planDePago.Crear(codigoCredito, solicitudPlan);
         }
     }
 }
