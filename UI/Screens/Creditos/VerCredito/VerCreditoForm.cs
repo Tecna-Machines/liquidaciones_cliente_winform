@@ -1,20 +1,29 @@
 ﻿using BLL.Controllers;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
+using System.Threading.Tasks;
 using UI.Screens.Creditos.CrearPlanPago;
+using UI.Screens.VerLiquidacion;
 using UI.Utils;
 
 namespace UI.Screens.Creditos.VerCredito
 {
     public partial class VerCreditoForm : Form
     {
-        private readonly CreditoController _controller;
+        private readonly CreditoController _controllerCredito;
+        private readonly LiquidacionController _controllerLiquidacion;
         private CrearPlanDePagoForm _formPlanPago;
+
+        private VerLiquidacionForm _formVerLiquidacion;
         public VerCreditoForm(CreditoController controller,
-                             CrearPlanDePagoForm formPlanPago)
+                             CrearPlanDePagoForm formPlanPago,
+                             VerLiquidacionForm formVerLiquidacion,
+                             LiquidacionController controllerLiquidacion)
         {
             InitializeComponent();
-            _controller = controller;
+            _controllerCredito = controller;
             _formPlanPago = formPlanPago;
+            _formVerLiquidacion = formVerLiquidacion;
+            _controllerLiquidacion = controllerLiquidacion;
         }
 
         public void SetCredito(GetCreditoResponse credito)
@@ -118,7 +127,7 @@ namespace UI.Screens.Creditos.VerCredito
 
             try
             {
-                await _controller.PosponerCuotas(codigoCredito, nroCuota);
+                await _controllerCredito.PosponerCuotas(codigoCredito, nroCuota);
                 Dialog.Success("cuotas actualizadas");
                 this.Close();
             }
@@ -147,6 +156,8 @@ namespace UI.Screens.Creditos.VerCredito
             textCuotaDescripcion.Text = cuota.Descripcion;
             textCuotaQuincena.Text = GenerarStringQuincena(cuota.Quincena);
             VerificarSiEstaPaga(cuota);
+
+            textBoxCodigoLiquidacion.Text = cuota.Pago.CodigoLiquidacion;
         }
 
         public void VerificarSiEstaPaga(CuotaResponse c)
@@ -172,6 +183,36 @@ namespace UI.Screens.Creditos.VerCredito
         {
 
             _formPlanPago.ShowDialog();
+        }
+
+        private async void BtnVerLiquidacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1. Deshabilitar el botón para evitar múltiples clics mientras carga
+                BtnVerLiquidacion.Enabled = false;
+
+                // 2. Ejecutar la tarea asíncrona
+                await RecuperarLiquidacion(textBoxCodigoLiquidacion.Text);
+
+                // 3. Mostrar el formulario
+                _formVerLiquidacion.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al recuperar la liquidación: {ex.Message}");
+            }
+            finally
+            {
+                // 4. Re-habilitar el botón
+                BtnVerLiquidacion.Enabled = true;
+            }
+        }
+
+        private async Task RecuperarLiquidacion(string codigoLiquidacion)
+        {
+            var liq = await _controllerLiquidacion.GetById(codigoLiquidacion);
+            _formVerLiquidacion.SetLiquidacion(liq!);
         }
     }
 }

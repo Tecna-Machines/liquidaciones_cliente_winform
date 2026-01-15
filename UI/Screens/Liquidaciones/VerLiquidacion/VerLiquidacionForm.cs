@@ -18,6 +18,10 @@ namespace UI.Screens.VerLiquidacion
 
         public void SetLiquidacion(GetLiquidacionByIdResponse liq)
         {
+            tablaAcuerdo.Items.Clear();
+            tablaDetalleBlanco.Items.Clear();
+            tablaDetalleNegro.Items.Clear();
+
             TablaDetalleLiquidacionForm.SetTablaDetalleEnBlanco(liq, tablaDetalleBlanco);
             TablaDetalleLiquidacionForm.SetTablaDetalleEnNegro(liq, tablaDetalleNegro);
             TablaAcuerdoLiquidacionForm.SetTablaAcuerdo(liq, tablaAcuerdo);

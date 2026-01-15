@@ -64,6 +64,7 @@
             textCuotaNro = new TextBox();
             progressBar = new ProgressBar();
             BtnPlanDePago = new Button();
+            textBoxCodigoLiquidacion = new TextBox();
             SuspendLayout();
             // 
             // label8
@@ -341,7 +342,7 @@
             textCuotaPagada.Location = new Point(153, 685);
             textCuotaPagada.Name = "textCuotaPagada";
             textCuotaPagada.ReadOnly = true;
-            textCuotaPagada.Size = new Size(345, 23);
+            textCuotaPagada.Size = new Size(165, 23);
             textCuotaPagada.TabIndex = 67;
             // 
             // label10
@@ -424,6 +425,7 @@
             BtnVerLiquidacion.TabIndex = 75;
             BtnVerLiquidacion.Text = "VER LIQUIDACION";
             BtnVerLiquidacion.UseVisualStyleBackColor = false;
+            BtnVerLiquidacion.Click += BtnVerLiquidacion_Click;
             // 
             // textCuotaNro
             // 
@@ -457,11 +459,22 @@
             BtnPlanDePago.UseVisualStyleBackColor = false;
             BtnPlanDePago.Click += BtnPlanDePago_Click;
             // 
+            // textBoxCodigoLiquidacion
+            // 
+            textBoxCodigoLiquidacion.BackColor = SystemColors.Info;
+            textBoxCodigoLiquidacion.BorderStyle = BorderStyle.FixedSingle;
+            textBoxCodigoLiquidacion.Location = new Point(324, 685);
+            textBoxCodigoLiquidacion.Name = "textBoxCodigoLiquidacion";
+            textBoxCodigoLiquidacion.ReadOnly = true;
+            textBoxCodigoLiquidacion.Size = new Size(174, 23);
+            textBoxCodigoLiquidacion.TabIndex = 79;
+            // 
             // VerCreditoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(836, 785);
+            Controls.Add(textBoxCodigoLiquidacion);
             Controls.Add(BtnPlanDePago);
             Controls.Add(progressBar);
             Controls.Add(textCuotaNro);
@@ -537,5 +550,6 @@
         private TextBox textCuotaNro;
         private ProgressBar progressBar;
         private Button BtnPlanDePago;
+        private TextBox textBoxCodigoLiquidacion;
     }
 }
