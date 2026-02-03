@@ -1,4 +1,6 @@
-﻿using DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones;
+﻿using DAL.Service.ApiLiquidacion.Features.Asistencias.Abstracciones;
+using DAL.Service.ApiLiquidacion.Features.Asistencias.GetAsistenciaByEmpleado;
+using DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.Creditos.Crear;
 using DAL.Service.ApiLiquidacion.Features.Creditos.CrearPlanPago;
 using DAL.Service.ApiLiquidacion.Features.Creditos.Cuotas.PosponerCuota;
@@ -36,6 +38,7 @@ namespace DAL
             services.AddScoped<ClientApiLiquidacion>();
 
             AddAcuerdos(services);
+            AddAsistencias(services);
             AddEmpleados(services);
             AddLiquidacion(services);
             AddCatalogoRetenciones(services);
@@ -60,6 +63,13 @@ namespace DAL
             services.AddScoped<GetTodosEmpleados>();
 
             services.AddScoped<IEmpleadoService, EmpleadoService>();
+            return services;
+        }
+
+        private static IServiceCollection AddAsistencias(this IServiceCollection services)
+        {
+            services.AddScoped<GetAsistencia>();
+            services.AddScoped<IAsistenciasService, AsistenciaService>();
             return services;
         }
 
@@ -90,7 +100,7 @@ namespace DAL
         private static IServiceCollection AddCreditos(this IServiceCollection services)
         {
             services.AddScoped<CrearCredito>();
-            services.AddScoped<ICreditoService,CreditoService>();
+            services.AddScoped<ICreditoService, CreditoService>();
             services.AddScoped<GetCreditoByIdHandler>();
             services.AddScoped<GetCreditosHandler>();
             services.AddScoped<PosponerCuotaHandler>();

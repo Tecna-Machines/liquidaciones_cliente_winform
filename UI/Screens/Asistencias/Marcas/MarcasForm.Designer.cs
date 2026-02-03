@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MarcasForm));
-            listaMarcas = new ListView();
+            tablaMarcas = new ListView();
             columDate = new ColumnHeader();
             columnEnt = new ColumnHeader();
             columnSal = new ColumnHeader();
@@ -43,44 +43,46 @@
             // 
             // listaMarcas
             // 
-            listaMarcas.Columns.AddRange(new ColumnHeader[] { columDate, columnEnt, columnSal, columnHsTotales, columHsExtr, columnHsDoble, columnDia });
-            listaMarcas.FullRowSelect = true;
-            listaMarcas.GridLines = true;
-            listaMarcas.Location = new Point(179, 52);
-            listaMarcas.Name = "listaMarcas";
-            listaMarcas.Size = new Size(465, 475);
-            listaMarcas.TabIndex = 20;
-            listaMarcas.UseCompatibleStateImageBehavior = false;
-            listaMarcas.View = View.Details;
+            tablaMarcas.Columns.AddRange(new ColumnHeader[] { columDate, columnEnt, columnSal, columnHsTotales, columHsExtr, columnHsDoble, columnDia });
+            tablaMarcas.FullRowSelect = true;
+            tablaMarcas.GridLines = true;
+            tablaMarcas.Location = new Point(179, 52);
+            tablaMarcas.Name = "listaMarcas";
+            tablaMarcas.Size = new Size(498, 475);
+            tablaMarcas.TabIndex = 20;
+            tablaMarcas.UseCompatibleStateImageBehavior = false;
+            tablaMarcas.View = View.Details;
             // 
             // columDate
             // 
-            columDate.Text = "Fecha";
+            columDate.Text = "FECHA";
             columDate.Width = 85;
             // 
             // columnEnt
             // 
-            columnEnt.Text = "entrada";
+            columnEnt.Text = "ENTRADA";
+            columnEnt.Width = 65;
             // 
             // columnSal
             // 
-            columnSal.Text = "salida";
+            columnSal.Text = "SALIDA";
             // 
             // columnHsTotales
             // 
-            columnHsTotales.Text = "Hs total";
+            columnHsTotales.Text = "COMUNES";
+            columnHsTotales.Width = 90;
             // 
             // columHsExtr
             // 
-            columHsExtr.Text = "Hs extra";
+            columHsExtr.Text = "EXTRAS";
             // 
             // columnHsDoble
             // 
-            columnHsDoble.Text = "Hs doble";
+            columnHsDoble.Text = "TOTALES";
             // 
             // columnDia
             // 
-            columnDia.Text = "Dia";
+            columnDia.Text = "DIA";
             columnDia.Width = 73;
             // 
             // labelMarcas
@@ -90,7 +92,7 @@
             labelMarcas.Location = new Point(179, 25);
             labelMarcas.Name = "labelMarcas";
             labelMarcas.Padding = new Padding(3);
-            labelMarcas.Size = new Size(465, 24);
+            labelMarcas.Size = new Size(498, 24);
             labelMarcas.TabIndex = 19;
             labelMarcas.Text = "Marcas del periodo";
             // 
@@ -109,9 +111,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(656, 539);
+            ClientSize = new Size(721, 539);
             Controls.Add(btnAgregarMarca);
-            Controls.Add(listaMarcas);
+            Controls.Add(tablaMarcas);
             Controls.Add(labelMarcas);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MarcasForm";
@@ -121,7 +123,7 @@
 
         #endregion
 
-        private ListView listaMarcas;
+        private ListView tablaMarcas;
         private ColumnHeader columDate;
         private ColumnHeader columnEnt;
         private ColumnHeader columnSal;

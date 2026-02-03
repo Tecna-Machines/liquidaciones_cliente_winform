@@ -3,6 +3,7 @@ using BLL.Enums;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using Microsoft.Extensions.DependencyInjection;
+using UI.Screens.Asistencias.Marcas;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Marcas;
 using UI.Utils;
@@ -11,6 +12,8 @@ namespace UI.Screens.HacerLiquidacion
 {
     public partial class CrearLiquidacionForm : Form
     {
+        private readonly IServiceProvider _sp;
+
         private readonly CrearItemForm _formCrearItem;
         private readonly AnularItemForm _formAnularItem;
         private readonly EmpleadoController _empleadoController;
@@ -26,7 +29,11 @@ namespace UI.Screens.HacerLiquidacion
         private string? _codigoLiquidacion;
 
         private List<GetEmpleadoResponse> _empleados;
-        public CrearLiquidacionForm(EmpleadoController empleadoController, LiquidacionController liquidacionController, CrearItemForm formItem, AnularItemForm formAnularItem)
+        public CrearLiquidacionForm(EmpleadoController empleadoController,
+                                    LiquidacionController liquidacionController,
+                                    CrearItemForm formItem,
+                                    AnularItemForm formAnularItem,
+                                    IServiceProvider sp)
         {
             InitializeComponent();
 
@@ -41,6 +48,7 @@ namespace UI.Screens.HacerLiquidacion
             CargarListaDeEmpleados();
             _formCrearItem = formItem;
             _formAnularItem = formAnularItem;
+            _sp = sp;
         }
 
 
@@ -178,10 +186,16 @@ namespace UI.Screens.HacerLiquidacion
             ListUtils.LimpiarElementos(this.tablaAcuerdo);
         }
 
-        private void ClickBtnMarcas(object sender, EventArgs e)
+        //TODO: Ojo! con esto ,no deben haber async en void
+        private async void ClickBtnMarcas(object sender, EventArgs e)
         {
-            var marcasForm = new MarcasForm();
-            marcasForm.Show();
+            var formMarcas = _sp.GetRequiredService<MarcasForm>();
+
+            await formMarcas.SetPeriodoYEmpleado(
+                new MarcasRequest(_dniEmpleado, _quincena, _mes, _anio)
+            );
+
+            formMarcas.Show();
         }
 
         private void ClickBtnAgregarItem(object sender, EventArgs e)

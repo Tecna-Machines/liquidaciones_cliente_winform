@@ -7,6 +7,7 @@ using UI.Screens.Creditos.VerCredito;
 using UI.Screens.HacerLiquidacion;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Liquidaciones.HistorialLiquidaciones;
+using UI.Screens.Marcas;
 using UI.Screens.VerContratos;
 using UI.Screens.VerCreditos;
 using UI.Screens.VerLiquidacion;
@@ -31,6 +32,7 @@ namespace UI
             services.AddTransient<VerCreditoForm>();
             services.AddTransient<BuscarCreditosForm>();
             services.AddTransient<CrearPlanDePagoForm>();
+            services.AddTransient<MarcasForm>();
             return services;
         }
     }
