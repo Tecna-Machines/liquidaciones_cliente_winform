@@ -142,9 +142,9 @@
             label5.AutoSize = true;
             label5.Location = new Point(309, 106);
             label5.Name = "label5";
-            label5.Size = new Size(98, 15);
+            label5.Size = new Size(95, 15);
             label5.TabIndex = 20;
-            label5.Text = "VALOR BLANCO:";
+            label5.Text = "VALOR OFICIAL:";
             // 
             // label4
             // 
@@ -330,7 +330,7 @@
             // 
             // columnBlanco
             // 
-            columnBlanco.Text = "BLANCO";
+            columnBlanco.Text = "ES OFICIAL?";
             columnBlanco.Width = 80;
             // 
             // columnPorcentual
@@ -346,7 +346,7 @@
             listaEmpleados.Size = new Size(304, 690);
             listaEmpleados.TabIndex = 5;
             // 
-            // VerAcuerdoForm
+            // VerAcuerdosForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -357,7 +357,7 @@
             Controls.Add(groupBoxHistorial);
             Controls.Add(groupBox2);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "VerAcuerdoForm";
+            Name = "VerAcuerdosForm";
             Text = "VerContratosForm";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();

@@ -141,7 +141,7 @@
             labelRemuneraciones.Padding = new Padding(3);
             labelRemuneraciones.Size = new Size(670, 24);
             labelRemuneraciones.TabIndex = 3;
-            labelRemuneraciones.Text = " Detalle en blanco";
+            labelRemuneraciones.Text = " Detalle oficial";
             // 
             // labelRetenciones
             // 
@@ -152,7 +152,7 @@
             labelRetenciones.Padding = new Padding(3);
             labelRetenciones.Size = new Size(667, 24);
             labelRetenciones.TabIndex = 4;
-            labelRetenciones.Text = "Detalle ";
+            labelRetenciones.Text = "Detalle interno";
             // 
             // tablaDetalleEnBlanco
             // 
@@ -326,21 +326,21 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.Tomato;
-            label2.Location = new Point(195, 64);
+            label2.Location = new Point(200, 64);
             label2.Name = "label2";
-            label2.Size = new Size(91, 21);
+            label2.Size = new Size(81, 21);
             label2.TabIndex = 3;
-            label2.Text = "EN NEGRO";
+            label2.Text = "INTERNO";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.SeaGreen;
-            label1.Location = new Point(36, 64);
+            label1.Location = new Point(52, 64);
             label1.Name = "label1";
-            label1.Size = new Size(100, 21);
+            label1.Size = new Size(69, 21);
             label1.TabIndex = 2;
-            label1.Text = "EN BLANCO";
+            label1.Text = "OFICIAL";
             // 
             // valorPagarNegro
             // 

@@ -171,11 +171,11 @@
             // textBoxValorBlanco
             // 
             textBoxValorBlanco.AutoSize = true;
-            textBoxValorBlanco.Location = new Point(238, 86);
+            textBoxValorBlanco.Location = new Point(244, 86);
             textBoxValorBlanco.Name = "textBoxValorBlanco";
-            textBoxValorBlanco.Size = new Size(98, 15);
+            textBoxValorBlanco.Size = new Size(95, 15);
             textBoxValorBlanco.TabIndex = 3;
-            textBoxValorBlanco.Text = "VALOR BLANCO:";
+            textBoxValorBlanco.Text = "VALOR OFICIAL:";
             // 
             // label3
             // 
@@ -239,7 +239,7 @@
             // 
             // columnBlanco
             // 
-            columnBlanco.Text = "BLANCO";
+            columnBlanco.Text = "ES OFICIAL ?";
             columnBlanco.Width = 80;
             // 
             // columnPorcentual

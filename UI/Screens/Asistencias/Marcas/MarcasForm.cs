@@ -1,6 +1,5 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Asistencias.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.Asistencias.GetAsistenciaByEmpleado;
-using LAUCHA.application.DTOs.LiquidacionDTOs;
 using UI.Screens.Asistencias.Marcas;
 using UI.Utils;
 
@@ -15,12 +14,12 @@ namespace UI.Screens.Marcas
             _asistencias = asistencias;
         }
 
-        public async Task SetPeriodoYEmpleado(MarcasRequest req)
+        public async Task GetAsistenciasYCargarTabla(MarcasRequest req)
         {
             int diaFin;
 
             diaFin = DateTime.DaysInMonth(req.Anio, req.Mes);
-            
+
 
             DateTime fechaInicio = new DateTime(req.Anio, req.Mes, 1);
             DateTime fechaFin = new DateTime(req.Anio, req.Mes, diaFin);
@@ -28,15 +27,15 @@ namespace UI.Screens.Marcas
             //TODO: esto es asincronico pero la funcion es void no tiene sentido hacerla Task o si ?
             var response = await _asistencias.GetAsistencia(req.DniEmpleado, fechaInicio, fechaFin);
 
-            CargarTablaMarcas(fechaInicio,fechaFin,response.Asistencias.ToList());
+            CargarTablaMarcas(fechaInicio, fechaFin, response.Asistencias.ToList());
         }
 
-        private void CargarTablaMarcas(DateTime fechaInicio,DateTime fechaFin,List<GetEmpleadoAsistenciaResponse>? marcas)
+        private void CargarTablaMarcas(DateTime fechaInicio, DateTime fechaFin, List<GetEmpleadoAsistenciaResponse>? marcas)
         {
 
             if (fechaFin.Day > 15)
             {
-                fechaInicio = new DateTime(fechaInicio.Year,fechaInicio.Month, 1);
+                fechaInicio = new DateTime(fechaInicio.Year, fechaInicio.Month, 1);
             }
 
 
@@ -49,7 +48,7 @@ namespace UI.Screens.Marcas
                 GetEmpleadoAsistenciaResponse? marcaDelDia = marcas?.FirstOrDefault(m => m.Ingreso.Date == dia.Date);
 
                 bool esFinde = dia.DayOfWeek == DayOfWeek.Saturday || dia.DayOfWeek == DayOfWeek.Sunday;
-                
+
                 ListViewItem item;
 
                 // Si hay una marca

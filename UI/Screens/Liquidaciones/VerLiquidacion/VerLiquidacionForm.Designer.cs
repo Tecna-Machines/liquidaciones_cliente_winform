@@ -399,7 +399,7 @@
             labelRetenciones.Padding = new Padding(3);
             labelRetenciones.Size = new Size(667, 24);
             labelRetenciones.TabIndex = 44;
-            labelRetenciones.Text = "Detalle ";
+            labelRetenciones.Text = "Detalle Interno";
             // 
             // labelRemuneraciones
             // 
@@ -410,7 +410,7 @@
             labelRemuneraciones.Padding = new Padding(3);
             labelRemuneraciones.Size = new Size(670, 24);
             labelRemuneraciones.TabIndex = 43;
-            labelRemuneraciones.Text = " Detalle en blanco";
+            labelRemuneraciones.Text = " Detalle Oficial";
             // 
             // label2
             // 

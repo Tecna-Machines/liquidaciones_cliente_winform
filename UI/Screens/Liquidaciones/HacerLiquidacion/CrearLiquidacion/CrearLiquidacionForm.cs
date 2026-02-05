@@ -191,7 +191,7 @@ namespace UI.Screens.HacerLiquidacion
         {
             var formMarcas = _sp.GetRequiredService<MarcasForm>();
 
-            await formMarcas.SetPeriodoYEmpleado(
+            await formMarcas.GetAsistenciasYCargarTabla(
                 new MarcasRequest(_dniEmpleado, _quincena, _mes, _anio)
             );
 
