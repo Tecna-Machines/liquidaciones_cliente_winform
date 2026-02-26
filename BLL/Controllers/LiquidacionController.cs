@@ -66,7 +66,7 @@ namespace BLL.Controllers
             return _liquidacion.GetRecibo(codLiquidacion);
         }
 
-        public Task<byte[]> DescargarRecibos(int quincena,int mes,int anio)
+        public Task<byte[]> DescargarRecibos(int quincena, int mes, int anio)
         {
             return _liquidacion.GetRecibos(quincena, mes, anio);
         }

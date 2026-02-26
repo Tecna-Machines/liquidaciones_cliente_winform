@@ -1,5 +1,4 @@
 ﻿using BLL.Controllers;
-using DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.Creditos.CrearPlanPago;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
 using System.Data;
@@ -80,7 +79,8 @@ namespace UI.Screens.Creditos.CrearPlanPago
 
                 this.Close();
 
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Dialog.Error($"ocurrio un problema: {e.Message}");
             }
@@ -93,7 +93,7 @@ namespace UI.Screens.Creditos.CrearPlanPago
             var anio = int.Parse(comboBoxAnio.Text);
             var cantCuotas = int.Parse(comboBoxCantCuotas.Text);
 
-            return new CrearPlanDePagoRequest(quincena,mes,anio,cantCuotas);
+            return new CrearPlanDePagoRequest(quincena, mes, anio, cantCuotas);
         }
     }
 

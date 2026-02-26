@@ -1,6 +1,5 @@
 ﻿using BLL.Controllers;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetCreditos;
-using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using UI.Screens.Creditos.VerCredito;
 
 namespace UI.Screens.Creditos.BuscarCredito

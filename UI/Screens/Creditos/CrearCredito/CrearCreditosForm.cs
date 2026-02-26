@@ -73,7 +73,7 @@ namespace UI.Screens.VerCreditos
             CrearCredito();
         }
 
-        private  async void  CrearCredito()
+        private async void CrearCredito()
         {
             if (!TryCrearSolicitudCredito(out var request, out var error))
             {
@@ -81,13 +81,13 @@ namespace UI.Screens.VerCreditos
                 return;
             }
 
-            var nuevoCredito =  await _controller.Crear(request);
+            var nuevoCredito = await _controller.Crear(request);
 
             MostrarCredito(nuevoCredito.Codigo);
         }
 
 
-        private  int RecuperarModoPago()
+        private int RecuperarModoPago()
         {
             if (modoPorQuincena.Checked) return 0;
             if (modoPrimerQuincena.Checked) return 1;

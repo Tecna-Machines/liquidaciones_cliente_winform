@@ -30,12 +30,12 @@ namespace BLL.Controllers
             return _creditos.BuscarCreditos(filtro);
         }
 
-        public async Task PosponerCuotas(string codigoCredito,int nroCuota)
+        public async Task PosponerCuotas(string codigoCredito, int nroCuota)
         {
             await _creditos.PosponerCuota(codigoCredito, nroCuota);
         }
 
-        public async Task<CrearPlanDePagoResponse> CrearPlanDePago(string codigoCredito,CrearPlanDePagoRequest plan)
+        public async Task<CrearPlanDePagoResponse> CrearPlanDePago(string codigoCredito, CrearPlanDePagoRequest plan)
         {
             return await _creditos.CrearPlanDePago(codigoCredito, plan);
         }

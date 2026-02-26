@@ -2,7 +2,6 @@
 using DAL.Service.ApiLiquidacion.Features.Creditos.CrearPlanPago;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetCreditos;
-using DAL.Service.Liquidacion.UseCase.Empleados.Crear;
 
 namespace DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones
 {

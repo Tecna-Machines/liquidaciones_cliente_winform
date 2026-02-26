@@ -251,7 +251,7 @@ namespace UI.Screens.HacerLiquidacion
             if (_codigoLiquidacion is null)
                 return;
 
-            _formAnularItem.SetItem(_codigoLiquidacion,item);
+            _formAnularItem.SetItem(_codigoLiquidacion, item);
             _formAnularItem.ShowDialog();
         }
     }
