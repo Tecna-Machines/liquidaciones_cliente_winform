@@ -8,15 +8,19 @@ namespace UI.Screens.Marcas
     public partial class MarcasForm : Form
     {
         private readonly IAsistenciasService _asistencias;
-        public MarcasForm(IAsistenciasService asistencias)
+        private readonly AgregarMarcaForm _crearMarcaForm;
+        private string? _dni;
+        public MarcasForm(IAsistenciasService asistencias, AgregarMarcaForm crearMarcaForm)
         {
             InitializeComponent();
             _asistencias = asistencias;
+            _crearMarcaForm = crearMarcaForm;
         }
 
         public async Task GetAsistenciasYCargarTabla(MarcasRequest req)
         {
             int diaFin;
+            _dni = req.DniEmpleado;
 
             diaFin = DateTime.DaysInMonth(req.Anio, req.Mes);
 
@@ -90,7 +94,8 @@ namespace UI.Screens.Marcas
 
         private void BtnAgregarMarca_Click(object sender, EventArgs e)
         {
-            Dialog.Error("esta funcionalidad aun no esta disponible");
+            _crearMarcaForm.SetDni(_dni ?? "error");
+           _crearMarcaForm.ShowDialog();
         }
     }
 }

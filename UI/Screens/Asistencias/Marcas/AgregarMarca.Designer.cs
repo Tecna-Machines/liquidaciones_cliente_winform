@@ -1,6 +1,6 @@
 ﻿namespace UI.Screens.Asistencias.Marcas
 {
-    partial class AgregarMarca
+    partial class AgregarMarcaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,9 @@
             datePickerEgreso = new DateTimePicker();
             label1 = new Label();
             label2 = new Label();
-            button1 = new Button();
+            BtnCrearMarca = new Button();
+            label3 = new Label();
+            dateTimeFecha = new DateTimePicker();
             SuspendLayout();
             // 
             // labelDni
@@ -58,14 +60,16 @@
             // 
             // datePickerIngreso
             // 
-            datePickerIngreso.Location = new Point(74, 53);
+            datePickerIngreso.Format = DateTimePickerFormat.Time;
+            datePickerIngreso.Location = new Point(74, 90);
             datePickerIngreso.Name = "datePickerIngreso";
             datePickerIngreso.Size = new Size(200, 23);
             datePickerIngreso.TabIndex = 2;
             // 
             // datePickerEgreso
             // 
-            datePickerEgreso.Location = new Point(74, 96);
+            datePickerEgreso.Format = DateTimePickerFormat.Time;
+            datePickerEgreso.Location = new Point(74, 133);
             datePickerEgreso.Name = "datePickerEgreso";
             datePickerEgreso.Size = new Size(200, 23);
             datePickerEgreso.TabIndex = 3;
@@ -74,7 +78,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(10, 57);
+            label1.Location = new Point(10, 94);
             label1.Name = "label1";
             label1.Size = new Size(62, 15);
             label1.TabIndex = 4;
@@ -84,37 +88,57 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(16, 100);
+            label2.Location = new Point(16, 137);
             label2.Name = "label2";
             label2.Size = new Size(55, 15);
             label2.TabIndex = 5;
             label2.Text = "EGRESO:";
             // 
-            // button1
+            // BtnCrearMarca
             // 
-            button1.BackColor = SystemColors.MenuHighlight;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(123, 131);
-            button1.Name = "button1";
-            button1.Size = new Size(104, 36);
-            button1.TabIndex = 6;
-            button1.Text = "CREAR";
-            button1.UseVisualStyleBackColor = false;
+            BtnCrearMarca.BackColor = SystemColors.MenuHighlight;
+            BtnCrearMarca.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnCrearMarca.ForeColor = SystemColors.ButtonHighlight;
+            BtnCrearMarca.Location = new Point(112, 175);
+            BtnCrearMarca.Name = "BtnCrearMarca";
+            BtnCrearMarca.Size = new Size(104, 36);
+            BtnCrearMarca.TabIndex = 6;
+            BtnCrearMarca.Text = "CREAR";
+            BtnCrearMarca.UseVisualStyleBackColor = false;
+            BtnCrearMarca.Click += BtnCrearMarca_Click;
             // 
-            // AgregarMarca
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(38, 60);
+            label3.Name = "label3";
+            label3.Size = new Size(31, 15);
+            label3.TabIndex = 7;
+            label3.Text = "DIA:";
+            // 
+            // dateTimeFecha
+            // 
+            dateTimeFecha.Location = new Point(75, 54);
+            dateTimeFecha.Name = "dateTimeFecha";
+            dateTimeFecha.Size = new Size(200, 23);
+            dateTimeFecha.TabIndex = 8;
+            // 
+            // AgregarMarcaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(332, 179);
-            Controls.Add(button1);
+            ClientSize = new Size(332, 241);
+            Controls.Add(dateTimeFecha);
+            Controls.Add(label3);
+            Controls.Add(BtnCrearMarca);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(datePickerEgreso);
             Controls.Add(datePickerIngreso);
             Controls.Add(textBoxDni);
             Controls.Add(labelDni);
-            Name = "AgregarMarca";
+            Name = "AgregarMarcaForm";
             Text = "AgregarMarca";
             ResumeLayout(false);
             PerformLayout();
@@ -128,6 +152,8 @@
         private DateTimePicker datePickerEgreso;
         private Label label1;
         private Label label2;
-        private Button button1;
+        private Button BtnCrearMarca;
+        private Label label3;
+        private DateTimePicker dateTimeFecha;
     }
 }

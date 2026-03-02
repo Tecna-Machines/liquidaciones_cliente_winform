@@ -1,4 +1,5 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Asistencias.Abstracciones;
+using DAL.Service.ApiLiquidacion.Features.Asistencias.CrearMarca;
 using DAL.Service.ApiLiquidacion.Features.Asistencias.GetAsistenciaByEmpleado;
 using DAL.Service.ApiLiquidacion.Features.Creditos.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.Creditos.Crear;
@@ -69,6 +70,7 @@ namespace DAL
         private static IServiceCollection AddAsistencias(this IServiceCollection services)
         {
             services.AddScoped<GetAsistencia>();
+            services.AddScoped<CrearEmpleadoAsistencia>();
             services.AddScoped<IAsistenciasService, AsistenciaService>();
             return services;
         }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using UI.Screens.Asistencias.Marcas;
 using UI.Screens.CrearContrato;
 using UI.Screens.CrearEmpleado;
 using UI.Screens.Creditos.BuscarCredito;
@@ -33,6 +34,7 @@ namespace UI
             services.AddTransient<BuscarCreditosForm>();
             services.AddTransient<CrearPlanDePagoForm>();
             services.AddTransient<MarcasForm>();
+            services.AddTransient<AgregarMarcaForm>();
             return services;
         }
     }
