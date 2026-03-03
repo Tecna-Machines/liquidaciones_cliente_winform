@@ -7,6 +7,8 @@ using DAL.Service.ApiLiquidacion.Features.Creditos.CrearPlanPago;
 using DAL.Service.ApiLiquidacion.Features.Creditos.Cuotas.PosponerCuota;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetCreditos;
+using DAL.Service.ApiLiquidacion.Features.Feriados.Abstracciones;
+using DAL.Service.ApiLiquidacion.Features.Feriados.CrearFeriado;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.AnularItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
@@ -41,6 +43,7 @@ namespace DAL
             AddAcuerdos(services);
             AddAsistencias(services);
             AddEmpleados(services);
+            AddFeriados(services);
             AddLiquidacion(services);
             AddCatalogoRetenciones(services);
             AddCreditos(services);
@@ -62,6 +65,15 @@ namespace DAL
         {
             services.AddScoped<CrearEmpleado>();
             services.AddScoped<GetTodosEmpleados>();
+
+            services.AddScoped<IEmpleadoService, EmpleadoService>();
+            return services;
+        }
+
+        private static IServiceCollection AddFeriados(this IServiceCollection services)
+        {
+            services.AddScoped<CrearFeriadoHandler>();
+            services.AddScoped<IFeriadosService,FeriadoService>();
 
             services.AddScoped<IEmpleadoService, EmpleadoService>();
             return services;

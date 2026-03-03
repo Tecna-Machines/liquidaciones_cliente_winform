@@ -49,6 +49,10 @@
             toolStripDropDownCreditos = new ToolStripDropDownButton();
             crearCreditoToolStripMenuItem = new ToolStripMenuItem();
             consultarToolStripMenuItem = new ToolStripMenuItem();
+            toolStripDias = new ToolStripDropDownButton();
+            asistenciasToolStripMenuItem = new ToolStripMenuItem();
+            feriadosToolStripFeriados = new ToolStripMenuItem();
+            crearFeriadoToolStripMenuItem = new ToolStripMenuItem();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             toolStrip1.SuspendLayout();
@@ -131,7 +135,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripInicio, toolStripEmpleado, toolStripButtonAcuerdos, toolStripDropDownLiquidacion, toolStripDropDownCreditos });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripInicio, toolStripEmpleado, toolStripButtonAcuerdos, toolStripDropDownLiquidacion, toolStripDropDownCreditos, toolStripDias });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(616, 25);
@@ -199,14 +203,14 @@
             // crearLiquidacionToolStripMenuItem
             // 
             crearLiquidacionToolStripMenuItem.Name = "crearLiquidacionToolStripMenuItem";
-            crearLiquidacionToolStripMenuItem.Size = new Size(180, 22);
+            crearLiquidacionToolStripMenuItem.Size = new Size(164, 22);
             crearLiquidacionToolStripMenuItem.Text = "Crear liquidacion";
             crearLiquidacionToolStripMenuItem.Click += CrearLiquidacionToolStripMenuItem_Click;
             // 
             // historialLiquidacionesToolStrip
             // 
             historialLiquidacionesToolStrip.Name = "historialLiquidacionesToolStrip";
-            historialLiquidacionesToolStrip.Size = new Size(180, 22);
+            historialLiquidacionesToolStrip.Size = new Size(164, 22);
             historialLiquidacionesToolStrip.Text = "Historial";
             historialLiquidacionesToolStrip.Click += HistorialLiquidacionesToolStripMenuItem_Click;
             // 
@@ -223,16 +227,46 @@
             // crearCreditoToolStripMenuItem
             // 
             crearCreditoToolStripMenuItem.Name = "crearCreditoToolStripMenuItem";
-            crearCreditoToolStripMenuItem.Size = new Size(180, 22);
+            crearCreditoToolStripMenuItem.Size = new Size(125, 22);
             crearCreditoToolStripMenuItem.Text = "Crear";
             crearCreditoToolStripMenuItem.Click += CrearCreditoToolStripMenuItem_Click;
             // 
             // consultarToolStripMenuItem
             // 
             consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            consultarToolStripMenuItem.Size = new Size(180, 22);
+            consultarToolStripMenuItem.Size = new Size(125, 22);
             consultarToolStripMenuItem.Text = "Consultar";
             consultarToolStripMenuItem.Click += ConsultarToolStripMenuItem_Click;
+            // 
+            // toolStripDias
+            // 
+            toolStripDias.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripDias.DropDownItems.AddRange(new ToolStripItem[] { asistenciasToolStripMenuItem, feriadosToolStripFeriados });
+            toolStripDias.Image = (Image)resources.GetObject("toolStripDias.Image");
+            toolStripDias.ImageTransparentColor = Color.Magenta;
+            toolStripDias.Name = "toolStripDias";
+            toolStripDias.Size = new Size(132, 22);
+            toolStripDias.Text = "Asistencias y feriados";
+            // 
+            // asistenciasToolStripMenuItem
+            // 
+            asistenciasToolStripMenuItem.Name = "asistenciasToolStripMenuItem";
+            asistenciasToolStripMenuItem.Size = new Size(180, 22);
+            asistenciasToolStripMenuItem.Text = "Asistencias";
+            // 
+            // feriadosToolStripFeriados
+            // 
+            feriadosToolStripFeriados.DropDownItems.AddRange(new ToolStripItem[] { crearFeriadoToolStripMenuItem });
+            feriadosToolStripFeriados.Name = "feriadosToolStripFeriados";
+            feriadosToolStripFeriados.Size = new Size(180, 22);
+            feriadosToolStripFeriados.Text = "Feriados";
+            // 
+            // crearFeriadoToolStripMenuItem
+            // 
+            crearFeriadoToolStripMenuItem.Name = "crearFeriadoToolStripMenuItem";
+            crearFeriadoToolStripMenuItem.Size = new Size(180, 22);
+            crearFeriadoToolStripMenuItem.Text = "Crear feriado";
+            crearFeriadoToolStripMenuItem.Click += CrearFeriadoToolStripMenuItem_Click;
             // 
             // Home
             // 
@@ -279,5 +313,9 @@
         private ToolStripDropDownButton toolStripDropDownCreditos;
         private ToolStripMenuItem crearCreditoToolStripMenuItem;
         private ToolStripMenuItem consultarToolStripMenuItem;
+        private ToolStripDropDownButton toolStripDias;
+        private ToolStripMenuItem asistenciasToolStripMenuItem;
+        private ToolStripMenuItem feriadosToolStripFeriados;
+        private ToolStripMenuItem crearFeriadoToolStripMenuItem;
     }
 }

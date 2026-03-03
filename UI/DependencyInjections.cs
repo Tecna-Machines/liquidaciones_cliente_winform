@@ -5,6 +5,7 @@ using UI.Screens.CrearEmpleado;
 using UI.Screens.Creditos.BuscarCredito;
 using UI.Screens.Creditos.CrearPlanPago;
 using UI.Screens.Creditos.VerCredito;
+using UI.Screens.Feriados.CrearFeriado;
 using UI.Screens.HacerLiquidacion;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Liquidaciones.HistorialLiquidaciones;
@@ -35,6 +36,7 @@ namespace UI
             services.AddTransient<CrearPlanDePagoForm>();
             services.AddTransient<MarcasForm>();
             services.AddTransient<AgregarMarcaForm>();
+            services.AddTransient<CrearFeriadoForm>();
             return services;
         }
     }

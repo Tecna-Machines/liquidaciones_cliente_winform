@@ -3,6 +3,7 @@ using System.Configuration;
 using UI.Screens.CrearContrato;
 using UI.Screens.CrearEmpleado;
 using UI.Screens.Creditos.BuscarCredito;
+using UI.Screens.Feriados.CrearFeriado;
 using UI.Screens.Liquidaciones.HistorialLiquidaciones;
 using UI.Screens.VerContratos;
 using UI.Screens.VerCreditos;
@@ -82,6 +83,13 @@ namespace UI
         {
             var formBuscarCreditos = Program.ServiceProvider.GetRequiredService<BuscarCreditosForm>();
             formBuscarCreditos.Show();
+        }
+
+
+        private void CrearFeriadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formFeriado = Program.ServiceProvider.GetRequiredService<CrearFeriadoForm>();
+            formFeriado.ShowDialog();
         }
     }
 }
