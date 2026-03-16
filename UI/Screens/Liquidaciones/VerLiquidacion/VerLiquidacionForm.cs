@@ -2,6 +2,7 @@
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using System.Diagnostics;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
+using UI.Screens.Liquidaciones.VerLiquidacion;
 using UI.Utils;
 
 namespace UI.Screens.VerLiquidacion
@@ -25,6 +26,7 @@ namespace UI.Screens.VerLiquidacion
             TablaDetalleLiquidacionForm.SetTablaDetalleEnBlanco(liq, tablaDetalleBlanco);
             TablaDetalleLiquidacionForm.SetTablaDetalleEnNegro(liq, tablaDetalleNegro);
             TablaAcuerdoLiquidacionForm.SetTablaAcuerdo(liq, tablaAcuerdo);
+            TablaPagosLiquidacionForm.SetTablaPagos(liq, tablaPagos);
 
             SetDatosLiquidacion(liq);
             SetDetalleEmpleado(liq);
@@ -112,7 +114,8 @@ namespace UI.Screens.VerLiquidacion
 
         private void BtnPagos_Click(object sender, EventArgs e)
         {
-            Dialog.Error("esta funcionalidad aun no esta disponible");
+            var formPagos = new pagos();
+            formPagos.Show();
         }
     }
 

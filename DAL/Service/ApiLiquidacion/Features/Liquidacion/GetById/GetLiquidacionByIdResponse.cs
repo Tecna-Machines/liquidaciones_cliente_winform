@@ -31,6 +31,9 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
                                                      int TipoItem,
                                                      bool EsAutomatico);
 
-    //TODO: para la futura logica de pagos
-    public sealed record PagoLiquidacionById();
+    public sealed record PagoLiquidacionById(string Id,
+                                            decimal Monto,
+                                            string Modo,
+                                            DateTime Fecha,
+                                            string Descripcion);
 }

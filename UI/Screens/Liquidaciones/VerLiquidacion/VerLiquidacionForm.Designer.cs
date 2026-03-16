@@ -43,10 +43,12 @@
             label7 = new Label();
             label8 = new Label();
             label12 = new Label();
-            listaPagos = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
+            tablaPagos = new ListView();
+            columId = new ColumnHeader();
+            columnMonto = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
+            columnDescrip = new ColumnHeader();
+            columnModo = new ColumnHeader();
             BtnDescargarRecibo = new Button();
             textBoxFechaAlta = new TextBox();
             label20 = new Label();
@@ -208,32 +210,42 @@
             label12.TabIndex = 23;
             label12.Text = "Pagos";
             // 
-            // listaPagos
+            // tablaPagos
             // 
-            listaPagos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listaPagos.FullRowSelect = true;
-            listaPagos.GridLines = true;
-            listaPagos.Location = new Point(26, 670);
-            listaPagos.Name = "listaPagos";
-            listaPagos.Size = new Size(665, 85);
-            listaPagos.TabIndex = 37;
-            listaPagos.UseCompatibleStateImageBehavior = false;
-            listaPagos.View = View.Details;
+            tablaPagos.Columns.AddRange(new ColumnHeader[] { columId, columnMonto, columnHeader3, columnDescrip, columnModo });
+            tablaPagos.FullRowSelect = true;
+            tablaPagos.GridLines = true;
+            tablaPagos.Location = new Point(26, 670);
+            tablaPagos.Name = "tablaPagos";
+            tablaPagos.Size = new Size(665, 85);
+            tablaPagos.TabIndex = 37;
+            tablaPagos.UseCompatibleStateImageBehavior = false;
+            tablaPagos.View = View.Details;
             // 
-            // columnHeader1
+            // columId
             // 
-            columnHeader1.Text = "Codigo";
-            columnHeader1.Width = 180;
+            columId.Text = "ID";
+            columId.Width = 180;
             // 
-            // columnHeader2
+            // columnMonto
             // 
-            columnHeader2.Text = "Fecha";
-            columnHeader2.Width = 70;
+            columnMonto.Text = "Monto";
+            columnMonto.Width = 70;
             // 
             // columnHeader3
             // 
-            columnHeader3.Text = "Monto";
+            columnHeader3.Text = "Fecha";
             columnHeader3.Width = 95;
+            // 
+            // columnDescrip
+            // 
+            columnDescrip.Text = "Descripcion";
+            columnDescrip.Width = 200;
+            // 
+            // columnModo
+            // 
+            columnModo.Text = "MODO";
+            columnModo.Width = 100;
             // 
             // BtnDescargarRecibo
             // 
@@ -449,7 +461,7 @@
             Controls.Add(label20);
             Controls.Add(textBoxFechaAlta);
             Controls.Add(BtnDescargarRecibo);
-            Controls.Add(listaPagos);
+            Controls.Add(tablaPagos);
             Controls.Add(label12);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -487,9 +499,9 @@
         private Label label7;
         private Label label8;
         private Label label12;
-        private ListView listaPagos;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
+        private ListView tablaPagos;
+        private ColumnHeader columId;
+        private ColumnHeader columnMonto;
         private ColumnHeader columnHeader3;
         private Button BtnDescargarRecibo;
         private TextBox textBoxFechaAlta;
@@ -515,5 +527,7 @@
         private Label labelRemuneraciones;
         private Label label2;
         private TextBox textBoxEstado;
+        private ColumnHeader columnDescrip;
+        private ColumnHeader columnModo;
     }
 }
