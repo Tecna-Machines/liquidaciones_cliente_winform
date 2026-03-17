@@ -17,6 +17,7 @@ namespace BLL
             services.AddScoped<LiquidacionController>();
             services.AddScoped<CreditoController>();
             services.AddScoped<FeriadoController>();
+            services.AddScoped<CuentasContablesController>();
 
             return services;
         }

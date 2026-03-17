@@ -1,6 +1,7 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.Pagar;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Sellar;
 using DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
@@ -69,6 +70,11 @@ namespace BLL.Controllers
         public Task<byte[]> DescargarRecibos(int quincena, int mes, int anio)
         {
             return _liquidacion.GetRecibos(quincena, mes, anio);
+        }
+
+        public Task<PagoCreadoResponse> PagarLiquidacion(CrearPagoRequest crearPago)
+        {
+            return _liquidacion.Pagar(crearPago);
         }
     }
 }

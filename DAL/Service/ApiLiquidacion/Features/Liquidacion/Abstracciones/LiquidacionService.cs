@@ -4,6 +4,7 @@ using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetRecibo;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Liquidar;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.Pagar;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Sellar;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 
@@ -19,6 +20,7 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         private readonly SellarLiquidacion _sellar;
         private readonly AnularItemHandler _anularItems;
         private readonly GetReciboHandler _recibo;
+        private readonly PagarLiquidacionHandler _pagarLiquidacion;
         public LiquidacionService(GetLiquidacion getLiquidacionById,
                                   CrearLiquidacionHandler crearLiquidacion,
                                   RealizarLiquidacion realizarLiquidacion,
@@ -26,7 +28,8 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
                                   GetLiquidaciones getLiquidaciones,
                                   SellarLiquidacion sellar,
                                   AnularItemHandler anularItems,
-                                  GetReciboHandler recibo)
+                                  GetReciboHandler recibo,
+                                  PagarLiquidacionHandler pagarLiquidacion)
         {
             _getLiquidacionById = getLiquidacionById;
             _crearLiquidacion = crearLiquidacion;
@@ -36,6 +39,7 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
             _sellar = sellar;
             _anularItems = anularItems;
             _recibo = recibo;
+            _pagarLiquidacion = pagarLiquidacion;
         }
 
         public Task<GetLiquidacionByIdResponse?> GetLiquidacion(string id)
@@ -81,6 +85,11 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         public async Task<byte[]> GetRecibos(int quincena, int mes, int anio)
         {
             return await _recibo.GetRecibos(quincena, mes, anio);
+        }
+
+        public async Task<PagoCreadoResponse> Pagar(CrearPagoRequest crearPago)
+        {
+            return await _pagarLiquidacion.PagarLiquidacion(crearPago);
         }
     }
 }

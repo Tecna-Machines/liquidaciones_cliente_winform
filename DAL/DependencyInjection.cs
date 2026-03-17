@@ -7,6 +7,8 @@ using DAL.Service.ApiLiquidacion.Features.Creditos.CrearPlanPago;
 using DAL.Service.ApiLiquidacion.Features.Creditos.Cuotas.PosponerCuota;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetCreditos;
+using DAL.Service.ApiLiquidacion.Features.CuentasContables.Abstracciones;
+using DAL.Service.ApiLiquidacion.Features.CuentasContables.GetCuentas;
 using DAL.Service.ApiLiquidacion.Features.Feriados.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.Feriados.CrearFeriado;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
@@ -15,6 +17,7 @@ using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetRecibo;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Liquidar;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.Pagar;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Sellar;
 using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.GetCatalogo;
@@ -47,6 +50,7 @@ namespace DAL
             AddLiquidacion(services);
             AddCatalogoRetenciones(services);
             AddCreditos(services);
+            AddCuentasContables(services);
 
             return services;
         }
@@ -73,7 +77,7 @@ namespace DAL
         private static IServiceCollection AddFeriados(this IServiceCollection services)
         {
             services.AddScoped<CrearFeriadoHandler>();
-            services.AddScoped<IFeriadosService,FeriadoService>();
+            services.AddScoped<IFeriadosService, FeriadoService>();
 
             services.AddScoped<IEmpleadoService, EmpleadoService>();
             return services;
@@ -97,6 +101,7 @@ namespace DAL
             services.AddScoped<SellarLiquidacion>();
             services.AddScoped<AnularItemHandler>();
             services.AddScoped<GetReciboHandler>();
+            services.AddScoped<PagarLiquidacionHandler>();
 
             services.AddScoped<ILiquidacionService, LiquidacionService>();
 
@@ -119,6 +124,13 @@ namespace DAL
             services.AddScoped<GetCreditosHandler>();
             services.AddScoped<PosponerCuotaHandler>();
             services.AddScoped<CrearPlanDePagoHandler>();
+            return services;
+        }
+
+        private static IServiceCollection AddCuentasContables(this IServiceCollection services)
+        {
+            services.AddScoped<GetCuentasHandler>();
+            services.AddScoped<ICuentasContablesService, CuentasContablesService>();
             return services;
         }
     }

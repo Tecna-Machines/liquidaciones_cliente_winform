@@ -6,6 +6,6 @@ namespace DAL.Service.ApiLiquidacion.Features.Asistencias.Abstracciones
     public interface IAsistenciasService
     {
         Task<GetEmpleadoAsistenciasResponse> GetAsistencia(string dni, DateTime inicio, DateTime fin);
-        Task<CrearEmpleadoAsistenciaResponse>  CrearAsistencia(string dni,DateTime ingreso,DateTime egreso);
+        Task<CrearEmpleadoAsistenciaResponse> CrearAsistencia(string dni, DateTime ingreso, DateTime egreso);
     }
 }

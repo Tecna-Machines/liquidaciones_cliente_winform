@@ -24,9 +24,10 @@ namespace UI.Screens.Feriados.CrearFeriado
                 Dialog.Success("se creo el feriado: " + feriado.Descripcion);
                 this.Close();
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                Dialog.Error("algo se rompio: "+ex.Message);
+                Dialog.Error("algo se rompio: " + ex.Message);
             }
         }
     }

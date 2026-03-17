@@ -41,6 +41,8 @@ namespace UI.Screens.Liquidaciones.HistorialLiquidaciones
                 return;
             }
 
+            progressBar.Visible = true;
+
             int quincena = int.Parse((string)comboBoxQuincena.SelectedItem);
             int mes = comboBoxMeses.SelectedIndex + 1;
             int anio = (int)comboBoxYear.SelectedItem;
@@ -53,6 +55,8 @@ namespace UI.Screens.Liquidaciones.HistorialLiquidaciones
 
         private void SetTablaResultados(IEnumerable<LiquidacionResumenResponse> liquidaciones)
         {
+            progressBar.Visible = false;
+
             foreach (var liq in liquidaciones)
             {
                 SetItemResultado(liq);

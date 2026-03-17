@@ -3,22 +3,25 @@ using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using System.Diagnostics;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Liquidaciones.VerLiquidacion;
-using UI.Utils;
 
 namespace UI.Screens.VerLiquidacion
 {
     public partial class VerLiquidacionForm : Form
     {
         private readonly LiquidacionController _liquidacion;
-        public VerLiquidacionForm(EmpleadoController empleadoController, LiquidacionController liquidacion)
+        private readonly CargarPagosForm _formPagos;
+        public VerLiquidacionForm(LiquidacionController liquidacion,
+                                  CargarPagosForm formPagos)
         {
             InitializeComponent();
 
             _liquidacion = liquidacion;
+            _formPagos = formPagos;
         }
 
         public void SetLiquidacion(GetLiquidacionByIdResponse liq)
         {
+            tablaPagos.Items.Clear();
             tablaAcuerdo.Items.Clear();
             tablaDetalleBlanco.Items.Clear();
             tablaDetalleNegro.Items.Clear();
@@ -114,8 +117,9 @@ namespace UI.Screens.VerLiquidacion
 
         private void BtnPagos_Click(object sender, EventArgs e)
         {
-            var formPagos = new pagos();
-            formPagos.Show();
+            _formPagos.SetLiquidacion(textBoxCodigoLiq.Text);
+            _formPagos.SetFormPadre(this);
+            _formPagos.ShowDialog();
         }
     }
 

@@ -9,6 +9,7 @@ using UI.Screens.Feriados.CrearFeriado;
 using UI.Screens.HacerLiquidacion;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Liquidaciones.HistorialLiquidaciones;
+using UI.Screens.Liquidaciones.VerLiquidacion;
 using UI.Screens.Marcas;
 using UI.Screens.VerContratos;
 using UI.Screens.VerCreditos;
@@ -37,6 +38,7 @@ namespace UI
             services.AddTransient<MarcasForm>();
             services.AddTransient<AgregarMarcaForm>();
             services.AddTransient<CrearFeriadoForm>();
+            services.AddTransient<CargarPagosForm>();
             return services;
         }
     }

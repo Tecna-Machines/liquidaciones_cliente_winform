@@ -2,6 +2,7 @@
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.CrearLiquidacion;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetByQuincena;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Liquidar;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.Pagar;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Sellar;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 
@@ -15,6 +16,7 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.Abstracciones
         Task<CrearItemResponse> AgregarItem(string codLiqudiacion, CrearItemRequest itemData);
         Task<GetLiquidacionesResponse> GetByQuincena(int quincena, int mes, int anio);
         Task<SellarLiquidacionResponse> Sellar(string codigo);
+        Task<PagoCreadoResponse> Pagar(CrearPagoRequest crearPago);
         void AnularItem(string codLiquidacion, int NroItem);
 
         Task<byte[]> GetRecibo(string idLiquidacion);

@@ -1,7 +1,6 @@
 ﻿using DAL.Service.ApiLiquidacion.Features.Asistencias.Abstracciones;
 using DAL.Service.ApiLiquidacion.Features.Asistencias.GetAsistenciaByEmpleado;
 using UI.Screens.Asistencias.Marcas;
-using UI.Utils;
 
 namespace UI.Screens.Marcas
 {
@@ -95,7 +94,7 @@ namespace UI.Screens.Marcas
         private void BtnAgregarMarca_Click(object sender, EventArgs e)
         {
             _crearMarcaForm.SetDni(_dni ?? "error");
-           _crearMarcaForm.ShowDialog();
+            _crearMarcaForm.ShowDialog();
         }
     }
 }

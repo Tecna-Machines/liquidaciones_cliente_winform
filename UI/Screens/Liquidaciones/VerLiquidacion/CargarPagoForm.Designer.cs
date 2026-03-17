@@ -1,6 +1,6 @@
 ﻿namespace UI.Screens.Liquidaciones.VerLiquidacion
 {
-    partial class pagos
+    partial class CargarPagosForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             groupBoxPagoLiquidacion = new GroupBox();
+            label3 = new Label();
+            textBoxDescripcion = new TextBox();
             label1 = new Label();
             radioButtonEfectivo = new RadioButton();
             radioButtonTransferencia = new RadioButton();
             textBoxMonto = new TextBox();
             labelMonto = new Label();
             groupBoxContab = new GroupBox();
+            label4 = new Label();
+            comboBoxCuentasContables = new ComboBox();
             label2 = new Label();
             textBoxMontoContab = new TextBox();
-            buttonPagar = new Button();
-            textBoxDescripcion = new TextBox();
-            label3 = new Label();
+            BtnPagar = new Button();
             groupBoxPagoLiquidacion.SuspendLayout();
             groupBoxContab.SuspendLayout();
             SuspendLayout();
@@ -60,6 +62,24 @@
             groupBoxPagoLiquidacion.TabIndex = 0;
             groupBoxPagoLiquidacion.TabStop = false;
             groupBoxPagoLiquidacion.Text = "PAGO INTERNO";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(6, 177);
+            label3.Name = "label3";
+            label3.Size = new Size(98, 20);
+            label3.TabIndex = 6;
+            label3.Text = "Descripcion :";
+            // 
+            // textBoxDescripcion
+            // 
+            textBoxDescripcion.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            textBoxDescripcion.Location = new Point(112, 174);
+            textBoxDescripcion.Name = "textBoxDescripcion";
+            textBoxDescripcion.Size = new Size(273, 27);
+            textBoxDescripcion.TabIndex = 5;
             // 
             // label1
             // 
@@ -118,77 +138,87 @@
             // 
             // groupBoxContab
             // 
+            groupBoxContab.Controls.Add(label4);
+            groupBoxContab.Controls.Add(comboBoxCuentasContables);
             groupBoxContab.Controls.Add(label2);
             groupBoxContab.Controls.Add(textBoxMontoContab);
             groupBoxContab.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             groupBoxContab.Location = new Point(12, 240);
             groupBoxContab.Name = "groupBoxContab";
-            groupBoxContab.Size = new Size(434, 202);
+            groupBoxContab.Size = new Size(434, 169);
             groupBoxContab.TabIndex = 1;
             groupBoxContab.TabStop = false;
             groupBoxContab.Text = "COPIA PARA CONTAB";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(17, 108);
+            label4.Name = "label4";
+            label4.Size = new Size(70, 20);
+            label4.TabIndex = 7;
+            label4.Text = "ORIGEN:";
+            // 
+            // comboBoxCuentasContables
+            // 
+            comboBoxCuentasContables.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxCuentasContables.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBoxCuentasContables.FormattingEnabled = true;
+            comboBoxCuentasContables.Location = new Point(112, 104);
+            comboBoxCuentasContables.MaxDropDownItems = 5;
+            comboBoxCuentasContables.Name = "comboBoxCuentasContables";
+            comboBoxCuentasContables.Size = new Size(273, 28);
+            comboBoxCuentasContables.TabIndex = 6;
+            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(18, 28);
+            label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(18, 60);
             label2.Name = "label2";
-            label2.Size = new Size(86, 25);
+            label2.Size = new Size(69, 20);
             label2.TabIndex = 5;
             label2.Text = "MONTO:";
             // 
             // textBoxMontoContab
             // 
             textBoxMontoContab.BackColor = SystemColors.ButtonHighlight;
-            textBoxMontoContab.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            textBoxMontoContab.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxMontoContab.ForeColor = Color.YellowGreen;
-            textBoxMontoContab.Location = new Point(112, 25);
+            textBoxMontoContab.Location = new Point(112, 57);
             textBoxMontoContab.Name = "textBoxMontoContab";
             textBoxMontoContab.ReadOnly = true;
-            textBoxMontoContab.Size = new Size(198, 31);
+            textBoxMontoContab.Size = new Size(273, 27);
             textBoxMontoContab.TabIndex = 2;
             // 
-            // buttonPagar
+            // BtnPagar
             // 
-            buttonPagar.BackColor = Color.LimeGreen;
-            buttonPagar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPagar.Location = new Point(155, 457);
-            buttonPagar.Name = "buttonPagar";
-            buttonPagar.Size = new Size(149, 46);
-            buttonPagar.TabIndex = 2;
-            buttonPagar.Text = "CONFIRMAR PAGO";
-            buttonPagar.UseVisualStyleBackColor = false;
+            BtnPagar.BackColor = Color.LimeGreen;
+            BtnPagar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnPagar.Location = new Point(161, 430);
+            BtnPagar.Name = "BtnPagar";
+            BtnPagar.Size = new Size(149, 46);
+            BtnPagar.TabIndex = 2;
+            BtnPagar.Text = "CONFIRMAR PAGO";
+            BtnPagar.UseVisualStyleBackColor = false;
+            BtnPagar.Click += BtnPagar_Click;
             // 
-            // textBoxDescripcion
-            // 
-            textBoxDescripcion.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            textBoxDescripcion.Location = new Point(112, 174);
-            textBoxDescripcion.Name = "textBoxDescripcion";
-            textBoxDescripcion.Size = new Size(198, 27);
-            textBoxDescripcion.TabIndex = 5;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(6, 177);
-            label3.Name = "label3";
-            label3.Size = new Size(98, 20);
-            label3.TabIndex = 6;
-            label3.Text = "Descripcion :";
-            // 
-            // pagos
+            // CargarPagosForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDark;
-            ClientSize = new Size(473, 531);
-            Controls.Add(buttonPagar);
+            BackColor = SystemColors.InactiveBorder;
+            ClientSize = new Size(483, 496);
+            Controls.Add(BtnPagar);
             Controls.Add(groupBoxContab);
             Controls.Add(groupBoxPagoLiquidacion);
-            Name = "pagos";
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "CargarPagosForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "pagos";
+            Load += CargarPagosForm_Load;
             groupBoxPagoLiquidacion.ResumeLayout(false);
             groupBoxPagoLiquidacion.PerformLayout();
             groupBoxContab.ResumeLayout(false);
@@ -207,8 +237,10 @@
         private RadioButton radioButtonEfectivo;
         private RadioButton radioButtonTransferencia;
         private Label label2;
-        private Button buttonPagar;
+        private Button BtnPagar;
         private Label label3;
         private TextBox textBoxDescripcion;
+        private Label label4;
+        private ComboBox comboBoxCuentasContables;
     }
 }
