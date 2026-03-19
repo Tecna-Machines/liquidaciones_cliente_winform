@@ -35,5 +35,6 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
                                             decimal Monto,
                                             string Modo,
                                             DateTime Fecha,
-                                            string Descripcion);
+                                            string Descripcion,
+                                            string ReferenciaContable);
 }

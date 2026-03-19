@@ -7,17 +7,16 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
 {
     public partial class CargarPagosForm : Form
     {
-        private readonly CuentasContablesController _cuentasController;
         private readonly LiquidacionController _liquidacionController;
 
-        private  VerLiquidacionForm? _formPadreLiquidacion;
+        private VerLiquidacionForm? _formPadreLiquidacion;
+        private List<CuentaContableResponse> _cuentas = new();
 
         private string? _liquidacionId;
-        public CargarPagosForm(CuentasContablesController cuentasController,
-                              LiquidacionController liquidacionController)
+
+        public CargarPagosForm(LiquidacionController liquidacionController)
         {
             InitializeComponent();
-            _cuentasController = cuentasController;
             _liquidacionController = liquidacionController;
         }
 
@@ -39,11 +38,20 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
             textBoxMontoContab.Text = monto.ToString("C");
         }
 
-        private async void CargarPagosForm_Load(object sender, EventArgs e)
+        private void CargarPagosForm_Load(object sender, EventArgs e)
         {
-            var cuentas = await _cuentasController.ObtenerCuentas();
+            var cuentaSantander = new CuentaContableResponse("1003", "Santander", "");
+            var cuentaEfectivo = new CuentaContableResponse("1002", "Efectivo", "");
+            var otrasCuentas = new CuentaContableResponse("3049", "Otras cuentas digitales / billeteras", "");
 
-            comboBoxCuentasContables.DataSource = cuentas.ToList();
+            _cuentas = new List<CuentaContableResponse>
+                        {
+                            cuentaEfectivo,
+                            cuentaSantander,
+                            otrasCuentas
+                          };
+
+            comboBoxCuentasContables.DataSource = _cuentas.ToList();
 
         }
 
@@ -84,7 +92,7 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
 
         private async Task RefrescarFormularioLiquidacion(string liquidacionId)
         {
-            if(_formPadreLiquidacion is null)
+            if (_formPadreLiquidacion is null)
             {
                 return;
             }
@@ -94,6 +102,24 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
             _formPadreLiquidacion.SetLiquidacion(liq ?? throw new Exception("liq.null"));
 
             this.Close();
+        }
+
+        private void RadioButtonTransferencia_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonTransferencia.Checked)
+            {
+                // Todas menos 1002
+                comboBoxCuentasContables.DataSource = _cuentas
+                    .Where(c => c.Id != "1002")
+                    .ToList();
+            }
+            else
+            {
+                // Solo cuenta 1002
+                comboBoxCuentasContables.DataSource = _cuentas
+                    .Where(c => c.Id == "1002")
+                    .ToList();
+            }
         }
     }
 }

@@ -73,6 +73,7 @@
             labelRemuneraciones = new Label();
             label2 = new Label();
             textBoxEstado = new TextBox();
+            columnContab = new ColumnHeader();
             SuspendLayout();
             // 
             // textBoxCodigoLiq
@@ -212,7 +213,7 @@
             // 
             // tablaPagos
             // 
-            tablaPagos.Columns.AddRange(new ColumnHeader[] { columId, columnMonto, columnHeader3, columnDescrip, columnModo });
+            tablaPagos.Columns.AddRange(new ColumnHeader[] { columId, columnMonto, columnHeader3, columnDescrip, columnModo, columnContab });
             tablaPagos.FullRowSelect = true;
             tablaPagos.GridLines = true;
             tablaPagos.Location = new Point(26, 632);
@@ -225,7 +226,7 @@
             // columId
             // 
             columId.Text = "ID";
-            columId.Width = 180;
+            columId.Width = 120;
             // 
             // columnMonto
             // 
@@ -235,12 +236,12 @@
             // columnHeader3
             // 
             columnHeader3.Text = "Fecha";
-            columnHeader3.Width = 95;
+            columnHeader3.Width = 80;
             // 
             // columnDescrip
             // 
             columnDescrip.Text = "Descripcion";
-            columnDescrip.Width = 200;
+            columnDescrip.Width = 190;
             // 
             // columnModo
             // 
@@ -443,6 +444,11 @@
             textBoxEstado.Size = new Size(158, 23);
             textBoxEstado.TabIndex = 50;
             // 
+            // columnContab
+            // 
+            columnContab.Text = "Pago Contab";
+            columnContab.Width = 90;
+            // 
             // VerLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -530,5 +536,6 @@
         private TextBox textBoxEstado;
         private ColumnHeader columnDescrip;
         private ColumnHeader columnModo;
+        private ColumnHeader columnContab;
     }
 }

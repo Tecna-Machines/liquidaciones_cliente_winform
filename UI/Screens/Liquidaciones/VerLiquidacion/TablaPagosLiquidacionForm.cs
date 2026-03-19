@@ -16,6 +16,7 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
                 item.SubItems.Add(p.Fecha.ToString("dd/MM/yyyy HH:ss"));
                 item.SubItems.Add(p.Descripcion);
                 item.SubItems.Add(p.Modo);
+                item.SubItems.Add(p.ReferenciaContable);
 
 
                 tablaPagos.Items.Add(item);

@@ -42,6 +42,7 @@ namespace UI.Screens.Liquidaciones.HistorialLiquidaciones
             }
 
             progressBar.Visible = true;
+            progressBar.Style = ProgressBarStyle.Marquee;
 
             int quincena = int.Parse((string)comboBoxQuincena.SelectedItem);
             int mes = comboBoxMeses.SelectedIndex + 1;

@@ -116,6 +116,7 @@
             radioButtonTransferencia.TabStop = true;
             radioButtonTransferencia.Text = "TRANSFERENCIA";
             radioButtonTransferencia.UseVisualStyleBackColor = false;
+            radioButtonTransferencia.CheckedChanged += RadioButtonTransferencia_CheckedChanged;
             // 
             // textBoxMonto
             // 
