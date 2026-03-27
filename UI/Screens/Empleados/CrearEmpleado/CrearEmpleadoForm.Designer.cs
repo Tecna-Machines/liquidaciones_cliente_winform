@@ -96,7 +96,7 @@
             // 
             // fechaIngreso
             // 
-            fechaIngreso.Location = new Point(414, 50);
+            fechaIngreso.Location = new Point(550, 50);
             fechaIngreso.Name = "fechaIngreso";
             fechaIngreso.Size = new Size(222, 23);
             fechaIngreso.TabIndex = 6;
@@ -105,17 +105,17 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(346, 54);
+            label4.Location = new Point(334, 54);
             label4.Name = "label4";
-            label4.Size = new Size(62, 15);
+            label4.Size = new Size(210, 15);
             label4.TabIndex = 7;
-            label4.Text = "INGRESO:";
+            label4.Text = "INGRESO (se usa para la antiguedad):";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(368, 85);
+            label5.Location = new Point(504, 83);
             label5.Name = "label5";
             label5.Size = new Size(40, 15);
             label5.TabIndex = 9;
@@ -123,7 +123,7 @@
             // 
             // fechaAlta
             // 
-            fechaAlta.Location = new Point(414, 81);
+            fechaAlta.Location = new Point(550, 79);
             fechaAlta.Name = "fechaAlta";
             fechaAlta.Size = new Size(222, 23);
             fechaAlta.TabIndex = 8;
@@ -132,7 +132,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(329, 116);
+            label6.Location = new Point(460, 112);
             label6.Name = "label6";
             label6.Size = new Size(84, 15);
             label6.TabIndex = 11;
@@ -140,7 +140,7 @@
             // 
             // fechaNacimiento
             // 
-            fechaNacimiento.Location = new Point(414, 112);
+            fechaNacimiento.Location = new Point(550, 108);
             fechaNacimiento.Name = "fechaNacimiento";
             fechaNacimiento.Size = new Size(222, 23);
             fechaNacimiento.TabIndex = 10;
@@ -149,7 +149,7 @@
             // 
             BtnConfirmarCrear.BackColor = SystemColors.Info;
             BtnConfirmarCrear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            BtnConfirmarCrear.Location = new Point(414, 153);
+            BtnConfirmarCrear.Location = new Point(101, 166);
             BtnConfirmarCrear.Name = "BtnConfirmarCrear";
             BtnConfirmarCrear.Size = new Size(222, 42);
             BtnConfirmarCrear.TabIndex = 12;
@@ -161,7 +161,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 207);
+            ClientSize = new Size(800, 238);
             Controls.Add(BtnConfirmarCrear);
             Controls.Add(label6);
             Controls.Add(fechaNacimiento);
@@ -176,6 +176,7 @@
             Controls.Add(label1);
             Controls.Add(textBoxDni);
             Name = "CrearEmpleadoForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "CrearEmpleadoForm";
             ResumeLayout(false);
             PerformLayout();

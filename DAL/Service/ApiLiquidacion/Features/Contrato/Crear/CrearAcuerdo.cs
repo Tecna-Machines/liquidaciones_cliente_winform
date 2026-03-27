@@ -25,18 +25,6 @@ namespace DAL.Service.Liquidacion.Features.Contrato.Crear
 
             int statusCode = await GetHttpStatusCode.GetCode(response);
 
-            JsonElement value = root.GetProperty("value");
-
-            if (statusCode >= 400)
-            {
-                if (value.TryGetProperty("descripcion", out JsonElement desc))
-                {
-                    string? msg = desc.GetString();
-                    throw new InvalidOperationException(msg ?? "Error al crear el acuerdo.");
-                }
-
-                throw new InvalidOperationException("Error al crear el acuerdo.");
-            }
 
             CrearAcuerdoResponse acuerdoCreado = await GetJsonValue<CrearAcuerdoResponse>
                                                        .GetBodyValue(response);

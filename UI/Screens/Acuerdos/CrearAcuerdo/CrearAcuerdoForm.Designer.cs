@@ -140,14 +140,14 @@
             // 
             comboBoxModalidad.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxModalidad.FormattingEnabled = true;
-            comboBoxModalidad.Location = new Point(85, 83);
+            comboBoxModalidad.Location = new Point(58, 75);
             comboBoxModalidad.Name = "comboBoxModalidad";
-            comboBoxModalidad.Size = new Size(147, 23);
+            comboBoxModalidad.Size = new Size(174, 23);
             comboBoxModalidad.TabIndex = 7;
             // 
             // textBoxMontoBanco
             // 
-            textBoxMontoBanco.Location = new Point(354, 83);
+            textBoxMontoBanco.Location = new Point(354, 75);
             textBoxMontoBanco.Name = "textBoxMontoBanco";
             textBoxMontoBanco.Size = new Size(115, 23);
             textBoxMontoBanco.TabIndex = 6;
@@ -155,23 +155,23 @@
             // 
             // textBoxValorHora
             // 
-            textBoxValorHora.Location = new Point(354, 41);
+            textBoxValorHora.Location = new Point(354, 38);
             textBoxValorHora.Name = "textBoxValorHora";
             textBoxValorHora.Size = new Size(115, 23);
             textBoxValorHora.TabIndex = 5;
             // 
             // textBoxSueldo
             // 
-            textBoxSueldo.Location = new Point(85, 38);
+            textBoxSueldo.Location = new Point(74, 38);
             textBoxSueldo.Name = "textBoxSueldo";
-            textBoxSueldo.Size = new Size(147, 23);
+            textBoxSueldo.Size = new Size(158, 23);
             textBoxSueldo.TabIndex = 4;
             textBoxSueldo.TextChanged += TextBoxMontoFijo_TextChanged;
             // 
             // textBoxValorBlanco
             // 
             textBoxValorBlanco.AutoSize = true;
-            textBoxValorBlanco.Location = new Point(244, 86);
+            textBoxValorBlanco.Location = new Point(244, 79);
             textBoxValorBlanco.Name = "textBoxValorBlanco";
             textBoxValorBlanco.Size = new Size(95, 15);
             textBoxValorBlanco.TabIndex = 3;
@@ -180,7 +180,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(43, 91);
+            label3.Location = new Point(15, 79);
             label3.Name = "label3";
             label3.Size = new Size(37, 15);
             label3.TabIndex = 2;
@@ -189,7 +189,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(254, 44);
+            label2.Location = new Point(254, 42);
             label2.Name = "label2";
             label2.Size = new Size(85, 15);
             label2.TabIndex = 1;
@@ -198,7 +198,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(21, 44);
+            label1.Location = new Point(15, 44);
             label1.Name = "label1";
             label1.Size = new Size(56, 15);
             label1.TabIndex = 0;

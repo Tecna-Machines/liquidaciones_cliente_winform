@@ -26,18 +26,18 @@ namespace DAL.Service.ApiLiquidacion.Features.Creditos.Crear
 
             int statusCode = await GetHttpStatusCode.GetCode(response);
 
-            JsonElement value = root.GetProperty("value");
+            //JsonElement value = root.GetProperty("value");
 
-            if (statusCode >= 400)
-            {
-                if (value.TryGetProperty("descripcion", out JsonElement desc))
-                {
-                    string? msg = desc.GetString();
-                    throw new InvalidOperationException(msg ?? "Error al crear el credito.");
-                }
+            //if (statusCode >= 400)
+            //{
+            //    if (value.TryGetProperty("descripcion", out JsonElement desc))
+            //    {
+            //        string? msg = desc.GetString();
+            //        throw new InvalidOperationException(msg ?? "Error al crear el credito.");
+            //    }
 
-                throw new InvalidOperationException("Error al crear el credito.");
-            }
+            //    throw new InvalidOperationException("Error al crear el credito.");
+            //}
 
             CrearCreditoResponse credito = await GetJsonValue<CrearCreditoResponse>
                                                        .GetBodyValue(response);

@@ -11,11 +11,11 @@ namespace DAL.Service.Liquidacion.Http
             using JsonDocument doc = JsonDocument.Parse(body);
             JsonElement root = doc.RootElement;
 
-            if (!root.TryGetProperty("value", out JsonElement valueEl))
-                throw new InvalidOperationException("Response JSON does not contain 'value' property.");
+            //if (!root.TryGetProperty("value", out JsonElement valueEl))
+            //    throw new InvalidOperationException("Response JSON does not contain 'value' property.");
 
             TResponse result = JsonSerializer.Deserialize<TResponse>(
-                valueEl.GetRawText(),
+                root.GetRawText(),
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
             )!;
 

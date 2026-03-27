@@ -14,10 +14,10 @@ namespace BLL.Controllers
 
         public List<ModalidadDTO> ObtenerModalidades()
         {
-            var Mensual = new ModalidadDTO { Codigo = "10", Descripcion = "mensual" };
-            var MensualFijoMasExtra = new ModalidadDTO { Codigo = "12", Descripcion = "mensual fijo mas extra" };
-            var QuincenalHora = new ModalidadDTO { Codigo = "20", Descripcion = "quincenal hora" };
-            var QuincenalFijo = new ModalidadDTO { Codigo = "22", Descripcion = "quincenal fijo" };
+            var Mensual = new ModalidadDTO { Codigo = "10", Descripcion = "MENSUAL FIJO (SIN EXTRAS)" };
+            var MensualFijoMasExtra = new ModalidadDTO { Codigo = "12", Descripcion = "MENSUAL FIJO + HS EXTRAS" };
+            var QuincenalHora = new ModalidadDTO { Codigo = "20", Descripcion = "QUINCENAL FIJO + HS EXTRAS" };
+            var QuincenalFijo = new ModalidadDTO { Codigo = "22", Descripcion = "QUINCENAL FIJO (SIN EXTRAS)" };
 
             return new List<ModalidadDTO> { Mensual, MensualFijoMasExtra, QuincenalFijo, QuincenalHora };
         }

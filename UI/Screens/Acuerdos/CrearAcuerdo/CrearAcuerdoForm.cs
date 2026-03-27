@@ -237,7 +237,7 @@ namespace UI.Screens.CrearContrato
         }
 
         //solo debe usarse para representar a la modalidad aqui
-        internal class ModalidadItem
+        private class ModalidadItem
         {
             public ModalidadItem(string codigo, string descripcion)
             {
@@ -250,7 +250,7 @@ namespace UI.Screens.CrearContrato
 
             public override string ToString()
             {
-                return $"{Codigo} - {Descripcion}";
+                return $"{Codigo}:{Descripcion}";
             }
 
         }
