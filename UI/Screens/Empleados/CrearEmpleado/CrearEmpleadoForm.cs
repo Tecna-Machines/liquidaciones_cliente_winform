@@ -30,6 +30,8 @@ namespace UI.Screens.CrearEmpleado
         private CrearEmpleadoRequest CrearSolicitudEmpleado()
         {
             string dni = textBoxDni.Text;
+            string cuil = $"{textBoxCuilPrimerDigito.Text}{dni}{textBoxCuilUltimoDigito.Text}";
+
             string nombres = textBoxNombres.Text;
             string apellidos = textBoxApellidos.Text;
 
@@ -37,7 +39,7 @@ namespace UI.Screens.CrearEmpleado
             DateTime alta = fechaAlta.Value;
             DateTime nacimiento = fechaNacimiento.Value;
 
-            return new CrearEmpleadoRequest(dni, nombres, apellidos, ingreso, nacimiento, alta);
+            return new CrearEmpleadoRequest(dni,cuil, nombres, apellidos, ingreso, nacimiento, alta);
         }
 
         private async Task GuardarEmpleado(CrearEmpleadoRequest req)
@@ -47,6 +49,11 @@ namespace UI.Screens.CrearEmpleado
             Dialog.Success($"{response.Nombre} {response.Apellido} : carga exitosa!");
 
             this.Close();
+        }
+
+        private void textBoxDni_TextChanged(object sender, EventArgs e)
+        {
+            textBoxCuilDni.Text = textBoxDni.Text;
         }
     }
 }
