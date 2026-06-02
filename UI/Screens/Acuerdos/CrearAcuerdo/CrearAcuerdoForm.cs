@@ -39,7 +39,7 @@ namespace UI.Screens.CrearContrato
         private async void CargarListaEmpleados()
         {
             var empleados = await _empleadoController.ObtenerEmpleados();
-            var modalidades = _contratoController.ObtenerModalidades();
+            var modalidades = _contratoController.ObtenerTiposDeSueldo();
 
             this.listaEmpComponent1.CargarLista(empleados);
             this.CargarOpcionesModalidad(modalidades);
@@ -48,7 +48,7 @@ namespace UI.Screens.CrearContrato
         private void TextBoxMontoFijo_TextChanged(object sender, EventArgs e)
         {
             string sueldoFijoStr = this.textBoxSueldo.Text;
-            string sueldoBancoStr = this.textBoxMontoBanco.Text;
+            string sueldoBancoStr = this.textBoxMontoSueldoJornal.Text;
 
             decimal sueldo, valorBlanco;
 
@@ -67,7 +67,7 @@ namespace UI.Screens.CrearContrato
                 Dialog.Error("el monto en el banco no puede ser mayor al monto fijo");
 
                 this.textBoxSueldo.Clear();
-                this.textBoxMontoBanco.Clear();
+                this.textBoxMontoSueldoJornal.Clear();
                 this.textBoxValorHora.Clear();
             }
         }
@@ -109,7 +109,7 @@ namespace UI.Screens.CrearContrato
             string dniEmp = this.textBoxDni.Text;
 
             string sueldoStr = this.textBoxSueldo.Text;
-            string valorBlancoStr = this.textBoxMontoBanco.Text;
+            string valorBlancoStr = this.textBoxMontoSueldoJornal.Text;
             string valorHoraStr = this.textBoxValorHora.Text;
 
             decimal sueldo, valorBlanco, valorHora;
@@ -171,7 +171,10 @@ namespace UI.Screens.CrearContrato
 
         private void BtnAgregarAdicional_Click(object sender, EventArgs e)
         {
-            var formAcuerdo = new CrearAdicionalForm(this).ShowDialog();
+            var formAcuerdo = new CrearAdicionalForm(this);
+           
+           formAcuerdo.SetModoExtraplus();                
+           formAcuerdo.ShowDialog();
         }
 
         public void AgregarAdicional(AdicionalesRequest adicional)

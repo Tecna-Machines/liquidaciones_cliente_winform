@@ -30,5 +30,12 @@ namespace UI.Screens.CrearContrato
 
             return new AdicionalesRequest(concepto, esEnBlanco, esPorcentual, monto);
         }
+
+        public void SetModoExtraplus()
+        {
+            textBoxDescripcion.Text = "EXTRA PLUS";
+            checkBoxEsEnBlanco.Checked = false;
+            checkBoxEsPorcentual.Checked = false;
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace BLL.Controllers
             _service = service;
         }
 
-        public List<ModalidadDTO> ObtenerModalidades()
+        public List<ModalidadDTO> ObtenerTiposDeSueldo()
         {
             var Mensual = new ModalidadDTO { Codigo = "10", Descripcion = "MENSUAL FIJO (SIN EXTRAS)" };
             var MensualFijoMasExtra = new ModalidadDTO { Codigo = "12", Descripcion = "MENSUAL FIJO + HS EXTRAS" };

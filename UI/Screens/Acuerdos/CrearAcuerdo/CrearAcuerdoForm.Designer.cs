@@ -36,7 +36,7 @@
             textBoxDni = new TextBox();
             groupBox1 = new GroupBox();
             comboBoxModalidad = new ComboBox();
-            textBoxMontoBanco = new TextBox();
+            textBoxMontoSueldoJornal = new TextBox();
             textBoxValorHora = new TextBox();
             textBoxSueldo = new TextBox();
             textBoxValorBlanco = new Label();
@@ -121,7 +121,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(comboBoxModalidad);
-            groupBox1.Controls.Add(textBoxMontoBanco);
+            groupBox1.Controls.Add(textBoxMontoSueldoJornal);
             groupBox1.Controls.Add(textBoxValorHora);
             groupBox1.Controls.Add(textBoxSueldo);
             groupBox1.Controls.Add(textBoxValorBlanco);
@@ -140,29 +140,29 @@
             // 
             comboBoxModalidad.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxModalidad.FormattingEnabled = true;
-            comboBoxModalidad.Location = new Point(58, 75);
+            comboBoxModalidad.Location = new Point(136, 76);
             comboBoxModalidad.Name = "comboBoxModalidad";
-            comboBoxModalidad.Size = new Size(174, 23);
+            comboBoxModalidad.Size = new Size(158, 23);
             comboBoxModalidad.TabIndex = 7;
             // 
-            // textBoxMontoBanco
+            // textBoxMontoSueldoJornal
             // 
-            textBoxMontoBanco.Location = new Point(354, 75);
-            textBoxMontoBanco.Name = "textBoxMontoBanco";
-            textBoxMontoBanco.Size = new Size(115, 23);
-            textBoxMontoBanco.TabIndex = 6;
-            textBoxMontoBanco.TextChanged += TextBoxMontoFijo_TextChanged;
+            textBoxMontoSueldoJornal.Location = new Point(136, 107);
+            textBoxMontoSueldoJornal.Name = "textBoxMontoSueldoJornal";
+            textBoxMontoSueldoJornal.Size = new Size(115, 23);
+            textBoxMontoSueldoJornal.TabIndex = 6;
+            textBoxMontoSueldoJornal.TextChanged += TextBoxMontoFijo_TextChanged;
             // 
             // textBoxValorHora
             // 
-            textBoxValorHora.Location = new Point(354, 38);
+            textBoxValorHora.Location = new Point(358, 107);
             textBoxValorHora.Name = "textBoxValorHora";
-            textBoxValorHora.Size = new Size(115, 23);
+            textBoxValorHora.Size = new Size(97, 23);
             textBoxValorHora.TabIndex = 5;
             // 
             // textBoxSueldo
             // 
-            textBoxSueldo.Location = new Point(74, 38);
+            textBoxSueldo.Location = new Point(136, 40);
             textBoxSueldo.Name = "textBoxSueldo";
             textBoxSueldo.Size = new Size(158, 23);
             textBoxSueldo.TabIndex = 4;
@@ -171,25 +171,25 @@
             // textBoxValorBlanco
             // 
             textBoxValorBlanco.AutoSize = true;
-            textBoxValorBlanco.Location = new Point(244, 79);
+            textBoxValorBlanco.Location = new Point(15, 111);
             textBoxValorBlanco.Name = "textBoxValorBlanco";
-            textBoxValorBlanco.Size = new Size(95, 15);
+            textBoxValorBlanco.Size = new Size(115, 15);
             textBoxValorBlanco.TabIndex = 3;
-            textBoxValorBlanco.Text = "VALOR OFICIAL:";
+            textBoxValorBlanco.Text = "SUELDO / JORNAL :";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(15, 79);
             label3.Name = "label3";
-            label3.Size = new Size(37, 15);
+            label3.Size = new Size(86, 15);
             label3.TabIndex = 2;
-            label3.Text = "TIPO:";
+            label3.Text = "TIPO SUELDO:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(254, 42);
+            label2.Location = new Point(267, 111);
             label2.Name = "label2";
             label2.Size = new Size(85, 15);
             label2.TabIndex = 1;
@@ -200,9 +200,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(15, 44);
             label1.Name = "label1";
-            label1.Size = new Size(56, 15);
+            label1.Size = new Size(95, 15);
             label1.TabIndex = 0;
-            label1.Text = "SUELDO:";
+            label1.Text = "SUELDO TOTAL:";
             // 
             // groupBoxAdicionales
             // 
@@ -277,7 +277,7 @@
             BtnAgregarAdicional.Name = "BtnAgregarAdicional";
             BtnAgregarAdicional.Size = new Size(178, 43);
             BtnAgregarAdicional.TabIndex = 9;
-            BtnAgregarAdicional.Text = "AGREGAR ADICIONAL";
+            BtnAgregarAdicional.Text = "AGREGAR EXTRA PLUS";
             BtnAgregarAdicional.UseVisualStyleBackColor = false;
             BtnAgregarAdicional.Click += BtnAgregarAdicional_Click;
             // 
@@ -377,7 +377,7 @@
         private Label label2;
         private Label label1;
         private ComboBox comboBoxModalidad;
-        private TextBox textBoxMontoBanco;
+        private TextBox textBoxMontoSueldoJornal;
         private TextBox textBoxValorHora;
         private TextBox textBoxSueldo;
         private Label textBoxValorBlanco;
