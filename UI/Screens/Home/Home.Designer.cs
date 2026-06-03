@@ -74,44 +74,48 @@
             // labelServer
             // 
             labelServer.AutoSize = true;
-            labelServer.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelServer.Location = new Point(238, 227);
+            labelServer.Font = new Font("Roboto ExtraBold", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            labelServer.Location = new Point(130, 253);
             labelServer.Name = "labelServer";
-            labelServer.Size = new Size(50, 15);
+            labelServer.Size = new Size(83, 18);
             labelServer.TabIndex = 12;
-            labelServer.Text = "SERVER";
+            labelServer.Text = "SERVIDOR:";
             // 
             // labelVersion
             // 
             labelVersion.AutoSize = true;
-            labelVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelVersion.Location = new Point(64, 227);
+            labelVersion.Font = new Font("Roboto ExtraBold", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            labelVersion.Location = new Point(139, 223);
             labelVersion.Name = "labelVersion";
-            labelVersion.Size = new Size(58, 15);
+            labelVersion.Size = new Size(74, 18);
             labelVersion.TabIndex = 11;
-            labelVersion.Text = "VERSION";
+            labelVersion.Text = "VERSION:";
             // 
             // serverUrl
             // 
-            serverUrl.BackColor = SystemColors.ActiveCaption;
-            serverUrl.Location = new Point(296, 223);
+            serverUrl.BackColor = SystemColors.Info;
+            serverUrl.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            serverUrl.Location = new Point(228, 249);
             serverUrl.Name = "serverUrl";
             serverUrl.ReadOnly = true;
-            serverUrl.Size = new Size(235, 23);
+            serverUrl.Size = new Size(321, 27);
             serverUrl.TabIndex = 10;
             serverUrl.TabStop = false;
             serverUrl.Text = "0.0.0";
+            serverUrl.TextAlign = HorizontalAlignment.Center;
             // 
             // appVersion
             // 
-            appVersion.BackColor = SystemColors.ActiveCaption;
-            appVersion.Location = new Point(130, 223);
+            appVersion.BackColor = SystemColors.Info;
+            appVersion.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            appVersion.Location = new Point(228, 219);
             appVersion.Name = "appVersion";
             appVersion.ReadOnly = true;
-            appVersion.Size = new Size(100, 23);
+            appVersion.Size = new Size(321, 27);
             appVersion.TabIndex = 9;
             appVersion.TabStop = false;
             appVersion.Text = "0.0.0";
+            appVersion.TextAlign = HorizontalAlignment.Center;
             // 
             // labelNombre
             // 
@@ -138,7 +142,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripInicio, toolStripEmpleado, toolStripButtonAcuerdos, toolStripDropDownLiquidacion, toolStripDropDownCreditos, toolStripDias });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(616, 25);
+            toolStrip1.Size = new Size(612, 25);
             toolStrip1.TabIndex = 8;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -251,20 +255,20 @@
             // asistenciasToolStripMenuItem
             // 
             asistenciasToolStripMenuItem.Name = "asistenciasToolStripMenuItem";
-            asistenciasToolStripMenuItem.Size = new Size(180, 22);
+            asistenciasToolStripMenuItem.Size = new Size(132, 22);
             asistenciasToolStripMenuItem.Text = "Asistencias";
             // 
             // feriadosToolStripFeriados
             // 
             feriadosToolStripFeriados.DropDownItems.AddRange(new ToolStripItem[] { crearFeriadoToolStripMenuItem });
             feriadosToolStripFeriados.Name = "feriadosToolStripFeriados";
-            feriadosToolStripFeriados.Size = new Size(180, 22);
+            feriadosToolStripFeriados.Size = new Size(132, 22);
             feriadosToolStripFeriados.Text = "Feriados";
             // 
             // crearFeriadoToolStripMenuItem
             // 
             crearFeriadoToolStripMenuItem.Name = "crearFeriadoToolStripMenuItem";
-            crearFeriadoToolStripMenuItem.Size = new Size(180, 22);
+            crearFeriadoToolStripMenuItem.Size = new Size(142, 22);
             crearFeriadoToolStripMenuItem.Text = "Crear feriado";
             crearFeriadoToolStripMenuItem.Click += CrearFeriadoToolStripMenuItem_Click;
             // 
@@ -273,7 +277,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveBorder;
-            ClientSize = new Size(616, 361);
+            ClientSize = new Size(612, 341);
             Controls.Add(toolStrip1);
             Controls.Add(panelPrincipal);
             FormBorderStyle = FormBorderStyle.FixedSingle;

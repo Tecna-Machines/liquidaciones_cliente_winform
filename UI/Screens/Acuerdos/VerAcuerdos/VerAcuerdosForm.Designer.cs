@@ -80,7 +80,7 @@
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label1);
-            groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox2.Location = new Point(322, 294);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(592, 154);
@@ -90,7 +90,7 @@
             // 
             // textBoxFechaAcuerdo
             // 
-            textBoxFechaAcuerdo.BackColor = SystemColors.ButtonHighlight;
+            textBoxFechaAcuerdo.BackColor = SystemColors.Info;
             textBoxFechaAcuerdo.ForeColor = SystemColors.ActiveCaptionText;
             textBoxFechaAcuerdo.Location = new Point(72, 102);
             textBoxFechaAcuerdo.Name = "textBoxFechaAcuerdo";
@@ -100,7 +100,7 @@
             // 
             // textBoxValorBlanco
             // 
-            textBoxValorBlanco.BackColor = SystemColors.ButtonHighlight;
+            textBoxValorBlanco.BackColor = SystemColors.Info;
             textBoxValorBlanco.ForeColor = SystemColors.ActiveCaptionText;
             textBoxValorBlanco.Location = new Point(413, 102);
             textBoxValorBlanco.Name = "textBoxValorBlanco";
@@ -110,7 +110,7 @@
             // 
             // textBoxValorSueldo
             // 
-            textBoxValorSueldo.BackColor = SystemColors.ButtonHighlight;
+            textBoxValorSueldo.BackColor = SystemColors.Info;
             textBoxValorSueldo.ForeColor = SystemColors.ActiveCaptionText;
             textBoxValorSueldo.Location = new Point(413, 68);
             textBoxValorSueldo.Name = "textBoxValorSueldo";
@@ -120,7 +120,7 @@
             // 
             // textBoxValorHora
             // 
-            textBoxValorHora.BackColor = SystemColors.ButtonHighlight;
+            textBoxValorHora.BackColor = SystemColors.Info;
             textBoxValorHora.ForeColor = SystemColors.ActiveCaptionText;
             textBoxValorHora.Location = new Point(413, 34);
             textBoxValorHora.Name = "textBoxValorHora";
@@ -157,7 +157,7 @@
             // 
             // textBoxTipoSueldo
             // 
-            textBoxTipoSueldo.BackColor = SystemColors.ButtonHighlight;
+            textBoxTipoSueldo.BackColor = SystemColors.Info;
             textBoxTipoSueldo.ForeColor = SystemColors.ActiveCaptionText;
             textBoxTipoSueldo.Location = new Point(72, 68);
             textBoxTipoSueldo.Name = "textBoxTipoSueldo";
@@ -167,7 +167,7 @@
             // 
             // textBoxCodAcuerdo
             // 
-            textBoxCodAcuerdo.BackColor = SystemColors.ButtonHighlight;
+            textBoxCodAcuerdo.BackColor = SystemColors.Info;
             textBoxCodAcuerdo.ForeColor = SystemColors.ActiveCaptionText;
             textBoxCodAcuerdo.Location = new Point(72, 34);
             textBoxCodAcuerdo.Name = "textBoxCodAcuerdo";
@@ -205,7 +205,7 @@
             // groupBoxHistorial
             // 
             groupBoxHistorial.Controls.Add(listHistorial);
-            groupBoxHistorial.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBoxHistorial.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBoxHistorial.Location = new Point(322, 47);
             groupBoxHistorial.Name = "groupBoxHistorial";
             groupBoxHistorial.Size = new Size(598, 157);
@@ -215,7 +215,7 @@
             // 
             // listHistorial
             // 
-            listHistorial.BackColor = SystemColors.Window;
+            listHistorial.BackColor = Color.Lavender;
             listHistorial.BorderStyle = BorderStyle.FixedSingle;
             listHistorial.Columns.AddRange(new ColumnHeader[] { columnHeaderCod, columnHeaderMonto, columnHeaderMontHs, columnHeaderFech });
             listHistorial.ForeColor = SystemColors.ControlText;
@@ -256,7 +256,7 @@
             groupBoxEmpleado.Controls.Add(label7);
             groupBoxEmpleado.Controls.Add(textBoxNombre);
             groupBoxEmpleado.Controls.Add(textBoxDni);
-            groupBoxEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBoxEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBoxEmpleado.Location = new Point(322, 219);
             groupBoxEmpleado.Name = "groupBoxEmpleado";
             groupBoxEmpleado.Size = new Size(598, 58);
@@ -299,7 +299,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(listAdicionales);
-            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox1.Location = new Point(328, 473);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(586, 209);
