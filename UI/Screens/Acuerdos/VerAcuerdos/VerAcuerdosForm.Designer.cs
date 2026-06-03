@@ -131,25 +131,25 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(310, 70);
+            label6.Location = new Point(286, 70);
             label6.Name = "label6";
-            label6.Size = new Size(97, 15);
+            label6.Size = new Size(115, 15);
             label6.TabIndex = 21;
-            label6.Text = "VALOR SUELDO:";
+            label6.Text = "SUELDO MENSUAL:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(309, 106);
+            label5.Location = new Point(286, 106);
             label5.Name = "label5";
-            label5.Size = new Size(95, 15);
+            label5.Size = new Size(109, 15);
             label5.TabIndex = 20;
-            label5.Text = "VALOR OFICIAL:";
+            label5.Text = "SUELDO /JORNAL:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(322, 38);
+            label4.Location = new Point(286, 38);
             label4.Name = "label4";
             label4.Size = new Size(85, 15);
             label4.TabIndex = 19;
