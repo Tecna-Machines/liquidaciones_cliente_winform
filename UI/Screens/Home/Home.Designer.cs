@@ -30,12 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             panelPrincipal = new Panel();
-            labelServer = new Label();
-            labelVersion = new Label();
-            serverUrl = new TextBox();
-            appVersion = new TextBox();
-            labelNombre = new Label();
-            pictureBoxLogo = new PictureBox();
             toolStrip1 = new ToolStrip();
             toolStripInicio = new ToolStripLabel();
             toolStripEmpleado = new ToolStripDropDownButton();
@@ -53,89 +47,23 @@
             asistenciasToolStripMenuItem = new ToolStripMenuItem();
             feriadosToolStripFeriados = new ToolStripMenuItem();
             crearFeriadoToolStripMenuItem = new ToolStripMenuItem();
+            barraDeEstado = new StatusStrip();
+            toolStripStatusLabelServidor = new ToolStripStatusLabel();
+            toolStripStatusVersion = new ToolStripStatusLabel();
+            pictureBoxLogo = new PictureBox();
             panelPrincipal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             toolStrip1.SuspendLayout();
+            barraDeEstado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // panelPrincipal
             // 
-            panelPrincipal.Controls.Add(labelServer);
-            panelPrincipal.Controls.Add(labelVersion);
-            panelPrincipal.Controls.Add(serverUrl);
-            panelPrincipal.Controls.Add(appVersion);
-            panelPrincipal.Controls.Add(labelNombre);
             panelPrincipal.Controls.Add(pictureBoxLogo);
             panelPrincipal.Location = new Point(12, 39);
             panelPrincipal.Name = "panelPrincipal";
-            panelPrincipal.Size = new Size(587, 296);
+            panelPrincipal.Size = new Size(587, 268);
             panelPrincipal.TabIndex = 4;
-            // 
-            // labelServer
-            // 
-            labelServer.AutoSize = true;
-            labelServer.Font = new Font("Roboto ExtraBold", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            labelServer.Location = new Point(130, 253);
-            labelServer.Name = "labelServer";
-            labelServer.Size = new Size(83, 18);
-            labelServer.TabIndex = 12;
-            labelServer.Text = "SERVIDOR:";
-            // 
-            // labelVersion
-            // 
-            labelVersion.AutoSize = true;
-            labelVersion.Font = new Font("Roboto ExtraBold", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            labelVersion.Location = new Point(139, 223);
-            labelVersion.Name = "labelVersion";
-            labelVersion.Size = new Size(74, 18);
-            labelVersion.TabIndex = 11;
-            labelVersion.Text = "VERSION:";
-            // 
-            // serverUrl
-            // 
-            serverUrl.BackColor = SystemColors.Info;
-            serverUrl.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            serverUrl.Location = new Point(228, 249);
-            serverUrl.Name = "serverUrl";
-            serverUrl.ReadOnly = true;
-            serverUrl.Size = new Size(321, 27);
-            serverUrl.TabIndex = 10;
-            serverUrl.TabStop = false;
-            serverUrl.Text = "0.0.0";
-            serverUrl.TextAlign = HorizontalAlignment.Center;
-            // 
-            // appVersion
-            // 
-            appVersion.BackColor = SystemColors.Info;
-            appVersion.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            appVersion.Location = new Point(228, 219);
-            appVersion.Name = "appVersion";
-            appVersion.ReadOnly = true;
-            appVersion.Size = new Size(321, 27);
-            appVersion.TabIndex = 9;
-            appVersion.TabStop = false;
-            appVersion.Text = "0.0.0";
-            appVersion.TextAlign = HorizontalAlignment.Center;
-            // 
-            // labelNombre
-            // 
-            labelNombre.AutoSize = true;
-            labelNombre.Font = new Font("Segoe UI", 40F, FontStyle.Bold, GraphicsUnit.Point);
-            labelNombre.ForeColor = Color.FromArgb(82, 169, 97);
-            labelNombre.Location = new Point(258, 81);
-            labelNombre.Name = "labelNombre";
-            labelNombre.Size = new Size(250, 72);
-            labelNombre.TabIndex = 4;
-            labelNombre.Text = "AKER LQ";
-            // 
-            // pictureBoxLogo
-            // 
-            pictureBoxLogo.Image = Resources.Resources.rat;
-            pictureBoxLogo.Location = new Point(106, 54);
-            pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(133, 127);
-            pictureBoxLogo.TabIndex = 2;
-            pictureBoxLogo.TabStop = false;
             // 
             // toolStrip1
             // 
@@ -272,12 +200,50 @@
             crearFeriadoToolStripMenuItem.Text = "Crear feriado";
             crearFeriadoToolStripMenuItem.Click += CrearFeriadoToolStripMenuItem_Click;
             // 
+            // barraDeEstado
+            // 
+            barraDeEstado.BackColor = SystemColors.MenuHighlight;
+            barraDeEstado.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelServidor, toolStripStatusVersion });
+            barraDeEstado.Location = new Point(0, 319);
+            barraDeEstado.Name = "barraDeEstado";
+            barraDeEstado.Size = new Size(612, 22);
+            barraDeEstado.TabIndex = 9;
+            barraDeEstado.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelServidor
+            // 
+            toolStripStatusLabelServidor.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            toolStripStatusLabelServidor.ForeColor = SystemColors.ButtonHighlight;
+            toolStripStatusLabelServidor.Name = "toolStripStatusLabelServidor";
+            toolStripStatusLabelServidor.Size = new Size(88, 17);
+            toolStripStatusLabelServidor.Text = "servidor: 0.0.0.0";
+            // 
+            // toolStripStatusVersion
+            // 
+            toolStripStatusVersion.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            toolStripStatusVersion.ForeColor = SystemColors.ButtonHighlight;
+            toolStripStatusVersion.Margin = new Padding(10, 3, 0, 2);
+            toolStripStatusVersion.Name = "toolStripStatusVersion";
+            toolStripStatusVersion.Size = new Size(131, 17);
+            toolStripStatusVersion.Text = "version del cliente: 0.0.0";
+            // 
+            // pictureBox1
+            // 
+            pictureBoxLogo.Image = Resources.Resources.akerlq_ia;
+            pictureBoxLogo.Location = new Point(22, 17);
+            pictureBoxLogo.Name = "pictureBox1";
+            pictureBoxLogo.Size = new Size(529, 248);
+            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxLogo.TabIndex = 0;
+            pictureBoxLogo.TabStop = false;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveBorder;
             ClientSize = new Size(612, 341);
+            Controls.Add(barraDeEstado);
             Controls.Add(toolStrip1);
             Controls.Add(panelPrincipal);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -288,17 +254,17 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio";
             panelPrincipal.ResumeLayout(false);
-            panelPrincipal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            barraDeEstado.ResumeLayout(false);
+            barraDeEstado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private Panel panelPrincipal;
-        private PictureBox pictureBoxLogo;
         private ToolStrip toolStrip1;
         private ToolStripDropDownButton toolStripEmpleado;
         private ToolStripMenuItem crearEmpleadoToolStripMenuItem;
@@ -308,11 +274,6 @@
         private ToolStripDropDownButton toolStripDropDownLiquidacion;
         private ToolStripMenuItem crearLiquidacionToolStripMenuItem;
         private ToolStripMenuItem historialLiquidacionesToolStrip;
-        private Label labelNombre;
-        private TextBox serverUrl;
-        private TextBox appVersion;
-        private Label labelServer;
-        private Label labelVersion;
         private ToolStripLabel toolStripInicio;
         private ToolStripDropDownButton toolStripDropDownCreditos;
         private ToolStripMenuItem crearCreditoToolStripMenuItem;
@@ -321,5 +282,9 @@
         private ToolStripMenuItem asistenciasToolStripMenuItem;
         private ToolStripMenuItem feriadosToolStripFeriados;
         private ToolStripMenuItem crearFeriadoToolStripMenuItem;
+        private StatusStrip barraDeEstado;
+        private ToolStripStatusLabel toolStripStatusLabelServidor;
+        private ToolStripStatusLabel toolStripStatusVersion;
+        private PictureBox pictureBoxLogo;
     }
 }

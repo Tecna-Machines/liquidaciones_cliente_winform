@@ -20,8 +20,8 @@ namespace UI
             string apiBaseUrl = ConfigurationManager.AppSettings["server"] ?? "error";
             string clientVersion = ConfigurationManager.AppSettings["client_version"] ?? "error";
 
-            serverUrl.Text = apiBaseUrl;
-            appVersion.Text = clientVersion;
+            toolStripStatusLabelServidor.Text = "Servidor: "+apiBaseUrl;
+            toolStripStatusVersion.Text = "Version del cliente: "+clientVersion;
 
         }
 
@@ -36,11 +36,6 @@ namespace UI
         {
             panelPrincipal.Controls.Clear();
             panelPrincipal.Controls.Add(this.pictureBoxLogo);
-            panelPrincipal.Controls.Add(this.labelNombre);
-            panelPrincipal.Controls.Add(this.labelServer);
-            panelPrincipal.Controls.Add(this.labelVersion);
-            panelPrincipal.Controls.Add(this.appVersion);
-            panelPrincipal.Controls.Add(this.serverUrl);
         }
 
 
