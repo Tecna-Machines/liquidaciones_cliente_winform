@@ -45,29 +45,31 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(137, 24);
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            label1.Location = new Point(157, 11);
             label1.Name = "label1";
-            label1.Size = new Size(252, 28);
+            label1.Size = new Size(189, 28);
             label1.TabIndex = 2;
-            label1.Text = "SELECCIONAR QUINCENA";
+            label1.Text = "💰 Liquidacion 💰";
             // 
             // btnConfirmarPeriodo
             // 
-            btnConfirmarPeriodo.BackColor = Color.DarkOrange;
-            btnConfirmarPeriodo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnConfirmarPeriodo.BackColor = SystemColors.MenuHighlight;
+            btnConfirmarPeriodo.Cursor = Cursors.Hand;
+            btnConfirmarPeriodo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnConfirmarPeriodo.ForeColor = SystemColors.ButtonHighlight;
-            btnConfirmarPeriodo.Location = new Point(164, 235);
+            btnConfirmarPeriodo.Location = new Point(76, 149);
             btnConfirmarPeriodo.Name = "btnConfirmarPeriodo";
-            btnConfirmarPeriodo.Size = new Size(157, 38);
+            btnConfirmarPeriodo.Size = new Size(320, 38);
             btnConfirmarPeriodo.TabIndex = 3;
-            btnConfirmarPeriodo.Text = "CONFIRMAR PERIODO";
+            btnConfirmarPeriodo.Text = "EMPEZAR A LIQUIDAR";
             btnConfirmarPeriodo.UseVisualStyleBackColor = false;
             btnConfirmarPeriodo.Click += ClickBtnConfirmarPeriodo;
             // 
             // panelPeriodo
             // 
             panelPeriodo.Controls.Add(comboBoxYear);
+            panelPeriodo.Controls.Add(btnConfirmarPeriodo);
             panelPeriodo.Controls.Add(labelAnio);
             panelPeriodo.Controls.Add(comboBoxMeses);
             panelPeriodo.Controls.Add(periodoSegunQuincena);
@@ -77,14 +79,14 @@
             panelPeriodo.Controls.Add(btnPrimerQuincena);
             panelPeriodo.Location = new Point(3, 52);
             panelPeriodo.Name = "panelPeriodo";
-            panelPeriodo.Size = new Size(539, 177);
+            panelPeriodo.Size = new Size(539, 208);
             panelPeriodo.TabIndex = 5;
             // 
             // comboBoxYear
             // 
-            comboBoxYear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBoxYear.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             comboBoxYear.FormattingEnabled = true;
-            comboBoxYear.Location = new Point(300, 24);
+            comboBoxYear.Location = new Point(76, 96);
             comboBoxYear.Name = "comboBoxYear";
             comboBoxYear.Size = new Size(121, 23);
             comboBoxYear.TabIndex = 7;
@@ -92,18 +94,18 @@
             // labelAnio
             // 
             labelAnio.AutoSize = true;
-            labelAnio.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelAnio.Location = new Point(262, 28);
+            labelAnio.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelAnio.Location = new Point(18, 100);
             labelAnio.Name = "labelAnio";
-            labelAnio.Size = new Size(25, 15);
+            labelAnio.Size = new Size(36, 15);
             labelAnio.TabIndex = 6;
-            labelAnio.Text = "DE:";
+            labelAnio.Text = "AÑO:";
             // 
             // comboBoxMeses
             // 
-            comboBoxMeses.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBoxMeses.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             comboBoxMeses.FormattingEnabled = true;
-            comboBoxMeses.Location = new Point(128, 24);
+            comboBoxMeses.Location = new Point(76, 46);
             comboBoxMeses.Name = "comboBoxMeses";
             comboBoxMeses.Size = new Size(121, 23);
             comboBoxMeses.TabIndex = 5;
@@ -112,37 +114,39 @@
             // periodoSegunQuincena
             // 
             periodoSegunQuincena.AutoSize = true;
-            periodoSegunQuincena.Location = new Point(318, 140);
+            periodoSegunQuincena.Font = new Font("Cascadia Code SemiBold", 9F);
+            periodoSegunQuincena.Location = new Point(418, 101);
             periodoSegunQuincena.Name = "periodoSegunQuincena";
-            periodoSegunQuincena.Size = new Size(54, 15);
+            periodoSegunQuincena.Size = new Size(77, 16);
             periodoSegunQuincena.TabIndex = 4;
             periodoSegunQuincena.Text = "(00 al 00)";
             // 
             // periodoPrimerQuincena
             // 
             periodoPrimerQuincena.AutoSize = true;
-            periodoPrimerQuincena.Location = new Point(142, 139);
+            periodoPrimerQuincena.Font = new Font("Cascadia Code SemiBold", 9F);
+            periodoPrimerQuincena.Location = new Point(418, 49);
             periodoPrimerQuincena.Name = "periodoPrimerQuincena";
-            periodoPrimerQuincena.Size = new Size(54, 15);
+            periodoPrimerQuincena.Size = new Size(77, 16);
             periodoPrimerQuincena.TabIndex = 3;
             periodoPrimerQuincena.Text = "(00 al 00)";
             // 
             // labelFecha
             // 
             labelFecha.AutoSize = true;
-            labelFecha.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelFecha.Location = new Point(63, 28);
+            labelFecha.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelFecha.Location = new Point(18, 50);
             labelFecha.Name = "labelFecha";
-            labelFecha.Size = new Size(52, 15);
+            labelFecha.Size = new Size(34, 15);
             labelFecha.TabIndex = 2;
-            labelFecha.Text = "MES DE:";
+            labelFecha.Text = "MES:";
             // 
             // btnSegQuincena
             // 
-            btnSegQuincena.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSegQuincena.Location = new Point(269, 79);
+            btnSegQuincena.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnSegQuincena.Location = new Point(239, 86);
             btnSegQuincena.Name = "btnSegQuincena";
-            btnSegQuincena.Size = new Size(152, 45);
+            btnSegQuincena.Size = new Size(157, 45);
             btnSegQuincena.TabIndex = 1;
             btnSegQuincena.Text = "2da quincena";
             btnSegQuincena.UseVisualStyleBackColor = true;
@@ -151,8 +155,8 @@
             // btnPrimerQuincena
             // 
             btnPrimerQuincena.BackColor = SystemColors.ButtonHighlight;
-            btnPrimerQuincena.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPrimerQuincena.Location = new Point(91, 77);
+            btnPrimerQuincena.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnPrimerQuincena.Location = new Point(239, 33);
             btnPrimerQuincena.Name = "btnPrimerQuincena";
             btnPrimerQuincena.Size = new Size(157, 47);
             btnPrimerQuincena.TabIndex = 0;
@@ -165,7 +169,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panelPeriodo);
-            Controls.Add(btnConfirmarPeriodo);
             Controls.Add(label1);
             Name = "PeriodoLiquiComponent";
             Size = new Size(542, 284);

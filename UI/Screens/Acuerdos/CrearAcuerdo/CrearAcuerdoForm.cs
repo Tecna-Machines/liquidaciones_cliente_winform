@@ -253,7 +253,7 @@ namespace UI.Screens.CrearContrato
 
             public override string ToString()
             {
-                return $"{Codigo}:{Descripcion}";
+                return $"{Descripcion}";
             }
 
         }

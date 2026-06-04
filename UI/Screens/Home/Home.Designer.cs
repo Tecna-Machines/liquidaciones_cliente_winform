@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             panelPrincipal = new Panel();
+            pictureBoxLogo = new PictureBox();
             toolStrip1 = new ToolStrip();
             toolStripInicio = new ToolStripLabel();
             toolStripEmpleado = new ToolStripDropDownButton();
@@ -50,11 +51,10 @@
             barraDeEstado = new StatusStrip();
             toolStripStatusLabelServidor = new ToolStripStatusLabel();
             toolStripStatusVersion = new ToolStripStatusLabel();
-            pictureBoxLogo = new PictureBox();
             panelPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             toolStrip1.SuspendLayout();
             barraDeEstado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // panelPrincipal
@@ -65,8 +65,20 @@
             panelPrincipal.Size = new Size(587, 268);
             panelPrincipal.TabIndex = 4;
             // 
+            // pictureBoxLogo
+            // 
+            pictureBoxLogo.Image = Resources.Resources.akerlq_ia;
+            pictureBoxLogo.Location = new Point(22, 17);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(529, 248);
+            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxLogo.TabIndex = 0;
+            pictureBoxLogo.TabStop = false;
+            // 
             // toolStrip1
             // 
+            toolStrip1.BackColor = SystemColors.GradientInactiveCaption;
+            toolStrip1.Font = new Font("Segoe UI", 9F);
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripInicio, toolStripEmpleado, toolStripButtonAcuerdos, toolStripDropDownLiquidacion, toolStripDropDownCreditos, toolStripDias });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
@@ -76,6 +88,9 @@
             // 
             // toolStripInicio
             // 
+            toolStripInicio.BackColor = SystemColors.GradientInactiveCaption;
+            toolStripInicio.Font = new Font("Segoe UI", 9F);
+            toolStripInicio.ForeColor = SystemColors.ActiveCaptionText;
             toolStripInicio.Name = "toolStripInicio";
             toolStripInicio.Size = new Size(36, 22);
             toolStripInicio.Text = "Inicio";
@@ -83,8 +98,11 @@
             // 
             // toolStripEmpleado
             // 
+            toolStripEmpleado.BackColor = SystemColors.GradientInactiveCaption;
             toolStripEmpleado.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripEmpleado.DropDownItems.AddRange(new ToolStripItem[] { crearEmpleadoToolStripMenuItem });
+            toolStripEmpleado.Font = new Font("Segoe UI", 9F);
+            toolStripEmpleado.ForeColor = SystemColors.ActiveCaptionText;
             toolStripEmpleado.Image = (Image)resources.GetObject("toolStripEmpleado.Image");
             toolStripEmpleado.ImageTransparentColor = Color.Magenta;
             toolStripEmpleado.Name = "toolStripEmpleado";
@@ -94,14 +112,17 @@
             // crearEmpleadoToolStripMenuItem
             // 
             crearEmpleadoToolStripMenuItem.Name = "crearEmpleadoToolStripMenuItem";
-            crearEmpleadoToolStripMenuItem.Size = new Size(158, 22);
-            crearEmpleadoToolStripMenuItem.Text = "Crear empleado";
+            crearEmpleadoToolStripMenuItem.Size = new Size(165, 22);
+            crearEmpleadoToolStripMenuItem.Text = "Cargar empleado";
             crearEmpleadoToolStripMenuItem.Click += CrearEmpleadoToolStripMenuItem_Click;
             // 
             // toolStripButtonAcuerdos
             // 
+            toolStripButtonAcuerdos.BackColor = SystemColors.GradientInactiveCaption;
             toolStripButtonAcuerdos.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripButtonAcuerdos.DropDownItems.AddRange(new ToolStripItem[] { crearAcuerdoToolStripMenuItem, verAcuerdosToolStripMenuItem });
+            toolStripButtonAcuerdos.Font = new Font("Segoe UI", 9F);
+            toolStripButtonAcuerdos.ForeColor = SystemColors.ActiveCaptionText;
             toolStripButtonAcuerdos.Image = (Image)resources.GetObject("toolStripButtonAcuerdos.Image");
             toolStripButtonAcuerdos.ImageTransparentColor = Color.Magenta;
             toolStripButtonAcuerdos.Name = "toolStripButtonAcuerdos";
@@ -111,21 +132,24 @@
             // crearAcuerdoToolStripMenuItem
             // 
             crearAcuerdoToolStripMenuItem.Name = "crearAcuerdoToolStripMenuItem";
-            crearAcuerdoToolStripMenuItem.Size = new Size(148, 22);
-            crearAcuerdoToolStripMenuItem.Text = "Crear acuerdo";
+            crearAcuerdoToolStripMenuItem.Size = new Size(162, 22);
+            crearAcuerdoToolStripMenuItem.Text = "Cargar acuerdo";
             crearAcuerdoToolStripMenuItem.Click += CrearAcuerdoToolStripMenuItem_Click;
             // 
             // verAcuerdosToolStripMenuItem
             // 
             verAcuerdosToolStripMenuItem.Name = "verAcuerdosToolStripMenuItem";
-            verAcuerdosToolStripMenuItem.Size = new Size(148, 22);
-            verAcuerdosToolStripMenuItem.Text = "Ver acuerdos";
+            verAcuerdosToolStripMenuItem.Size = new Size(162, 22);
+            verAcuerdosToolStripMenuItem.Text = "Revisar acuerdos";
             verAcuerdosToolStripMenuItem.Click += VerAcuerdosToolStripMenuItem_Click;
             // 
             // toolStripDropDownLiquidacion
             // 
+            toolStripDropDownLiquidacion.BackColor = SystemColors.GradientInactiveCaption;
             toolStripDropDownLiquidacion.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripDropDownLiquidacion.DropDownItems.AddRange(new ToolStripItem[] { crearLiquidacionToolStripMenuItem, historialLiquidacionesToolStrip });
+            toolStripDropDownLiquidacion.Font = new Font("Segoe UI", 9F);
+            toolStripDropDownLiquidacion.ForeColor = SystemColors.ActiveCaptionText;
             toolStripDropDownLiquidacion.Image = (Image)resources.GetObject("toolStripDropDownLiquidacion.Image");
             toolStripDropDownLiquidacion.ImageTransparentColor = Color.Magenta;
             toolStripDropDownLiquidacion.Name = "toolStripDropDownLiquidacion";
@@ -135,21 +159,24 @@
             // crearLiquidacionToolStripMenuItem
             // 
             crearLiquidacionToolStripMenuItem.Name = "crearLiquidacionToolStripMenuItem";
-            crearLiquidacionToolStripMenuItem.Size = new Size(164, 22);
+            crearLiquidacionToolStripMenuItem.Size = new Size(182, 22);
             crearLiquidacionToolStripMenuItem.Text = "Crear liquidacion";
             crearLiquidacionToolStripMenuItem.Click += CrearLiquidacionToolStripMenuItem_Click;
             // 
             // historialLiquidacionesToolStrip
             // 
             historialLiquidacionesToolStrip.Name = "historialLiquidacionesToolStrip";
-            historialLiquidacionesToolStrip.Size = new Size(164, 22);
-            historialLiquidacionesToolStrip.Text = "Historial";
+            historialLiquidacionesToolStrip.Size = new Size(182, 22);
+            historialLiquidacionesToolStrip.Text = "Buscar liquidaciones";
             historialLiquidacionesToolStrip.Click += HistorialLiquidacionesToolStripMenuItem_Click;
             // 
             // toolStripDropDownCreditos
             // 
+            toolStripDropDownCreditos.BackColor = SystemColors.GradientInactiveCaption;
             toolStripDropDownCreditos.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripDropDownCreditos.DropDownItems.AddRange(new ToolStripItem[] { crearCreditoToolStripMenuItem, consultarToolStripMenuItem });
+            toolStripDropDownCreditos.Font = new Font("Segoe UI", 9F);
+            toolStripDropDownCreditos.ForeColor = SystemColors.ActiveCaptionText;
             toolStripDropDownCreditos.Image = (Image)resources.GetObject("toolStripDropDownCreditos.Image");
             toolStripDropDownCreditos.ImageTransparentColor = Color.Magenta;
             toolStripDropDownCreditos.Name = "toolStripDropDownCreditos";
@@ -159,21 +186,24 @@
             // crearCreditoToolStripMenuItem
             // 
             crearCreditoToolStripMenuItem.Name = "crearCreditoToolStripMenuItem";
-            crearCreditoToolStripMenuItem.Size = new Size(125, 22);
-            crearCreditoToolStripMenuItem.Text = "Crear";
+            crearCreditoToolStripMenuItem.Size = new Size(154, 22);
+            crearCreditoToolStripMenuItem.Text = "Cargar credito";
             crearCreditoToolStripMenuItem.Click += CrearCreditoToolStripMenuItem_Click;
             // 
             // consultarToolStripMenuItem
             // 
             consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            consultarToolStripMenuItem.Size = new Size(125, 22);
-            consultarToolStripMenuItem.Text = "Consultar";
+            consultarToolStripMenuItem.Size = new Size(154, 22);
+            consultarToolStripMenuItem.Text = "Buscar creditos";
             consultarToolStripMenuItem.Click += ConsultarToolStripMenuItem_Click;
             // 
             // toolStripDias
             // 
+            toolStripDias.BackColor = SystemColors.GradientInactiveCaption;
             toolStripDias.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripDias.DropDownItems.AddRange(new ToolStripItem[] { asistenciasToolStripMenuItem, feriadosToolStripFeriados });
+            toolStripDias.Font = new Font("Segoe UI", 9F);
+            toolStripDias.ForeColor = SystemColors.ActiveCaptionText;
             toolStripDias.Image = (Image)resources.GetObject("toolStripDias.Image");
             toolStripDias.ImageTransparentColor = Color.Magenta;
             toolStripDias.Name = "toolStripDias";
@@ -196,8 +226,8 @@
             // crearFeriadoToolStripMenuItem
             // 
             crearFeriadoToolStripMenuItem.Name = "crearFeriadoToolStripMenuItem";
-            crearFeriadoToolStripMenuItem.Size = new Size(142, 22);
-            crearFeriadoToolStripMenuItem.Text = "Crear feriado";
+            crearFeriadoToolStripMenuItem.Size = new Size(149, 22);
+            crearFeriadoToolStripMenuItem.Text = "Cargar feriado";
             crearFeriadoToolStripMenuItem.Click += CrearFeriadoToolStripMenuItem_Click;
             // 
             // barraDeEstado
@@ -227,16 +257,6 @@
             toolStripStatusVersion.Size = new Size(131, 17);
             toolStripStatusVersion.Text = "version del cliente: 0.0.0";
             // 
-            // pictureBox1
-            // 
-            pictureBoxLogo.Image = Resources.Resources.akerlq_ia;
-            pictureBoxLogo.Location = new Point(22, 17);
-            pictureBoxLogo.Name = "pictureBox1";
-            pictureBoxLogo.Size = new Size(529, 248);
-            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxLogo.TabIndex = 0;
-            pictureBoxLogo.TabStop = false;
-            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -254,11 +274,11 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio";
             panelPrincipal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             barraDeEstado.ResumeLayout(false);
             barraDeEstado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
