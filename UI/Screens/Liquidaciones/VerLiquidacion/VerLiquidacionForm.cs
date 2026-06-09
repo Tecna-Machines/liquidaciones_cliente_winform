@@ -33,6 +33,9 @@ namespace UI.Screens.VerLiquidacion
 
             SetDatosLiquidacion(liq);
             SetDetalleEmpleado(liq);
+
+            labelNetoInterno.Text = liq.Montos.EnNegro.ToString("C");
+            labelNetoOficial.Text = liq.Montos.EnBlanco.ToString("C");
         }
 
         private void SetDatosLiquidacion(GetLiquidacionByIdResponse liq)
