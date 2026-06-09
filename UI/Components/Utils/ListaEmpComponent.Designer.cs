@@ -42,11 +42,11 @@
             barraBusqueda.Name = "barraBusqueda";
             barraBusqueda.Size = new Size(197, 23);
             barraBusqueda.TabIndex = 0;
-            barraBusqueda.TextChanged += BuscarEmpUsandoNombre;
+            barraBusqueda.TextChanged += BuscarEmpUsandoNombreOApellido;
             // 
             // listEmp
             // 
-            listEmp.Columns.AddRange(new ColumnHeader[] { columnNombre, columApellido });
+            listEmp.Columns.AddRange(new ColumnHeader[] { columApellido,columnNombre });
             listEmp.FullRowSelect = true;
             listEmp.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             listEmp.Location = new Point(15, 58);
@@ -60,18 +60,20 @@
             // 
             // columnNombre
             // 
+            columnNombre.DisplayIndex = 1;
             columnNombre.Text = "Nombre";
             columnNombre.Width = 135;
             // 
             // columApellido
             // 
+            columApellido.DisplayIndex = 0;
             columApellido.Text = "Apellido";
             columApellido.Width = 135;
             // 
             // labelNombre
             // 
             labelNombre.AutoSize = true;
-            labelNombre.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelNombre.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             labelNombre.Location = new Point(15, 33);
             labelNombre.Name = "labelNombre";
             labelNombre.Size = new Size(57, 15);

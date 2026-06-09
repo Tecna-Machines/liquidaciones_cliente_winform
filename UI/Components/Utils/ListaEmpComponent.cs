@@ -52,8 +52,8 @@ namespace UI.Components.Utils
 
             lista.ForEach(emp =>
             {
-                var item = new ListViewItem(emp.Nombre);
-                item.SubItems.Add(emp.Apellido);
+                var item = new ListViewItem(emp.Apellido);
+                item.SubItems.Add(emp.Nombre);
                 item.SubItems.Add(emp.Dni);
 
                 if (emp.AcuerdoId.Length <= 0)
@@ -67,7 +67,7 @@ namespace UI.Components.Utils
 
         }
 
-        private void BuscarEmpUsandoNombre(object sender, EventArgs e)
+        private void BuscarEmpUsandoNombreOApellido(object sender, EventArgs e)
         {
             string nombreBuscado = this.barraBusqueda.Text.ToLower();
 

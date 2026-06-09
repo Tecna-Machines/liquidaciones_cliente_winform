@@ -2,6 +2,7 @@
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Utils;
+using System.Configuration;
 
 namespace UI.Screens.HacerLiquidacion
 {
@@ -15,12 +16,14 @@ namespace UI.Screens.HacerLiquidacion
 
             _controller = controller;
             _codigoLiquidacion = "-99999";
+
+            CargarMotivos();
         }
 
         //TODO: toda esta funcionalidad esta sucia y rebuscada , debe de refactorizarse (algun dia)
         private async void BtnAgregar_Click(object sender, EventArgs e)
         {
-            string concepto = textBoxConcepto.Text;
+            string concepto = comboBoxConcepto.Text;
             string montoStr = textBoxMonto.Text;
             decimal monto;
             bool esDecimal = decimal.TryParse(montoStr, out monto);
@@ -36,6 +39,20 @@ namespace UI.Screens.HacerLiquidacion
             Dialog.Success("se agrego el item!");
 
             this.Close();
+        }
+
+        private void CargarMotivos()
+        {
+            string motivos = ConfigurationManager.AppSettings["motivos_items_liquidacion"] ??throw new Exception("fallaron los conceptos de items");
+
+            if (string.IsNullOrWhiteSpace(motivos))
+                return;
+
+            comboBoxConcepto.Items.AddRange(
+                motivos.Split(',')
+                       .Select(x => x.Trim())
+                       .ToArray()
+            );
         }
 
         private int RecuperarTipo()
