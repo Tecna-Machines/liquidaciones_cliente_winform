@@ -61,16 +61,32 @@
             label1 = new Label();
             valorPagarNegro = new Label();
             valorPagarBlanco = new Label();
+            labelSubTotalRemunerativo = new Label();
+            groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
+            labelSubtotalDescuentosOficial = new Label();
+            groupBox3 = new GroupBox();
+            labelSubTotalNoRemunerativo = new Label();
+            groupBox4 = new GroupBox();
+            labelSubtotalRemunerativoInterno = new Label();
+            groupBox5 = new GroupBox();
+            labelSubTotalDescuentosInterno = new Label();
             panelDatos.SuspendLayout();
             groupBoxMontosPagar.SuspendLayout();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // listaConBuscador
             // 
-            listaConBuscador.Location = new Point(12, 12);
+            listaConBuscador.Dock = DockStyle.Left;
+            listaConBuscador.Location = new Point(0, 0);
             listaConBuscador.Name = "listaConBuscador";
             listaConBuscador.ServiceProvider = null;
-            listaConBuscador.Size = new Size(314, 682);
+            listaConBuscador.Size = new Size(314, 821);
             listaConBuscador.TabIndex = 0;
             // 
             // panelDatos
@@ -79,15 +95,16 @@
             panelDatos.Controls.Add(textBoxEmpleado);
             panelDatos.Controls.Add(label3);
             panelDatos.Controls.Add(textBoxPeriodo);
-            panelDatos.Location = new Point(314, 42);
+            panelDatos.Dock = DockStyle.Top;
+            panelDatos.Location = new Point(314, 0);
             panelDatos.Name = "panelDatos";
-            panelDatos.Size = new Size(1001, 109);
+            panelDatos.Size = new Size(1021, 109);
             panelDatos.TabIndex = 1;
             // 
             // label4
             // 
             label4.BackColor = SystemColors.ActiveCaption;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label4.Location = new Point(224, 35);
             label4.Name = "label4";
             label4.Padding = new Padding(3);
@@ -99,7 +116,7 @@
             // textBoxEmpleado
             // 
             textBoxEmpleado.BackColor = SystemColors.ButtonHighlight;
-            textBoxEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            textBoxEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             textBoxEmpleado.Location = new Point(224, 62);
             textBoxEmpleado.Name = "textBoxEmpleado";
             textBoxEmpleado.ReadOnly = true;
@@ -111,7 +128,7 @@
             // label3
             // 
             label3.BackColor = SystemColors.ActiveCaption;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label3.Location = new Point(18, 35);
             label3.Name = "label3";
             label3.Padding = new Padding(3);
@@ -123,7 +140,7 @@
             // textBoxPeriodo
             // 
             textBoxPeriodo.BackColor = SystemColors.ButtonHighlight;
-            textBoxPeriodo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            textBoxPeriodo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             textBoxPeriodo.Location = new Point(18, 62);
             textBoxPeriodo.Name = "textBoxPeriodo";
             textBoxPeriodo.ReadOnly = true;
@@ -135,8 +152,8 @@
             // labelRemuneraciones
             // 
             labelRemuneraciones.BackColor = SystemColors.ActiveCaption;
-            labelRemuneraciones.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            labelRemuneraciones.Location = new Point(314, 221);
+            labelRemuneraciones.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelRemuneraciones.Location = new Point(314, 172);
             labelRemuneraciones.Name = "labelRemuneraciones";
             labelRemuneraciones.Padding = new Padding(3);
             labelRemuneraciones.Size = new Size(670, 24);
@@ -146,8 +163,8 @@
             // labelRetenciones
             // 
             labelRetenciones.BackColor = SystemColors.ActiveCaption;
-            labelRetenciones.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            labelRetenciones.Location = new Point(314, 484);
+            labelRetenciones.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelRetenciones.Location = new Point(316, 473);
             labelRetenciones.Name = "labelRetenciones";
             labelRetenciones.Padding = new Padding(3);
             labelRetenciones.Size = new Size(667, 24);
@@ -160,7 +177,7 @@
             tablaDetalleEnBlanco.FullRowSelect = true;
             tablaDetalleEnBlanco.GridLines = true;
             tablaDetalleEnBlanco.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            tablaDetalleEnBlanco.Location = new Point(314, 248);
+            tablaDetalleEnBlanco.Location = new Point(314, 199);
             tablaDetalleEnBlanco.Name = "tablaDetalleEnBlanco";
             tablaDetalleEnBlanco.Size = new Size(670, 219);
             tablaDetalleEnBlanco.TabIndex = 6;
@@ -198,7 +215,7 @@
             tablaDetalleEnNegro.Columns.AddRange(new ColumnHeader[] { columDescrip, columnRemu, columnDescuento, columFecha });
             tablaDetalleEnNegro.FullRowSelect = true;
             tablaDetalleEnNegro.GridLines = true;
-            tablaDetalleEnNegro.Location = new Point(314, 511);
+            tablaDetalleEnNegro.Location = new Point(316, 502);
             tablaDetalleEnNegro.Name = "tablaDetalleEnNegro";
             tablaDetalleEnNegro.Size = new Size(667, 173);
             tablaDetalleEnNegro.TabIndex = 7;
@@ -229,8 +246,8 @@
             // labelaAcuerdo
             // 
             labelaAcuerdo.BackColor = SystemColors.GradientActiveCaption;
-            labelaAcuerdo.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            labelaAcuerdo.Location = new Point(997, 221);
+            labelaAcuerdo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelaAcuerdo.Location = new Point(997, 172);
             labelaAcuerdo.Name = "labelaAcuerdo";
             labelaAcuerdo.Padding = new Padding(3);
             labelaAcuerdo.Size = new Size(318, 24);
@@ -242,10 +259,10 @@
             tablaAcuerdo.Columns.AddRange(new ColumnHeader[] { columnItem, columValor });
             tablaAcuerdo.FullRowSelect = true;
             tablaAcuerdo.GridLines = true;
-            tablaAcuerdo.Location = new Point(997, 248);
+            tablaAcuerdo.Location = new Point(997, 199);
             tablaAcuerdo.Name = "tablaAcuerdo";
             tablaAcuerdo.Scrollable = false;
-            tablaAcuerdo.Size = new Size(318, 436);
+            tablaAcuerdo.Size = new Size(318, 476);
             tablaAcuerdo.TabIndex = 9;
             tablaAcuerdo.UseCompatibleStateImageBehavior = false;
             tablaAcuerdo.View = View.Details;
@@ -262,9 +279,9 @@
             // 
             // BtnRecalcular
             // 
-            BtnRecalcular.BackColor = SystemColors.GradientActiveCaption;
-            BtnRecalcular.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            BtnRecalcular.Location = new Point(751, 157);
+            BtnRecalcular.BackColor = Color.MediumSeaGreen;
+            BtnRecalcular.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            BtnRecalcular.Location = new Point(714, 115);
             BtnRecalcular.Name = "BtnRecalcular";
             BtnRecalcular.Size = new Size(109, 41);
             BtnRecalcular.TabIndex = 10;
@@ -277,8 +294,8 @@
             BtnSellar.BackColor = Color.Gold;
             BtnSellar.BackgroundImageLayout = ImageLayout.None;
             BtnSellar.Cursor = Cursors.Hand;
-            BtnSellar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            BtnSellar.Location = new Point(872, 157);
+            BtnSellar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            BtnSellar.Location = new Point(875, 115);
             BtnSellar.Name = "BtnSellar";
             BtnSellar.Size = new Size(109, 41);
             BtnSellar.TabIndex = 11;
@@ -288,24 +305,26 @@
             // 
             // btnMarcas
             // 
-            btnMarcas.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnMarcas.Location = new Point(431, 157);
+            btnMarcas.BackColor = SystemColors.GradientActiveCaption;
+            btnMarcas.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnMarcas.Location = new Point(314, 115);
             btnMarcas.Name = "btnMarcas";
             btnMarcas.Size = new Size(149, 41);
             btnMarcas.TabIndex = 17;
-            btnMarcas.Text = "CONSULTAR ASISTENCIAS";
-            btnMarcas.UseVisualStyleBackColor = true;
+            btnMarcas.Text = "VER MARCAS";
+            btnMarcas.UseVisualStyleBackColor = false;
             btnMarcas.Click += ClickBtnMarcas;
             // 
             // BtnItem
             // 
-            BtnItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            BtnItem.Location = new Point(592, 157);
+            BtnItem.BackColor = SystemColors.GradientActiveCaption;
+            BtnItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            BtnItem.Location = new Point(515, 115);
             BtnItem.Name = "BtnItem";
             BtnItem.Size = new Size(147, 41);
             BtnItem.TabIndex = 18;
             BtnItem.Text = "AGREGAR ITEM";
-            BtnItem.UseVisualStyleBackColor = true;
+            BtnItem.UseVisualStyleBackColor = false;
             BtnItem.Click += ClickBtnAgregarItem;
             // 
             // groupBoxMontosPagar
@@ -314,21 +333,21 @@
             groupBoxMontosPagar.Controls.Add(label1);
             groupBoxMontosPagar.Controls.Add(valorPagarNegro);
             groupBoxMontosPagar.Controls.Add(valorPagarBlanco);
-            groupBoxMontosPagar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBoxMontosPagar.Location = new Point(314, 690);
+            groupBoxMontosPagar.Font = new Font("Consolas", 13F, FontStyle.Bold);
+            groupBoxMontosPagar.Location = new Point(682, 681);
             groupBoxMontosPagar.Name = "groupBoxMontosPagar";
-            groupBoxMontosPagar.Size = new Size(328, 112);
+            groupBoxMontosPagar.Size = new Size(633, 112);
             groupBoxMontosPagar.TabIndex = 19;
             groupBoxMontosPagar.TabStop = false;
-            groupBoxMontosPagar.Text = "Pago neto:";
+            groupBoxMontosPagar.Text = "Pagar al empleado:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.ForeColor = Color.Tomato;
-            label2.Location = new Point(200, 64);
+            label2.ForeColor = SystemColors.Highlight;
+            label2.Location = new Point(237, 64);
             label2.Name = "label2";
-            label2.Size = new Size(81, 21);
+            label2.Size = new Size(80, 22);
             label2.TabIndex = 3;
             label2.Text = "INTERNO";
             // 
@@ -338,37 +357,162 @@
             label1.ForeColor = Color.SeaGreen;
             label1.Location = new Point(52, 64);
             label1.Name = "label1";
-            label1.Size = new Size(69, 21);
+            label1.Size = new Size(80, 22);
             label1.TabIndex = 2;
             label1.Text = "OFICIAL";
             // 
             // valorPagarNegro
             // 
             valorPagarNegro.AutoSize = true;
-            valorPagarNegro.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            valorPagarNegro.ForeColor = Color.Tomato;
-            valorPagarNegro.Location = new Point(178, 34);
+            valorPagarNegro.Font = new Font("Consolas", 14F, FontStyle.Bold);
+            valorPagarNegro.ForeColor = SystemColors.Highlight;
+            valorPagarNegro.Location = new Point(217, 34);
             valorPagarNegro.Name = "valorPagarNegro";
-            valorPagarNegro.Size = new Size(124, 28);
+            valorPagarNegro.Size = new Size(120, 22);
             valorPagarNegro.TabIndex = 1;
             valorPagarNegro.Text = "$ 2.000.000";
             // 
             // valorPagarBlanco
             // 
             valorPagarBlanco.AutoSize = true;
-            valorPagarBlanco.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            valorPagarBlanco.Font = new Font("Consolas", 14F, FontStyle.Bold);
             valorPagarBlanco.ForeColor = Color.SeaGreen;
-            valorPagarBlanco.Location = new Point(24, 34);
+            valorPagarBlanco.Location = new Point(32, 34);
             valorPagarBlanco.Name = "valorPagarBlanco";
-            valorPagarBlanco.Size = new Size(124, 28);
+            valorPagarBlanco.Size = new Size(120, 22);
             valorPagarBlanco.TabIndex = 0;
             valorPagarBlanco.Text = "$ 8.000.000";
+            // 
+            // labelSubTotalRemunerativo
+            // 
+            labelSubTotalRemunerativo.AutoSize = true;
+            labelSubTotalRemunerativo.Dock = DockStyle.Right;
+            labelSubTotalRemunerativo.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            labelSubTotalRemunerativo.Location = new Point(56, 19);
+            labelSubTotalRemunerativo.Name = "labelSubTotalRemunerativo";
+            labelSubTotalRemunerativo.Size = new Size(105, 14);
+            labelSubTotalRemunerativo.TabIndex = 21;
+            labelSubTotalRemunerativo.Text = "$ 1.000.000,00";
+            labelSubTotalRemunerativo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(labelSubTotalRemunerativo);
+            groupBox1.FlatStyle = FlatStyle.Flat;
+            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            groupBox1.Location = new Point(314, 428);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(164, 42);
+            groupBox1.TabIndex = 22;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Subtotal Remunerativo:";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(labelSubtotalDescuentosOficial);
+            groupBox2.FlatStyle = FlatStyle.Flat;
+            groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            groupBox2.Location = new Point(496, 428);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(164, 42);
+            groupBox2.TabIndex = 23;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Subtotal Descuentos:";
+            // 
+            // labelSubtotalDescuentosOficial
+            // 
+            labelSubtotalDescuentosOficial.AutoSize = true;
+            labelSubtotalDescuentosOficial.Dock = DockStyle.Right;
+            labelSubtotalDescuentosOficial.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            labelSubtotalDescuentosOficial.Location = new Point(56, 19);
+            labelSubtotalDescuentosOficial.Name = "labelSubtotalDescuentosOficial";
+            labelSubtotalDescuentosOficial.Size = new Size(105, 14);
+            labelSubtotalDescuentosOficial.TabIndex = 21;
+            labelSubtotalDescuentosOficial.Text = "$ 1.000.000,00";
+            labelSubtotalDescuentosOficial.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(labelSubTotalNoRemunerativo);
+            groupBox3.FlatStyle = FlatStyle.Flat;
+            groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            groupBox3.Location = new Point(682, 428);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(179, 42);
+            groupBox3.TabIndex = 24;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Subtotal No Remunerativo:";
+            // 
+            // labelSubTotalNoRemunerativo
+            // 
+            labelSubTotalNoRemunerativo.AutoSize = true;
+            labelSubTotalNoRemunerativo.Dock = DockStyle.Right;
+            labelSubTotalNoRemunerativo.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            labelSubTotalNoRemunerativo.Location = new Point(71, 19);
+            labelSubTotalNoRemunerativo.Name = "labelSubTotalNoRemunerativo";
+            labelSubTotalNoRemunerativo.Size = new Size(105, 14);
+            labelSubTotalNoRemunerativo.TabIndex = 21;
+            labelSubTotalNoRemunerativo.Text = "$ 1.000.000,00";
+            labelSubTotalNoRemunerativo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(labelSubtotalRemunerativoInterno);
+            groupBox4.FlatStyle = FlatStyle.Flat;
+            groupBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            groupBox4.Location = new Point(314, 681);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(164, 42);
+            groupBox4.TabIndex = 25;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Subtotal Remunerativo:";
+            // 
+            // labelSubtotalRemunerativoInterno
+            // 
+            labelSubtotalRemunerativoInterno.AutoSize = true;
+            labelSubtotalRemunerativoInterno.Dock = DockStyle.Right;
+            labelSubtotalRemunerativoInterno.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            labelSubtotalRemunerativoInterno.Location = new Point(56, 19);
+            labelSubtotalRemunerativoInterno.Name = "labelSubtotalRemunerativoInterno";
+            labelSubtotalRemunerativoInterno.Size = new Size(105, 14);
+            labelSubtotalRemunerativoInterno.TabIndex = 21;
+            labelSubtotalRemunerativoInterno.Text = "$ 1.000.000,00";
+            labelSubtotalRemunerativoInterno.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(labelSubTotalDescuentosInterno);
+            groupBox5.FlatStyle = FlatStyle.Flat;
+            groupBox5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            groupBox5.Location = new Point(498, 681);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(164, 42);
+            groupBox5.TabIndex = 26;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Subtotal Descuentos:";
+            // 
+            // labelSubTotalDescuentosInterno
+            // 
+            labelSubTotalDescuentosInterno.AutoSize = true;
+            labelSubTotalDescuentosInterno.Dock = DockStyle.Right;
+            labelSubTotalDescuentosInterno.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            labelSubTotalDescuentosInterno.Location = new Point(56, 19);
+            labelSubTotalDescuentosInterno.Name = "labelSubTotalDescuentosInterno";
+            labelSubTotalDescuentosInterno.Size = new Size(105, 14);
+            labelSubTotalDescuentosInterno.TabIndex = 21;
+            labelSubTotalDescuentosInterno.Text = "$ 1.000.000,00";
+            labelSubTotalDescuentosInterno.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // CrearLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1335, 821);
+            Controls.Add(groupBox5);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
             Controls.Add(groupBoxMontosPagar);
             Controls.Add(BtnItem);
             Controls.Add(btnMarcas);
@@ -391,6 +535,16 @@
             panelDatos.PerformLayout();
             groupBoxMontosPagar.ResumeLayout(false);
             groupBoxMontosPagar.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -431,5 +585,15 @@
         private Label label3;
         private Label label4;
         private TextBox textBoxEmpleado;
+        private Label labelSubTotalRemunerativo;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private Label labelSubtotalDescuentosOficial;
+        private GroupBox groupBox3;
+        private Label labelSubTotalNoRemunerativo;
+        private GroupBox groupBox4;
+        private Label labelSubtotalRemunerativoInterno;
+        private GroupBox groupBox5;
+        private Label labelSubTotalDescuentosInterno;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BLL.Controllers;
 using BLL.Enums;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetById;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using Microsoft.Extensions.DependencyInjection;
@@ -165,6 +166,14 @@ namespace UI.Screens.HacerLiquidacion
 
             valorPagarBlanco.Text = liquidacion.Montos.EnBlanco.ToString("C");
             valorPagarNegro.Text = liquidacion.Montos.EnNegro.ToString("C");
+
+            labelSubTotalDescuentosInterno.Text = liquidacion.ObtenerDescuentosInterno().ToString("C");
+            labelSubtotalRemunerativoInterno.Text = liquidacion.ObtenerBrutoInterno().ToString("C");
+
+
+            labelSubtotalDescuentosOficial.Text = liquidacion.ObtenerRetencionesOficiales().ToString("C");
+            labelSubTotalRemunerativo.Text = liquidacion.ObtenerBrutoOficial().ToString("C");
+            labelSubTotalNoRemunerativo.Text = liquidacion.ObtenerNoRemunerativo().ToString("C");
 
             _codigoLiquidacion = liquidacion.Codigo;
         }

@@ -78,6 +78,10 @@
             label9 = new Label();
             labelNetoOficial = new Label();
             labelNetoInterno = new Label();
+            label10 = new Label();
+            labelPagado = new Label();
+            label11 = new Label();
+            labelPercibir = new Label();
             SuspendLayout();
             // 
             // textBoxCodigoLiq
@@ -301,7 +305,7 @@
             // 
             btnPagos.BackColor = Color.Honeydew;
             btnPagos.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnPagos.Location = new Point(709, 697);
+            btnPagos.Location = new Point(709, 704);
             btnPagos.Name = "btnPagos";
             btnPagos.Size = new Size(315, 58);
             btnPagos.TabIndex = 42;
@@ -317,7 +321,7 @@
             tablaAcuerdo.Location = new Point(709, 157);
             tablaAcuerdo.Name = "tablaAcuerdo";
             tablaAcuerdo.Scrollable = false;
-            tablaAcuerdo.Size = new Size(318, 436);
+            tablaAcuerdo.Size = new Size(318, 422);
             tablaAcuerdo.TabIndex = 48;
             tablaAcuerdo.UseCompatibleStateImageBehavior = false;
             tablaAcuerdo.View = View.Details;
@@ -483,21 +487,67 @@
             labelNetoOficial.TabIndex = 53;
             labelNetoOficial.Text = "$ 1.000.000,00";
             // 
-            // label1NetoInterno
+            // labelNetoInterno
             // 
             labelNetoInterno.AutoSize = true;
             labelNetoInterno.Font = new Font("Consolas", 11F, FontStyle.Bold);
             labelNetoInterno.Location = new Point(80, 585);
-            labelNetoInterno.Name = "label1NetoInterno";
+            labelNetoInterno.Name = "labelNetoInterno";
             labelNetoInterno.Size = new Size(120, 18);
             labelNetoInterno.TabIndex = 54;
             labelNetoInterno.Text = "$ 1.000.000,00";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Consolas", 11F, FontStyle.Bold);
+            label10.Location = new Point(26, 775);
+            label10.Name = "label10";
+            label10.Size = new Size(64, 18);
+            label10.TabIndex = 55;
+            label10.Text = "PAGADO:";
+            // 
+            // labelPagado
+            // 
+            labelPagado.AutoSize = true;
+            labelPagado.Font = new Font("Consolas", 11F, FontStyle.Bold);
+            labelPagado.ForeColor = Color.SeaGreen;
+            labelPagado.Location = new Point(96, 775);
+            labelPagado.Name = "labelPagado";
+            labelPagado.Size = new Size(120, 18);
+            labelPagado.TabIndex = 56;
+            labelPagado.Text = "$ 1.000.000,00";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Consolas", 11F, FontStyle.Bold);
+            label11.Location = new Point(237, 775);
+            label11.Name = "label11";
+            label11.Size = new Size(96, 18);
+            label11.TabIndex = 57;
+            label11.Text = "A PERCIBIR:";
+            // 
+            // labelPercibir
+            // 
+            labelPercibir.AutoSize = true;
+            labelPercibir.Font = new Font("Consolas", 11F, FontStyle.Bold);
+            labelPercibir.ForeColor = Color.SteelBlue;
+            labelPercibir.Location = new Point(339, 775);
+            labelPercibir.Name = "labelPercibir";
+            labelPercibir.Size = new Size(120, 18);
+            labelPercibir.TabIndex = 58;
+            labelPercibir.Text = "$ 1.000.000,00";
             // 
             // VerLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1050, 770);
+            ClientSize = new Size(1050, 808);
+            Controls.Add(labelPercibir);
+            Controls.Add(label11);
+            Controls.Add(labelPagado);
+            Controls.Add(label10);
             Controls.Add(labelNetoInterno);
             Controls.Add(labelNetoOficial);
             Controls.Add(label9);
@@ -533,7 +583,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "VerLiquidacionForm";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "VerLiquidacionForm";
             ResumeLayout(false);
             PerformLayout();
@@ -589,5 +639,9 @@
         private Label label9;
         private Label labelNetoOficial;
         private Label labelNetoInterno;
+        private Label label10;
+        private Label labelPagado;
+        private Label label11;
+        private Label labelPercibir;
     }
 }
