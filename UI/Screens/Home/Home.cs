@@ -5,6 +5,7 @@ using UI.Screens.CrearEmpleado;
 using UI.Screens.Creditos.BuscarCredito;
 using UI.Screens.Feriados.CrearFeriado;
 using UI.Screens.Liquidaciones.HistorialLiquidaciones;
+using UI.Screens.Marcas;
 using UI.Screens.VerContratos;
 using UI.Screens.VerCreditos;
 
@@ -20,8 +21,8 @@ namespace UI
             string apiBaseUrl = ConfigurationManager.AppSettings["server"] ?? "error";
             string clientVersion = ConfigurationManager.AppSettings["client_version"] ?? "error";
 
-            toolStripStatusLabelServidor.Text = "Servidor: "+apiBaseUrl;
-            toolStripStatusVersion.Text = "Version del cliente: "+clientVersion;
+            toolStripStatusLabelServidor.Text = "Servidor: " + apiBaseUrl;
+            toolStripStatusVersion.Text = "Version del cliente: " + clientVersion;
 
         }
 
@@ -85,6 +86,12 @@ namespace UI
         {
             var formFeriado = Program.ServiceProvider.GetRequiredService<CrearFeriadoForm>();
             formFeriado.ShowDialog();
+        }
+
+        private void asistenciasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formMarcas = Program.ServiceProvider.GetRequiredService<MarcasForm>();
+            formMarcas.Show();
         }
     }
 }

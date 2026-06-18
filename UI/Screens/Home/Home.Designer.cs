@@ -213,14 +213,15 @@
             // asistenciasToolStripMenuItem
             // 
             asistenciasToolStripMenuItem.Name = "asistenciasToolStripMenuItem";
-            asistenciasToolStripMenuItem.Size = new Size(132, 22);
+            asistenciasToolStripMenuItem.Size = new Size(180, 22);
             asistenciasToolStripMenuItem.Text = "Asistencias";
+            asistenciasToolStripMenuItem.Click += asistenciasToolStripMenuItem_Click;
             // 
             // feriadosToolStripFeriados
             // 
             feriadosToolStripFeriados.DropDownItems.AddRange(new ToolStripItem[] { crearFeriadoToolStripMenuItem });
             feriadosToolStripFeriados.Name = "feriadosToolStripFeriados";
-            feriadosToolStripFeriados.Size = new Size(132, 22);
+            feriadosToolStripFeriados.Size = new Size(180, 22);
             feriadosToolStripFeriados.Text = "Feriados";
             // 
             // crearFeriadoToolStripMenuItem

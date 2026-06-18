@@ -10,5 +10,6 @@
                                             TimeSpan DebeEntrar,
                                             decimal HsExtra,
                                             decimal HsComunes,
+                                            decimal HsDoble,
                                             decimal HsTotales);
 }

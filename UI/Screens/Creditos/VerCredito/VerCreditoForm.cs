@@ -62,6 +62,12 @@ namespace UI.Screens.Creditos.VerCredito
             item.SubItems.Add(c.Monto.ToString("C"));
             item.SubItems.Add(GenerarStringQuincena(c.Quincena));
 
+            if(c.Pago is null)
+            {
+                item.SubItems.Add("SIN PAGAR");
+                return item;
+            }
+
             if (string.IsNullOrEmpty(c.Pago!.CodigoLiquidacion))
             {
                 item.SubItems.Add("SIN PAGAR");

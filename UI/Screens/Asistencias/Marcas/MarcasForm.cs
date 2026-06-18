@@ -57,25 +57,25 @@ namespace UI.Screens.Marcas
                 // Si hay una marca
                 if (marcaDelDia != null)
                 {
-                    item = new ListViewItem(marcaDelDia.Ingreso.ToString("dd/MM/yyyy"));
+                    item = new ListViewItem(marcaDelDia.Ingreso.ToString("dd/MM/yyyy - dddd"));
                     item.SubItems.Add(marcaDelDia.Ingreso.ToString("HH:mm"));
                     item.SubItems.Add(marcaDelDia.Egreso.ToString("HH:mm"));
                     item.SubItems.Add(marcaDelDia.HsComunes.ToString("F2"));
                     item.SubItems.Add(marcaDelDia.HsExtra.ToString("F2"));
+                    item.SubItems.Add(marcaDelDia.HsDoble.ToString("F2"));
                     item.SubItems.Add(marcaDelDia.HsTotales.ToString("F2"));
-                    item.SubItems.Add(marcaDelDia.Ingreso.ToString("dddd"));
 
                 }
                 else
                 {
 
-                    item = new ListViewItem(dia.ToString("dd/MM/yyyy"));
+                    item = new ListViewItem(dia.ToString("dd/MM/yyyy - dddd"));
                     item.SubItems.Add(esFinde ? "" : "FALTA"); // Ingreso vacío
                     item.SubItems.Add(""); // Egreso vacío
-                    item.SubItems.Add(""); // Horas trabajadas vacías
+                    item.SubItems.Add(""); // Horas comunes vacías
                     item.SubItems.Add(""); // Horas extra vacías
                     item.SubItems.Add(""); // Horas doble vacías
-                    item.SubItems.Add(dia.ToString("dddd"));
+                    item.SubItems.Add(""); // Horas totales vacías
                     item.BackColor = Color.Red;
 
                 }
@@ -95,6 +95,18 @@ namespace UI.Screens.Marcas
         {
             _crearMarcaForm.SetDni(_dni ?? "error");
             _crearMarcaForm.ShowDialog();
+        }
+
+        private async void BtnBuscarMarcas_Click(object sender, EventArgs e)
+        {
+            var dni = textBoxDniEmp.Text;
+            var quincena = int.Parse(textBoxQuincena.Text);
+            var mes = int.Parse(textBoxMes.Text);
+            var anio = int.Parse(textBoxAnio.Text);
+
+            var marcaRequest = new MarcasRequest(dni, quincena, mes, anio);
+
+            await GetAsistenciasYCargarTabla(marcaRequest);
         }
     }
 }
