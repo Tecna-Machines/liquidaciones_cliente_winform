@@ -24,7 +24,7 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
             textBoxMonto.Text = item.Monto.ToString("C2");
             textBoxFecha.Text = item.Fecha.ToString("dd/MM/yyyy HH:mm");
 
-            if (item.EsAutomatico)
+            if (!item.EsAutomatico)
             {
                 BtnAnular.Enabled = false;
                 textBoxEsAutomatico.Text = "los items generados por el sistema no pueden ser borrados";

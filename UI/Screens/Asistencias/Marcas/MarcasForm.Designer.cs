@@ -56,9 +56,9 @@
             tablaMarcas.Dock = DockStyle.Right;
             tablaMarcas.FullRowSelect = true;
             tablaMarcas.GridLines = true;
-            tablaMarcas.Location = new Point(381, 24);
+            tablaMarcas.Location = new Point(389, 24);
             tablaMarcas.Name = "tablaMarcas";
-            tablaMarcas.Size = new Size(566, 515);
+            tablaMarcas.Size = new Size(625, 515);
             tablaMarcas.TabIndex = 20;
             tablaMarcas.UseCompatibleStateImageBehavior = false;
             tablaMarcas.View = View.Details;
@@ -66,7 +66,7 @@
             // columDate
             // 
             columDate.Text = "FECHA";
-            columDate.Width = 120;
+            columDate.Width = 150;
             // 
             // columnEnt
             // 
@@ -102,14 +102,14 @@
             labelMarcas.Location = new Point(0, 0);
             labelMarcas.Name = "labelMarcas";
             labelMarcas.Padding = new Padding(3);
-            labelMarcas.Size = new Size(947, 24);
+            labelMarcas.Size = new Size(1014, 24);
             labelMarcas.TabIndex = 19;
             labelMarcas.Text = "Marcas del periodo";
             // 
             // btnAgregarMarca
             // 
             btnAgregarMarca.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnAgregarMarca.Location = new Point(102, 191);
+            btnAgregarMarca.Location = new Point(86, 191);
             btnAgregarMarca.Name = "btnAgregarMarca";
             btnAgregarMarca.Size = new Size(273, 56);
             btnAgregarMarca.TabIndex = 21;
@@ -121,7 +121,7 @@
             // 
             BtnBuscarMarcas.BackColor = SystemColors.ActiveCaption;
             BtnBuscarMarcas.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            BtnBuscarMarcas.Location = new Point(102, 118);
+            BtnBuscarMarcas.Location = new Point(86, 118);
             BtnBuscarMarcas.Name = "BtnBuscarMarcas";
             BtnBuscarMarcas.Size = new Size(273, 56);
             BtnBuscarMarcas.TabIndex = 22;
@@ -131,7 +131,7 @@
             // 
             // textBoxDniEmp
             // 
-            textBoxDniEmp.Location = new Point(102, 46);
+            textBoxDniEmp.Location = new Point(86, 46);
             textBoxDniEmp.Name = "textBoxDniEmp";
             textBoxDniEmp.Size = new Size(273, 23);
             textBoxDniEmp.TabIndex = 23;
@@ -139,7 +139,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(56, 54);
+            label1.Location = new Point(40, 54);
             label1.Name = "label1";
             label1.Size = new Size(30, 15);
             label1.TabIndex = 24;
@@ -148,7 +148,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(18, 84);
+            label2.Location = new Point(2, 84);
             label2.Name = "label2";
             label2.Size = new Size(59, 15);
             label2.TabIndex = 25;
@@ -157,7 +157,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(176, 84);
+            label3.Location = new Point(160, 84);
             label3.Name = "label3";
             label3.Size = new Size(32, 15);
             label3.TabIndex = 26;
@@ -166,7 +166,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(276, 84);
+            label4.Location = new Point(260, 84);
             label4.Name = "label4";
             label4.Size = new Size(30, 15);
             label4.TabIndex = 27;
@@ -174,21 +174,21 @@
             // 
             // textBoxQuincena
             // 
-            textBoxQuincena.Location = new Point(102, 80);
+            textBoxQuincena.Location = new Point(86, 80);
             textBoxQuincena.Name = "textBoxQuincena";
             textBoxQuincena.Size = new Size(56, 23);
             textBoxQuincena.TabIndex = 28;
             // 
             // textBoxMes
             // 
-            textBoxMes.Location = new Point(214, 80);
+            textBoxMes.Location = new Point(198, 80);
             textBoxMes.Name = "textBoxMes";
             textBoxMes.Size = new Size(56, 23);
             textBoxMes.TabIndex = 29;
             // 
             // textBoxAnio
             // 
-            textBoxAnio.Location = new Point(319, 80);
+            textBoxAnio.Location = new Point(303, 80);
             textBoxAnio.Name = "textBoxAnio";
             textBoxAnio.Size = new Size(56, 23);
             textBoxAnio.TabIndex = 30;
@@ -197,7 +197,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(947, 539);
+            ClientSize = new Size(1014, 539);
             Controls.Add(textBoxAnio);
             Controls.Add(textBoxMes);
             Controls.Add(textBoxQuincena);
