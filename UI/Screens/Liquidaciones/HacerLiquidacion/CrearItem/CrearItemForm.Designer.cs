@@ -53,7 +53,7 @@
             // 
             comboBoxTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTipo.FormattingEnabled = true;
-            comboBoxTipo.Items.AddRange(new object[] { "Remunerativo (oficial)", "Remunerativo (interno)", "No Remunerativo (oficial)", "Descuento (interno)" });
+            comboBoxTipo.Items.AddRange(new object[] { "Remunerativo (oficial)", "Remunerativo (interno)", "No Remunerativo (oficial)", "Descuento (interno)", "Descuento (oficial)" });
             comboBoxTipo.Location = new Point(141, 134);
             comboBoxTipo.Name = "comboBoxTipo";
             comboBoxTipo.Size = new Size(277, 23);

@@ -31,8 +31,8 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
                         break;
                 }
 
-                item.SubItems.Add(colRetencion);
                 item.SubItems.Add(colRemunerativo);
+                item.SubItems.Add(colRetencion);
                 item.SubItems.Add(colNoRemunerativo);
 
                 item.SubItems.Add(it.Fecha.ToString("dd/MM/yyyy"));
@@ -48,7 +48,13 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
 
         public static void SetTablaDetalleEnNegro(GetLiquidacionByIdResponse liq, ListView tablaNegro)
         {
-            var itemsNegro = liq.Items.Where(it => !it.EsEnBlanco);
+            int ANULADO = 1;
+
+            var itemsNegro = liq.Items
+                .Where(it => !it.EsEnBlanco)
+                .Where(it => it.Estado != ANULADO)
+                .OrderBy(it => (TipoItemLiquidacion)it.TipoItem == TipoItemLiquidacion.Descuento ? 1 : 0)
+                .ThenBy(it => it.Fecha);
 
             foreach (var it in itemsNegro)
             {
@@ -71,20 +77,10 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
 
                 item.SubItems.Add(colRemunerativo);
                 item.SubItems.Add(colDescuento);
-
                 item.SubItems.Add(it.Fecha.ToString("dd/MM/yyyy"));
 
-
-                int ANULADO = 1;
-
-                if (it.Estado != ANULADO)
-                {
-                    tablaNegro.Items.Add(item);
-                }
-
+                tablaNegro.Items.Add(item);
             }
-
-
         }
 
 

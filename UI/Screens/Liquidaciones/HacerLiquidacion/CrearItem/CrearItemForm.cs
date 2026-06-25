@@ -79,6 +79,12 @@ namespace UI.Screens.HacerLiquidacion
                 return (int)TipoItemLiquidacion.Descuento;
             }
 
+            if (indexBoxSeleccionado == 4)
+            {
+                return (int)TipoItemLiquidacion.Descuento;
+            }
+
+
             throw new InvalidCastException();
         }
 
@@ -90,6 +96,7 @@ namespace UI.Screens.HacerLiquidacion
             if (indexBoxSeleccionado == 1) return false;
             if (indexBoxSeleccionado == 2) return true;
             if (indexBoxSeleccionado == 3) return false;
+            if (indexBoxSeleccionado == 4) return true;
 
             throw new InvalidCastException();
         }

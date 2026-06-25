@@ -39,8 +39,8 @@
             labelRetenciones = new Label();
             tablaDetalleEnBlanco = new ListView();
             columnDescripcion = new ColumnHeader();
-            columnDesc = new ColumnHeader();
             columnRemunerativo = new ColumnHeader();
+            columnDesc = new ColumnHeader();
             columnNORemu = new ColumnHeader();
             columnFecha = new ColumnHeader();
             tablaDetalleEnNegro = new ListView();
@@ -61,23 +61,20 @@
             label1 = new Label();
             valorPagarNegro = new Label();
             valorPagarBlanco = new Label();
-            labelSubTotalRemunerativo = new Label();
-            groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
-            labelSubtotalDescuentosOficial = new Label();
-            groupBox3 = new GroupBox();
-            labelSubTotalNoRemunerativo = new Label();
-            groupBox4 = new GroupBox();
-            labelSubtotalRemunerativoInterno = new Label();
-            groupBox5 = new GroupBox();
-            labelSubTotalDescuentosInterno = new Label();
+            lvTotales = new ListView();
+            Totales = new ColumnHeader();
+            remuneraciones = new ColumnHeader();
+            descuentos = new ColumnHeader();
+            noRemunerativo = new ColumnHeader();
+            fecha = new ColumnHeader();
+            lvTotalesInterno = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
             panelDatos.SuspendLayout();
             groupBoxMontosPagar.SuspendLayout();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
-            groupBox4.SuspendLayout();
-            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // listaConBuscador
@@ -164,7 +161,7 @@
             // 
             labelRetenciones.BackColor = SystemColors.ActiveCaption;
             labelRetenciones.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            labelRetenciones.Location = new Point(316, 473);
+            labelRetenciones.Location = new Point(316, 460);
             labelRetenciones.Name = "labelRetenciones";
             labelRetenciones.Padding = new Padding(3);
             labelRetenciones.Size = new Size(667, 24);
@@ -173,7 +170,7 @@
             // 
             // tablaDetalleEnBlanco
             // 
-            tablaDetalleEnBlanco.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnDesc, columnRemunerativo, columnNORemu, columnFecha });
+            tablaDetalleEnBlanco.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnRemunerativo, columnDesc, columnNORemu, columnFecha });
             tablaDetalleEnBlanco.FullRowSelect = true;
             tablaDetalleEnBlanco.GridLines = true;
             tablaDetalleEnBlanco.HeaderStyle = ColumnHeaderStyle.Nonclickable;
@@ -188,36 +185,40 @@
             // columnDescripcion
             // 
             columnDescripcion.Text = "Conceptos";
-            columnDescripcion.Width = 190;
-            // 
-            // columnDesc
-            // 
-            columnDesc.Text = "Descuentos";
-            columnDesc.Width = 90;
+            columnDescripcion.Width = 210;
             // 
             // columnRemunerativo
             // 
             columnRemunerativo.Text = "Remuneraciones";
-            columnRemunerativo.Width = 100;
+            columnRemunerativo.TextAlign = HorizontalAlignment.Right;
+            columnRemunerativo.Width = 110;
+            // 
+            // columnDesc
+            // 
+            columnDesc.Text = "Descuentos";
+            columnDesc.TextAlign = HorizontalAlignment.Right;
+            columnDesc.Width = 110;
             // 
             // columnNORemu
             // 
             columnNORemu.Text = "No Remunerativo";
-            columnNORemu.Width = 120;
+            columnNORemu.TextAlign = HorizontalAlignment.Right;
+            columnNORemu.Width = 110;
             // 
             // columnFecha
             // 
             columnFecha.Text = "Fecha";
-            columnFecha.Width = 120;
+            columnFecha.TextAlign = HorizontalAlignment.Right;
+            columnFecha.Width = 100;
             // 
             // tablaDetalleEnNegro
             // 
             tablaDetalleEnNegro.Columns.AddRange(new ColumnHeader[] { columDescrip, columnRemu, columnDescuento, columFecha });
             tablaDetalleEnNegro.FullRowSelect = true;
             tablaDetalleEnNegro.GridLines = true;
-            tablaDetalleEnNegro.Location = new Point(316, 502);
+            tablaDetalleEnNegro.Location = new Point(316, 489);
             tablaDetalleEnNegro.Name = "tablaDetalleEnNegro";
-            tablaDetalleEnNegro.Size = new Size(667, 173);
+            tablaDetalleEnNegro.Size = new Size(667, 186);
             tablaDetalleEnNegro.TabIndex = 7;
             tablaDetalleEnNegro.UseCompatibleStateImageBehavior = false;
             tablaDetalleEnNegro.View = View.Details;
@@ -226,22 +227,25 @@
             // columDescrip
             // 
             columDescrip.Text = "Conceptos";
-            columDescrip.Width = 300;
+            columDescrip.Width = 210;
             // 
             // columnRemu
             // 
             columnRemu.Text = "Remunerativo";
-            columnRemu.Width = 90;
+            columnRemu.TextAlign = HorizontalAlignment.Right;
+            columnRemu.Width = 110;
             // 
             // columnDescuento
             // 
             columnDescuento.Text = "Descuentos";
-            columnDescuento.Width = 90;
+            columnDescuento.TextAlign = HorizontalAlignment.Right;
+            columnDescuento.Width = 110;
             // 
             // columFecha
             // 
             columFecha.Text = "Fecha";
-            columFecha.Width = 120;
+            columFecha.TextAlign = HorizontalAlignment.Right;
+            columFecha.Width = 100;
             // 
             // labelaAcuerdo
             // 
@@ -334,9 +338,9 @@
             groupBoxMontosPagar.Controls.Add(valorPagarNegro);
             groupBoxMontosPagar.Controls.Add(valorPagarBlanco);
             groupBoxMontosPagar.Font = new Font("Consolas", 13F, FontStyle.Bold);
-            groupBoxMontosPagar.Location = new Point(682, 681);
+            groupBoxMontosPagar.Location = new Point(314, 722);
             groupBoxMontosPagar.Name = "groupBoxMontosPagar";
-            groupBoxMontosPagar.Size = new Size(633, 112);
+            groupBoxMontosPagar.Size = new Size(670, 71);
             groupBoxMontosPagar.TabIndex = 19;
             groupBoxMontosPagar.TabStop = false;
             groupBoxMontosPagar.Text = "Pagar al empleado:";
@@ -345,7 +349,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.Highlight;
-            label2.Location = new Point(237, 64);
+            label2.Location = new Point(431, 34);
             label2.Name = "label2";
             label2.Size = new Size(80, 22);
             label2.TabIndex = 3;
@@ -355,7 +359,7 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.SeaGreen;
-            label1.Location = new Point(52, 64);
+            label1.Location = new Point(173, 34);
             label1.Name = "label1";
             label1.Size = new Size(80, 22);
             label1.TabIndex = 2;
@@ -366,7 +370,7 @@
             valorPagarNegro.AutoSize = true;
             valorPagarNegro.Font = new Font("Consolas", 14F, FontStyle.Bold);
             valorPagarNegro.ForeColor = SystemColors.Highlight;
-            valorPagarNegro.Location = new Point(217, 34);
+            valorPagarNegro.Location = new Point(274, 34);
             valorPagarNegro.Name = "valorPagarNegro";
             valorPagarNegro.Size = new Size(120, 22);
             valorPagarNegro.TabIndex = 1;
@@ -383,136 +387,95 @@
             valorPagarBlanco.TabIndex = 0;
             valorPagarBlanco.Text = "$ 8.000.000";
             // 
-            // labelSubTotalRemunerativo
+            // lvTotales
             // 
-            labelSubTotalRemunerativo.AutoSize = true;
-            labelSubTotalRemunerativo.Dock = DockStyle.Right;
-            labelSubTotalRemunerativo.Font = new Font("Consolas", 9F, FontStyle.Bold);
-            labelSubTotalRemunerativo.Location = new Point(56, 19);
-            labelSubTotalRemunerativo.Name = "labelSubTotalRemunerativo";
-            labelSubTotalRemunerativo.Size = new Size(105, 14);
-            labelSubTotalRemunerativo.TabIndex = 21;
-            labelSubTotalRemunerativo.Text = "$ 1.000.000,00";
-            labelSubTotalRemunerativo.TextAlign = ContentAlignment.MiddleCenter;
+            lvTotales.BorderStyle = BorderStyle.FixedSingle;
+            lvTotales.Columns.AddRange(new ColumnHeader[] { Totales, remuneraciones, descuentos, noRemunerativo, fecha });
+            lvTotales.Enabled = false;
+            lvTotales.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            lvTotales.FullRowSelect = true;
+            lvTotales.HeaderStyle = ColumnHeaderStyle.None;
+            lvTotales.LabelWrap = false;
+            lvTotales.Location = new Point(314, 420);
+            lvTotales.MultiSelect = false;
+            lvTotales.Name = "lvTotales";
+            lvTotales.Scrollable = false;
+            lvTotales.Size = new Size(670, 35);
+            lvTotales.TabIndex = 31;
+            lvTotales.UseCompatibleStateImageBehavior = false;
+            lvTotales.View = View.Details;
             // 
-            // groupBox1
+            // Totales
             // 
-            groupBox1.Controls.Add(labelSubTotalRemunerativo);
-            groupBox1.FlatStyle = FlatStyle.Flat;
-            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox1.Location = new Point(314, 428);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(164, 42);
-            groupBox1.TabIndex = 22;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Subtotal Remunerativo:";
+            Totales.Width = 210;
             // 
-            // groupBox2
+            // remuneraciones
             // 
-            groupBox2.Controls.Add(labelSubtotalDescuentosOficial);
-            groupBox2.FlatStyle = FlatStyle.Flat;
-            groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox2.Location = new Point(496, 428);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(164, 42);
-            groupBox2.TabIndex = 23;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Subtotal Descuentos:";
+            remuneraciones.TextAlign = HorizontalAlignment.Right;
+            remuneraciones.Width = 110;
             // 
-            // labelSubtotalDescuentosOficial
+            // descuentos
             // 
-            labelSubtotalDescuentosOficial.AutoSize = true;
-            labelSubtotalDescuentosOficial.Dock = DockStyle.Right;
-            labelSubtotalDescuentosOficial.Font = new Font("Consolas", 9F, FontStyle.Bold);
-            labelSubtotalDescuentosOficial.Location = new Point(56, 19);
-            labelSubtotalDescuentosOficial.Name = "labelSubtotalDescuentosOficial";
-            labelSubtotalDescuentosOficial.Size = new Size(105, 14);
-            labelSubtotalDescuentosOficial.TabIndex = 21;
-            labelSubtotalDescuentosOficial.Text = "$ 1.000.000,00";
-            labelSubtotalDescuentosOficial.TextAlign = ContentAlignment.MiddleCenter;
+            descuentos.TextAlign = HorizontalAlignment.Right;
+            descuentos.Width = 110;
             // 
-            // groupBox3
+            // noRemunerativo
             // 
-            groupBox3.Controls.Add(labelSubTotalNoRemunerativo);
-            groupBox3.FlatStyle = FlatStyle.Flat;
-            groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox3.Location = new Point(682, 428);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(179, 42);
-            groupBox3.TabIndex = 24;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Subtotal No Remunerativo:";
+            noRemunerativo.TextAlign = HorizontalAlignment.Right;
+            noRemunerativo.Width = 110;
             // 
-            // labelSubTotalNoRemunerativo
+            // fecha
             // 
-            labelSubTotalNoRemunerativo.AutoSize = true;
-            labelSubTotalNoRemunerativo.Dock = DockStyle.Right;
-            labelSubTotalNoRemunerativo.Font = new Font("Consolas", 9F, FontStyle.Bold);
-            labelSubTotalNoRemunerativo.Location = new Point(71, 19);
-            labelSubTotalNoRemunerativo.Name = "labelSubTotalNoRemunerativo";
-            labelSubTotalNoRemunerativo.Size = new Size(105, 14);
-            labelSubTotalNoRemunerativo.TabIndex = 21;
-            labelSubTotalNoRemunerativo.Text = "$ 1.000.000,00";
-            labelSubTotalNoRemunerativo.TextAlign = ContentAlignment.MiddleCenter;
+            fecha.Width = 100;
             // 
-            // groupBox4
+            // lvTotalesInterno
             // 
-            groupBox4.Controls.Add(labelSubtotalRemunerativoInterno);
-            groupBox4.FlatStyle = FlatStyle.Flat;
-            groupBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox4.Location = new Point(314, 681);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(164, 42);
-            groupBox4.TabIndex = 25;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Subtotal Remunerativo:";
+            lvTotalesInterno.BorderStyle = BorderStyle.FixedSingle;
+            lvTotalesInterno.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
+            lvTotalesInterno.Enabled = false;
+            lvTotalesInterno.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            lvTotalesInterno.FullRowSelect = true;
+            lvTotalesInterno.HeaderStyle = ColumnHeaderStyle.None;
+            lvTotalesInterno.LabelWrap = false;
+            lvTotalesInterno.Location = new Point(316, 678);
+            lvTotalesInterno.MultiSelect = false;
+            lvTotalesInterno.Name = "lvTotalesInterno";
+            lvTotalesInterno.Scrollable = false;
+            lvTotalesInterno.Size = new Size(667, 35);
+            lvTotalesInterno.TabIndex = 32;
+            lvTotalesInterno.UseCompatibleStateImageBehavior = false;
+            lvTotalesInterno.View = View.Details;
             // 
-            // labelSubtotalRemunerativoInterno
+            // columnHeader1
             // 
-            labelSubtotalRemunerativoInterno.AutoSize = true;
-            labelSubtotalRemunerativoInterno.Dock = DockStyle.Right;
-            labelSubtotalRemunerativoInterno.Font = new Font("Consolas", 9F, FontStyle.Bold);
-            labelSubtotalRemunerativoInterno.Location = new Point(56, 19);
-            labelSubtotalRemunerativoInterno.Name = "labelSubtotalRemunerativoInterno";
-            labelSubtotalRemunerativoInterno.Size = new Size(105, 14);
-            labelSubtotalRemunerativoInterno.TabIndex = 21;
-            labelSubtotalRemunerativoInterno.Text = "$ 1.000.000,00";
-            labelSubtotalRemunerativoInterno.TextAlign = ContentAlignment.MiddleCenter;
+            columnHeader1.Width = 210;
             // 
-            // groupBox5
+            // columnHeader2
             // 
-            groupBox5.Controls.Add(labelSubTotalDescuentosInterno);
-            groupBox5.FlatStyle = FlatStyle.Flat;
-            groupBox5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox5.Location = new Point(498, 681);
-            groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(164, 42);
-            groupBox5.TabIndex = 26;
-            groupBox5.TabStop = false;
-            groupBox5.Text = "Subtotal Descuentos:";
+            columnHeader2.TextAlign = HorizontalAlignment.Right;
+            columnHeader2.Width = 110;
             // 
-            // labelSubTotalDescuentosInterno
+            // columnHeader3
             // 
-            labelSubTotalDescuentosInterno.AutoSize = true;
-            labelSubTotalDescuentosInterno.Dock = DockStyle.Right;
-            labelSubTotalDescuentosInterno.Font = new Font("Consolas", 9F, FontStyle.Bold);
-            labelSubTotalDescuentosInterno.Location = new Point(56, 19);
-            labelSubTotalDescuentosInterno.Name = "labelSubTotalDescuentosInterno";
-            labelSubTotalDescuentosInterno.Size = new Size(105, 14);
-            labelSubTotalDescuentosInterno.TabIndex = 21;
-            labelSubTotalDescuentosInterno.Text = "$ 1.000.000,00";
-            labelSubTotalDescuentosInterno.TextAlign = ContentAlignment.MiddleCenter;
+            columnHeader3.TextAlign = HorizontalAlignment.Right;
+            columnHeader3.Width = 110;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.TextAlign = HorizontalAlignment.Right;
+            columnHeader4.Width = 110;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Width = 100;
             // 
             // CrearLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1335, 821);
-            Controls.Add(groupBox5);
-            Controls.Add(groupBox4);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(lvTotalesInterno);
+            Controls.Add(lvTotales);
             Controls.Add(groupBoxMontosPagar);
             Controls.Add(BtnItem);
             Controls.Add(btnMarcas);
@@ -535,16 +498,6 @@
             panelDatos.PerformLayout();
             groupBoxMontosPagar.ResumeLayout(false);
             groupBoxMontosPagar.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
-            groupBox5.ResumeLayout(false);
-            groupBox5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -585,15 +538,17 @@
         private Label label3;
         private Label label4;
         private TextBox textBoxEmpleado;
-        private Label labelSubTotalRemunerativo;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private Label labelSubtotalDescuentosOficial;
-        private GroupBox groupBox3;
-        private Label labelSubTotalNoRemunerativo;
-        private GroupBox groupBox4;
-        private Label labelSubtotalRemunerativoInterno;
-        private GroupBox groupBox5;
-        private Label labelSubTotalDescuentosInterno;
+        private ListView lvTotales;
+        private ColumnHeader Totales;
+        private ColumnHeader descuentos;
+        private ColumnHeader remuneraciones;
+        private ColumnHeader noRemunerativo;
+        private ColumnHeader fecha;
+        private ListView lvTotalesInterno;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
     }
 }

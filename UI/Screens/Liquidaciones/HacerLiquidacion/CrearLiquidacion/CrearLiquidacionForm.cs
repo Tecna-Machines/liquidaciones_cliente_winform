@@ -160,6 +160,9 @@ namespace UI.Screens.HacerLiquidacion
         {
             RemoverLiquidacionDePantalla();
 
+            _codigoLiquidacion = liquidacion.Codigo;
+
+
             TablaAcuerdoLiquidacionForm.SetTablaAcuerdo(liquidacion, tablaAcuerdo);
             TablaDetalleLiquidacionForm.SetTablaDetalleEnBlanco(liquidacion, tablaDetalleEnBlanco);
             TablaDetalleLiquidacionForm.SetTablaDetalleEnNegro(liquidacion, tablaDetalleEnNegro);
@@ -167,15 +170,30 @@ namespace UI.Screens.HacerLiquidacion
             valorPagarBlanco.Text = liquidacion.Montos.EnBlanco.ToString("C");
             valorPagarNegro.Text = liquidacion.Montos.EnNegro.ToString("C");
 
-            labelSubTotalDescuentosInterno.Text = liquidacion.ObtenerDescuentosInterno().ToString("C");
-            labelSubtotalRemunerativoInterno.Text = liquidacion.ObtenerBrutoInterno().ToString("C");
+
+            // Footer de totales oficial
+            lvTotales.Items.Clear();
+
+            var itOficial = new ListViewItem("Totales:");
+
+            itOficial.SubItems.Add(liquidacion.ObtenerBrutoOficial().ToString("C"));          // $ remun
+            itOficial.SubItems.Add(liquidacion.ObtenerRetencionesOficiales().ToString("C")); // $ descuentos
+            itOficial.SubItems.Add(liquidacion.ObtenerNoRemunerativo().ToString("C"));        // $ no remu
+            itOficial.SubItems.Add(string.Empty);                                             // vacío
+
+            lvTotales.Items.Add(itOficial);
 
 
-            labelSubtotalDescuentosOficial.Text = liquidacion.ObtenerRetencionesOficiales().ToString("C");
-            labelSubTotalRemunerativo.Text = liquidacion.ObtenerBrutoOficial().ToString("C");
-            labelSubTotalNoRemunerativo.Text = liquidacion.ObtenerNoRemunerativo().ToString("C");
+            // Footer de totales interno
+            lvTotalesInterno.Items.Clear();
 
-            _codigoLiquidacion = liquidacion.Codigo;
+            var itInterno = new ListViewItem("Totales:");
+
+            itInterno.SubItems.Add(liquidacion.ObtenerBrutoInterno().ToString("C"));          // $ remun
+            itInterno.SubItems.Add(liquidacion.ObtenerDescuentosInterno().ToString("C")); // $ descuentos
+            itInterno.SubItems.Add(string.Empty);                                             // vacío
+
+            lvTotalesInterno.Items.Add(itInterno);
         }
 
 

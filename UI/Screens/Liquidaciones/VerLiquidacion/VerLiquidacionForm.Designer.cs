@@ -82,6 +82,8 @@
             labelPagado = new Label();
             label11 = new Label();
             labelPercibir = new Label();
+            label13 = new Label();
+            labelPorPagar = new Label();
             SuspendLayout();
             // 
             // textBoxCodigoLiq
@@ -501,7 +503,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            label10.Location = new Point(26, 775);
+            label10.Location = new Point(26, 772);
             label10.Name = "label10";
             label10.Size = new Size(64, 18);
             label10.TabIndex = 55;
@@ -512,7 +514,7 @@
             labelPagado.AutoSize = true;
             labelPagado.Font = new Font("Consolas", 11F, FontStyle.Bold);
             labelPagado.ForeColor = Color.SeaGreen;
-            labelPagado.Location = new Point(96, 775);
+            labelPagado.Location = new Point(100, 772);
             labelPagado.Name = "labelPagado";
             labelPagado.Size = new Size(120, 18);
             labelPagado.TabIndex = 56;
@@ -522,7 +524,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            label11.Location = new Point(237, 775);
+            label11.Location = new Point(458, 772);
             label11.Name = "label11";
             label11.Size = new Size(96, 18);
             label11.TabIndex = 57;
@@ -533,17 +535,40 @@
             labelPercibir.AutoSize = true;
             labelPercibir.Font = new Font("Consolas", 11F, FontStyle.Bold);
             labelPercibir.ForeColor = Color.SteelBlue;
-            labelPercibir.Location = new Point(339, 775);
+            labelPercibir.Location = new Point(564, 772);
             labelPercibir.Name = "labelPercibir";
             labelPercibir.Size = new Size(120, 18);
             labelPercibir.TabIndex = 58;
             labelPercibir.Text = "$ 1.000.000,00";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Consolas", 11F, FontStyle.Bold);
+            label13.Location = new Point(230, 772);
+            label13.Name = "label13";
+            label13.Size = new Size(88, 18);
+            label13.TabIndex = 59;
+            label13.Text = "POR PAGAR:";
+            // 
+            // labelPorPagar
+            // 
+            labelPorPagar.AutoSize = true;
+            labelPorPagar.Font = new Font("Consolas", 11F, FontStyle.Bold);
+            labelPorPagar.ForeColor = Color.Crimson;
+            labelPorPagar.Location = new Point(328, 772);
+            labelPorPagar.Name = "labelPorPagar";
+            labelPorPagar.Size = new Size(120, 18);
+            labelPorPagar.TabIndex = 60;
+            labelPorPagar.Text = "$ 1.000.000,00";
             // 
             // VerLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1050, 808);
+            Controls.Add(labelPorPagar);
+            Controls.Add(label13);
             Controls.Add(labelPercibir);
             Controls.Add(label11);
             Controls.Add(labelPagado);
@@ -643,5 +668,7 @@
         private Label labelPagado;
         private Label label11;
         private Label labelPercibir;
+        private Label label13;
+        private Label labelPorPagar;
     }
 }

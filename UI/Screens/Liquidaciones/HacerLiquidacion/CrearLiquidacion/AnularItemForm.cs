@@ -24,15 +24,16 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
             textBoxMonto.Text = item.Monto.ToString("C2");
             textBoxFecha.Text = item.Fecha.ToString("dd/MM/yyyy HH:mm");
 
-            if (!item.EsAutomatico)
-            {
-                BtnAnular.Enabled = false;
-                textBoxEsAutomatico.Text = "los items generados por el sistema no pueden ser borrados";
-            }
-            else
+            if (item.EsAutomatico)
             {
                 BtnAnular.Enabled = true;
                 textBoxEsAutomatico.Text = "este item puede anularse";
+  
+            }
+            else
+            {
+                BtnAnular.Enabled = false;
+                textBoxEsAutomatico.Text = "los items generados por el sistema no pueden ser borrados";
             }
         }
 
@@ -43,7 +44,7 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
 
         private void BtnAnular_Click(object sender, EventArgs e)
         {
-            if (_item!.EsAutomatico)
+            if (!_item!.EsAutomatico)
             {
                 Dialog.Error("no se puede");
                 return;
