@@ -1,4 +1,5 @@
 ﻿using BLL.Controllers;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetById;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using System.Diagnostics;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
@@ -43,6 +44,9 @@ namespace UI.Screens.VerLiquidacion
             labelPercibir.Text = montoPercibir.ToString("C");
             labelPorPagar.Text = montoPorPagar.ToString("C");
             labelPagado.Text = montoPagado.ToString("C");
+
+            SetTotalesOficial(liq);
+            SetTotalesInternol(liq);
         }
 
         private void SetDatosLiquidacion(GetLiquidacionByIdResponse liq)
@@ -130,6 +134,37 @@ namespace UI.Screens.VerLiquidacion
             _formPagos.SetLiquidacion(textBoxCodigoLiq.Text);
             _formPagos.SetFormPadre(this);
             _formPagos.ShowDialog();
+        }
+
+        private void SetTotalesOficial(GetLiquidacionByIdResponse liquidacion)
+        {
+            // Footer de totales oficial
+            lvTotalesOficial.Items.Clear();
+
+
+            var itOficial = new ListViewItem("Totales:");
+
+            itOficial.SubItems.Add(liquidacion.ObtenerBrutoOficial().ToString("C"));          // $ remun
+            itOficial.SubItems.Add(liquidacion.ObtenerRetencionesOficiales().ToString("C")); // $ descuentos
+            itOficial.SubItems.Add(liquidacion.ObtenerNoRemunerativo().ToString("C"));        // $ no remu
+            itOficial.SubItems.Add(string.Empty);                                             // vacío
+
+            lvTotalesOficial.Items.Add(itOficial);
+        }
+
+        private void SetTotalesInternol(GetLiquidacionByIdResponse liquidacion)
+        {
+            // Footer de totales oficial
+            lvTotalesInterno.Items.Clear();
+
+
+            var itOficial = new ListViewItem("Totales:");
+
+            itOficial.SubItems.Add(liquidacion.ObtenerBrutoInterno().ToString("C"));          // $ remun
+            itOficial.SubItems.Add(liquidacion.ObtenerDescuentosInterno().ToString("C")); // $ descuentos
+            itOficial.SubItems.Add(string.Empty);                                             // vacío
+
+            lvTotalesInterno.Items.Add(itOficial);
         }
     }
 

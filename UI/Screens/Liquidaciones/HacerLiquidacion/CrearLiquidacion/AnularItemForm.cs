@@ -28,7 +28,7 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
             {
                 BtnAnular.Enabled = true;
                 textBoxEsAutomatico.Text = "este item puede anularse";
-  
+
             }
             else
             {

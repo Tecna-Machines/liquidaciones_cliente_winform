@@ -1,8 +1,8 @@
 ﻿using BLL.Controllers;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
+using System.Configuration;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Utils;
-using System.Configuration;
 
 namespace UI.Screens.HacerLiquidacion
 {
@@ -43,7 +43,7 @@ namespace UI.Screens.HacerLiquidacion
 
         private void CargarMotivos()
         {
-            string motivos = ConfigurationManager.AppSettings["motivos_items_liquidacion"] ??throw new Exception("fallaron los conceptos de items");
+            string motivos = ConfigurationManager.AppSettings["motivos_items_liquidacion"] ?? throw new Exception("fallaron los conceptos de items");
 
             if (string.IsNullOrWhiteSpace(motivos))
                 return;

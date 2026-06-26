@@ -15,7 +15,7 @@
                                 decimal Monto,
                                 DateTime Creacion,
                                 QuincenaCuota Quincena,
-                                PagoCuota Pago);
+                                PagoCuota? Pago);
 
     public record QuincenaCuota(int Quincena, int Mes, int Anio);
 

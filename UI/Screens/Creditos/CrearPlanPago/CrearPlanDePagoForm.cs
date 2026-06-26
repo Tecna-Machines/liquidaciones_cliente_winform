@@ -1,7 +1,6 @@
 ﻿using BLL.Controllers;
 using DAL.Service.ApiLiquidacion.Features.Creditos.CrearPlanPago;
 using DAL.Service.ApiLiquidacion.Features.Creditos.GetById;
-using System.Data;
 using UI.Utils;
 
 namespace UI.Screens.Creditos.CrearPlanPago
@@ -31,7 +30,16 @@ namespace UI.Screens.Creditos.CrearPlanPago
                 return -1;
             }
 
-            return _credito.Cuotas.Where(c => c.Pago.CodigoLiquidacion == "").Sum(c => c.Monto);
+            decimal montoDevuelto = 0;
+
+            foreach (var cuota in _credito.Cuotas)
+            {
+                if (cuota.Pago is not null)
+                {
+                    montoDevuelto += cuota.Monto;
+                }
+            }
+            return _credito.Devolver - montoDevuelto;
         }
 
         private void ComboBoxCantCuotas_SelectedValueChanged(object sender, EventArgs e)

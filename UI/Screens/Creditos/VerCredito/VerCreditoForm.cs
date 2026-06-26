@@ -62,7 +62,7 @@ namespace UI.Screens.Creditos.VerCredito
             item.SubItems.Add(c.Monto.ToString("C"));
             item.SubItems.Add(GenerarStringQuincena(c.Quincena));
 
-            if(c.Pago is null)
+            if (c.Pago is null)
             {
                 item.SubItems.Add("SIN PAGAR");
                 return item;
@@ -162,25 +162,31 @@ namespace UI.Screens.Creditos.VerCredito
             textCuotaQuincena.Text = GenerarStringQuincena(cuota.Quincena);
             VerificarSiEstaPaga(cuota);
 
-            textBoxCodigoLiquidacion.Text = cuota.Pago.CodigoLiquidacion;
+
         }
 
         public void VerificarSiEstaPaga(CuotaResponse c)
         {
-            if (string.IsNullOrEmpty(c.Pago.CodigoLiquidacion))
+
+            if (c.Pago is not null)
             {
+                textBoxCodigoLiquidacion.Text = c.Pago.CodigoLiquidacion;
+
+                textCuotaPagada.Text = "PAGADA";
+                textCuotaPagada.ForeColor = Color.DarkOliveGreen;
+                BtnPosponerCuota.Enabled = false;
+                BtnVerLiquidacion.Enabled = true;
+            }
+            else
+            {
+                textBoxCodigoLiquidacion.Text = "sin pagar";
+
                 textCuotaPagada.Text = "SIN PAGAR";
                 textCuotaPagada.ForeColor = Color.Red;
                 BtnVerLiquidacion.Enabled = false;
                 BtnPosponerCuota.Enabled = true;
 
-                return;
             }
-
-            textCuotaPagada.Text = "PAGADA";
-            textCuotaPagada.ForeColor = Color.DarkOliveGreen;
-            BtnPosponerCuota.Enabled = false;
-            BtnVerLiquidacion.Enabled = true;
 
         }
 

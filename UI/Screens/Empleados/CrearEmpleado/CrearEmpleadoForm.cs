@@ -39,7 +39,7 @@ namespace UI.Screens.CrearEmpleado
             DateTime alta = fechaAlta.Value;
             DateTime nacimiento = fechaNacimiento.Value;
 
-            return new CrearEmpleadoRequest(dni,cuil, nombres, apellidos, ingreso, nacimiento, alta);
+            return new CrearEmpleadoRequest(dni, cuil, nombres, apellidos, ingreso, nacimiento, alta);
         }
 
         private async Task GuardarEmpleado(CrearEmpleadoRequest req)

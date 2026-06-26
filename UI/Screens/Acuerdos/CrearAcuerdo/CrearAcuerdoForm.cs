@@ -172,9 +172,9 @@ namespace UI.Screens.CrearContrato
         private void BtnAgregarAdicional_Click(object sender, EventArgs e)
         {
             var formAcuerdo = new CrearAdicionalForm(this);
-           
-           formAcuerdo.SetModoExtraplus();                
-           formAcuerdo.ShowDialog();
+
+            formAcuerdo.SetModoExtraplus();
+            formAcuerdo.ShowDialog();
         }
 
         public void AgregarAdicional(AdicionalesRequest adicional)

@@ -66,8 +66,8 @@
             columFecha = new ColumnHeader();
             tablaDetalleBlanco = new ListView();
             columnDescripcion = new ColumnHeader();
-            columnDesc = new ColumnHeader();
             columnRemunerativo = new ColumnHeader();
+            columnDesc = new ColumnHeader();
             columnNORemu = new ColumnHeader();
             columnFecha = new ColumnHeader();
             labelRetenciones = new Label();
@@ -84,6 +84,18 @@
             labelPercibir = new Label();
             label13 = new Label();
             labelPorPagar = new Label();
+            lvTotalesOficial = new ListView();
+            Totales = new ColumnHeader();
+            remuneraciones = new ColumnHeader();
+            descuentos = new ColumnHeader();
+            noRemunerativo = new ColumnHeader();
+            fecha = new ColumnHeader();
+            lvTotalesInterno = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
             SuspendLayout();
             // 
             // textBoxCodigoLiq
@@ -215,9 +227,9 @@
             // 
             label12.BackColor = SystemColors.ActiveCaption;
             label12.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label12.Location = new Point(26, 613);
+            label12.Location = new Point(26, 675);
             label12.Name = "label12";
-            label12.Size = new Size(665, 23);
+            label12.Size = new Size(670, 23);
             label12.TabIndex = 23;
             label12.Text = "Pagos";
             // 
@@ -226,9 +238,9 @@
             tablaPagos.Columns.AddRange(new ColumnHeader[] { columId, columnMonto, columnHeader3, columnDescrip, columnModo, columnContab });
             tablaPagos.FullRowSelect = true;
             tablaPagos.GridLines = true;
-            tablaPagos.Location = new Point(26, 639);
+            tablaPagos.Location = new Point(26, 699);
             tablaPagos.Name = "tablaPagos";
-            tablaPagos.Size = new Size(665, 123);
+            tablaPagos.Size = new Size(670, 156);
             tablaPagos.TabIndex = 37;
             tablaPagos.UseCompatibleStateImageBehavior = false;
             tablaPagos.View = View.Details;
@@ -266,8 +278,9 @@
             // BtnDescargarRecibo
             // 
             BtnDescargarRecibo.BackColor = SystemColors.GradientActiveCaption;
+            BtnDescargarRecibo.Cursor = Cursors.Hand;
             BtnDescargarRecibo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            BtnDescargarRecibo.Location = new Point(709, 606);
+            BtnDescargarRecibo.Location = new Point(711, 695);
             BtnDescargarRecibo.Name = "BtnDescargarRecibo";
             BtnDescargarRecibo.Size = new Size(315, 58);
             BtnDescargarRecibo.TabIndex = 38;
@@ -297,7 +310,7 @@
             // progressBar
             // 
             progressBar.BackColor = SystemColors.AppWorkspace;
-            progressBar.Location = new Point(323, 447);
+            progressBar.Location = new Point(294, 250);
             progressBar.Name = "progressBar";
             progressBar.Size = new Size(493, 51);
             progressBar.TabIndex = 41;
@@ -306,8 +319,9 @@
             // btnPagos
             // 
             btnPagos.BackColor = Color.Honeydew;
+            btnPagos.Cursor = Cursors.HSplit;
             btnPagos.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnPagos.Location = new Point(709, 704);
+            btnPagos.Location = new Point(711, 793);
             btnPagos.Name = "btnPagos";
             btnPagos.Size = new Size(315, 58);
             btnPagos.TabIndex = 42;
@@ -354,9 +368,9 @@
             tablaDetalleNegro.Columns.AddRange(new ColumnHeader[] { columDescrip, columnRemu, columnDescuento, columFecha });
             tablaDetalleNegro.FullRowSelect = true;
             tablaDetalleNegro.GridLines = true;
-            tablaDetalleNegro.Location = new Point(26, 411);
+            tablaDetalleNegro.Location = new Point(26, 435);
             tablaDetalleNegro.Name = "tablaDetalleNegro";
-            tablaDetalleNegro.Size = new Size(667, 168);
+            tablaDetalleNegro.Size = new Size(670, 168);
             tablaDetalleNegro.TabIndex = 46;
             tablaDetalleNegro.UseCompatibleStateImageBehavior = false;
             tablaDetalleNegro.View = View.Details;
@@ -364,17 +378,17 @@
             // columDescrip
             // 
             columDescrip.Text = "Conceptos";
-            columDescrip.Width = 320;
+            columDescrip.Width = 210;
             // 
             // columnRemu
             // 
             columnRemu.Text = "Remunerativo";
-            columnRemu.Width = 90;
+            columnRemu.Width = 100;
             // 
             // columnDescuento
             // 
             columnDescuento.Text = "Descuentos";
-            columnDescuento.Width = 90;
+            columnDescuento.Width = 100;
             // 
             // columFecha
             // 
@@ -383,10 +397,10 @@
             // 
             // tablaDetalleBlanco
             // 
-            tablaDetalleBlanco.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnDesc, columnRemunerativo, columnNORemu, columnFecha });
+            tablaDetalleBlanco.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnRemunerativo, columnDesc, columnNORemu, columnFecha });
             tablaDetalleBlanco.FullRowSelect = true;
             tablaDetalleBlanco.GridLines = true;
-            tablaDetalleBlanco.Location = new Point(26, 157);
+            tablaDetalleBlanco.Location = new Point(26, 155);
             tablaDetalleBlanco.Name = "tablaDetalleBlanco";
             tablaDetalleBlanco.Size = new Size(670, 187);
             tablaDetalleBlanco.TabIndex = 45;
@@ -398,34 +412,34 @@
             columnDescripcion.Text = "Conceptos";
             columnDescripcion.Width = 210;
             // 
-            // columnDesc
-            // 
-            columnDesc.Text = "Descuentos";
-            columnDesc.Width = 90;
-            // 
             // columnRemunerativo
             // 
             columnRemunerativo.Text = "Remuneraciones";
-            columnRemunerativo.Width = 100;
+            columnRemunerativo.Width = 110;
+            // 
+            // columnDesc
+            // 
+            columnDesc.Text = "Descuentos";
+            columnDesc.Width = 110;
             // 
             // columnNORemu
             // 
             columnNORemu.Text = "No Remunerativo";
-            columnNORemu.Width = 120;
+            columnNORemu.Width = 110;
             // 
             // columnFecha
             // 
             columnFecha.Text = "Fecha";
-            columnFecha.Width = 110;
+            columnFecha.Width = 100;
             // 
             // labelRetenciones
             // 
             labelRetenciones.BackColor = SystemColors.ActiveCaption;
             labelRetenciones.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            labelRetenciones.Location = new Point(26, 384);
+            labelRetenciones.Location = new Point(26, 408);
             labelRetenciones.Name = "labelRetenciones";
             labelRetenciones.Padding = new Padding(3);
-            labelRetenciones.Size = new Size(667, 24);
+            labelRetenciones.Size = new Size(670, 24);
             labelRetenciones.TabIndex = 44;
             labelRetenciones.Text = "Detalle Interno";
             // 
@@ -463,7 +477,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            label3.Location = new Point(26, 356);
+            label3.Location = new Point(26, 381);
             label3.Name = "label3";
             label3.Size = new Size(48, 18);
             label3.TabIndex = 51;
@@ -473,7 +487,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            label9.Location = new Point(26, 585);
+            label9.Location = new Point(26, 651);
             label9.Name = "label9";
             label9.Size = new Size(48, 18);
             label9.TabIndex = 52;
@@ -483,7 +497,7 @@
             // 
             labelNetoOficial.AutoSize = true;
             labelNetoOficial.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            labelNetoOficial.Location = new Point(80, 356);
+            labelNetoOficial.Location = new Point(80, 381);
             labelNetoOficial.Name = "labelNetoOficial";
             labelNetoOficial.Size = new Size(120, 18);
             labelNetoOficial.TabIndex = 53;
@@ -493,7 +507,7 @@
             // 
             labelNetoInterno.AutoSize = true;
             labelNetoInterno.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            labelNetoInterno.Location = new Point(80, 585);
+            labelNetoInterno.Location = new Point(80, 651);
             labelNetoInterno.Name = "labelNetoInterno";
             labelNetoInterno.Size = new Size(120, 18);
             labelNetoInterno.TabIndex = 54;
@@ -503,7 +517,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            label10.Location = new Point(26, 772);
+            label10.Location = new Point(739, 626);
             label10.Name = "label10";
             label10.Size = new Size(64, 18);
             label10.TabIndex = 55;
@@ -514,7 +528,7 @@
             labelPagado.AutoSize = true;
             labelPagado.Font = new Font("Consolas", 11F, FontStyle.Bold);
             labelPagado.ForeColor = Color.SeaGreen;
-            labelPagado.Location = new Point(100, 772);
+            labelPagado.Location = new Point(809, 626);
             labelPagado.Name = "labelPagado";
             labelPagado.Size = new Size(120, 18);
             labelPagado.TabIndex = 56;
@@ -524,7 +538,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            label11.Location = new Point(458, 772);
+            label11.Location = new Point(707, 599);
             label11.Name = "label11";
             label11.Size = new Size(96, 18);
             label11.TabIndex = 57;
@@ -535,7 +549,7 @@
             labelPercibir.AutoSize = true;
             labelPercibir.Font = new Font("Consolas", 11F, FontStyle.Bold);
             labelPercibir.ForeColor = Color.SteelBlue;
-            labelPercibir.Location = new Point(564, 772);
+            labelPercibir.Location = new Point(809, 599);
             labelPercibir.Name = "labelPercibir";
             labelPercibir.Size = new Size(120, 18);
             labelPercibir.TabIndex = 58;
@@ -545,7 +559,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            label13.Location = new Point(230, 772);
+            label13.Location = new Point(715, 651);
             label13.Name = "label13";
             label13.Size = new Size(88, 18);
             label13.TabIndex = 59;
@@ -556,17 +570,101 @@
             labelPorPagar.AutoSize = true;
             labelPorPagar.Font = new Font("Consolas", 11F, FontStyle.Bold);
             labelPorPagar.ForeColor = Color.Crimson;
-            labelPorPagar.Location = new Point(328, 772);
+            labelPorPagar.Location = new Point(809, 651);
             labelPorPagar.Name = "labelPorPagar";
             labelPorPagar.Size = new Size(120, 18);
             labelPorPagar.TabIndex = 60;
             labelPorPagar.Text = "$ 1.000.000,00";
             // 
+            // lvTotalesOficial
+            // 
+            lvTotalesOficial.BorderStyle = BorderStyle.FixedSingle;
+            lvTotalesOficial.Columns.AddRange(new ColumnHeader[] { Totales, remuneraciones, descuentos, noRemunerativo, fecha });
+            lvTotalesOficial.Enabled = false;
+            lvTotalesOficial.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            lvTotalesOficial.FullRowSelect = true;
+            lvTotalesOficial.HeaderStyle = ColumnHeaderStyle.None;
+            lvTotalesOficial.LabelWrap = false;
+            lvTotalesOficial.Location = new Point(26, 343);
+            lvTotalesOficial.MultiSelect = false;
+            lvTotalesOficial.Name = "lvTotalesOficial";
+            lvTotalesOficial.Scrollable = false;
+            lvTotalesOficial.Size = new Size(670, 35);
+            lvTotalesOficial.TabIndex = 61;
+            lvTotalesOficial.UseCompatibleStateImageBehavior = false;
+            lvTotalesOficial.View = View.Details;
+            // 
+            // Totales
+            // 
+            Totales.Width = 210;
+            // 
+            // remuneraciones
+            // 
+            remuneraciones.TextAlign = HorizontalAlignment.Right;
+            remuneraciones.Width = 110;
+            // 
+            // descuentos
+            // 
+            descuentos.TextAlign = HorizontalAlignment.Right;
+            descuentos.Width = 110;
+            // 
+            // noRemunerativo
+            // 
+            noRemunerativo.TextAlign = HorizontalAlignment.Right;
+            noRemunerativo.Width = 110;
+            // 
+            // fecha
+            // 
+            fecha.Width = 100;
+            // 
+            // lvTotalesInterno
+            // 
+            lvTotalesInterno.BorderStyle = BorderStyle.FixedSingle;
+            lvTotalesInterno.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader4, columnHeader5, columnHeader6 });
+            lvTotalesInterno.Enabled = false;
+            lvTotalesInterno.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            lvTotalesInterno.FullRowSelect = true;
+            lvTotalesInterno.HeaderStyle = ColumnHeaderStyle.None;
+            lvTotalesInterno.LabelWrap = false;
+            lvTotalesInterno.Location = new Point(26, 609);
+            lvTotalesInterno.MultiSelect = false;
+            lvTotalesInterno.Name = "lvTotalesInterno";
+            lvTotalesInterno.Scrollable = false;
+            lvTotalesInterno.Size = new Size(670, 35);
+            lvTotalesInterno.TabIndex = 62;
+            lvTotalesInterno.UseCompatibleStateImageBehavior = false;
+            lvTotalesInterno.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Width = 210;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.TextAlign = HorizontalAlignment.Right;
+            columnHeader2.Width = 110;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.TextAlign = HorizontalAlignment.Right;
+            columnHeader4.Width = 110;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.TextAlign = HorizontalAlignment.Right;
+            columnHeader5.Width = 110;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Width = 100;
+            // 
             // VerLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1050, 808);
+            ClientSize = new Size(1050, 892);
+            Controls.Add(lvTotalesInterno);
+            Controls.Add(lvTotalesOficial);
             Controls.Add(labelPorPagar);
             Controls.Add(label13);
             Controls.Add(labelPercibir);
@@ -670,5 +768,17 @@
         private Label labelPercibir;
         private Label label13;
         private Label labelPorPagar;
+        private ListView lvTotalesOficial;
+        private ColumnHeader Totales;
+        private ColumnHeader remuneraciones;
+        private ColumnHeader descuentos;
+        private ColumnHeader noRemunerativo;
+        private ColumnHeader fecha;
+        private ListView lvTotalesInterno;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
     }
 }

@@ -57,7 +57,7 @@ namespace UI.Screens.Marcas
                 // Si hay una marca
                 if (marcaDelDia != null)
                 {
-                    item = new ListViewItem(marcaDelDia.Ingreso.ToString("dd/MM/yyyy - dddd")+$" {marcaDelDia.Observacion}");
+                    item = new ListViewItem(marcaDelDia.Ingreso.ToString("dd/MM/yyyy - dddd") + $" {marcaDelDia.Observacion}");
                     item.SubItems.Add(marcaDelDia.Ingreso.ToString("HH:mm"));
                     item.SubItems.Add(marcaDelDia.Egreso.ToString("HH:mm"));
                     item.SubItems.Add(marcaDelDia.HsComunes.ToString("F2"));
