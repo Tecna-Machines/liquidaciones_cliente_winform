@@ -13,6 +13,7 @@ namespace DAL.Service.ApiLiquidacion.Features.Liquidacion.GetRecibo
 
         public async Task<byte[]> GetRecibo(string liq)
         {
+            
             HttpResponseMessage response = await _api.GetAsync($"Liquidacion/{liq}/recibo");
 
 

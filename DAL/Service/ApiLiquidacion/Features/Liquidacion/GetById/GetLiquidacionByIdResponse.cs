@@ -16,6 +16,7 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
 
     public sealed record QuincenaLiquidacion(int Anio, int Mes, int Nro);
     public sealed record EmpleadoLiquidacion(string Dni,
+                                             string Cuil,
                                              string Nombre,
                                              string Apellido,
                                              DateTime FechaAlta,
