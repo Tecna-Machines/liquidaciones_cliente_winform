@@ -24,18 +24,24 @@ namespace UI.Screens.VerContratos
         private void ClickEnEmpleado(object? sender, GetEmpleadoResponse emp)
         {
             LimpiarHistorialAnterior();
-            CargarHistorialContratos(emp);
+            CargarHistorialAcuerdos(emp);
         }
 
-        private void SetDatosEmpleado(GetEmpleadoResponse emp)
+        private async Task SetDatosEmpleado(GetEmpleadoResponse emp)
         {
-            textBoxDni.Text = emp.Dni;
-            textBoxNombre.Text = $"{emp.Nombre} {emp.Apellido}";
+            DataLbDni.Text = emp.Dni;
+            DataLbNombre.Text = $"{emp.Nombre}";
+            DataLbApellido.Text = $"{emp.Apellido}";
+            DataLbCuil.Text = emp.Cuil;
+
+            var acu = await _acuerdoController.GetAcuerdo(emp.AcuerdoId);
+
+            SetDatosAcuerdo(acu);
         }
 
-        private async void CargarHistorialContratos(GetEmpleadoResponse emp)
+        private async void CargarHistorialAcuerdos(GetEmpleadoResponse emp)
         {
-            SetDatosEmpleado(emp);
+            await SetDatosEmpleado(emp);
 
             var response = await _empleadoController.GetHistorialAcuerdosEmpleado(emp.Dni);
 
@@ -87,26 +93,42 @@ namespace UI.Screens.VerContratos
 
         private void SetDatosAcuerdo(GetAcuerdoByIdResponse acuerdo)
         {
-            textBoxCodAcuerdo.Text = acuerdo.Codigo;
-            textBoxValorHora.Text = acuerdo.ValorHora.ToString("C");
-            textBoxValorSueldo.Text = acuerdo.Sueldo.ToString("C");
-            textBoxValorBlanco.Text = acuerdo.ValorBlanco.ToString("C");
-            textBoxFechaAcuerdo.Text = acuerdo.Fecha.ToString("dd/MM/yyyy");
-            textBoxTipoSueldo.Text = acuerdo.TipoSueldo.Descripcion;
+            DataLbCodAcuerdo.Text = acuerdo.Codigo;
+            DataLbValorHora.Text = acuerdo.ValorHora.ToString("C");
+            DataLbSueldo.Text = acuerdo.Sueldo.ToString("C");
+            DataLbJornal.Text = acuerdo.ValorBlanco.ToString("C");
+            DataLbFechaCreacionAcuerdo.Text = acuerdo.Fecha.ToString("dd/MM/yyyy");
+            DataLbTipoSueldo.Text = acuerdo.TipoSueldo.Descripcion;
+            DataLbCodSueldo.Text = acuerdo.TipoSueldo.Codigo;
+            DataLbNotas.Text = acuerdo.Notas;
 
-            SetTablaAdicionales(acuerdo.Adicionales);
+            CargarTablaAdicionales(acuerdo.Adicionales);
+            CargarTablaRetenciones(acuerdo.Retenciones);
         }
 
-        private void SetTablaAdicionales(IEnumerable<AdicionalAcuerdoResponse> adi)
+        private void CargarTablaAdicionales(IEnumerable<AdicionalAcuerdoResponse> adi)
         {
             foreach (var adicional in adi)
             {
                 ListViewItem item = new(adicional.Concepto);
                 item.SubItems.Add(adicional.Monto.ToString("C"));
-                item.SubItems.Add(adicional.EsEnBlanco.ToString());
-                item.SubItems.Add(adicional.EsPorcentual.ToString());
+                //item.SubItems.Add(adicional.EsEnBlanco.ToString());
+                //item.SubItems.Add(adicional.EsPorcentual.ToString());
 
                 listAdicionales.Items.Add(item);
+            }
+        }
+
+        private void CargarTablaRetenciones(IEnumerable<RetencionResponse> retenciones)
+        {
+            foreach (var ret in retenciones)
+            {
+                ListViewItem item = new(ret.Codigo);
+                item.SubItems.Add(ret.Concepto);
+                item.SubItems.Add(ret.Unidades.ToString());
+                item.SubItems.Add(ret.EsPrimeraQuincena.ToString());
+
+                listRetenciones.Items.Add(item);
             }
         }
 
@@ -115,12 +137,16 @@ namespace UI.Screens.VerContratos
             ListUtils.LimpiarElementos(this.listAdicionales);
             ListUtils.LimpiarElementos(this.listHistorial);
 
-            textBoxCodAcuerdo.Text = string.Empty;
-            textBoxValorHora.Text = string.Empty;
-            textBoxValorSueldo.Text = string.Empty;
-            textBoxValorBlanco.Text = string.Empty;
-            textBoxFechaAcuerdo.Text = string.Empty;
-            textBoxTipoSueldo.Text = string.Empty;
+            DataLbCodAcuerdo.Text = "";
+            DataLbValorHora.Text = "";
+            DataLbSueldo.Text = "";
+            DataLbJornal.Text = "";
+            DataLbFechaCreacionAcuerdo.Text = "";
+            DataLbTipoSueldo.Text = "";
+            DataLbCodSueldo.Text = "";
+            DataLbNotas.Text = "";
+
+
         }
     }
 }
