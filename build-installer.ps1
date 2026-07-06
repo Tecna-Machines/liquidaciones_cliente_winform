@@ -7,7 +7,10 @@ $ProjectFile = Join-Path $ProjectDir "UI.csproj"
 $InstallerDir = Join-Path $RootDir "installer"
 $IssFile = Join-Path $InstallerDir "AkerLQ-installer.iss"
 
+$SmbDestino = "\\server\Sistemas\SOFTWARE\Gaby\Liquidacion\Cliente Escritorio"
+
 $PublishDir = Join-Path $ProjectDir "bin\Release\publish"
+$TempOutput = Join-Path $env:TEMP "AkerLQ-Build-Installer"
 
 $InnoCompiler = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
 
@@ -17,7 +20,6 @@ Write-Host ""
 
 $Version = Read-Host "Ingrese version del cliente. Ejemplo: v3"
 $Server = Read-Host "Ingrese servidor API. Ejemplo: https://localhost:7033/api/v1/"
-$OutputDir = Read-Host "Ingrese carpeta destino del instalador. Ejemplo: D:\Instaladores"
 
 if (-not (Test-Path $InnoCompiler)) {
     throw "No se encontro Inno Setup Compiler en: $InnoCompiler"
@@ -31,19 +33,27 @@ if (-not (Test-Path $IssFile)) {
     throw "No se encontro el archivo .iss: $IssFile"
 }
 
-if (-not (Test-Path $OutputDir)) {
-    New-Item -ItemType Directory -Path $OutputDir | Out-Null
+if (-not (Test-Path $SmbDestino)) {
+    throw "No se puede acceder al destino SMB: $SmbDestino"
 }
 
 $InstallerBaseName = "AkerLQ-Cliente-instalador-$Version"
-$ExePath = Join-Path $OutputDir "$InstallerBaseName.exe"
-$ZipPath = Join-Path $OutputDir "$InstallerBaseName.zip"
+
+if (Test-Path $TempOutput) {
+    Remove-Item $TempOutput -Recurse -Force
+}
+
+New-Item -ItemType Directory -Path $TempOutput | Out-Null
+
+$ExePath = Join-Path $TempOutput "$InstallerBaseName.exe"
+$ZipPath = Join-Path $TempOutput "$InstallerBaseName.zip"
+$SmbZipPath = Join-Path $SmbDestino "$InstallerBaseName.zip"
 
 Write-Host ""
 Write-Host "Limpiando publish anterior..."
 Remove-Item $PublishDir -Recurse -Force -ErrorAction SilentlyContinue
 
-Write-Host "Publicando aplicacion..."
+Write-Host "Publicando aplicacion portable con runtime incluido..."
 dotnet publish $ProjectFile `
     -c Release `
     -r win-x64 `
@@ -88,7 +98,7 @@ Write-Host "Compilando instalador con Inno Setup..."
 & $InnoCompiler `
     /DMyAppVersion="$Version" `
     /DPublishDir="$PublishDir" `
-    /O"$OutputDir" `
+    /O"$TempOutput" `
     /F"$InstallerBaseName" `
     "$IssFile"
 
@@ -96,20 +106,34 @@ if (-not (Test-Path $ExePath)) {
     throw "No se genero el instalador esperado: $ExePath"
 }
 
-Write-Host "Generando ZIP..."
-
-if (Test-Path $ZipPath) {
-    Remove-Item $ZipPath -Force
-}
+Write-Host "Generando ZIP temporal..."
 
 Compress-Archive -Path $ExePath -DestinationPath $ZipPath -Force
 
+if (Test-Path $SmbZipPath) {
+    Write-Host ""
+    Write-Host "Ya existe una version con el mismo nombre en el servidor:"
+    Write-Host $SmbZipPath
+    $Respuesta = Read-Host "Desea reemplazarla? S/N"
+
+    if ($Respuesta -ne "S" -and $Respuesta -ne "s") {
+        throw "Operacion cancelada por el usuario."
+    }
+
+    Remove-Item $SmbZipPath -Force
+}
+
+Write-Host "Copiando ZIP al servidor SMB..."
+
+Copy-Item $ZipPath -Destination $SmbDestino -Force
+
+Write-Host "Limpiando archivos temporales..."
+Remove-Item $TempOutput -Recurse -Force -ErrorAction SilentlyContinue
+
 Write-Host ""
 Write-Host "Proceso terminado correctamente."
-Write-Host "Instalador:"
-Write-Host $ExePath
+Write-Host "ZIP publicado en SMB:"
+Write-Host $SmbZipPath
 Write-Host ""
-Write-Host "ZIP:"
-Write-Host $ZipPath
-Write-Host ""
+
 Pause
