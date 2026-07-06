@@ -10,6 +10,7 @@ namespace UI.Screens.VerContratos
     {
         private readonly EmpleadoController _empleadoController;
         private readonly AcuerdoController _acuerdoController;
+        private GetAcuerdoByIdResponse? _acuerdoVigenteEmp;
         public VerAcuerdosForm(EmpleadoController empleadoController, IServiceProvider sp, AcuerdoController acuerdoController)
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace UI.Screens.VerContratos
 
         private void ClickEnEmpleado(object? sender, GetEmpleadoResponse emp)
         {
-            LimpiarHistorialAnterior();
+            LimpiarDatosEmpleadoAnterior();
             CargarHistorialAcuerdos(emp);
         }
 
@@ -34,9 +35,11 @@ namespace UI.Screens.VerContratos
             DataLbApellido.Text = $"{emp.Apellido}";
             DataLbCuil.Text = emp.Cuil;
 
-            var acu = await _acuerdoController.GetAcuerdo(emp.AcuerdoId);
+            var acuerdoActual = await _acuerdoController.GetAcuerdo(emp.AcuerdoId);
 
-            SetDatosAcuerdo(acu);
+            _acuerdoVigenteEmp = acuerdoActual;
+
+            SetDatosAcuerdo(acuerdoActual);
         }
 
         private async void CargarHistorialAcuerdos(GetEmpleadoResponse emp)
@@ -93,7 +96,27 @@ namespace UI.Screens.VerContratos
 
         private void SetDatosAcuerdo(GetAcuerdoByIdResponse acuerdo)
         {
-            DataLbCodAcuerdo.Text = acuerdo.Codigo;
+            string textCodigo = "error";
+
+
+            if (_acuerdoVigenteEmp is not null)
+            {
+
+                if(_acuerdoVigenteEmp.Codigo == acuerdo.Codigo)
+                {
+                    textCodigo = $"{acuerdo.Codigo} : VIGENTE";
+                    DataLbCodAcuerdo.BackColor = Color.ForestGreen;
+
+                }
+                else
+                {
+                    textCodigo = $"{acuerdo.Codigo} : SIN VIGENCIA";
+                    DataLbCodAcuerdo.BackColor = Color.Red;
+                }
+
+            }
+
+            DataLbCodAcuerdo.Text = textCodigo;
             DataLbValorHora.Text = acuerdo.ValorHora.ToString("C");
             DataLbSueldo.Text = acuerdo.Sueldo.ToString("C");
             DataLbJornal.Text = acuerdo.ValorBlanco.ToString("C");
@@ -108,6 +131,9 @@ namespace UI.Screens.VerContratos
 
         private void CargarTablaAdicionales(IEnumerable<AdicionalAcuerdoResponse> adi)
         {
+            ListUtils.LimpiarElementos(this.listAdicionales);
+
+
             foreach (var adicional in adi)
             {
                 ListViewItem item = new(adicional.Concepto);
@@ -121,21 +147,31 @@ namespace UI.Screens.VerContratos
 
         private void CargarTablaRetenciones(IEnumerable<RetencionResponse> retenciones)
         {
+            ListUtils.LimpiarElementos(this.listRetenciones);
+
             foreach (var ret in retenciones)
             {
                 ListViewItem item = new(ret.Codigo);
                 item.SubItems.Add(ret.Concepto);
-                item.SubItems.Add(ret.Unidades.ToString());
-                item.SubItems.Add(ret.EsPrimeraQuincena.ToString());
+                item.SubItems.Add(ret.Unidades.ToString("F2"));
 
+                string textQuincena = "2da quincena";
+
+                if(ret.EsPrimeraQuincena)
+                {
+                    textQuincena = "1ra quincena";
+                }
+
+                item.SubItems.Add(textQuincena);
                 listRetenciones.Items.Add(item);
             }
         }
 
-        private void LimpiarHistorialAnterior()
+        private void LimpiarDatosEmpleadoAnterior()
         {
             ListUtils.LimpiarElementos(this.listAdicionales);
             ListUtils.LimpiarElementos(this.listHistorial);
+            ListUtils.LimpiarElementos(this.listRetenciones);
 
             DataLbCodAcuerdo.Text = "";
             DataLbValorHora.Text = "";
@@ -145,8 +181,6 @@ namespace UI.Screens.VerContratos
             DataLbTipoSueldo.Text = "";
             DataLbCodSueldo.Text = "";
             DataLbNotas.Text = "";
-
-
         }
     }
 }

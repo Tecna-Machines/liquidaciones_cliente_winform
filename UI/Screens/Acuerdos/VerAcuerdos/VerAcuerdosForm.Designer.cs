@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerAcuerdosForm));
             listaEmpleados = new UI.Components.Utils.ListaEmpComponent();
             listHistorial = new ListView();
+            columnHeader7 = new ColumnHeader();
+            columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
             tableLayoutPanelAcuerdo = new TableLayoutPanel();
             label1 = new Label();
             label47 = new Label();
@@ -69,10 +73,6 @@
             listAdicionales = new ListView();
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
-            columnHeader8 = new ColumnHeader();
-            columnHeader9 = new ColumnHeader();
-            columnHeader10 = new ColumnHeader();
             tableLayoutPanelAcuerdo.SuspendLayout();
             SuspendLayout();
             // 
@@ -93,20 +93,41 @@
             listHistorial.FullRowSelect = true;
             listHistorial.GridLines = true;
             listHistorial.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            listHistorial.Location = new Point(3, 528);
+            listHistorial.Location = new Point(3, 564);
             listHistorial.MultiSelect = false;
             listHistorial.Name = "listHistorial";
-            listHistorial.Size = new Size(824, 154);
+            listHistorial.Size = new Size(824, 118);
             listHistorial.TabIndex = 0;
             listHistorial.UseCompatibleStateImageBehavior = false;
             listHistorial.View = View.Details;
+            listHistorial.SelectedIndexChanged += Select_AcuerdoDeHistorial;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "Codigo";
+            columnHeader7.Width = 120;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Valor hora";
+            columnHeader8.Width = 90;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Sueldo";
+            columnHeader9.Width = 100;
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "Fecha Creacion";
+            columnHeader10.Width = 180;
             // 
             // tableLayoutPanelAcuerdo
             // 
             tableLayoutPanelAcuerdo.BackColor = SystemColors.ButtonHighlight;
             tableLayoutPanelAcuerdo.ColumnCount = 2;
-            tableLayoutPanelAcuerdo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanelAcuerdo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanelAcuerdo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 49.518074F));
+            tableLayoutPanelAcuerdo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.481926F));
             tableLayoutPanelAcuerdo.Controls.Add(listHistorial, 0, 19);
             tableLayoutPanelAcuerdo.Controls.Add(label1, 0, 18);
             tableLayoutPanelAcuerdo.Controls.Add(label47, 0, 16);
@@ -159,11 +180,11 @@
             tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle());
             tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle());
             tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle());
-            tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
+            tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle(SizeType.Absolute, 185F));
             tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle());
-            tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
+            tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle(SizeType.Absolute, 91F));
             tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle());
-            tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
+            tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             tableLayoutPanelAcuerdo.Size = new Size(830, 685);
             tableLayoutPanelAcuerdo.TabIndex = 8;
             // 
@@ -175,7 +196,7 @@
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(0, 504);
+            label1.Location = new Point(0, 540);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
             label1.Size = new Size(830, 21);
@@ -191,7 +212,7 @@
             label47.Dock = DockStyle.Fill;
             label47.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label47.ForeColor = SystemColors.ControlLightLight;
-            label47.Location = new Point(0, 363);
+            label47.Location = new Point(0, 428);
             label47.Margin = new Padding(0);
             label47.Name = "label47";
             label47.Size = new Size(830, 21);
@@ -220,10 +241,10 @@
             DataLbNotas.AutoSize = true;
             DataLbNotas.BackColor = SystemColors.ScrollBar;
             DataLbNotas.Dock = DockStyle.Fill;
-            DataLbNotas.Location = new Point(415, 207);
+            DataLbNotas.Location = new Point(411, 207);
             DataLbNotas.Margin = new Padding(0);
             DataLbNotas.Name = "DataLbNotas";
-            DataLbNotas.Size = new Size(415, 15);
+            DataLbNotas.Size = new Size(419, 15);
             DataLbNotas.TabIndex = 29;
             DataLbNotas.Text = "se pagan $2 por dia";
             DataLbNotas.TextAlign = ContentAlignment.MiddleLeft;
@@ -236,7 +257,7 @@
             label44.Location = new Point(0, 207);
             label44.Margin = new Padding(0);
             label44.Name = "label44";
-            label44.Size = new Size(415, 15);
+            label44.Size = new Size(411, 15);
             label44.TabIndex = 28;
             label44.Text = "Notas:";
             label44.TextAlign = ContentAlignment.MiddleLeft;
@@ -246,10 +267,10 @@
             DataLbTipoSueldo.AutoSize = true;
             DataLbTipoSueldo.BackColor = SystemColors.ControlLightLight;
             DataLbTipoSueldo.Dock = DockStyle.Fill;
-            DataLbTipoSueldo.Location = new Point(415, 192);
+            DataLbTipoSueldo.Location = new Point(411, 192);
             DataLbTipoSueldo.Margin = new Padding(0);
             DataLbTipoSueldo.Name = "DataLbTipoSueldo";
-            DataLbTipoSueldo.Size = new Size(415, 15);
+            DataLbTipoSueldo.Size = new Size(419, 15);
             DataLbTipoSueldo.TabIndex = 27;
             DataLbTipoSueldo.Text = "Quincenal fijo";
             DataLbTipoSueldo.TextAlign = ContentAlignment.MiddleLeft;
@@ -262,7 +283,7 @@
             label42.Location = new Point(0, 192);
             label42.Margin = new Padding(0);
             label42.Name = "label42";
-            label42.Size = new Size(415, 15);
+            label42.Size = new Size(411, 15);
             label42.TabIndex = 26;
             label42.Text = "Tipo de Sueldo:";
             label42.TextAlign = ContentAlignment.MiddleLeft;
@@ -272,10 +293,10 @@
             DataLbCodSueldo.AutoSize = true;
             DataLbCodSueldo.BackColor = SystemColors.ScrollBar;
             DataLbCodSueldo.Dock = DockStyle.Fill;
-            DataLbCodSueldo.Location = new Point(415, 177);
+            DataLbCodSueldo.Location = new Point(411, 177);
             DataLbCodSueldo.Margin = new Padding(0);
             DataLbCodSueldo.Name = "DataLbCodSueldo";
-            DataLbCodSueldo.Size = new Size(415, 15);
+            DataLbCodSueldo.Size = new Size(419, 15);
             DataLbCodSueldo.TabIndex = 25;
             DataLbCodSueldo.Text = "35";
             DataLbCodSueldo.TextAlign = ContentAlignment.MiddleLeft;
@@ -288,7 +309,7 @@
             label40.Location = new Point(0, 177);
             label40.Margin = new Padding(0);
             label40.Name = "label40";
-            label40.Size = new Size(415, 15);
+            label40.Size = new Size(411, 15);
             label40.TabIndex = 24;
             label40.Text = "Cod. tipo de sueldo:";
             label40.TextAlign = ContentAlignment.MiddleLeft;
@@ -298,10 +319,10 @@
             DataLbJornal.AutoSize = true;
             DataLbJornal.BackColor = SystemColors.ControlLightLight;
             DataLbJornal.Dock = DockStyle.Fill;
-            DataLbJornal.Location = new Point(415, 162);
+            DataLbJornal.Location = new Point(411, 162);
             DataLbJornal.Margin = new Padding(0);
             DataLbJornal.Name = "DataLbJornal";
-            DataLbJornal.Size = new Size(415, 15);
+            DataLbJornal.Size = new Size(419, 15);
             DataLbJornal.TabIndex = 22;
             DataLbJornal.Text = "$ 366.666";
             DataLbJornal.TextAlign = ContentAlignment.MiddleLeft;
@@ -314,7 +335,7 @@
             label38.Location = new Point(0, 162);
             label38.Margin = new Padding(0);
             label38.Name = "label38";
-            label38.Size = new Size(415, 15);
+            label38.Size = new Size(411, 15);
             label38.TabIndex = 21;
             label38.Text = "Sueldo/Jornal (oficial):";
             label38.TextAlign = ContentAlignment.MiddleLeft;
@@ -324,10 +345,10 @@
             DataLbSueldo.AutoSize = true;
             DataLbSueldo.BackColor = SystemColors.ScrollBar;
             DataLbSueldo.Dock = DockStyle.Fill;
-            DataLbSueldo.Location = new Point(415, 147);
+            DataLbSueldo.Location = new Point(411, 147);
             DataLbSueldo.Margin = new Padding(0);
             DataLbSueldo.Name = "DataLbSueldo";
-            DataLbSueldo.Size = new Size(415, 15);
+            DataLbSueldo.Size = new Size(419, 15);
             DataLbSueldo.TabIndex = 20;
             DataLbSueldo.Text = "$ 1.500.785";
             DataLbSueldo.TextAlign = ContentAlignment.MiddleLeft;
@@ -340,7 +361,7 @@
             label36.Location = new Point(0, 147);
             label36.Margin = new Padding(0);
             label36.Name = "label36";
-            label36.Size = new Size(415, 15);
+            label36.Size = new Size(411, 15);
             label36.TabIndex = 19;
             label36.Text = "Sueldo:";
             label36.TextAlign = ContentAlignment.MiddleLeft;
@@ -350,10 +371,10 @@
             DataLbValorHora.AutoSize = true;
             DataLbValorHora.BackColor = SystemColors.ControlLightLight;
             DataLbValorHora.Dock = DockStyle.Fill;
-            DataLbValorHora.Location = new Point(415, 132);
+            DataLbValorHora.Location = new Point(411, 132);
             DataLbValorHora.Margin = new Padding(0);
             DataLbValorHora.Name = "DataLbValorHora";
-            DataLbValorHora.Size = new Size(415, 15);
+            DataLbValorHora.Size = new Size(419, 15);
             DataLbValorHora.TabIndex = 18;
             DataLbValorHora.Text = "$ 12.000";
             DataLbValorHora.TextAlign = ContentAlignment.MiddleLeft;
@@ -366,7 +387,7 @@
             label34.Location = new Point(0, 132);
             label34.Margin = new Padding(0);
             label34.Name = "label34";
-            label34.Size = new Size(415, 15);
+            label34.Size = new Size(411, 15);
             label34.TabIndex = 17;
             label34.Text = "Valor hora:";
             label34.TextAlign = ContentAlignment.MiddleLeft;
@@ -376,10 +397,10 @@
             DataLbFechaCreacionAcuerdo.AutoSize = true;
             DataLbFechaCreacionAcuerdo.BackColor = SystemColors.ScrollBar;
             DataLbFechaCreacionAcuerdo.Dock = DockStyle.Fill;
-            DataLbFechaCreacionAcuerdo.Location = new Point(415, 117);
+            DataLbFechaCreacionAcuerdo.Location = new Point(411, 117);
             DataLbFechaCreacionAcuerdo.Margin = new Padding(0);
             DataLbFechaCreacionAcuerdo.Name = "DataLbFechaCreacionAcuerdo";
-            DataLbFechaCreacionAcuerdo.Size = new Size(415, 15);
+            DataLbFechaCreacionAcuerdo.Size = new Size(419, 15);
             DataLbFechaCreacionAcuerdo.TabIndex = 16;
             DataLbFechaCreacionAcuerdo.Text = "20/05/2099 15:45HS";
             DataLbFechaCreacionAcuerdo.TextAlign = ContentAlignment.MiddleLeft;
@@ -392,7 +413,7 @@
             label32.Location = new Point(0, 117);
             label32.Margin = new Padding(0);
             label32.Name = "label32";
-            label32.Size = new Size(415, 15);
+            label32.Size = new Size(411, 15);
             label32.TabIndex = 15;
             label32.Text = "Fecha creacion:";
             label32.TextAlign = ContentAlignment.MiddleLeft;
@@ -402,10 +423,11 @@
             DataLbCodAcuerdo.AutoSize = true;
             DataLbCodAcuerdo.BackColor = SystemColors.ControlLightLight;
             DataLbCodAcuerdo.Dock = DockStyle.Fill;
-            DataLbCodAcuerdo.Location = new Point(415, 102);
+            DataLbCodAcuerdo.ForeColor = SystemColors.ButtonHighlight;
+            DataLbCodAcuerdo.Location = new Point(411, 102);
             DataLbCodAcuerdo.Margin = new Padding(0);
             DataLbCodAcuerdo.Name = "DataLbCodAcuerdo";
-            DataLbCodAcuerdo.Size = new Size(415, 15);
+            DataLbCodAcuerdo.Size = new Size(419, 15);
             DataLbCodAcuerdo.TabIndex = 14;
             DataLbCodAcuerdo.Text = "458215421684";
             DataLbCodAcuerdo.TextAlign = ContentAlignment.MiddleLeft;
@@ -418,7 +440,7 @@
             label30.Location = new Point(0, 102);
             label30.Margin = new Padding(0);
             label30.Name = "label30";
-            label30.Size = new Size(415, 15);
+            label30.Size = new Size(411, 15);
             label30.TabIndex = 13;
             label30.Text = "Codigo:";
             label30.TextAlign = ContentAlignment.MiddleLeft;
@@ -444,10 +466,10 @@
             DataLbApellido.AutoSize = true;
             DataLbApellido.BackColor = SystemColors.ScrollBar;
             DataLbApellido.Dock = DockStyle.Fill;
-            DataLbApellido.Location = new Point(415, 66);
+            DataLbApellido.Location = new Point(411, 66);
             DataLbApellido.Margin = new Padding(0);
             DataLbApellido.Name = "DataLbApellido";
-            DataLbApellido.Size = new Size(415, 15);
+            DataLbApellido.Size = new Size(419, 15);
             DataLbApellido.TabIndex = 11;
             DataLbApellido.Text = "Apellido rrelargo";
             DataLbApellido.TextAlign = ContentAlignment.MiddleLeft;
@@ -460,7 +482,7 @@
             label27.Location = new Point(0, 66);
             label27.Margin = new Padding(0);
             label27.Name = "label27";
-            label27.Size = new Size(415, 15);
+            label27.Size = new Size(411, 15);
             label27.TabIndex = 10;
             label27.Text = "Apellido/s:";
             label27.TextAlign = ContentAlignment.MiddleLeft;
@@ -470,10 +492,10 @@
             DataLbNombre.AutoSize = true;
             DataLbNombre.BackColor = SystemColors.ControlLightLight;
             DataLbNombre.Dock = DockStyle.Fill;
-            DataLbNombre.Location = new Point(415, 51);
+            DataLbNombre.Location = new Point(411, 51);
             DataLbNombre.Margin = new Padding(0);
             DataLbNombre.Name = "DataLbNombre";
-            DataLbNombre.Size = new Size(415, 15);
+            DataLbNombre.Size = new Size(419, 15);
             DataLbNombre.TabIndex = 9;
             DataLbNombre.Text = "Nombre rrelargo";
             DataLbNombre.TextAlign = ContentAlignment.MiddleLeft;
@@ -486,7 +508,7 @@
             label25.Location = new Point(0, 51);
             label25.Margin = new Padding(0);
             label25.Name = "label25";
-            label25.Size = new Size(415, 15);
+            label25.Size = new Size(411, 15);
             label25.TabIndex = 8;
             label25.Text = "Nombre/s:";
             label25.TextAlign = ContentAlignment.MiddleLeft;
@@ -496,10 +518,10 @@
             DataLbCuil.AutoSize = true;
             DataLbCuil.BackColor = SystemColors.ScrollBar;
             DataLbCuil.Dock = DockStyle.Fill;
-            DataLbCuil.Location = new Point(415, 36);
+            DataLbCuil.Location = new Point(411, 36);
             DataLbCuil.Margin = new Padding(0);
             DataLbCuil.Name = "DataLbCuil";
-            DataLbCuil.Size = new Size(415, 15);
+            DataLbCuil.Size = new Size(419, 15);
             DataLbCuil.TabIndex = 7;
             DataLbCuil.Text = "20458512698";
             DataLbCuil.TextAlign = ContentAlignment.MiddleLeft;
@@ -512,7 +534,7 @@
             label23.Location = new Point(0, 36);
             label23.Margin = new Padding(0);
             label23.Name = "label23";
-            label23.Size = new Size(415, 15);
+            label23.Size = new Size(411, 15);
             label23.TabIndex = 6;
             label23.Text = "Cuil:";
             label23.TextAlign = ContentAlignment.MiddleLeft;
@@ -522,10 +544,10 @@
             DataLbDni.AutoSize = true;
             DataLbDni.BackColor = SystemColors.ControlLightLight;
             DataLbDni.Dock = DockStyle.Fill;
-            DataLbDni.Location = new Point(415, 21);
+            DataLbDni.Location = new Point(411, 21);
             DataLbDni.Margin = new Padding(0);
             DataLbDni.Name = "DataLbDni";
-            DataLbDni.Size = new Size(415, 15);
+            DataLbDni.Size = new Size(419, 15);
             DataLbDni.TabIndex = 5;
             DataLbDni.Text = "45851269";
             DataLbDni.TextAlign = ContentAlignment.MiddleLeft;
@@ -538,7 +560,7 @@
             label21.Location = new Point(0, 21);
             label21.Margin = new Padding(0);
             label21.Name = "label21";
-            label21.Size = new Size(415, 15);
+            label21.Size = new Size(411, 15);
             label21.TabIndex = 2;
             label21.Text = "Dni:";
             label21.TextAlign = ContentAlignment.MiddleLeft;
@@ -570,7 +592,7 @@
             listRetenciones.Location = new Point(3, 246);
             listRetenciones.MultiSelect = false;
             listRetenciones.Name = "listRetenciones";
-            listRetenciones.Size = new Size(824, 114);
+            listRetenciones.Size = new Size(824, 179);
             listRetenciones.TabIndex = 31;
             listRetenciones.UseCompatibleStateImageBehavior = false;
             listRetenciones.View = View.Details;
@@ -605,10 +627,10 @@
             listAdicionales.FullRowSelect = true;
             listAdicionales.GridLines = true;
             listAdicionales.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            listAdicionales.Location = new Point(3, 387);
+            listAdicionales.Location = new Point(3, 452);
             listAdicionales.MultiSelect = false;
             listAdicionales.Name = "listAdicionales";
-            listAdicionales.Size = new Size(824, 114);
+            listAdicionales.Size = new Size(824, 85);
             listAdicionales.TabIndex = 33;
             listAdicionales.UseCompatibleStateImageBehavior = false;
             listAdicionales.View = View.Details;
