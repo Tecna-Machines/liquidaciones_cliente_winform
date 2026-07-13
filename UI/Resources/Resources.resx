@@ -142,4 +142,8 @@
   <data name="akerlq-ia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Images\akerlq-ia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gear_wh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\gear_wh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>engrane blanco 32px</comment>
+  </data>
 </root>

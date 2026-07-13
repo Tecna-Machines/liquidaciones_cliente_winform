@@ -69,7 +69,7 @@
             // labelDni
             // 
             labelDni.AutoSize = true;
-            labelDni.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDni.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             labelDni.Location = new Point(15, 34);
             labelDni.Name = "labelDni";
             labelDni.Size = new Size(44, 21);
@@ -79,7 +79,7 @@
             // labelNombre
             // 
             labelNombre.AutoSize = true;
-            labelNombre.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelNombre.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             labelNombre.Location = new Point(6, 78);
             labelNombre.Name = "labelNombre";
             labelNombre.Size = new Size(83, 21);
@@ -92,7 +92,7 @@
             groupBox.Controls.Add(textBoxDni);
             groupBox.Controls.Add(labelDni);
             groupBox.Controls.Add(labelNombre);
-            groupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox.Location = new Point(313, 71);
             groupBox.Name = "groupBox";
             groupBox.Size = new Size(475, 141);
@@ -128,7 +128,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox1.Location = new Point(313, 237);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(475, 143);
@@ -142,7 +142,7 @@
             comboBoxModalidad.FormattingEnabled = true;
             comboBoxModalidad.Location = new Point(136, 76);
             comboBoxModalidad.Name = "comboBoxModalidad";
-            comboBoxModalidad.Size = new Size(158, 23);
+            comboBoxModalidad.Size = new Size(319, 23);
             comboBoxModalidad.TabIndex = 7;
             // 
             // textBoxMontoSueldoJornal
@@ -207,7 +207,7 @@
             // groupBoxAdicionales
             // 
             groupBoxAdicionales.Controls.Add(listAdicionales);
-            groupBoxAdicionales.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBoxAdicionales.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBoxAdicionales.Location = new Point(313, 395);
             groupBoxAdicionales.Name = "groupBoxAdicionales";
             groupBoxAdicionales.Size = new Size(475, 172);
@@ -250,7 +250,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label5.Location = new Point(409, 29);
             label5.Name = "label5";
             label5.Size = new Size(283, 25);
@@ -260,7 +260,7 @@
             // btnConfirmarContrato
             // 
             btnConfirmarContrato.BackColor = Color.PaleGreen;
-            btnConfirmarContrato.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnConfirmarContrato.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnConfirmarContrato.Location = new Point(514, 590);
             btnConfirmarContrato.Name = "btnConfirmarContrato";
             btnConfirmarContrato.Size = new Size(178, 43);
@@ -272,7 +272,7 @@
             // BtnAgregarAdicional
             // 
             BtnAgregarAdicional.BackColor = Color.SkyBlue;
-            BtnAgregarAdicional.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnAgregarAdicional.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             BtnAgregarAdicional.Location = new Point(313, 590);
             BtnAgregarAdicional.Name = "BtnAgregarAdicional";
             BtnAgregarAdicional.Size = new Size(178, 43);
@@ -292,7 +292,7 @@
             // groupBoxRetenciones
             // 
             groupBoxRetenciones.Controls.Add(listRetenciones);
-            groupBoxRetenciones.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBoxRetenciones.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBoxRetenciones.Location = new Point(806, 82);
             groupBoxRetenciones.Name = "groupBoxRetenciones";
             groupBoxRetenciones.Size = new Size(361, 485);

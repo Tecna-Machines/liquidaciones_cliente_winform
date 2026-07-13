@@ -73,7 +73,14 @@
             listAdicionales = new ListView();
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
+            panel1 = new Panel();
+            statusStrip1 = new StatusStrip();
+            toolStripDropDownButton1 = new ToolStripDropDownButton();
+            crearConAumentoToolStripMenuItem = new ToolStripMenuItem();
+            crearAPartirDelActualToolStripMenuItem = new ToolStripMenuItem();
             tableLayoutPanelAcuerdo.SuspendLayout();
+            panel1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // listaEmpleados
@@ -96,7 +103,7 @@
             listHistorial.Location = new Point(3, 564);
             listHistorial.MultiSelect = false;
             listHistorial.Name = "listHistorial";
-            listHistorial.Size = new Size(824, 118);
+            listHistorial.Size = new Size(824, 96);
             listHistorial.TabIndex = 0;
             listHistorial.UseCompatibleStateImageBehavior = false;
             listHistorial.View = View.Details;
@@ -161,7 +168,7 @@
             tableLayoutPanelAcuerdo.Controls.Add(listRetenciones, 0, 15);
             tableLayoutPanelAcuerdo.Controls.Add(listAdicionales, 0, 17);
             tableLayoutPanelAcuerdo.Dock = DockStyle.Fill;
-            tableLayoutPanelAcuerdo.Location = new Point(301, 0);
+            tableLayoutPanelAcuerdo.Location = new Point(0, 0);
             tableLayoutPanelAcuerdo.Margin = new Padding(10);
             tableLayoutPanelAcuerdo.Name = "tableLayoutPanelAcuerdo";
             tableLayoutPanelAcuerdo.RowCount = 20;
@@ -185,7 +192,7 @@
             tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle(SizeType.Absolute, 91F));
             tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle());
             tableLayoutPanelAcuerdo.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            tableLayoutPanelAcuerdo.Size = new Size(830, 685);
+            tableLayoutPanelAcuerdo.Size = new Size(830, 663);
             tableLayoutPanelAcuerdo.TabIndex = 8;
             // 
             // label1
@@ -645,19 +652,68 @@
             columnHeader6.Text = "Monto";
             columnHeader6.Width = 200;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(tableLayoutPanelAcuerdo);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(301, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(830, 663);
+            panel1.TabIndex = 10;
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.BackColor = SystemColors.Highlight;
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
+            statusStrip1.Location = new Point(301, 662);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(830, 23);
+            statusStrip1.TabIndex = 9;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripDropDownButton1
+            // 
+            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { crearConAumentoToolStripMenuItem, crearAPartirDelActualToolStripMenuItem });
+            toolStripDropDownButton1.Font = new Font("Consolas", 10F, FontStyle.Bold);
+            toolStripDropDownButton1.ForeColor = SystemColors.ActiveCaptionText;
+            toolStripDropDownButton1.Image = Resources.Resources.gear_wh;
+            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
+            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            toolStripDropDownButton1.Size = new Size(125, 21);
+            toolStripDropDownButton1.Text = "Operaciones";
+            // 
+            // crearConAumentoToolStripMenuItem
+            // 
+            crearConAumentoToolStripMenuItem.Name = "crearConAumentoToolStripMenuItem";
+            crearConAumentoToolStripMenuItem.Size = new Size(276, 22);
+            crearConAumentoToolStripMenuItem.Text = "crear con aumento";
+            crearConAumentoToolStripMenuItem.Click += crearConAumentoToolStripMenuItem_Click;
+            // 
+            // crearAPartirDelActualToolStripMenuItem
+            // 
+            crearAPartirDelActualToolStripMenuItem.Name = "crearAPartirDelActualToolStripMenuItem";
+            crearAPartirDelActualToolStripMenuItem.Size = new Size(276, 22);
+            crearAPartirDelActualToolStripMenuItem.Text = "crear a partir del actual";
+            crearAPartirDelActualToolStripMenuItem.Click += crearAPartirDelActualToolStripMenuItem_Click;
+            // 
             // VerAcuerdosForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1131, 685);
-            Controls.Add(tableLayoutPanelAcuerdo);
+            Controls.Add(panel1);
+            Controls.Add(statusStrip1);
             Controls.Add(listaEmpleados);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "VerAcuerdosForm";
             Text = "Acuerdos";
             tableLayoutPanelAcuerdo.ResumeLayout(false);
             tableLayoutPanelAcuerdo.PerformLayout();
+            panel1.ResumeLayout(false);
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -705,5 +761,10 @@
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;
+        private Panel panel1;
+        private StatusStrip statusStrip1;
+        private ToolStripDropDownButton toolStripDropDownButton1;
+        private ToolStripMenuItem crearConAumentoToolStripMenuItem;
+        private ToolStripMenuItem crearAPartirDelActualToolStripMenuItem;
     }
 }

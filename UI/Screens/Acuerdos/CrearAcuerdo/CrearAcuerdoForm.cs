@@ -1,6 +1,8 @@
 ﻿using BLL.Controllers;
 using DAL.Service.ApiLiquidacion.Features.RetencionesFijas.GetCatalogo;
 using DAL.Service.Liquidacion.Features.Contrato.Crear;
+using DAL.Service.Liquidacion.Features.Contrato.GetById;
+using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using LAUCHA.application.DTOs.ModalidadDTOs;
 using UI.Utils;
 
@@ -11,6 +13,7 @@ namespace UI.Screens.CrearContrato
         private readonly EmpleadoController _empleadoController;
         private readonly AcuerdoController _contratoController;
         private readonly RetencionController _retencionController;
+        private CatalogoRetencionesResponse _catalogoretenciones;
         public CrearAcuerdoForm(AcuerdoController contratoController,
                                 EmpleadoController empleadoController,
                                 RetencionController retencionController)
@@ -215,6 +218,8 @@ namespace UI.Screens.CrearContrato
         {
             var catalogo = await _retencionController.GetCatalogo();
 
+            _catalogoretenciones = catalogo;
+
             foreach (var r in catalogo.Items)
             {
                 ListViewItem item = new();
@@ -230,13 +235,50 @@ namespace UI.Screens.CrearContrato
             }
         }
 
-        private string GetRetencionValor(RetencionResponse r)
+        private string GetRetencionValor(CatalogoRetencionResponse r)
         {
             if (r.EsPorcentual)
                 return $"{r.Unidades:F2} %";
 
 
             return r.Unidades.ToString("C2");
+        }
+
+        public void CargarAcuerdo(string dni,string NombreCompleto,GetAcuerdoByIdResponse acu)
+        {
+            textBoxDni.Text = dni;
+            textBoxNombre.Text = NombreCompleto;
+
+            textBoxSueldo.Text = acu.Sueldo.ToString("F2");
+            textBoxMontoSueldoJornal.Text = acu.ValorBlanco.ToString("F2");
+
+            listAdicionales.Items.Clear();
+
+            foreach (var adi in acu.Adicionales)
+            {
+                AgregarAdicional(new AdicionalesRequest(adi.Concepto,
+                                                        adi.EsEnBlanco,
+                                                        adi.EsPorcentual,
+                                                        adi.Monto)
+                    );
+            }
+
+
+            //esto lo resolvio una IA
+            foreach (var retencion in acu.Retenciones)
+            {
+                foreach (ListViewItem item in listRetenciones.Items)
+                {
+                    // El código está en el SubItem[1]
+                    if (item.SubItems[1].Text == retencion.Codigo)
+                    {
+                        item.Checked = true;
+                        break;
+                    }
+                }
+            }
+
+
         }
 
         //solo debe usarse para representar a la modalidad aqui

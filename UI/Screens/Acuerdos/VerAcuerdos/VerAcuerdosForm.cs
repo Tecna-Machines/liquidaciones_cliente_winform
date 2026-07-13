@@ -2,6 +2,7 @@
 using DAL.Service.Liquidacion.Features.Contrato.GetAcuerdosEmpleado;
 using DAL.Service.Liquidacion.Features.Contrato.GetById;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
+using UI.Screens.CrearContrato;
 using UI.Utils;
 
 namespace UI.Screens.VerContratos
@@ -11,7 +12,11 @@ namespace UI.Screens.VerContratos
         private readonly EmpleadoController _empleadoController;
         private readonly AcuerdoController _acuerdoController;
         private GetAcuerdoByIdResponse? _acuerdoVigenteEmp;
-        public VerAcuerdosForm(EmpleadoController empleadoController, IServiceProvider sp, AcuerdoController acuerdoController)
+        private CrearAcuerdoForm _crearAcuerdoForm;
+        public VerAcuerdosForm(EmpleadoController empleadoController,
+                               IServiceProvider sp,
+                               AcuerdoController acuerdoController,
+                               CrearAcuerdoForm crearAcuerdoForm)
         {
             InitializeComponent();
 
@@ -20,6 +25,7 @@ namespace UI.Screens.VerContratos
             listaEmpleados.ServiceProvider = sp;
             listaEmpleados.EventEmpleadoSeleccionado += ClickEnEmpleado;
             _acuerdoController = acuerdoController;
+            _crearAcuerdoForm = crearAcuerdoForm;
         }
 
         private void ClickEnEmpleado(object? sender, GetEmpleadoResponse emp)
@@ -102,7 +108,7 @@ namespace UI.Screens.VerContratos
             if (_acuerdoVigenteEmp is not null)
             {
 
-                if(_acuerdoVigenteEmp.Codigo == acuerdo.Codigo)
+                if (_acuerdoVigenteEmp.Codigo == acuerdo.Codigo)
                 {
                     textCodigo = $"{acuerdo.Codigo} : VIGENTE";
                     DataLbCodAcuerdo.BackColor = Color.ForestGreen;
@@ -157,7 +163,7 @@ namespace UI.Screens.VerContratos
 
                 string textQuincena = "2da quincena";
 
-                if(ret.EsPrimeraQuincena)
+                if (ret.EsPrimeraQuincena)
                 {
                     textQuincena = "1ra quincena";
                 }
@@ -181,6 +187,26 @@ namespace UI.Screens.VerContratos
             DataLbTipoSueldo.Text = "";
             DataLbCodSueldo.Text = "";
             DataLbNotas.Text = "";
+        }
+
+        private void crearAPartirDelActualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CargarFormParaCrearNuevoAcuerdo();
+        }
+
+        private void CargarFormParaCrearNuevoAcuerdo()
+        {
+
+            _crearAcuerdoForm.CargarAcuerdo(DataLbDni.Text,
+                                           $"{DataLbNombre.Text} {DataLbApellido.Text}",
+                                           _acuerdoVigenteEmp ?? throw new ArgumentException("acuerdo.vacio"));
+
+            _crearAcuerdoForm.ShowDialog();
+        }
+
+        private void crearConAumentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
