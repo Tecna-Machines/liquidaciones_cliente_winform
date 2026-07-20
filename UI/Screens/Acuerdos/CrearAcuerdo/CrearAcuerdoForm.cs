@@ -45,7 +45,7 @@ namespace UI.Screens.CrearContrato
             var modalidades = _contratoController.ObtenerTiposDeSueldo();
 
             this.listaEmpComponent1.CargarLista(empleados);
-            this.CargarOpcionesModalidad(modalidades);
+            this.CargarOpcionesTipoSueldo(modalidades);
         }
 
         private void TextBoxMontoFijo_TextChanged(object sender, EventArgs e)
@@ -75,7 +75,7 @@ namespace UI.Screens.CrearContrato
             }
         }
 
-        private void CargarOpcionesModalidad(List<ModalidadDTO> modalidades)
+        private void CargarOpcionesTipoSueldo(List<ModalidadDTO> modalidades)
         {
             var menuOpciones = this.comboBoxModalidad;
             menuOpciones.Items.Clear();
@@ -184,8 +184,15 @@ namespace UI.Screens.CrearContrato
         {
             ListViewItem item = new(adicional.Concepto);
             item.SubItems.Add(adicional.Monto.ToString("C"));
-            item.SubItems.Add(adicional.EsEnBlanco.ToString());
-            item.SubItems.Add(adicional.EsPorcentual.ToString());
+
+            string labelInternoOficial = "INTERNO";
+
+            if(adicional.EsEnBlanco)
+            {
+                labelInternoOficial = "OFICIAL";
+            }
+
+            item.SubItems.Add(labelInternoOficial);
 
             item.Tag = adicional;
 
@@ -226,7 +233,7 @@ namespace UI.Screens.CrearContrato
                 item.SubItems.Add(r.Codigo);
                 item.SubItems.Add(r.Concepto);
                 item.SubItems.Add(GetRetencionValor(r));
-                item.SubItems.Add(r.EsPrimeraQuincena ? "1ra" : "2da");
+                item.SubItems.Add(r.EsPrimeraQuincena ? "1ra quincena" : "2da quincena");
 
                 item.Tag = r;
 

@@ -48,7 +48,6 @@
             columnDescripcion = new ColumnHeader();
             columnMonto = new ColumnHeader();
             columnBlanco = new ColumnHeader();
-            columnPorcentual = new ColumnHeader();
             label5 = new Label();
             btnConfirmarContrato = new Button();
             BtnAgregarAdicional = new Button();
@@ -80,7 +79,7 @@
             // 
             labelNombre.AutoSize = true;
             labelNombre.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            labelNombre.Location = new Point(6, 78);
+            labelNombre.Location = new Point(270, 34);
             labelNombre.Name = "labelNombre";
             labelNombre.Size = new Size(83, 21);
             labelNombre.TabIndex = 2;
@@ -95,7 +94,7 @@
             groupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox.Location = new Point(313, 71);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(475, 141);
+            groupBox.Size = new Size(842, 78);
             groupBox.TabIndex = 3;
             groupBox.TabStop = false;
             groupBox.Text = "DATOS EMPLEADO";
@@ -103,19 +102,19 @@
             // textBoxNombre
             // 
             textBoxNombre.BackColor = SystemColors.ButtonHighlight;
-            textBoxNombre.Location = new Point(95, 80);
+            textBoxNombre.Location = new Point(366, 33);
             textBoxNombre.Name = "textBoxNombre";
             textBoxNombre.ReadOnly = true;
-            textBoxNombre.Size = new Size(374, 23);
+            textBoxNombre.Size = new Size(456, 23);
             textBoxNombre.TabIndex = 4;
             // 
             // textBoxDni
             // 
             textBoxDni.BackColor = SystemColors.ButtonHighlight;
-            textBoxDni.Location = new Point(74, 34);
+            textBoxDni.Location = new Point(72, 33);
             textBoxDni.Name = "textBoxDni";
             textBoxDni.ReadOnly = true;
-            textBoxDni.Size = new Size(395, 23);
+            textBoxDni.Size = new Size(185, 23);
             textBoxDni.TabIndex = 3;
             // 
             // groupBox1
@@ -129,9 +128,9 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox1.Location = new Point(313, 237);
+            groupBox1.Location = new Point(313, 172);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(475, 143);
+            groupBox1.Size = new Size(842, 123);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "DATOS ACUERDO";
@@ -140,29 +139,31 @@
             // 
             comboBoxModalidad.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxModalidad.FormattingEnabled = true;
-            comboBoxModalidad.Location = new Point(136, 76);
+            comboBoxModalidad.Location = new Point(431, 40);
             comboBoxModalidad.Name = "comboBoxModalidad";
             comboBoxModalidad.Size = new Size(319, 23);
             comboBoxModalidad.TabIndex = 7;
             // 
             // textBoxMontoSueldoJornal
             // 
-            textBoxMontoSueldoJornal.Location = new Point(136, 107);
+            textBoxMontoSueldoJornal.Location = new Point(149, 81);
             textBoxMontoSueldoJornal.Name = "textBoxMontoSueldoJornal";
-            textBoxMontoSueldoJornal.Size = new Size(115, 23);
+            textBoxMontoSueldoJornal.Size = new Size(158, 23);
             textBoxMontoSueldoJornal.TabIndex = 6;
             textBoxMontoSueldoJornal.TextChanged += TextBoxMontoFijo_TextChanged;
             // 
             // textBoxValorHora
             // 
-            textBoxValorHora.Location = new Point(358, 107);
+            textBoxValorHora.ForeColor = Color.ForestGreen;
+            textBoxValorHora.Location = new Point(431, 81);
             textBoxValorHora.Name = "textBoxValorHora";
             textBoxValorHora.Size = new Size(97, 23);
             textBoxValorHora.TabIndex = 5;
+            textBoxValorHora.Text = "0";
             // 
             // textBoxSueldo
             // 
-            textBoxSueldo.Location = new Point(136, 40);
+            textBoxSueldo.Location = new Point(149, 40);
             textBoxSueldo.Name = "textBoxSueldo";
             textBoxSueldo.Size = new Size(158, 23);
             textBoxSueldo.TabIndex = 4;
@@ -171,7 +172,7 @@
             // textBoxValorBlanco
             // 
             textBoxValorBlanco.AutoSize = true;
-            textBoxValorBlanco.Location = new Point(15, 111);
+            textBoxValorBlanco.Location = new Point(15, 84);
             textBoxValorBlanco.Name = "textBoxValorBlanco";
             textBoxValorBlanco.Size = new Size(115, 15);
             textBoxValorBlanco.TabIndex = 3;
@@ -180,7 +181,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(15, 79);
+            label3.Location = new Point(326, 44);
             label3.Name = "label3";
             label3.Size = new Size(86, 15);
             label3.TabIndex = 2;
@@ -189,7 +190,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(267, 111);
+            label2.Location = new Point(327, 85);
             label2.Name = "label2";
             label2.Size = new Size(85, 15);
             label2.TabIndex = 1;
@@ -208,20 +209,20 @@
             // 
             groupBoxAdicionales.Controls.Add(listAdicionales);
             groupBoxAdicionales.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBoxAdicionales.Location = new Point(313, 395);
+            groupBoxAdicionales.Location = new Point(313, 508);
             groupBoxAdicionales.Name = "groupBoxAdicionales";
-            groupBoxAdicionales.Size = new Size(475, 172);
+            groupBoxAdicionales.Size = new Size(551, 172);
             groupBoxAdicionales.TabIndex = 6;
             groupBoxAdicionales.TabStop = false;
             groupBoxAdicionales.Text = "ADICIONALES";
             // 
             // listAdicionales
             // 
-            listAdicionales.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnMonto, columnBlanco, columnPorcentual });
+            listAdicionales.Columns.AddRange(new ColumnHeader[] { columnDescripcion, columnMonto, columnBlanco });
             listAdicionales.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             listAdicionales.Location = new Point(15, 22);
             listAdicionales.Name = "listAdicionales";
-            listAdicionales.Size = new Size(454, 132);
+            listAdicionales.Size = new Size(513, 127);
             listAdicionales.TabIndex = 0;
             listAdicionales.UseCompatibleStateImageBehavior = false;
             listAdicionales.View = View.Details;
@@ -234,18 +235,13 @@
             // 
             // columnMonto
             // 
-            columnMonto.Text = "MONTO";
-            columnMonto.Width = 80;
+            columnMonto.Text = "MONTO / PORCENTAJE";
+            columnMonto.Width = 150;
             // 
             // columnBlanco
             // 
-            columnBlanco.Text = "ES OFICIAL ?";
-            columnBlanco.Width = 80;
-            // 
-            // columnPorcentual
-            // 
-            columnPorcentual.Text = "PORCENTUAL";
-            columnPorcentual.Width = 90;
+            columnBlanco.Text = "INTERNO / OFICIAL";
+            columnBlanco.Width = 150;
             // 
             // label5
             // 
@@ -260,20 +256,22 @@
             // btnConfirmarContrato
             // 
             btnConfirmarContrato.BackColor = Color.PaleGreen;
+            btnConfirmarContrato.Cursor = Cursors.Hand;
             btnConfirmarContrato.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnConfirmarContrato.Location = new Point(514, 590);
+            btnConfirmarContrato.Location = new Point(885, 567);
             btnConfirmarContrato.Name = "btnConfirmarContrato";
             btnConfirmarContrato.Size = new Size(178, 43);
             btnConfirmarContrato.TabIndex = 8;
-            btnConfirmarContrato.Text = "CONTINUAR";
+            btnConfirmarContrato.Text = "CARGAR ACUERDO";
             btnConfirmarContrato.UseVisualStyleBackColor = false;
             btnConfirmarContrato.Click += BtnConfirmarContrato_Click;
             // 
             // BtnAgregarAdicional
             // 
             BtnAgregarAdicional.BackColor = Color.SkyBlue;
+            BtnAgregarAdicional.Cursor = Cursors.Hand;
             BtnAgregarAdicional.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            BtnAgregarAdicional.Location = new Point(313, 590);
+            BtnAgregarAdicional.Location = new Point(885, 518);
             BtnAgregarAdicional.Name = "BtnAgregarAdicional";
             BtnAgregarAdicional.Size = new Size(178, 43);
             BtnAgregarAdicional.TabIndex = 9;
@@ -293,12 +291,12 @@
             // 
             groupBoxRetenciones.Controls.Add(listRetenciones);
             groupBoxRetenciones.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBoxRetenciones.Location = new Point(806, 82);
+            groupBoxRetenciones.Location = new Point(313, 310);
             groupBoxRetenciones.Name = "groupBoxRetenciones";
-            groupBoxRetenciones.Size = new Size(361, 485);
+            groupBoxRetenciones.Size = new Size(842, 183);
             groupBoxRetenciones.TabIndex = 7;
             groupBoxRetenciones.TabStop = false;
-            groupBoxRetenciones.Text = "RETENCIONES";
+            groupBoxRetenciones.Text = "RETENCIONES QUE SE APLICARAN";
             // 
             // listRetenciones
             // 
@@ -307,7 +305,7 @@
             listRetenciones.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             listRetenciones.Location = new Point(15, 22);
             listRetenciones.Name = "listRetenciones";
-            listRetenciones.Size = new Size(340, 445);
+            listRetenciones.Size = new Size(807, 143);
             listRetenciones.TabIndex = 0;
             listRetenciones.UseCompatibleStateImageBehavior = false;
             listRetenciones.View = View.Details;
@@ -319,29 +317,29 @@
             // 
             // columnCodigo
             // 
-            columnCodigo.Text = "Codigo";
-            columnCodigo.Width = 65;
+            columnCodigo.Text = "CODIGO";
+            columnCodigo.Width = 70;
             // 
             // columnConcepto
             // 
-            columnConcepto.Text = "Concepto";
-            columnConcepto.Width = 80;
+            columnConcepto.Text = "CONCEPTO";
+            columnConcepto.Width = 200;
             // 
             // columnValor
             // 
-            columnValor.Text = "Valor";
-            columnValor.Width = 80;
+            columnValor.Text = "MONTO / PORCENTAJE";
+            columnValor.Width = 150;
             // 
             // columnQuincena
             // 
-            columnQuincena.Text = "Quincena";
-            columnQuincena.Width = 65;
+            columnQuincena.Text = "QUINCENA EN CUAL DESCONTAR";
+            columnQuincena.Width = 200;
             // 
             // CrearAcuerdoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1179, 706);
+            ClientSize = new Size(1179, 692);
             Controls.Add(groupBoxRetenciones);
             Controls.Add(listaEmpComponent1);
             Controls.Add(BtnAgregarAdicional);
@@ -391,7 +389,6 @@
         private ColumnHeader columnDescripcion;
         private ColumnHeader columnMonto;
         private ColumnHeader columnBlanco;
-        private ColumnHeader columnPorcentual;
         private GroupBox groupBoxRetenciones;
         private ListView listRetenciones;
         private ColumnHeader columnSeleccionado;
