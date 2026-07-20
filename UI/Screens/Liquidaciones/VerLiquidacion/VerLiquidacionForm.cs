@@ -131,7 +131,7 @@ namespace UI.Screens.VerLiquidacion
 
         private void BtnPagos_Click(object sender, EventArgs e)
         {
-            _formPagos.SetLiquidacion(textBoxCodigoLiq.Text);
+            _formPagos.SetIdLiquidacion(textBoxCodigoLiq.Text);
             _formPagos.SetFormPadre(this);
             _formPagos.ShowDialog();
         }

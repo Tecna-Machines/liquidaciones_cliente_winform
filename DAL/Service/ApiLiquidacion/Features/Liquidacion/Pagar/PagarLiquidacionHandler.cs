@@ -27,7 +27,7 @@ namespace DAL.Service.ApiLiquidacion.Features.Liquidacion.Pagar
                 return await GetJsonValue<PagoCreadoResponse>.GetBodyValue(response);
             }
 
-            throw new ArgumentException("erro.pago");
+                throw new ArgumentException("erro.pago");
         }
     }
 }

@@ -73,6 +73,12 @@
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
+            BtnCargarPago = new Button();
+            label5 = new Label();
+            lvPagos = new ListView();
+            columnMonto = new ColumnHeader();
+            columCuenta = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
             panelDatos.SuspendLayout();
             groupBoxMontosPagar.SuspendLayout();
             SuspendLayout();
@@ -102,19 +108,19 @@
             // 
             label4.BackColor = SystemColors.ActiveCaption;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label4.Location = new Point(224, 35);
+            label4.Location = new Point(324, 35);
             label4.Name = "label4";
             label4.Padding = new Padding(3);
             label4.Size = new Size(579, 24);
             label4.TabIndex = 22;
-            label4.Text = "EMPLEADO";
+            label4.Text = "DNI / APELLIDO Y NOMBRE";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBoxEmpleado
             // 
             textBoxEmpleado.BackColor = SystemColors.ButtonHighlight;
             textBoxEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            textBoxEmpleado.Location = new Point(224, 62);
+            textBoxEmpleado.Location = new Point(324, 62);
             textBoxEmpleado.Name = "textBoxEmpleado";
             textBoxEmpleado.ReadOnly = true;
             textBoxEmpleado.Size = new Size(579, 29);
@@ -129,9 +135,9 @@
             label3.Location = new Point(18, 35);
             label3.Name = "label3";
             label3.Padding = new Padding(3);
-            label3.Size = new Size(181, 24);
+            label3.Size = new Size(290, 24);
             label3.TabIndex = 20;
-            label3.Text = "PERIODO";
+            label3.Text = "Periodo abonado";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBoxPeriodo
@@ -141,9 +147,9 @@
             textBoxPeriodo.Location = new Point(18, 62);
             textBoxPeriodo.Name = "textBoxPeriodo";
             textBoxPeriodo.ReadOnly = true;
-            textBoxPeriodo.Size = new Size(181, 29);
+            textBoxPeriodo.Size = new Size(290, 29);
             textBoxPeriodo.TabIndex = 0;
-            textBoxPeriodo.Text = "1ra Diciembre 1990";
+            textBoxPeriodo.Text = "1ra Quincena - Diciembre 1990";
             textBoxPeriodo.TextAlign = HorizontalAlignment.Center;
             // 
             // labelRemuneraciones
@@ -265,8 +271,7 @@
             tablaAcuerdo.GridLines = true;
             tablaAcuerdo.Location = new Point(997, 199);
             tablaAcuerdo.Name = "tablaAcuerdo";
-            tablaAcuerdo.Scrollable = false;
-            tablaAcuerdo.Size = new Size(318, 476);
+            tablaAcuerdo.Size = new Size(318, 256);
             tablaAcuerdo.TabIndex = 9;
             tablaAcuerdo.UseCompatibleStateImageBehavior = false;
             tablaAcuerdo.View = View.Details;
@@ -283,9 +288,9 @@
             // 
             // BtnRecalcular
             // 
-            BtnRecalcular.BackColor = Color.MediumSeaGreen;
+            BtnRecalcular.BackColor = SystemColors.Info;
             BtnRecalcular.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            BtnRecalcular.Location = new Point(714, 115);
+            BtnRecalcular.Location = new Point(632, 115);
             BtnRecalcular.Name = "BtnRecalcular";
             BtnRecalcular.Size = new Size(109, 41);
             BtnRecalcular.TabIndex = 10;
@@ -299,7 +304,7 @@
             BtnSellar.BackgroundImageLayout = ImageLayout.None;
             BtnSellar.Cursor = Cursors.Hand;
             BtnSellar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            BtnSellar.Location = new Point(875, 115);
+            BtnSellar.Location = new Point(872, 115);
             BtnSellar.Name = "BtnSellar";
             BtnSellar.Size = new Size(109, 41);
             BtnSellar.TabIndex = 11;
@@ -323,7 +328,7 @@
             // 
             BtnItem.BackColor = SystemColors.GradientActiveCaption;
             BtnItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            BtnItem.Location = new Point(515, 115);
+            BtnItem.Location = new Point(474, 115);
             BtnItem.Name = "BtnItem";
             BtnItem.Size = new Size(147, 41);
             BtnItem.TabIndex = 18;
@@ -469,11 +474,63 @@
             // 
             columnHeader5.Width = 100;
             // 
+            // BtnCargarPago
+            // 
+            BtnCargarPago.BackColor = Color.PaleGreen;
+            BtnCargarPago.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            BtnCargarPago.Location = new Point(752, 115);
+            BtnCargarPago.Name = "BtnCargarPago";
+            BtnCargarPago.Size = new Size(109, 41);
+            BtnCargarPago.TabIndex = 33;
+            BtnCargarPago.Text = "CARGAR PAGO";
+            BtnCargarPago.UseVisualStyleBackColor = false;
+            BtnCargarPago.Click += BtnCargarPago_Click;
+            // 
+            // label5
+            // 
+            label5.BackColor = SystemColors.GradientActiveCaption;
+            label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label5.Location = new Point(997, 460);
+            label5.Name = "label5";
+            label5.Padding = new Padding(3);
+            label5.Size = new Size(318, 24);
+            label5.TabIndex = 34;
+            label5.Text = "Pagos";
+            // 
+            // lvPagos
+            // 
+            lvPagos.Columns.AddRange(new ColumnHeader[] { columnMonto, columCuenta, columnHeader6 });
+            lvPagos.Location = new Point(997, 489);
+            lvPagos.Name = "lvPagos";
+            lvPagos.Scrollable = false;
+            lvPagos.Size = new Size(318, 186);
+            lvPagos.TabIndex = 35;
+            lvPagos.UseCompatibleStateImageBehavior = false;
+            lvPagos.View = View.Details;
+            // 
+            // columnMonto
+            // 
+            columnMonto.Text = "Monto";
+            columnMonto.Width = 100;
+            // 
+            // columCuenta
+            // 
+            columCuenta.Text = "Fecha";
+            columCuenta.Width = 110;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Pago Contab";
+            columnHeader6.Width = 90;
+            // 
             // CrearLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1335, 821);
+            Controls.Add(lvPagos);
+            Controls.Add(label5);
+            Controls.Add(BtnCargarPago);
             Controls.Add(lvTotalesInterno);
             Controls.Add(lvTotales);
             Controls.Add(groupBoxMontosPagar);
@@ -550,5 +607,11 @@
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
+        private Button BtnCargarPago;
+        private Label label5;
+        private ListView lvPagos;
+        private ColumnHeader columnMonto;
+        private ColumnHeader columCuenta;
+        private ColumnHeader columnHeader6;
     }
 }

@@ -5,7 +5,9 @@ using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.Asistencias.Marcas;
+using UI.Screens.Creditos.CrearPlanPago;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
+using UI.Screens.Liquidaciones.VerLiquidacion;
 using UI.Screens.Marcas;
 using UI.Utils;
 
@@ -19,6 +21,8 @@ namespace UI.Screens.HacerLiquidacion
         private readonly AnularItemForm _formAnularItem;
         private readonly EmpleadoController _empleadoController;
         private LiquidacionController _liquidacionController;
+
+        private CargarPagosForm _crearPagoForm;
 
 
         private int _quincena;
@@ -34,7 +38,8 @@ namespace UI.Screens.HacerLiquidacion
                                     LiquidacionController liquidacionController,
                                     CrearItemForm formItem,
                                     AnularItemForm formAnularItem,
-                                    IServiceProvider sp)
+                                    IServiceProvider sp,
+                                    CargarPagosForm crearPagoForm)
         {
             InitializeComponent();
 
@@ -50,6 +55,7 @@ namespace UI.Screens.HacerLiquidacion
             _formCrearItem = formItem;
             _formAnularItem = formAnularItem;
             _sp = sp;
+            _crearPagoForm = crearPagoForm;
         }
 
 
@@ -74,7 +80,7 @@ namespace UI.Screens.HacerLiquidacion
                 _esPrimeraQuincena = false;
             }
 
-            textBoxPeriodo.Text = $"{quincenaStr} {mesStr} {anio}";
+            textBoxPeriodo.Text = $"{quincenaStr} Quincena - {mesStr} {anio}";
         }
 
         private bool EsModalidadQuincenal(int codigoModalidad)
@@ -166,6 +172,7 @@ namespace UI.Screens.HacerLiquidacion
             TablaAcuerdoLiquidacionForm.SetTablaAcuerdo(liquidacion, tablaAcuerdo);
             TablaDetalleLiquidacionForm.SetTablaDetalleEnBlanco(liquidacion, tablaDetalleEnBlanco);
             TablaDetalleLiquidacionForm.SetTablaDetalleEnNegro(liquidacion, tablaDetalleEnNegro);
+            TablaPagosCrearLiquidacionForm.SetTablaPagos(liquidacion, lvPagos);
 
             valorPagarBlanco.Text = liquidacion.Montos.EnBlanco.ToString("C");
             valorPagarNegro.Text = liquidacion.Montos.EnNegro.ToString("C");
@@ -211,6 +218,7 @@ namespace UI.Screens.HacerLiquidacion
             ListUtils.LimpiarElementos(this.tablaDetalleEnBlanco);
             ListUtils.LimpiarElementos(this.tablaDetalleEnNegro);
             ListUtils.LimpiarElementos(this.tablaAcuerdo);
+            ListUtils.LimpiarElementos(this.lvPagos);
         }
 
         //TODO: Ojo! con esto ,no deben haber async en void
@@ -280,6 +288,17 @@ namespace UI.Screens.HacerLiquidacion
 
             _formAnularItem.SetItem(_codigoLiquidacion, item);
             _formAnularItem.ShowDialog();
+        }
+
+        private void BtnCargarPago_Click(object sender, EventArgs e)
+        {
+            if(_codigoLiquidacion is null)
+            {
+                return;
+            }
+
+            _crearPagoForm.SetIdLiquidacion(_codigoLiquidacion);
+            _crearPagoForm.ShowDialog();
         }
     }
 }

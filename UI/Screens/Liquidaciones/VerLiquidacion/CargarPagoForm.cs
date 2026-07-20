@@ -1,6 +1,7 @@
 ﻿using BLL.Controllers;
 using DAL.Service.ApiLiquidacion.Features.CuentasContables.GetCuentas;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.Pagar;
+using System.Configuration;
 using UI.Screens.VerLiquidacion;
 
 namespace UI.Screens.Liquidaciones.VerLiquidacion
@@ -18,13 +19,29 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
         {
             InitializeComponent();
             _liquidacionController = liquidacionController;
+
+            CargarDescripcionesPago();
         }
 
+        private void CargarDescripcionesPago()
+        {
+            string motivos = ConfigurationManager.AppSettings["descripcion_pago_liquidacion"] 
+                              ?? throw new Exception("fallaron los conceptos de items");
+
+            if (string.IsNullOrWhiteSpace(motivos))
+                return;
+
+            comboBoxDescripcion.Items.AddRange(
+                motivos.Split(',')
+                       .Select(x => x.Trim())
+                       .ToArray()
+            );
+        }
         public void SetFormPadre(VerLiquidacionForm padre)
         {
             _formPadreLiquidacion = padre;
         }
-        public void SetLiquidacion(string liquidacionId)
+        public void SetIdLiquidacion(string liquidacionId)
         {
             _liquidacionId = liquidacionId;
         }
@@ -57,6 +74,8 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
 
         private async void BtnPagar_Click(object sender, EventArgs e)
         {
+            progressBar.Visible = true;
+
             try
             {
                 var cuenta = (CuentaContableResponse)comboBoxCuentasContables.SelectedItem;
@@ -68,7 +87,7 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
 
                 decimal monto = decimal.Parse(textBoxMonto.Text);
                 int modo = radioButtonTransferencia.Checked ? 1 : 0;
-                string descripcion = textBoxDescripcion.Text;
+                string descripcion = comboBoxDescripcion.Text;
 
                 var crearPago = new CrearPagoRequest(
                     liquidacionId,
@@ -80,12 +99,16 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
 
                 await _liquidacionController.PagarLiquidacion(crearPago);
 
+                progressBar.Visible = false;
                 MessageBox.Show("Pago registrado correctamente");
 
                 await RefrescarFormularioLiquidacion(liquidacionId);
+
+                this.Close();
             }
             catch (Exception ex)
             {
+                progressBar.Visible = false;
                 MessageBox.Show($"Error: {ex.Message}");
             }
         }
