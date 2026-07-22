@@ -7,7 +7,7 @@ $ProjectFile = Join-Path $ProjectDir "UI.csproj"
 $InstallerDir = Join-Path $RootDir "installer"
 $IssFile = Join-Path $InstallerDir "AkerLQ-installer.iss"
 
-$SmbDestino = "\\server\Sistemas\SOFTWARE\Gaby\Liquidacion\Cliente Escritorio"
+$SmbDestino = "\\192.168.0.82\Sistemas\SOFTWARE\Gaby\Liquidacion\Cliente Escritorio"
 
 $PublishDir = Join-Path $ProjectDir "bin\Release\publish"
 $TempOutput = Join-Path $env:TEMP "AkerLQ-Build-Installer"

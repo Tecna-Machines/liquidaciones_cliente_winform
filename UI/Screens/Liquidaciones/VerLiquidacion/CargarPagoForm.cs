@@ -100,6 +100,7 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
                 await _liquidacionController.PagarLiquidacion(crearPago);
 
                 progressBar.Visible = false;
+                progressBar.Style = ProgressBarStyle.Marquee;
                 MessageBox.Show("Pago registrado correctamente");
 
                 await RefrescarFormularioLiquidacion(liquidacionId);
