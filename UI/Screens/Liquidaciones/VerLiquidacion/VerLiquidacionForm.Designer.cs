@@ -78,12 +78,6 @@
             label9 = new Label();
             labelNetoOficial = new Label();
             labelNetoInterno = new Label();
-            label10 = new Label();
-            labelPagado = new Label();
-            label11 = new Label();
-            labelPercibir = new Label();
-            label13 = new Label();
-            labelPorPagar = new Label();
             lvTotalesOficial = new ListView();
             Totales = new ColumnHeader();
             remuneraciones = new ColumnHeader();
@@ -337,7 +331,7 @@
             tablaAcuerdo.Location = new Point(709, 157);
             tablaAcuerdo.Name = "tablaAcuerdo";
             tablaAcuerdo.Scrollable = false;
-            tablaAcuerdo.Size = new Size(318, 422);
+            tablaAcuerdo.Size = new Size(318, 487);
             tablaAcuerdo.TabIndex = 48;
             tablaAcuerdo.UseCompatibleStateImageBehavior = false;
             tablaAcuerdo.View = View.Details;
@@ -513,69 +507,6 @@
             labelNetoInterno.TabIndex = 54;
             labelNetoInterno.Text = "$ 1.000.000,00";
             // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            label10.Location = new Point(739, 626);
-            label10.Name = "label10";
-            label10.Size = new Size(64, 18);
-            label10.TabIndex = 55;
-            label10.Text = "PAGADO:";
-            // 
-            // labelPagado
-            // 
-            labelPagado.AutoSize = true;
-            labelPagado.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            labelPagado.ForeColor = Color.SeaGreen;
-            labelPagado.Location = new Point(809, 626);
-            labelPagado.Name = "labelPagado";
-            labelPagado.Size = new Size(120, 18);
-            labelPagado.TabIndex = 56;
-            labelPagado.Text = "$ 1.000.000,00";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            label11.Location = new Point(707, 599);
-            label11.Name = "label11";
-            label11.Size = new Size(96, 18);
-            label11.TabIndex = 57;
-            label11.Text = "A PERCIBIR:";
-            // 
-            // labelPercibir
-            // 
-            labelPercibir.AutoSize = true;
-            labelPercibir.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            labelPercibir.ForeColor = Color.SteelBlue;
-            labelPercibir.Location = new Point(809, 599);
-            labelPercibir.Name = "labelPercibir";
-            labelPercibir.Size = new Size(120, 18);
-            labelPercibir.TabIndex = 58;
-            labelPercibir.Text = "$ 1.000.000,00";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            label13.Location = new Point(715, 651);
-            label13.Name = "label13";
-            label13.Size = new Size(88, 18);
-            label13.TabIndex = 59;
-            label13.Text = "POR PAGAR:";
-            // 
-            // labelPorPagar
-            // 
-            labelPorPagar.AutoSize = true;
-            labelPorPagar.Font = new Font("Consolas", 11F, FontStyle.Bold);
-            labelPorPagar.ForeColor = Color.Crimson;
-            labelPorPagar.Location = new Point(809, 651);
-            labelPorPagar.Name = "labelPorPagar";
-            labelPorPagar.Size = new Size(120, 18);
-            labelPorPagar.TabIndex = 60;
-            labelPorPagar.Text = "$ 1.000.000,00";
-            // 
             // lvTotalesOficial
             // 
             lvTotalesOficial.BorderStyle = BorderStyle.FixedSingle;
@@ -665,12 +596,6 @@
             ClientSize = new Size(1050, 892);
             Controls.Add(lvTotalesInterno);
             Controls.Add(lvTotalesOficial);
-            Controls.Add(labelPorPagar);
-            Controls.Add(label13);
-            Controls.Add(labelPercibir);
-            Controls.Add(label11);
-            Controls.Add(labelPagado);
-            Controls.Add(label10);
             Controls.Add(labelNetoInterno);
             Controls.Add(labelNetoOficial);
             Controls.Add(label9);
@@ -762,12 +687,6 @@
         private Label label9;
         private Label labelNetoOficial;
         private Label labelNetoInterno;
-        private Label label10;
-        private Label labelPagado;
-        private Label label11;
-        private Label labelPercibir;
-        private Label label13;
-        private Label labelPorPagar;
         private ListView lvTotalesOficial;
         private ColumnHeader Totales;
         private ColumnHeader remuneraciones;

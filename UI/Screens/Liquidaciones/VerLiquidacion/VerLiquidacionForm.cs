@@ -41,9 +41,7 @@ namespace UI.Screens.VerLiquidacion
 
             labelNetoInterno.Text = liq.Montos.EnNegro.ToString("C");
             labelNetoOficial.Text = liq.Montos.EnBlanco.ToString("C");
-            labelPercibir.Text = montoPercibir.ToString("C");
-            labelPorPagar.Text = montoPorPagar.ToString("C");
-            labelPagado.Text = montoPagado.ToString("C");
+
 
             SetTotalesOficial(liq);
             SetTotalesInternol(liq);
