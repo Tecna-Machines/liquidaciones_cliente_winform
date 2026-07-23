@@ -94,7 +94,7 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
                 int modo = radioButtonTransferencia.Checked ? 1 : 0;
                 string descripcion = comboBoxDescripcion.Text;
 
-                bool esPagoInterno = radioButtonInterno.Checked;
+                bool esPagoInterno = radioButtonInterno.Checked ? true : false;
 
                 var crearPago = new CrearPagoRequest(
                     liquidacionId,

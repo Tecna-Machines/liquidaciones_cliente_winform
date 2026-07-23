@@ -367,12 +367,13 @@
             BtnDarAdelanto.TabIndex = 40;
             BtnDarAdelanto.Text = "PAGAR ADELANTO";
             BtnDarAdelanto.UseVisualStyleBackColor = true;
+            BtnDarAdelanto.Click += BtnDarAdelanto_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.Highlight;
-            label2.Location = new Point(16, 74);
+            label2.Location = new Point(24, 74);
             label2.Name = "label2";
             label2.Size = new Size(152, 17);
             label2.TabIndex = 39;

@@ -1,5 +1,6 @@
 ﻿using BLL.Controllers;
 using BLL.Enums;
+using DAL.Service.ApiLiquidacion.Features.Liquidacion.AgregarItem;
 using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetById;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
@@ -182,7 +183,7 @@ namespace UI.Screens.HacerLiquidacion
             decimal montoInternoFaltaPagar = _liquidacionResponse.MontosPago.NetoInterno - _liquidacionResponse.MontosPago.PagadoInterno;
 
             LabelMontoOficialFaltaPagar.Text = montoOficialFaltaPagar.ToString("C");
-            LabelMontoInternoFaltaPagar.Text = liquidacion.MontosPago.NetoInterno.ToString("C");
+            LabelMontoInternoFaltaPagar.Text = montoInternoFaltaPagar.ToString("C");
 
 
             // Footer de totales oficial
@@ -332,6 +333,155 @@ namespace UI.Screens.HacerLiquidacion
             _crearPagoForm.SetIdLiquidacion(_codigoLiquidacion ?? throw new NullReferenceException("liq.id"));
             _crearPagoForm.SetMonto(netoInternoFaltante);
             _crearPagoForm.ShowDialog();
+        }
+
+        private async void BtnDarAdelanto_Click(object sender, EventArgs e)
+        {
+            if (_codigoLiquidacion is null)
+            {
+                MessageBox.Show(
+                    "Primero debe crear o seleccionar una liquidación.",
+                    "Liquidación no seleccionada",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            using var formMonto = new Form
+            {
+                Text = "Dar adelanto",
+                StartPosition = FormStartPosition.CenterParent,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                MaximizeBox = false,
+                MinimizeBox = false,
+                ShowInTaskbar = false,
+                ClientSize = new Size(360, 190)
+            };
+
+            var labelTitulo = new Label
+            {
+                Text = "Ingrese el monto del adelanto:",
+                AutoSize = true,
+                Location = new Point(20, 20)
+            };
+
+            var inputMonto = new NumericUpDown
+            {
+                Location = new Point(20, 50),
+                Size = new Size(315, 30),
+                DecimalPlaces = 2,
+                ThousandsSeparator = true,
+                Minimum = 0.01m,
+                Maximum = 999_999_999.99m,
+                Increment = 1000m,
+                TextAlign = HorizontalAlignment.Right,
+                Font = new Font("Segoe UI", 11F)
+            };
+
+            var labelMontoFormateado = new Label
+            {
+                Text = 0m.ToString("C"),
+                AutoSize = false,
+                Location = new Point(20, 88),
+                Size = new Size(315, 28),
+                TextAlign = ContentAlignment.MiddleRight,
+                Font = new Font("Segoe UI", 12F, FontStyle.Bold)
+            };
+
+            inputMonto.ValueChanged += (_, _) =>
+            {
+                labelMontoFormateado.Text = inputMonto.Value.ToString("C");
+            };
+
+            var btnCancelar = new Button
+            {
+                Text = "Cancelar",
+                DialogResult = DialogResult.Cancel,
+                Location = new Point(155, 135),
+                Size = new Size(85, 32)
+            };
+
+            var btnAceptar = new Button
+            {
+                Text = "Aceptar",
+                DialogResult = DialogResult.OK,
+                Location = new Point(250, 135),
+                Size = new Size(85, 32)
+            };
+
+            formMonto.Controls.Add(labelTitulo);
+            formMonto.Controls.Add(inputMonto);
+            formMonto.Controls.Add(labelMontoFormateado);
+            formMonto.Controls.Add(btnCancelar);
+            formMonto.Controls.Add(btnAceptar);
+
+            formMonto.AcceptButton = btnAceptar;
+            formMonto.CancelButton = btnCancelar;
+
+            formMonto.Shown += (_, _) =>
+            {
+                inputMonto.Focus();
+                inputMonto.Select(0, inputMonto.Text.Length);
+            };
+
+            if (formMonto.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            decimal montoPagar = inputMonto.Value;
+
+            if (montoPagar <= 0)
+            {
+                MessageBox.Show(
+                    "El monto del adelanto debe ser mayor que cero.",
+                    "Monto inválido",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            try
+            {
+                const int descuentoInterno = 1;
+
+                await _liquidacionController.AgregarItem(
+                    _codigoLiquidacion,
+                    new CrearItemRequest(
+                        Concepto: "Adelanto deposito",
+                        Monto: montoPagar,
+                        EsEnBlanco: false,
+                        Tipo: descuentoInterno
+                    )
+                );
+
+                // Volvemos a consultar la liquidación para mostrar el nuevo ítem.
+                var liquidacionActualizada =
+                    await _liquidacionController.GetById(_codigoLiquidacion);
+
+                if (liquidacionActualizada is not null)
+                    MostrarLiquidacionEnPantalla(liquidacionActualizada);
+
+                // Abrimos inmediatamente el formulario para registrar el pago.
+                _crearPagoForm.SetIdLiquidacion(_codigoLiquidacion);
+                _crearPagoForm.SetMonto(montoPagar);
+                _crearPagoForm.ShowDialog(this);
+
+                // Refrescamos nuevamente para mostrar el pago cargado.
+                liquidacionActualizada =
+                    await _liquidacionController.GetById(_codigoLiquidacion);
+
+                if (liquidacionActualizada is not null)
+                    MostrarLiquidacionEnPantalla(liquidacionActualizada);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"No se pudo registrar el adelanto.\n\n{ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
