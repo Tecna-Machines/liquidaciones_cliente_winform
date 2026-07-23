@@ -5,7 +5,6 @@ using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using Microsoft.Extensions.DependencyInjection;
 using UI.Screens.Asistencias.Marcas;
-using UI.Screens.Creditos.CrearPlanPago;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Liquidaciones.VerLiquidacion;
 using UI.Screens.Marcas;
@@ -34,6 +33,8 @@ namespace UI.Screens.HacerLiquidacion
         private string? _codigoLiquidacion;
 
         private List<GetEmpleadoResponse> _empleados;
+
+        private GetLiquidacionByIdResponse? _liquidacionResponse;
         public CrearLiquidacionForm(EmpleadoController empleadoController,
                                     LiquidacionController liquidacionController,
                                     CrearItemForm formItem,
@@ -164,6 +165,8 @@ namespace UI.Screens.HacerLiquidacion
 
         private void MostrarLiquidacionEnPantalla(GetLiquidacionByIdResponse liquidacion)
         {
+            _liquidacionResponse = liquidacion;
+
             RemoverLiquidacionDePantalla();
 
             _codigoLiquidacion = liquidacion.Codigo;
@@ -174,8 +177,12 @@ namespace UI.Screens.HacerLiquidacion
             TablaDetalleLiquidacionForm.SetTablaDetalleEnNegro(liquidacion, tablaDetalleEnNegro);
             TablaPagosCrearLiquidacionForm.SetTablaPagos(liquidacion, lvPagos);
 
-            valorPagarBlanco.Text = liquidacion.Montos.EnBlanco.ToString("C");
-            valorPagarNegro.Text = liquidacion.Montos.EnNegro.ToString("C");
+
+            decimal montoOficialFaltaPagar = _liquidacionResponse.MontosPago.NetoOficial - _liquidacionResponse.MontosPago.PagadoOficial;
+            decimal montoInternoFaltaPagar = _liquidacionResponse.MontosPago.NetoInterno - _liquidacionResponse.MontosPago.PagadoInterno;
+
+            LabelMontoOficialFaltaPagar.Text = montoOficialFaltaPagar.ToString("C");
+            LabelMontoInternoFaltaPagar.Text = liquidacion.MontosPago.NetoInterno.ToString("C");
 
 
             // Footer de totales oficial
@@ -292,12 +299,38 @@ namespace UI.Screens.HacerLiquidacion
 
         private void BtnCargarPago_Click(object sender, EventArgs e)
         {
-            if(_codigoLiquidacion is null)
+            if (_codigoLiquidacion is null)
             {
                 return;
             }
 
             _crearPagoForm.SetIdLiquidacion(_codigoLiquidacion);
+            _crearPagoForm.ShowDialog();
+        }
+
+        private void BtnPagarOficialNeto_Click(object sender, EventArgs e)
+        {
+            if (_liquidacionResponse is null)
+                return;
+
+            decimal netoOficialTotal = _liquidacionResponse.MontosPago.NetoOficial;
+            decimal netoOficialFaltante = netoOficialTotal - _liquidacionResponse.MontosPago.PagadoOficial;
+
+            _crearPagoForm.SetIdLiquidacion(_codigoLiquidacion ?? throw new NullReferenceException("liq.id"));
+            _crearPagoForm.SetMonto(netoOficialFaltante);
+            _crearPagoForm.ShowDialog();
+        }
+
+        private void BtnPagarInternoNeto_Click(object sender, EventArgs e)
+        {
+            if (_liquidacionResponse is null)
+                return;
+
+            decimal netoInternoTotal = _liquidacionResponse.MontosPago.NetoInterno;
+            decimal netoInternoFaltante = netoInternoTotal - _liquidacionResponse.MontosPago.PagadoInterno;
+
+            _crearPagoForm.SetIdLiquidacion(_codigoLiquidacion ?? throw new NullReferenceException("liq.id"));
+            _crearPagoForm.SetMonto(netoInternoFaltante);
             _crearPagoForm.ShowDialog();
         }
     }

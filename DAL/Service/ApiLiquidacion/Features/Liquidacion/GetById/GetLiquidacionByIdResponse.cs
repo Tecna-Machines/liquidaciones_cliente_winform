@@ -10,9 +10,10 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
                                                    QuincenaLiquidacion Quincena,
                                                    EmpleadoLiquidacion Empleado,
                                                    GetAcuerdoByIdResponse Acuerdo,
-                                                   MontosPagar Montos,
+                                                   MontosPagar MontosPago,
                                                    IEnumerable<ItemLiquidacionByIdResponse> Items,
                                                    IEnumerable<PagoLiquidacionById> Pagos);
+
 
     public sealed record QuincenaLiquidacion(int Anio, int Mes, int Nro);
     public sealed record EmpleadoLiquidacion(string Dni,
@@ -22,7 +23,10 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
                                              DateTime FechaAlta,
                                              DateTime FechaIngreso);
 
-    public sealed record MontosPagar(decimal EnBlanco, decimal EnNegro);
+    public sealed record MontosPagar(decimal NetoOficial,
+                                    decimal NetoInterno,
+                                    decimal PagadoOficial,
+                                    decimal PagadoInterno);
     public sealed record ItemLiquidacionByIdResponse(string Concepto,
                                                      int Nro,
                                                      int Estado,
@@ -39,3 +43,5 @@ namespace DAL.Service.Liquidacion.Features.Liquidacion.GetById
                                             string Descripcion,
                                             string ReferenciaContable);
 }
+
+

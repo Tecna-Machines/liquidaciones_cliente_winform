@@ -35,12 +35,8 @@ namespace UI.Screens.VerLiquidacion
             SetDatosLiquidacion(liq);
             SetDetalleEmpleado(liq);
 
-            decimal montoPercibir = (liq.Montos.EnNegro + liq.Montos.EnBlanco);
-            decimal montoPagado = liq.Pagos.Sum(p => p.Monto);
-            decimal montoPorPagar = montoPercibir - montoPagado;
-
-            labelNetoInterno.Text = liq.Montos.EnNegro.ToString("C");
-            labelNetoOficial.Text = liq.Montos.EnBlanco.ToString("C");
+            labelNetoInterno.Text = liq.MontosPago.NetoInterno.ToString("C");
+            labelNetoOficial.Text = liq.MontosPago.NetoOficial.ToString("C");
 
 
             SetTotalesOficial(liq);

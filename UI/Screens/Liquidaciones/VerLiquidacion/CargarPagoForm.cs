@@ -45,6 +45,11 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
         {
             _liquidacionId = liquidacionId;
         }
+
+        public void SetMonto(decimal montoPagar)
+        {
+            textBoxMonto.Text = montoPagar.ToString("F2");
+        }
         private void TextBoxMonto_TextChanged(object sender, EventArgs e)
         {
             string montoStr = textBoxMonto.Text;
@@ -89,11 +94,14 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
                 int modo = radioButtonTransferencia.Checked ? 1 : 0;
                 string descripcion = comboBoxDescripcion.Text;
 
+                bool esPagoInterno = radioButtonInterno.Checked;
+
                 var crearPago = new CrearPagoRequest(
                     liquidacionId,
                     cuentaContableId,
                     monto,
                     modo,
+                    esPagoInterno,
                     descripcion
                 );
 

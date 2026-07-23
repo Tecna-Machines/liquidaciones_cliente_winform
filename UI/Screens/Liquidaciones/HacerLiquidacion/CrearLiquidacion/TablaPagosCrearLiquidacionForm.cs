@@ -10,8 +10,9 @@ namespace UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion
 
             foreach (var pago in pagos)
             {
-                ListViewItem item = new(pago.Monto.ToString("C"));
+                ListViewItem item = new(pago.Descripcion);
                 item.Tag = pago;
+                item.SubItems.Add(pago.Monto.ToString("C"));
                 item.SubItems.Add(pago.Fecha.ToString("dd/MM/yyyy"));
                 item.SubItems.Add(pago.ReferenciaContable);
 
