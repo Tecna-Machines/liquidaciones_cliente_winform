@@ -74,7 +74,6 @@
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             BtnCargarPago = new Button();
             label5 = new Label();
@@ -83,6 +82,11 @@
             columnMonto = new ColumnHeader();
             columCuenta = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
+            lvMontosDePagos = new ListView();
+            columnHeader4 = new ColumnHeader();
+            columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
             panelDatos.SuspendLayout();
             groupBoxMontosPagar.SuspendLayout();
             SuspendLayout();
@@ -195,7 +199,7 @@
             // columnDescripcion
             // 
             columnDescripcion.Text = "Conceptos";
-            columnDescripcion.Width = 210;
+            columnDescripcion.Width = 200;
             // 
             // columnRemunerativo
             // 
@@ -455,7 +459,7 @@
             // 
             // Totales
             // 
-            Totales.Width = 210;
+            Totales.Width = 200;
             // 
             // remuneraciones
             // 
@@ -474,12 +478,12 @@
             // 
             // fecha
             // 
-            fecha.Width = 100;
+            fecha.Width = 250;
             // 
             // lvTotalesInterno
             // 
             lvTotalesInterno.BorderStyle = BorderStyle.FixedSingle;
-            lvTotalesInterno.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
+            lvTotalesInterno.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader5 });
             lvTotalesInterno.Enabled = false;
             lvTotalesInterno.Font = new Font("Consolas", 9F, FontStyle.Bold);
             lvTotalesInterno.FullRowSelect = true;
@@ -508,14 +512,9 @@
             columnHeader3.TextAlign = HorizontalAlignment.Right;
             columnHeader3.Width = 110;
             // 
-            // columnHeader4
-            // 
-            columnHeader4.TextAlign = HorizontalAlignment.Right;
-            columnHeader4.Width = 110;
-            // 
             // columnHeader5
             // 
-            columnHeader5.Width = 100;
+            columnHeader5.Width = 200;
             // 
             // BtnCargarPago
             // 
@@ -571,11 +570,45 @@
             columnHeader6.Text = "Pago Contab";
             columnHeader6.Width = 90;
             // 
+            // lvMontosDePagos
+            // 
+            lvMontosDePagos.BorderStyle = BorderStyle.FixedSingle;
+            lvMontosDePagos.Columns.AddRange(new ColumnHeader[] { columnHeader4, columnHeader8, columnHeader9, columnHeader10 });
+            lvMontosDePagos.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            lvMontosDePagos.HeaderStyle = ColumnHeaderStyle.None;
+            lvMontosDePagos.Location = new Point(997, 656);
+            lvMontosDePagos.Name = "lvMontosDePagos";
+            lvMontosDePagos.Size = new Size(553, 32);
+            lvMontosDePagos.TabIndex = 36;
+            lvMontosDePagos.UseCompatibleStateImageBehavior = false;
+            lvMontosDePagos.View = View.Details;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Pagado total:";
+            columnHeader4.Width = 105;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "9.000.000,00";
+            columnHeader8.Width = 120;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "oficial: 9.000.000,00";
+            columnHeader9.Width = 160;
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "interno: 9.000.000,00";
+            columnHeader10.Width = 160;
+            // 
             // CrearLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1566, 821);
+            Controls.Add(lvMontosDePagos);
             Controls.Add(lvPagos);
             Controls.Add(label5);
             Controls.Add(BtnCargarPago);
@@ -651,7 +684,6 @@
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
         private Button BtnCargarPago;
         private Label label5;
@@ -665,5 +697,10 @@
         private Button BtnDarAdelanto;
         private Label label2;
         private Label label1;
+        private ListView lvMontosDePagos;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader8;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader10;
     }
 }

@@ -194,7 +194,7 @@ namespace UI.Screens.HacerLiquidacion
             itOficial.SubItems.Add(liquidacion.ObtenerBrutoOficial().ToString("C"));          // $ remun
             itOficial.SubItems.Add(liquidacion.ObtenerRetencionesOficiales().ToString("C")); // $ descuentos
             itOficial.SubItems.Add(liquidacion.ObtenerNoRemunerativo().ToString("C"));        // $ no remu
-            itOficial.SubItems.Add(string.Empty);                                             // vacío
+            itOficial.SubItems.Add($"neto: {liquidacion.MontosPago.NetoOficial.ToString("C")}");
 
             lvTotales.Items.Add(itOficial);
 
@@ -206,9 +206,23 @@ namespace UI.Screens.HacerLiquidacion
 
             itInterno.SubItems.Add(liquidacion.ObtenerBrutoInterno().ToString("C"));          // $ remun
             itInterno.SubItems.Add(liquidacion.ObtenerDescuentosInterno().ToString("C")); // $ descuentos
-            itInterno.SubItems.Add(string.Empty);                                             // vacío
+            itInterno.SubItems.Add($"neto: {liquidacion.MontosPago.NetoInterno.ToString("C")}");                                             
 
             lvTotalesInterno.Items.Add(itInterno);
+
+            //Footer de totales pago
+            lvMontosDePagos.Items.Clear();
+
+            decimal pagadoOficial = liquidacion.MontosPago.PagadoOficial;
+            decimal pagadoInterno = liquidacion.MontosPago.PagadoInterno;
+            decimal pagadoTotal = pagadoInterno + pagadoOficial;
+
+            var itPagos = new ListViewItem("Pagado total:");
+            itPagos.SubItems.Add(pagadoTotal.ToString("C"));
+            itPagos.SubItems.Add("oficial: "+pagadoOficial.ToString("C"));
+            itPagos.SubItems.Add("interno: "+pagadoInterno.ToString("C"));
+
+            lvMontosDePagos.Items.Add(itPagos);
         }
 
 
