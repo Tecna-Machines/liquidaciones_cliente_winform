@@ -153,5 +153,29 @@ namespace UI.Screens.Liquidaciones.VerLiquidacion
                     .ToList();
             }
         }
+
+        public void MarcarComoInterno()
+        {
+            radioButtonInterno.Checked = true;
+            radioButtonOficial.Checked = false;
+        }
+
+        public void MarcarComoTransferencia()
+        {
+            radioButtonTransferencia.Checked = true;
+            radioButtonEfectivo.Checked = false;
+        }
+
+        public void MarcarComoOficial()
+        {
+            radioButtonInterno.Checked = false;
+            radioButtonOficial.Checked = true;
+        }
+
+        public void MarcarComoEfectivo()
+        {
+            radioButtonTransferencia.Checked = false;
+            radioButtonEfectivo.Checked = true;
+        }
     }
 }

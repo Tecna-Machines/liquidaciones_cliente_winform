@@ -333,6 +333,8 @@ namespace UI.Screens.HacerLiquidacion
 
             _crearPagoForm.SetIdLiquidacion(_codigoLiquidacion ?? throw new NullReferenceException("liq.id"));
             _crearPagoForm.SetMonto(netoOficialFaltante);
+            _crearPagoForm.MarcarComoOficial();
+            _crearPagoForm.MarcarComoTransferencia();
             _crearPagoForm.ShowDialog();
         }
 
@@ -346,6 +348,7 @@ namespace UI.Screens.HacerLiquidacion
 
             _crearPagoForm.SetIdLiquidacion(_codigoLiquidacion ?? throw new NullReferenceException("liq.id"));
             _crearPagoForm.SetMonto(netoInternoFaltante);
+            _crearPagoForm.MarcarComoInterno();
             _crearPagoForm.ShowDialog();
         }
 
