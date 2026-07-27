@@ -19,7 +19,14 @@ Write-Host "=== Build instalador AkerLQ Cliente ==="
 Write-Host ""
 
 $Version = Read-Host "Ingrese version del cliente. Ejemplo: v3"
-$Server = Read-Host "Ingrese servidor API. Ejemplo: https://localhost:7033/api/v1/"
+$DefaultServer = "http://api.liquidacion.tecna.local:8000/api/v1/"
+
+$Server = Read-Host "Ingrese servidor API (Enter = $DefaultServer)"
+
+if ([string]::IsNullOrWhiteSpace($Server)) {
+    $Server = $DefaultServer
+    Write-Host "Usando servidor por defecto: $Server" -ForegroundColor Yellow
+}
 
 if (-not (Test-Path $InnoCompiler)) {
     throw "No se encontro Inno Setup Compiler en: $InnoCompiler"
