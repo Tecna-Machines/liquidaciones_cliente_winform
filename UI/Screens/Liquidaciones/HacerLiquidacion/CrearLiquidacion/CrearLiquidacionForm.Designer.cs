@@ -57,7 +57,6 @@
             btnMarcas = new Button();
             BtnItem = new Button();
             groupBoxMontosPagar = new GroupBox();
-            BtnDarAdelanto = new Button();
             label2 = new Label();
             label1 = new Label();
             BtnPagarInternoNeto = new Button();
@@ -87,6 +86,7 @@
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
+            BtnDescargarRecibo = new Button();
             panelDatos.SuspendLayout();
             groupBoxMontosPagar.SuspendLayout();
             SuspendLayout();
@@ -346,7 +346,6 @@
             // 
             // groupBoxMontosPagar
             // 
-            groupBoxMontosPagar.Controls.Add(BtnDarAdelanto);
             groupBoxMontosPagar.Controls.Add(label2);
             groupBoxMontosPagar.Controls.Add(label1);
             groupBoxMontosPagar.Controls.Add(BtnPagarInternoNeto);
@@ -360,18 +359,6 @@
             groupBoxMontosPagar.TabIndex = 19;
             groupBoxMontosPagar.TabStop = false;
             groupBoxMontosPagar.Text = "Pagar al empleado:";
-            // 
-            // BtnDarAdelanto
-            // 
-            BtnDarAdelanto.Cursor = Cursors.Hand;
-            BtnDarAdelanto.ForeColor = SystemColors.Highlight;
-            BtnDarAdelanto.Location = new Point(511, 71);
-            BtnDarAdelanto.Name = "BtnDarAdelanto";
-            BtnDarAdelanto.Size = new Size(135, 23);
-            BtnDarAdelanto.TabIndex = 40;
-            BtnDarAdelanto.Text = "PAGAR ADELANTO";
-            BtnDarAdelanto.UseVisualStyleBackColor = true;
-            BtnDarAdelanto.Click += BtnDarAdelanto_Click;
             // 
             // label2
             // 
@@ -603,11 +590,26 @@
             columnHeader10.Text = "interno: 9.000.000,00";
             columnHeader10.Width = 160;
             // 
+            // BtnDescargarRecibo
+            // 
+            BtnDescargarRecibo.BackColor = Color.Moccasin;
+            BtnDescargarRecibo.BackgroundImageLayout = ImageLayout.None;
+            BtnDescargarRecibo.Cursor = Cursors.Hand;
+            BtnDescargarRecibo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            BtnDescargarRecibo.Location = new Point(997, 96);
+            BtnDescargarRecibo.Name = "BtnDescargarRecibo";
+            BtnDescargarRecibo.Size = new Size(182, 41);
+            BtnDescargarRecibo.TabIndex = 37;
+            BtnDescargarRecibo.Text = "DESCARGAR RECIBO";
+            BtnDescargarRecibo.UseVisualStyleBackColor = false;
+            BtnDescargarRecibo.Click += BtnDescargarRecibo_Click;
+            // 
             // CrearLiquidacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1566, 821);
+            Controls.Add(BtnDescargarRecibo);
             Controls.Add(lvMontosDePagos);
             Controls.Add(lvPagos);
             Controls.Add(label5);
@@ -694,7 +696,6 @@
         private ColumnHeader columnHeader7;
         private Button BtnPagarInternoNeto;
         private Button BtnPagarOficialNeto;
-        private Button BtnDarAdelanto;
         private Label label2;
         private Label label1;
         private ListView lvMontosDePagos;
@@ -702,5 +703,6 @@
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;
+        private Button BtnDescargarRecibo;
     }
 }

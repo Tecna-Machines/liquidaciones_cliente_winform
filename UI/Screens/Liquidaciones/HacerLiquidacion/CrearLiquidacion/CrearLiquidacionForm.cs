@@ -5,11 +5,13 @@ using DAL.Service.ApiLiquidacion.Features.Liquidacion.GetById;
 using DAL.Service.Liquidacion.Features.Empleados.GetEmpleados;
 using DAL.Service.Liquidacion.Features.Liquidacion.GetById;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics;
 using UI.Screens.Asistencias.Marcas;
 using UI.Screens.Liquidaciones.HacerLiquidacion.CrearLiquidacion;
 using UI.Screens.Liquidaciones.VerLiquidacion;
 using UI.Screens.Marcas;
 using UI.Utils;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UI.Screens.HacerLiquidacion
 {
@@ -206,7 +208,7 @@ namespace UI.Screens.HacerLiquidacion
 
             itInterno.SubItems.Add(liquidacion.ObtenerBrutoInterno().ToString("C"));          // $ remun
             itInterno.SubItems.Add(liquidacion.ObtenerDescuentosInterno().ToString("C")); // $ descuentos
-            itInterno.SubItems.Add($"neto: {liquidacion.MontosPago.NetoInterno.ToString("C")}");                                             
+            itInterno.SubItems.Add($"neto: {liquidacion.MontosPago.NetoInterno.ToString("C")}");
 
             lvTotalesInterno.Items.Add(itInterno);
 
@@ -219,8 +221,8 @@ namespace UI.Screens.HacerLiquidacion
 
             var itPagos = new ListViewItem("Pagado total:");
             itPagos.SubItems.Add(pagadoTotal.ToString("C"));
-            itPagos.SubItems.Add("oficial: "+pagadoOficial.ToString("C"));
-            itPagos.SubItems.Add("interno: "+pagadoInterno.ToString("C"));
+            itPagos.SubItems.Add("oficial: " + pagadoOficial.ToString("C"));
+            itPagos.SubItems.Add("interno: " + pagadoInterno.ToString("C"));
 
             lvMontosDePagos.Items.Add(itPagos);
         }
@@ -352,152 +354,46 @@ namespace UI.Screens.HacerLiquidacion
             _crearPagoForm.ShowDialog();
         }
 
-        private async void BtnDarAdelanto_Click(object sender, EventArgs e)
+        private async void BtnDescargarRecibo_Click(object sender, EventArgs e)
         {
             if (_codigoLiquidacion is null)
-            {
-                MessageBox.Show(
-                    "Primero debe crear o seleccionar una liquidación.",
-                    "Liquidación no seleccionada",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                return;
-            }
-
-            using var formMonto = new Form
-            {
-                Text = "Dar adelanto",
-                StartPosition = FormStartPosition.CenterParent,
-                FormBorderStyle = FormBorderStyle.FixedDialog,
-                MaximizeBox = false,
-                MinimizeBox = false,
-                ShowInTaskbar = false,
-                ClientSize = new Size(360, 190)
-            };
-
-            var labelTitulo = new Label
-            {
-                Text = "Ingrese el monto del adelanto:",
-                AutoSize = true,
-                Location = new Point(20, 20)
-            };
-
-            var inputMonto = new NumericUpDown
-            {
-                Location = new Point(20, 50),
-                Size = new Size(315, 30),
-                DecimalPlaces = 2,
-                ThousandsSeparator = true,
-                Minimum = 0.01m,
-                Maximum = 999_999_999.99m,
-                Increment = 1000m,
-                TextAlign = HorizontalAlignment.Right,
-                Font = new Font("Segoe UI", 11F)
-            };
-
-            var labelMontoFormateado = new Label
-            {
-                Text = 0m.ToString("C"),
-                AutoSize = false,
-                Location = new Point(20, 88),
-                Size = new Size(315, 28),
-                TextAlign = ContentAlignment.MiddleRight,
-                Font = new Font("Segoe UI", 12F, FontStyle.Bold)
-            };
-
-            inputMonto.ValueChanged += (_, _) =>
-            {
-                labelMontoFormateado.Text = inputMonto.Value.ToString("C");
-            };
-
-            var btnCancelar = new Button
-            {
-                Text = "Cancelar",
-                DialogResult = DialogResult.Cancel,
-                Location = new Point(155, 135),
-                Size = new Size(85, 32)
-            };
-
-            var btnAceptar = new Button
-            {
-                Text = "Aceptar",
-                DialogResult = DialogResult.OK,
-                Location = new Point(250, 135),
-                Size = new Size(85, 32)
-            };
-
-            formMonto.Controls.Add(labelTitulo);
-            formMonto.Controls.Add(inputMonto);
-            formMonto.Controls.Add(labelMontoFormateado);
-            formMonto.Controls.Add(btnCancelar);
-            formMonto.Controls.Add(btnAceptar);
-
-            formMonto.AcceptButton = btnAceptar;
-            formMonto.CancelButton = btnCancelar;
-
-            formMonto.Shown += (_, _) =>
-            {
-                inputMonto.Focus();
-                inputMonto.Select(0, inputMonto.Text.Length);
-            };
-
-            if (formMonto.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            decimal montoPagar = inputMonto.Value;
-
-            if (montoPagar <= 0)
-            {
-                MessageBox.Show(
-                    "El monto del adelanto debe ser mayor que cero.",
-                    "Monto inválido",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+            if (_liquidacionResponse is null)
                 return;
-            }
 
             try
             {
-                const int descuentoInterno = 1;
+                var pdfBytes = await _liquidacionController.DescargarRecibo(_codigoLiquidacion);
 
-                await _liquidacionController.AgregarItem(
-                    _codigoLiquidacion,
-                    new CrearItemRequest(
-                        Concepto: "Adelanto deposito",
-                        Monto: montoPagar,
-                        EsEnBlanco: false,
-                        Tipo: descuentoInterno
-                    )
-                );
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "PDF Files|*.pdf";
+                    saveFileDialog.Title = "Guardar Recibo";
+                    saveFileDialog.FileName = $"recibo-{_liquidacionResponse.Empleado.Dni}.pdf"; // Nombre por defecto
 
-                // Volvemos a consultar la liquidación para mostrar el nuevo ítem.
-                var liquidacionActualizada =
-                    await _liquidacionController.GetById(_codigoLiquidacion);
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Guardar el archivo PDF
+                        File.WriteAllBytes(saveFileDialog.FileName, pdfBytes);
+                        MessageBox.Show("PDF descargado y guardado correctamente.",
+                                            "Éxito", MessageBoxButtons.OK,
+                                            MessageBoxIcon.Information);
 
-                if (liquidacionActualizada is not null)
-                    MostrarLiquidacionEnPantalla(liquidacionActualizada);
+                        var psi = new ProcessStartInfo
+                        {
+                            FileName = saveFileDialog.FileName,
+                            UseShellExecute = true
+                        };
 
-                // Abrimos inmediatamente el formulario para registrar el pago.
-                _crearPagoForm.SetIdLiquidacion(_codigoLiquidacion);
-                _crearPagoForm.SetMonto(montoPagar);
-                _crearPagoForm.ShowDialog(this);
-
-                // Refrescamos nuevamente para mostrar el pago cargado.
-                liquidacionActualizada =
-                    await _liquidacionController.GetById(_codigoLiquidacion);
-
-                if (liquidacionActualizada is not null)
-                    MostrarLiquidacionEnPantalla(liquidacionActualizada);
+                        Process.Start(psi);
+                    }
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"No se pudo registrar el adelanto.\n\n{ex.Message}",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Mostrar mensaje de error si ocurre algún problema
+                MessageBox.Show($"Error al descargar el recibo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
