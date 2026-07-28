@@ -572,8 +572,8 @@
             // 
             // columnHeader4
             // 
-            columnHeader4.Text = "Pagado total:";
-            columnHeader4.Width = 105;
+            columnHeader4.Text = "Total:";
+            columnHeader4.Width = 80;
             // 
             // columnHeader8
             // 
@@ -588,7 +588,7 @@
             // columnHeader10
             // 
             columnHeader10.Text = "interno: 9.000.000,00";
-            columnHeader10.Width = 160;
+            columnHeader10.Width = 180;
             // 
             // BtnDescargarRecibo
             // 

@@ -219,10 +219,10 @@ namespace UI.Screens.HacerLiquidacion
             decimal pagadoInterno = liquidacion.MontosPago.PagadoInterno;
             decimal pagadoTotal = pagadoInterno + pagadoOficial;
 
-            var itPagos = new ListViewItem("Pagado total:");
+            var itPagos = new ListViewItem("Total:");
             itPagos.SubItems.Add(pagadoTotal.ToString("C"));
-            itPagos.SubItems.Add("oficial: " + pagadoOficial.ToString("C"));
-            itPagos.SubItems.Add("interno: " + pagadoInterno.ToString("C"));
+            itPagos.SubItems.Add("Oficial: " + pagadoOficial.ToString("C"));
+            itPagos.SubItems.Add("Interno: " + pagadoInterno.ToString("C"));
 
             lvMontosDePagos.Items.Add(itPagos);
         }
