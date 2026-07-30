@@ -12,5 +12,8 @@
                                             decimal ValorBlanco,
                                             decimal Sueldo,
                                             int TipoSueldo,
+                                            JornadaLaboral Jornada,
                                             string Notas);
+
+    public sealed record JornadaLaboral(string Descripcion, int Horas);
 }

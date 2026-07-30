@@ -35,6 +35,8 @@
             textBoxNombre = new TextBox();
             textBoxDni = new TextBox();
             groupBox1 = new GroupBox();
+            comboBoxJornada = new ComboBox();
+            label4 = new Label();
             comboBoxModalidad = new ComboBox();
             textBoxMontoSueldoJornal = new TextBox();
             textBoxValorHora = new TextBox();
@@ -119,6 +121,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(comboBoxJornada);
+            groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(comboBoxModalidad);
             groupBox1.Controls.Add(textBoxMontoSueldoJornal);
             groupBox1.Controls.Add(textBoxValorHora);
@@ -134,6 +138,25 @@
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "DATOS ACUERDO";
+            // 
+            // comboBoxJornada
+            // 
+            comboBoxJornada.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxJornada.FormattingEnabled = true;
+            comboBoxJornada.Items.AddRange(new object[] { "Media (4 hs)", "Completa (9 hs)" });
+            comboBoxJornada.Location = new Point(431, 81);
+            comboBoxJornada.Name = "comboBoxJornada";
+            comboBoxJornada.Size = new Size(121, 23);
+            comboBoxJornada.TabIndex = 9;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(346, 85);
+            label4.Name = "label4";
+            label4.Size = new Size(66, 15);
+            label4.TabIndex = 8;
+            label4.Text = "JORNADA:";
             // 
             // comboBoxModalidad
             // 
@@ -155,7 +178,7 @@
             // textBoxValorHora
             // 
             textBoxValorHora.ForeColor = Color.ForestGreen;
-            textBoxValorHora.Location = new Point(431, 81);
+            textBoxValorHora.Location = new Point(653, 81);
             textBoxValorHora.Name = "textBoxValorHora";
             textBoxValorHora.Size = new Size(97, 23);
             textBoxValorHora.TabIndex = 5;
@@ -190,7 +213,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(327, 85);
+            label2.Location = new Point(556, 85);
             label2.Name = "label2";
             label2.Size = new Size(85, 15);
             label2.TabIndex = 1;
@@ -396,5 +419,7 @@
         private ColumnHeader columnConcepto;
         private ColumnHeader columnValor;
         private ColumnHeader columnQuincena;
+        private ComboBox comboBoxJornada;
+        private Label label4;
     }
 }

@@ -134,10 +134,22 @@ namespace UI.Screens.CrearContrato
                               ValorHora: valorHora,
                               TipoSueldo: tipoSueldo,
                               Notas: "blabla",
+                              jornada: RecuperarJornadaSeleccionada(),
                               Retenciones: RecuperarRetencionesSeleccionadas(),
                               Adicionales: RecuperarAdicionalesDesdeLista());
 
             return contratoReq;
+        }
+
+        private int RecuperarJornadaSeleccionada()
+        {
+            if (comboBoxJornada.SelectedIndex == 0)
+                return 0;
+
+            if (comboBoxJornada.SelectedIndex == 1)
+                return 1;
+
+            return -1; // No hay selección o es un valor no esperado
         }
 
         private string[] RecuperarRetencionesSeleccionadas()

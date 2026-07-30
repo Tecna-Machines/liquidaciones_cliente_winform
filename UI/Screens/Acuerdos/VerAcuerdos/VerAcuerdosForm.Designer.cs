@@ -39,7 +39,7 @@
             label1 = new Label();
             label47 = new Label();
             label46 = new Label();
-            DataLbNotas = new Label();
+            DataLbJornada = new Label();
             label44 = new Label();
             DataLbTipoSueldo = new Label();
             label42 = new Label();
@@ -139,7 +139,7 @@
             tableLayoutPanelAcuerdo.Controls.Add(label1, 0, 18);
             tableLayoutPanelAcuerdo.Controls.Add(label47, 0, 16);
             tableLayoutPanelAcuerdo.Controls.Add(label46, 0, 14);
-            tableLayoutPanelAcuerdo.Controls.Add(DataLbNotas, 1, 13);
+            tableLayoutPanelAcuerdo.Controls.Add(DataLbJornada, 1, 13);
             tableLayoutPanelAcuerdo.Controls.Add(label44, 0, 13);
             tableLayoutPanelAcuerdo.Controls.Add(DataLbTipoSueldo, 1, 12);
             tableLayoutPanelAcuerdo.Controls.Add(label42, 0, 12);
@@ -243,18 +243,18 @@
             label46.Text = "Retenciones";
             label46.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // DataLbNotas
+            // DataLbJornada
             // 
-            DataLbNotas.AutoSize = true;
-            DataLbNotas.BackColor = SystemColors.ScrollBar;
-            DataLbNotas.Dock = DockStyle.Fill;
-            DataLbNotas.Location = new Point(411, 207);
-            DataLbNotas.Margin = new Padding(0);
-            DataLbNotas.Name = "DataLbNotas";
-            DataLbNotas.Size = new Size(419, 15);
-            DataLbNotas.TabIndex = 29;
-            DataLbNotas.Text = "se pagan $2 por dia";
-            DataLbNotas.TextAlign = ContentAlignment.MiddleLeft;
+            DataLbJornada.AutoSize = true;
+            DataLbJornada.BackColor = SystemColors.ScrollBar;
+            DataLbJornada.Dock = DockStyle.Fill;
+            DataLbJornada.Location = new Point(411, 207);
+            DataLbJornada.Margin = new Padding(0);
+            DataLbJornada.Name = "DataLbJornada";
+            DataLbJornada.Size = new Size(419, 15);
+            DataLbJornada.TabIndex = 29;
+            DataLbJornada.Text = "se pagan $2 por dia";
+            DataLbJornada.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label44
             // 
@@ -266,7 +266,7 @@
             label44.Name = "label44";
             label44.Size = new Size(411, 15);
             label44.TabIndex = 28;
-            label44.Text = "Notas:";
+            label44.Text = "Jornada:";
             label44.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // DataLbTipoSueldo
@@ -741,7 +741,7 @@
         private Label DataLbApellido;
         private Label label27;
         private Label label46;
-        private Label DataLbNotas;
+        private Label DataLbJornada;
         private Label label44;
         private Label DataLbTipoSueldo;
         private Label label42;

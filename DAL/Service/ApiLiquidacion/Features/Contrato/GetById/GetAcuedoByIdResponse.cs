@@ -1,5 +1,9 @@
-﻿namespace DAL.Service.Liquidacion.Features.Contrato.GetById
+﻿using DAL.Service.Liquidacion.Features.Contrato.GetAcuerdosEmpleado;
+
+namespace DAL.Service.Liquidacion.Features.Contrato.GetById
 {
+    public sealed record GetAcuerdoByIdResquest(string Codigo);
+
     public sealed record GetAcuerdoByIdResponse(string Codigo,
                                                 DateTime Fecha,
                                                 decimal ValorHora,
@@ -8,6 +12,7 @@
                                                 string Notas,
                                                 TipoSueldoResponse TipoSueldo,
                                                 EmpleadoAcuerdoResponse Empleado,
+                                                JornadaLaboral Jornada,
                                                 IEnumerable<AdicionalAcuerdoResponse> Adicionales,
                                                 IEnumerable<RetencionResponse> Retenciones
                                                 );

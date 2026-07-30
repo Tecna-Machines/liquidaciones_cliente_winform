@@ -100,7 +100,7 @@ namespace UI.Screens.VerContratos
             return string.Empty;
         }
 
-        private void SetDatosAcuerdo(GetAcuerdoByIdResponse acuerdo)
+        private void SetDatosAcuerdo(GetAcuerdoByIdResponse acu)
         {
             string textCodigo = "error";
 
@@ -108,31 +108,32 @@ namespace UI.Screens.VerContratos
             if (_acuerdoVigenteEmp is not null)
             {
 
-                if (_acuerdoVigenteEmp.Codigo == acuerdo.Codigo)
+                if (_acuerdoVigenteEmp.Codigo == acu.Codigo)
                 {
-                    textCodigo = $"{acuerdo.Codigo} : VIGENTE";
+                    textCodigo = $"{acu.Codigo} : VIGENTE";
                     DataLbCodAcuerdo.BackColor = Color.ForestGreen;
 
                 }
                 else
                 {
-                    textCodigo = $"{acuerdo.Codigo} : SIN VIGENCIA";
+                    textCodigo = $"{acu.Codigo} : SIN VIGENCIA";
                     DataLbCodAcuerdo.BackColor = Color.Red;
                 }
 
             }
 
             DataLbCodAcuerdo.Text = textCodigo;
-            DataLbValorHora.Text = acuerdo.ValorHora.ToString("C");
-            DataLbSueldo.Text = acuerdo.Sueldo.ToString("C");
-            DataLbJornal.Text = acuerdo.ValorBlanco.ToString("C");
-            DataLbFechaCreacionAcuerdo.Text = acuerdo.Fecha.ToString("dd/MM/yyyy");
-            DataLbTipoSueldo.Text = acuerdo.TipoSueldo.Descripcion;
-            DataLbCodSueldo.Text = acuerdo.TipoSueldo.Codigo;
-            DataLbNotas.Text = acuerdo.Notas;
+            DataLbValorHora.Text = acu.ValorHora.ToString("C");
+            DataLbSueldo.Text = acu.Sueldo.ToString("C");
+            DataLbJornal.Text = acu.ValorBlanco.ToString("C");
+            DataLbFechaCreacionAcuerdo.Text = acu.Fecha.ToString("dd/MM/yyyy");
+            DataLbTipoSueldo.Text = acu.TipoSueldo.Descripcion;
+            DataLbCodSueldo.Text = acu.TipoSueldo.Codigo;
+            DataLbJornada.Text = $"{acu.Jornada.Descripcion}:{acu.Jornada.Horas} hs"
+            ;
 
-            CargarTablaAdicionales(acuerdo.Adicionales);
-            CargarTablaRetenciones(acuerdo.Retenciones);
+            CargarTablaAdicionales(acu.Adicionales);
+            CargarTablaRetenciones(acu.Retenciones);
         }
 
         private void CargarTablaAdicionales(IEnumerable<AdicionalAcuerdoResponse> adi)
@@ -186,7 +187,7 @@ namespace UI.Screens.VerContratos
             DataLbFechaCreacionAcuerdo.Text = "";
             DataLbTipoSueldo.Text = "";
             DataLbCodSueldo.Text = "";
-            DataLbNotas.Text = "";
+            DataLbJornada.Text = "";
         }
 
         private void crearAPartirDelActualToolStripMenuItem_Click(object sender, EventArgs e)
